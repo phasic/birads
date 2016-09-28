@@ -1,0 +1,10 @@
+<div class="pull-left">
+<div (window:keydown)="hotKeys($event.keyCode)">
+    <div class="btn-group-vertical">
+        <label class="btn btn-lg btn-default" [(ngModel)]="this.dataservice.method" btnRadio="mass">Mass</label>
+        <label class="btn btn-lg btn-default" [(ngModel)]="this.dataservice.method" btnRadio="distortion">Distortion</label>
+        <label class="btn btn-lg btn-default" [(ngModel)]="this.dataservice.method" btnRadio="asymmetries">Asymmetries</label>
+        <label class="btn btn-lg btn-default" [(ngModel)]="this.dataservice.method" btnRadio="calcifications">Calcifications</label>
+    </div>
+ </div>
+</div>

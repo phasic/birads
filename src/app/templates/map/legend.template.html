@@ -1,0 +1,31 @@
+<!-- TODO: Make the layout especially of category 4  bit more decent -->
+<div class="glyphicon glyphicon-info-sign pull-left" (click)="show = !show">
+</div>
+<div class="pull-left" *ngIf="show">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th align="center">Assessment</th>
+            <th align="center">Management</th>
+            <th align="center">Likelihood of Cancer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let category of this.categories; let i = index">
+            <td>{{'LEGEND.' + category + '.ASSESSMENT' | translate}}</td>
+            <td>{{'LEGEND.' + category + '.MANAGEMENT' | translate}}</td>
+            <td>{{'LEGEND.' + category + '.LIKELIHOOD' | translate}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<select #langSelect (change)="translate.use(langSelect.value)">
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+</select>
+
+
+
+
+
+

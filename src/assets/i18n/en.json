@@ -1,0 +1,39 @@
+{
+  "LEGEND": {
+    "ZERO": {
+      "ASSESSMENT": "Category 0: Incomplete - need additional imaging evaluation",
+      "MANAGEMENT": "Recall for additional imaging",
+      "LIKELIHOOD": "N/A"
+    },
+    "ONE": {
+      "ASSESSMENT": "Category 1: Negative",
+      "MANAGEMENT": "Routine screening",
+      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+    },
+    "TWO": {
+      "ASSESSMENT": "Category 2: Benign",
+      "MANAGEMENT": "Routine screening",
+      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+    },
+    "THREE": {
+      "ASSESSMENT": "Category 3: Probably benign",
+      "MANAGEMENT": "Short-interval (6-month) follow-up or continued surveillance",
+      "LIKELIHOOD": "> 0% but ≤ 2% likelihood of malignancy"
+    },
+    "FOUR": {
+      "ASSESSMENT": "Category 4: Suspicious     Category 4A: Low suspicion for      malignancy      Category 4B: Moderate suspicion for      malignancy      Category 4C: High suspicion for      malignancy",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "> 2% but < 95% likelihood of      malignancy      > 2% to ≤ 10% likelihood of malignancy      > 10% to ≤ 50% likelihood of      malignancy      > 50% to < 95% likelihood of      malignancy"
+    },
+    "FIVE": {
+      "ASSESSMENT": "Category 5: Highly suggestive of malignancy",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "≥ 95% likelihood of malignancy"
+    },
+    "SIX": {
+      "ASSESSMENT": "Category 6: Known biopsy-proven malignancy",
+      "MANAGEMENT": "Surgical excision when clinically appropriate",
+      "LIKELIHOOD": "N/A"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.table-container{
+    overflow-y: auto;
+    max-height: 90%;
+}
+.wrapper{
+    padding-right: 30px;
+    padding-left: 15px;
+}
+.header-wrapper{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.highlight{
+    background: #cfcfcf;
+}

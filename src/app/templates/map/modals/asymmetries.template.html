@@ -1,0 +1,21 @@
+<!--SHAPE MODAL -->
+<div (keydown)="hotKeys($event.keyCode)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Asymmetry</h4>
+            </div>
+            <div class="modal-body">
+                <div align="center">
+                    <div class="btn-group">
+                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="asymmetry">Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="focal asymmetry">Focal Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="global asymmetry">Global Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="developing asymmetry">Developing Asymmetry</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
