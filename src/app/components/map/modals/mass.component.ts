@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input}      from '@angular/core';
+import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
 import { DataService } from "../../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
@@ -10,9 +10,10 @@ import {ViewChild} from "@angular/core/src/metadata/di";
     templateUrl: '../../../templates/map/modals/mass.template.html'
 })
 export class MassComponent implements OnChanges{
-    constructor(private dataservice: DataService, private translate: TranslateService) {
+    constructor(private dataservice: DataService, private translate: TranslateService, private element: ElementRef) {
         this.dataservice = dataservice;
         this.translate = translate;
+        this.element = element;
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -100,6 +101,25 @@ export class MassComponent implements OnChanges{
     }
     addTable(): void{
         this.dataservice.addMass(0, this.shape, this.margin, this.density);
+        this.dataservice.setModalshow(false);
+    }
+
+    mouseControl(argument: string, finding: string): void{
+        if(argument == 'shape'){
+            this.shape = finding;
+            this.modal1.hide();
+            this.modal2.show();
+        }
+        if(argument == 'margin'){
+            this.margin = finding;
+            this.modal2.hide();
+            this.modal3.show();
+        }
+        if(argument == 'density'){
+            this.density = finding;
+            this.modal3.hide();
+            this.addTable();
+        }
     }
 
 

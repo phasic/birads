@@ -99,9 +99,10 @@ export class DistortionComponent implements OnChanges{
         }
     }
     addTable(): void{
-        console.log("DISTORTION ADDTABLE");
         //TODO: GET THIS RIGHT
         this.dataservice.addDistortions("Architectural Distortion");
+        this.dataservice.setModalshow(false);
+
     }
 
 

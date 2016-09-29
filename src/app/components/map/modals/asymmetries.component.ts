@@ -61,8 +61,14 @@ export class AsymmetriesComponent implements OnChanges{
     }
     addTable(): void{
         this.dataservice.addAsymmetries(this.asymmetry);
-    }
+        this.dataservice.setModalshow(false);
 
+    }
+    mouseControl(finding: string): void{
+        this.asymmetry = finding;
+        this.modal1.hide();
+        this.addTable();
+    }
 
 
 }

@@ -26,6 +26,7 @@ export class CalcificationComponent implements OnChanges{
         }
     }
 
+    private benign: boolean = true;
     private morphology: string;
     private distribution: string;
     hotKeys(keycode: number, argument: string, page?: number): void{
@@ -183,14 +184,24 @@ export class CalcificationComponent implements OnChanges{
     addTable(): void{
         // this.dataservice.addMass(0, this.morphology, this.distribution, this.density);
         this.dataservice.addCalcifications(this.morphology, this.distribution);
+        this.dataservice.setModalshow(false);
+
     }
 
+    mouseControl(argument: string, finding: string): void{
+        if(argument == 'morphology'){
+            this.morphology = finding;
+            this.modal1.hide();
+            this.modal2.show();
+        }
+        if(argument == 'distribution'){
+            this.distribution = finding;
+            this.modal2.hide();
+            this.addTable();
 
-    private benign: boolean = true;
-    doStuff(){
-        console.log("in dostuff");
-        this.benign = !this.benign;
+        }
     }
+
 
 
 

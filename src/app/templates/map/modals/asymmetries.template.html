@@ -8,10 +8,10 @@
             <div class="modal-body">
                 <div align="center">
                     <div class="btn-group">
-                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="asymmetry">Asymmetry</label>
-                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="focal asymmetry">Focal Asymmetry</label>
-                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="global asymmetry">Global Asymmetry</label>
-                        <label class="btn btn-lg btn-default" (click)="modal1.hide()" [(ngModel)]="this.asymmetry" btnRadio="developing asymmetry">Developing Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="mouseControl('asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="asymmetry">Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="mouseControl('focal asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="focal asymmetry">Focal Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="mouseControl('global asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="global asymmetry">Global Asymmetry</label>
+                        <label class="btn btn-lg btn-default" (click)="mouseControl('developing asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="developing asymmetry">Developing Asymmetry</label>
                     </div>
                 </div>
             </div>

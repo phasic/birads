@@ -1,10 +1,5 @@
 <!-- TODO: IMAGEMAP IS TEMPORARY, WE WANT TO USE CIRCLES LATER ON, NEED TO FIND DECENT ANNOTATION METHOD -->
-<div align="center">
-    <!--<img (click)="addFinding($event)" class="map img-responsive" id="MapImg" rwdimagemap src="../../../assets/birads.png" usemap="#Map"/>-->
-    <!--<canvas id="myCanvas" width="578" height="200"></canvas>-->
-
-    <!--<canvas #myCanvas width="806" height="396" (click)="addFinding($event)" (contextmenu)="removeFinding($event)"></canvas>-->
-
+<div align="center" (window:click)="this.showmenu = !this.showmenu">    <!-- just to let it trigger, the data is overwritten anyways -->
     <img class="map img-responsive" id="MapImg" rwdimagemap src="/assets/images/birads.png" usemap="#Map"/>
     <map name="Map"  id="Map">
         <area (click)="whichMenu()" alt="" title="1" href="#" shape="poly" coords="47,278,41,278,37,275,34,272,32,268,32,264,32,260,33,256,36,253,40,250,43,248,45,250,44,254,44,259,43,263,44,268,46,273" />
@@ -15,14 +10,8 @@
         <area (click)="whichMenu()" alt="" title="6" href="#" shape="poly" coords="47,278,112,278,112,329,102,327,96,327,90,324,86,322,81,320,77,318,72,316,68,312,63,308,59,302,55,297,51,292,49,288" />
         <area (click)="whichMenu()" alt="" title="7" href="#" shape="poly" coords="112,278,203,278,203,352,180,352,176,348,173,345,171,343,167,341,164,338,160,336,156,334,152,333,147,332,141,331,136,331,131,331,127,330,119,330,115,329,112,329" />
     </map>
-
-    <!-- TODO : glitchy qwer selection, mouse selection add to table -->
     <mass-component [show] = "this.showmenu == 'mass'"></mass-component>
     <distortion-component [show]="this.showmenu == 'distortion'"></distortion-component>
     <asymmetries-component [show]="this.showmenu == 'asymmetries'"></asymmetries-component>
     <calcification-component [show]="this.showmenu == 'calcifications'"></calcification-component>
-    <!--<mass-component [show] = 'this.showmenu'></mass-component>-->
-    <!--<mass-component [show] = 'this.showmenu'></mass-component>-->
-    <!--<mass-component [show] = 'this.showmenu'></mass-component>-->
-
-    </div>
+</div>

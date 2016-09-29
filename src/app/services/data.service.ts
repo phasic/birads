@@ -19,7 +19,6 @@ export class DataService {
 
 
     private method: string; // mass, distortion, asymmetries or calcifications.
-
     constructor() {
     }
 
@@ -127,4 +126,13 @@ export class DataService {
     getMethod(): string{
         return this.method;
     }
+    private modalshow: boolean;
+
+    setModalshow(modalshow: boolean): void{
+        this.modalshow = modalshow;
+    }
+    getModalshow(): boolean{
+        return this.modalshow;
+    }
+
 }
