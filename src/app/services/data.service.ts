@@ -20,15 +20,21 @@ export class DataService {
 
     private method: string; // mass, distortion, asymmetries or calcifications.
     constructor() {
+        this.mass = []; // make an emty array so that the get length doesnt throw an error
+        this.distortions = [];
+        this.asymmetries = [];
+        this.calcifications = [];
     }
 
-    setComposition(composition: string): void{
+    setComposition(composition: string): void {
         this.composition = composition;
     }
-    getComposition(): string{
+
+    getComposition(): string {
         return this.composition;
     }
-    setMass(size: number, shape: string, margin: string, density: string): void{
+
+    setMass(size: number, shape: string, margin: string, density: string): void {
         this.mass = [{
             size: size,
             shape: shape,
@@ -36,8 +42,9 @@ export class DataService {
             density: density
         }]
     }
-    addMass(size: number, shape: string, margin: string, density: string): void{
-        if(this.mass == null){
+
+    addMass(size: number, shape: string, margin: string, density: string): void {
+        if (this.mass == null) {
             this.setMass(size, shape, margin, density)
         }
         else {
@@ -50,18 +57,21 @@ export class DataService {
             );
         }
     }
-    getMass(index? : number): any{
-        if(index == null){
+
+    getMass(index?: number): any {
+        if (index == null) {
             return this.mass;
         }
         else
             return this.mass[index];
     }
-    setDistortions(distortion: Array<string>): void{
+
+    setDistortions(distortion: Array<string>): void {
         this.distortions = distortion;
     }
-    addDistortions(distortion: string): void{
-        if(this.distortions == null){
+
+    addDistortions(distortion: string): void {
+        if (this.distortions == null) {
             this.setDistortions([distortion]);
 
         }
@@ -70,18 +80,18 @@ export class DataService {
         }
 
     }
-    getDistortions(index? : number): any{
-        if(index == null){
+    getDistortions(index?: number): any {
+        if (index == null) {
             return this.distortions;
         }
         else
             return this.distortions[index];
     }
-    setAsymmetries(asymmetries: Array<string>): void{
+    setAsymmetries(asymmetries: Array<string>): void {
         this.asymmetries = asymmetries;
     }
-    addAsymmetries(asymmetry: string): void{
-        if(this.asymmetries == null){
+    addAsymmetries(asymmetry: string): void {
+        if (this.asymmetries == null) {
             this.setAsymmetries([asymmetry])
 
         }
@@ -89,21 +99,21 @@ export class DataService {
             this.asymmetries.push(asymmetry);
         }
     }
-    getAsymmetries(index? : number): any{
-        if(index == null){
+    getAsymmetries(index?: number): any {
+        if (index == null) {
             return this.asymmetries;
         }
         else
             return this.asymmetries[index];
     }
-    setCalcifications(morphology: string, distribution: string): void{
+    setCalcifications(morphology: string, distribution: string): void {
         this.calcifications = [{
             morphology: morphology,
             distribution: distribution
         }]
     }
-    addCalcifications(morphology: string, distribution: string): void{
-        if(this.calcifications == null){
+    addCalcifications(morphology: string, distribution: string): void {
+        if (this.calcifications == null) {
             this.setCalcifications(morphology, distribution);
         }
         else {
@@ -113,26 +123,43 @@ export class DataService {
             });
         }
     }
-    getCalcifications(index? : number): any{
-        if(index == null){
+
+    getCalcifications(index?: number): any {
+        if (index == null) {
             return this.calcifications;
         }
         else
             return this.calcifications[index];
     }
-    setMethod(method: string): void{
+
+    setMethod(method: string): void {
         this.method = method;
     }
-    getMethod(): string{
+
+    getMethod(): string {
         return this.method;
     }
-    private modalshow: boolean;
 
-    setModalshow(modalshow: boolean): void{
-        this.modalshow = modalshow;
-    }
-    getModalshow(): boolean{
-        return this.modalshow;
+
+    private showmenu: string;
+
+    setShowmenu(showmenu: string): void {
+        this.showmenu = showmenu;
     }
 
+    getShowmenu(): string {
+        return this.showmenu;
+    }
+
+    private disablesidebar: boolean = false;
+
+    disableSidebar(): void{
+        this.disablesidebar = true;
+    }
+    enableSidebar():void{
+        this.disablesidebar = false;
+    }
+    getDisabled(): boolean{
+        return this.disablesidebar;
+    }
 }

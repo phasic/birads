@@ -11,9 +11,10 @@ import {MassComponent} from "./modals/mass.component";
     templateUrl: '../../templates/map/map.template.html'
 })
 export class MapComponent {
-    constructor(private dataservice: DataService, private translate: TranslateService) {
+    constructor(private dataservice: DataService, private translate: TranslateService, private elementref: ElementRef) {
         this.dataservice = dataservice;
         this.translate = translate;
+        this.elementref = elementref;
     }
 
 
@@ -21,31 +22,71 @@ export class MapComponent {
     @ViewChild('massModal2') public massModal2: ModalDirective;
     @ViewChild('massModal3') public massModal3: ModalDirective;
 
-    private showmenu: string;
 
     whichMenu() {
-        this.dataservice.setModalshow(true);
-        console.log('In whichMenu()');
+        console.log('\t\t---------------Begin: whichMenu---------------');
+        console.log("\t\tIn map.component: whichMenu");
+        console.log("\t\tSelected method: " + this.dataservice.getMethod());
         switch (this.dataservice.getMethod()) {
             case 'mass':
-                this.showmenu = 'mass';
+                this.dataservice.setShowmenu('mass');
                 break;
             case 'distortion':
-                this.showmenu = 'distortion';
+                this.dataservice.setShowmenu('distortion');
                 break;
             case 'asymmetries':
-                this.showmenu = 'asymmetries';
+                this.dataservice.setShowmenu('asymmetries');
                 break;
             case 'calcifications':
-                this.showmenu = 'calcifications';
+                this.dataservice.setShowmenu('calcifications');
                 break;
             default:
         }
+        console.log('\t\tgetShowmenu: ' + this.dataservice.getShowmenu());
+        console.log('\t\t---------------End: whichMenu---------------');
+    }
+    clickHandler(event) {
+        console.log('---------------Begin: clickHandler---------------');
+        console.log("In map.component: clickHandler");
+        this.whichMenu(); //which menu do i need to show
+        let tmp: any;
+        console.log("getMethod: " + this.dataservice.getMethod());
+        switch (this.dataservice.getMethod()) {
+            //TODO RIGHT CLICK TO DELETE FINDING
+            case 'mass':
+                tmp = document.createElement('div');
+                tmp.innerHTML = "<div class='badge'>M" + (this.dataservice.getMass().length +1) + "</div>";
+                tmp.style = 'position: fixed; top:' + (event.clientY-5) + '; left:' + (event.clientX-7);
+                this.elementref.nativeElement.appendChild(tmp);
+                break;
+            case 'distortion':
+                tmp = document.createElement('div');
+                tmp.innerHTML = "<div class='badge'>D" + (this.dataservice.getDistortions().length +1) + "</div>";
+                tmp.style = 'position: fixed; top:' + (event.clientY-5) + '; left:' + (event.clientX-7);
+                this.elementref.nativeElement.appendChild(tmp);
+                break;
+            case 'asymmetries':
+                tmp = document.createElement('div');
+                tmp.innerHTML = "<div class='badge'>A" + (this.dataservice.getAsymmetries().length +1) + "</div>";
+                tmp.style = 'position: fixed; top:' + (event.clientY-5) + '; left:' + (event.clientX-7);
+                this.elementref.nativeElement.appendChild(tmp);
+                break;
+            case 'calcifications':
+                tmp = document.createElement('div');
+                tmp.innerHTML = "<div class='badge'>C" + (this.dataservice.getCalcifications().length +1) + "</div>";
+                tmp.style = 'position: fixed; top:' + (event.clientY-5) + '; left:' + (event.clientX-7);
+                this.elementref.nativeElement.appendChild(tmp);
+                break;
+            default:
+        }
+
+
+        console.log(tmp);
+        console.log('---------------End: clickHandler---------------');
+
     }
 
-    test() {
-        console.log("In MAPtest!");
-    }
+
 }
 
 

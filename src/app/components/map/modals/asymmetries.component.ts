@@ -19,8 +19,6 @@ export class AsymmetriesComponent implements OnChanges{
     @ViewChild('modal2') public modal2: ModalDirective;
     @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
-        console.log("in changes");
-        console.log(changes);
         if(this.show) {
             this.modal1.show();
         }
@@ -28,6 +26,8 @@ export class AsymmetriesComponent implements OnChanges{
 
     private asymmetry: string;
     hotKeys(keycode: number): void{
+        this.dataservice.disableSidebar();
+
         switch(keycode){
             case 49:
             case 50:
@@ -36,6 +36,8 @@ export class AsymmetriesComponent implements OnChanges{
                 this.setFinding(keycode);
                 this.addTable();
                 this.modal1.hide();
+                this.dataservice.enableSidebar();
+                this.dataservice.setShowmenu('');
                 break;
             default:
                 console.log("FOUTE SELECTIE");
@@ -61,8 +63,6 @@ export class AsymmetriesComponent implements OnChanges{
     }
     addTable(): void{
         this.dataservice.addAsymmetries(this.asymmetry);
-        this.dataservice.setModalshow(false);
-
     }
     mouseControl(finding: string): void{
         this.asymmetry = finding;

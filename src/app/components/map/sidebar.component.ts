@@ -1,6 +1,8 @@
-import {Component}      from '@angular/core';
+import {Component, ElementRef}      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
+import {Draggable} from "../../directives/draggable.directive";
+import {elementAt} from "rxjs/operator/elementAt";
 
 
 @Component({
@@ -8,16 +10,21 @@ import {TranslateService} from "ng2-translate";
     templateUrl: '../../templates/map/sidebar.template.html'
 })
 export class SidebarComponent {
-    constructor(private dataservice: DataService, private translate: TranslateService) {
+    constructor(private dataservice: DataService, private translate: TranslateService, private elementref: ElementRef) {
         this.dataservice = dataservice;
         this.translate = translate;
+        this.elementref = elementref;
     }
-    hotKeys(keycode: number): void{
-        if(this.dataservice.getModalshow()){
+
+    hotKeys(keycode: number): void {
+        console.log('---------------Begin: hotKeys---------------');
+        console.log("In sidebar.component: hotKeys");
+        // console.log("getModalshow :"  + this.dataservice.getModalshow());
+        console.log("Disabled?   " + this.dataservice.getDisabled());
+        if (this.dataservice.getDisabled()) {
             //do nothing
         }
         else {
-
 
             switch (keycode) {
                 case 81: //Q
@@ -34,6 +41,14 @@ export class SidebarComponent {
                     break;
                 default:
             }
+
+
         }
+        console.log("this.dataservice.setMethod = " + this.dataservice.getMethod());
+        console.log('---------------End: hotKeys---------------');
     }
+
+
+
+
 }

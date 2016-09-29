@@ -23,7 +23,8 @@ import { GuideComponent }       from './components/table/guide.component';
 import { Autosize }             from './directives/autosize.directive';
 import { OrderBy }              from './components/table/orderby';
 //Data Service
-import { DataService}           from './services/data.service';
+import { DataService }           from './services/data.service';
+import { DraggableModule} from "./directives/draggable.directive";
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { DataService}           from './services/data.service';
         FormsModule,
         HttpModule,
         Ng2BootstrapModule,
+        DraggableModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),

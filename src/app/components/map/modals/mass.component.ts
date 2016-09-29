@@ -20,14 +20,18 @@ export class MassComponent implements OnChanges{
     @ViewChild('modal2') public modal2: ModalDirective;
     @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
-        console.log("in changes");
-        console.log(changes);
+        console.log('---------------Begin: ngOnChanges---------------');
+        console.log("In mass.component: ngOnChanges");
         if(this.show) {
-            this.modal1.show();
+           this.modal1.show();
         }
+        console.log('---------------End: ngOnChanges---------------');
+
     }
 
     hotKeys(keycode: number, argument: string): void{
+        this.dataservice.disableSidebar();
+
         switch(keycode + argument){
             case 49+'shape':
             case 50+'shape':
@@ -51,6 +55,8 @@ export class MassComponent implements OnChanges{
                 this.setFinding(keycode,argument);
                 this.addTable();
                 this.modal3.hide();
+                this.dataservice.enableSidebar();
+                this.dataservice.setShowmenu('');
                 break;
             default:
                 console.log("FOUTE SELECTIE");
@@ -101,7 +107,6 @@ export class MassComponent implements OnChanges{
     }
     addTable(): void{
         this.dataservice.addMass(0, this.shape, this.margin, this.density);
-        this.dataservice.setModalshow(false);
     }
 
     mouseControl(argument: string, finding: string): void{

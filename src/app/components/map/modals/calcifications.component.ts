@@ -19,8 +19,6 @@ export class CalcificationComponent implements OnChanges{
     @ViewChild('modal2') public modal2: ModalDirective;
     @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
-        console.log("in changes");
-        console.log(changes);
         if(this.show) {
             this.modal1.show();
         }
@@ -30,6 +28,8 @@ export class CalcificationComponent implements OnChanges{
     private morphology: string;
     private distribution: string;
     hotKeys(keycode: number, argument: string, page?: number): void{
+        this.dataservice.disableSidebar();
+
         if(page){
             page = 1;
         }
@@ -87,6 +87,8 @@ export class CalcificationComponent implements OnChanges{
                         this.setFinding(keycode, argument);
                         this.modal2.hide();
                         this.addTable();
+                        this.dataservice.enableSidebar();
+                        this.dataservice.setShowmenu('');
                         break;
                     default:
                         console.log("FOUTE SELECTIE");
@@ -184,7 +186,6 @@ export class CalcificationComponent implements OnChanges{
     addTable(): void{
         // this.dataservice.addMass(0, this.morphology, this.distribution, this.density);
         this.dataservice.addCalcifications(this.morphology, this.distribution);
-        this.dataservice.setModalshow(false);
 
     }
 
