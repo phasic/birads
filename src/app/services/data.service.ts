@@ -5,6 +5,10 @@ export class DataService {
     private composition: string;
     private mass: {
         size: number;
+        sideX: number;
+        sideY: number;
+        frontX: number;
+        frontY: number;
         shape: string;
         margin: string;
         density: string;
@@ -27,21 +31,29 @@ export class DataService {
     getComposition(): string {
         return this.composition;
     }
-    setMass(size: number, shape: string, margin: string, density: string): void {
+    setMass(size: number, sx: number, sy: number, fx: number, fy: number, shape: string, margin: string, density: string): void {
         this.mass = [{
             size: size,
+            sideX: sx,
+            sideY: sy,
+            frontX: fx,
+            frontY: fy,
             shape: shape,
             margin: margin,
             density: density
         }]
     }
-    addMass(size: number, shape: string, margin: string, density: string): void {
+    addMass(size: number, sx: number, sy: number, fx: number, fy: number, shape: string, margin: string, density: string): void {
         if (this.mass == null) {
-            this.setMass(size, shape, margin, density)
+            this.setMass(size, sx, sy, fx, fy, shape, margin, density)
         }
         else {
             this.mass.push({
                     size: size,
+                    sideX: sx,
+                    sideY: sy,
+                    frontX: fx,
+                    frontY: fy,
                     density: density,
                     shape: shape,
                     margin: margin,

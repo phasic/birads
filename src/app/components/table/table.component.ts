@@ -16,7 +16,7 @@ export class TableComponent{
     test(){
         // console.log("In test!");
         // console.log(this.dataservice.getData());
-        this.dataservice.addMass(0,"test1", "test2", "test3");
+        // this.dataservice.addMass(0,"test1", "test2", "test3");
         console.log(this.dataservice.getMass());
     }
 

@@ -3,7 +3,6 @@ import {DataService} from "./data.service";
 
 @Injectable()
 export class PageController {
-    //TODO THE CLICK LOCATION OF EVERY FINDING NEEDS TO BE SAVED TOO
     private method: string;
     private showmenu: string;
     private clientX: number;
@@ -82,7 +81,15 @@ export class PageController {
         tmp = document.createElement('div');
 
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.clientY - 5}; left:${this.clientX - 7}`;
+        tmp.style = `position: fixed; top:${this.sideY - 5}; left:${this.sideX - 7}`;
+        console.log(tmp);
+        elementref.nativeElement.appendChild(tmp);
+
+
+        tmp = document.createElement('div');
+
+        tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
+        tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.frontX - 7}`;
         console.log(tmp);
         elementref.nativeElement.appendChild(tmp);
     }
@@ -90,6 +97,53 @@ export class PageController {
 
     private numberofclicks: number = 0;
 
-    
+    setNumberOfClicks(numberofclicks: number): void{
+        this.numberofclicks = numberofclicks;
+    }
+    getNumberOfClicks(): number{
+        return this.numberofclicks;
+    }
+    addClick(): void{
+        this.numberofclicks++;
+    }
 
+
+    private sideX: number;
+    private sideY: number;
+    private frontX: number;
+    private frontY: number;
+
+
+    setSideX(sideX: number): void{
+        this.sideX = sideX;
+    }
+    getSideX(): number{
+        return this.sideX;
+    }
+    setSideY(sideY: number){
+        this.sideY = sideY;
+    }
+    getSideY(): number{
+        return this.sideY;
+    }
+    setSideLoc(sideX: number, sideY: number): void{
+        this.sideX = sideX;
+        this.sideY = sideY;
+    }
+    setFrontX(frontX: number): void{
+        this.frontX = frontX;
+    }
+    getFrontX(): number{
+        return this.frontX;
+    }
+    setFrontY(frontY: number): void{
+        this.frontY = frontY;
+    }
+    getFrontY(): number{
+        return this.frontY;
+    }
+    setFrontLoc(frontX: number, frontY: number): void{
+        this.frontX = frontX;
+        this.frontY = frontY;
+    }
 }

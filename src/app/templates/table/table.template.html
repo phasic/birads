@@ -23,12 +23,14 @@
 
 
 <div class="table-container">
-  <div *ngIf="this.dataservice.getMass().length > 0" class="panel panel-default col-sm-6">
+  <div *ngIf="this.dataservice.getMass().length > 0" class="panel panel-default col-sm-10">
     <div class="panel-heading"><h4><b>Mass</b></h4></div>
     <table class="table">
       <thead>
       <tr>
         <th>#</th>
+        <th>Front</th>
+        <th>Side</th>
         <th>Size</th>
         <th>Shape</th>
         <th>Margin</th>
@@ -38,6 +40,8 @@
       <tbody>
       <tr *ngFor="let entry of this.dataservice.getMass(); let i = index">
         <td>{{i + 1}}</td>
+        <td>{{entry.sideX}},{{entry.sideY}}</td>
+        <td>{{entry.frontX}},{{entry.frontY}}</td>
         <td>{{entry.size}}</td>
         <td>{{entry.shape}}</td>
         <td>{{entry.margin}}</td>

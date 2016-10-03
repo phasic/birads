@@ -120,9 +120,13 @@ export class MassComponent implements OnChanges{
         this.pagectrl.createBadge(this.elementref);
     }
     addTable(): void{
-        this.dataservice.addMass(0, this.shape, this.margin, this.density);
+        let sx ,sy, fx, fy: number;
+        sx = this.pagectrl.getSideX();
+        sy = this.pagectrl.getSideY();
+        fx = this.pagectrl.getFrontX();
+        fy = this.pagectrl.getFrontY();
+        this.dataservice.addMass(0, sx, sy, fx, fy,  this.shape, this.margin, this.density);
     }
-    //TODO IF SPAM KEY ON LAST MENU, MULTIPLE ARE ADDED, FIX THAT
 
     modalInterrupt(){
         setTimeout(() => {
