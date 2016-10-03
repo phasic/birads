@@ -1,5 +1,4 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import {DataService} from "./services/data.service";
 
 @Component({
   selector: 'my-app',
@@ -12,5 +11,8 @@ export class AppComponent {
     this.viewContainerRef = viewContainerRef;
   }
 
+  test(event){
+    console.log("IERE MSS?");
+  }
 }
 

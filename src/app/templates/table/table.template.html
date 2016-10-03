@@ -1,3 +1,14 @@
+<div>
+  ADD ACR AND BIRADS FINDING FOR EVERY BREAST SIDE HERE
+<BR>
+  PALPATATION IS ALSO SOMETHING IMPORTANT
+<BR>
+  GRAPHICS NEED TO BE SVG BASED
+  <BR>
+
+  UI CAN BE NICER
+</div>
+
 <div align="center">
   <h3><b>Breast Composition</b></h3>
 </div>
@@ -12,8 +23,7 @@
 
 
 <div class="table-container">
-
-  <div *ngIf="this.dataservice.getMass() != null" class="panel panel-default col-sm-6">
+  <div *ngIf="this.dataservice.getMass().length > 0" class="panel panel-default col-sm-6">
     <div class="panel-heading"><h4><b>Mass</b></h4></div>
     <table class="table">
       <thead>
@@ -37,7 +47,7 @@
 
     </table>
   </div>
-  <div *ngIf="this.dataservice.getDistortions() != null" class="panel panel-default col-sm-6">
+  <div *ngIf="this.dataservice.getDistortions().length > 0" class="panel panel-default col-sm-6">
     <div class="panel-heading"><h4><b>Distortion</b></h4></div>
     <table class="table">
       <thead>
@@ -56,7 +66,7 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="this.dataservice.getAsymmetries() != null" class="panel panel-default col-sm-6">
+  <div *ngIf="this.dataservice.getAsymmetries().length > 0" class="panel panel-default col-sm-6">
     <div class="panel-heading"><h4><b>Asymmetries</b></h4></div>
     <table class="table">
       <thead>
@@ -75,7 +85,7 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="this.dataservice.getCalcifications() != null"   class="panel panel-default col-sm-6">
+  <div *ngIf="this.dataservice.getCalcifications().length > 0"   class="panel panel-default col-sm-6">
     <div class="panel-heading"><h4><b>Calcifications</b></h4></div>
     <table class="table">
       <thead>
@@ -97,48 +107,3 @@
     </table>
   </div>
 </div>
-
-
-
-
-<!--selection of buttons with mass and stuffs<br>-->
-
-<!--add it to a table? if so, it wont be a big one<br>-->
-
-<!--low amount of rows with a lot of data<br>-->
-
-<!--<br>-->
-<!--<br>-->
-
-<!--make the table more compact, this is way too big for something non-functional-->
-
-<!--<br>-->
-
-<!--x x x x  <br>-->
-<!--x x x<br>-->
-<!--could be a decent layout<br>-->
-
-
-
-
-<!--workflow:-->
-
-
-
-
-<!--click on location to add a mass<br>-->
-
-<!--popup appears with 3 shape choices: round, oval, irregular <br>-->
-<!--new popup with margin<br>-->
-<!--new popup with density<br>-->
-
-
-<!--selections can be made with hotkeys 1->5<br>-->
-
-
-<!--a dot/(numbered)marker will appear on the picture<br>-->
-
-
-<!--symmetry is also a factor and breast composition<br>-->
-
-<!--calcifications <br>-->

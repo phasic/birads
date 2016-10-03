@@ -10,21 +10,22 @@ import {TranslateModule, TranslateService, TranslateStaticLoader, TranslateLoade
 import { MapComponent }         from './components/map/map.component';
 import { LegendComponent }      from './components/map/legend.component';
 import { SidebarComponent }     from './components/map/sidebar.component';
-import { RwdImageMap }          from "./directives/imagemap.directive";
 //Modals
-import { MassComponent }        from "./components/map/modals/mass.component";
-import { CalcificationComponent }        from "./components/map/modals/calcifications.component";
-import { DistortionComponent }        from "./components/map/modals/distortion.component";
-import { AsymmetriesComponent }        from "./components/map/modals/asymmetries.component";
+import { MassComponent }        from "./components/modals/mass.component";
+import { CalcificationComponent }        from "./components/modals/calcifications.component";
+import { DistortionComponent }        from "./components/modals/distortion.component";
+import { AsymmetriesComponent }        from "./components/modals/asymmetries.component";
 
 //Table Components
 import { TableComponent }       from './components/table/table.component';
 import { GuideComponent }       from './components/table/guide.component';
 import { Autosize }             from './directives/autosize.directive';
-import { OrderBy }              from './components/table/orderby';
+import { OrderBy }              from './components/table/orderby';      //DONT USE THIS
 //Data Service
 import { DataService }           from './services/data.service';
 import { DraggableModule} from "./directives/draggable.directive";
+import {PageController} from "./services/page.controller";
+import {ScreenResize} from "./directives/screen.resize.directive";
 
 @NgModule({
     declarations: [
@@ -32,7 +33,6 @@ import { DraggableModule} from "./directives/draggable.directive";
         MapComponent,
         LegendComponent,
         SidebarComponent,
-        RwdImageMap,
         MassComponent,
         CalcificationComponent,
         DistortionComponent,
@@ -40,7 +40,8 @@ import { DraggableModule} from "./directives/draggable.directive";
         TableComponent,
         GuideComponent,
         Autosize,
-        OrderBy
+        OrderBy,
+        ScreenResize
     ],
     imports: [
         BrowserModule,
@@ -54,7 +55,7 @@ import { DraggableModule} from "./directives/draggable.directive";
             deps: [Http]
         })
     ],
-    providers: [DataService],
+    providers: [DataService, PageController],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class DataService {
-    //TODO THE CLICK LOCATION OF EVERY FINDING NEEDS TO BE SAVED TOO
     private composition: string;
     private mass: {
         size: number;
@@ -16,24 +15,18 @@ export class DataService {
         morphology: string;
         distribution: string;
     }[];
-
-
-    private method: string; // mass, distortion, asymmetries or calcifications.
     constructor() {
-        this.mass = []; // make an emty array so that the get length doesnt throw an error
+        this.mass = []; // make an emty array so that the get length doesn't throw an error
         this.distortions = [];
         this.asymmetries = [];
         this.calcifications = [];
     }
-
     setComposition(composition: string): void {
         this.composition = composition;
     }
-
     getComposition(): string {
         return this.composition;
     }
-
     setMass(size: number, shape: string, margin: string, density: string): void {
         this.mass = [{
             size: size,
@@ -42,7 +35,6 @@ export class DataService {
             density: density
         }]
     }
-
     addMass(size: number, shape: string, margin: string, density: string): void {
         if (this.mass == null) {
             this.setMass(size, shape, margin, density)
@@ -57,7 +49,6 @@ export class DataService {
             );
         }
     }
-
     getMass(index?: number): any {
         if (index == null) {
             return this.mass;
@@ -65,11 +56,9 @@ export class DataService {
         else
             return this.mass[index];
     }
-
     setDistortions(distortion: Array<string>): void {
         this.distortions = distortion;
     }
-
     addDistortions(distortion: string): void {
         if (this.distortions == null) {
             this.setDistortions([distortion]);
@@ -123,43 +112,11 @@ export class DataService {
             });
         }
     }
-
     getCalcifications(index?: number): any {
         if (index == null) {
             return this.calcifications;
         }
         else
             return this.calcifications[index];
-    }
-
-    setMethod(method: string): void {
-        this.method = method;
-    }
-
-    getMethod(): string {
-        return this.method;
-    }
-
-
-    private showmenu: string;
-
-    setShowmenu(showmenu: string): void {
-        this.showmenu = showmenu;
-    }
-
-    getShowmenu(): string {
-        return this.showmenu;
-    }
-
-    private disablesidebar: boolean = false;
-
-    disableSidebar(): void{
-        this.disablesidebar = true;
-    }
-    enableSidebar():void{
-        this.disablesidebar = false;
-    }
-    getDisabled(): boolean{
-        return this.disablesidebar;
     }
 }

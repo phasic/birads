@@ -17,7 +17,6 @@ var MapComponent = (function () {
         this.translate = translate;
     }
     MapComponent.prototype.hotKeys = function (keycode, argument) {
-        //TODO: Maybe a popover to show which key selected
         switch (keycode) {
             case 49:
                 this.addFinding(1, argument);
@@ -54,7 +53,6 @@ var MapComponent = (function () {
         }
     };
     MapComponent.prototype.addFinding = function (i, argument) {
-        //TODO: CATCH CLICK KEYBIND OUT OF BOUNDS, REPOPUP SAME MODAL
         switch (argument) {
             case 'shape':
                 switch (i) {
@@ -117,7 +115,6 @@ var MapComponent = (function () {
             default:
         }
     };
-    //TODO CHECK FOR DUPLICATES, FIX TABLE LAYOUT, ENTER IT CLEANLY
     MapComponent.prototype.addTable = function () {
         this.dataservice.addMass(0, this.shape, this.margin, this.density, null, null);
     };

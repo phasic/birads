@@ -1,18 +1,19 @@
 import {Component, OnChanges, Input}      from '@angular/core';
-import { DataService } from "../../../services/data.service";
+import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
+import {PageController} from "../../services/page.controller";
 
 
 @Component({
     selector: 'calcification-component',
-    templateUrl: '../../../templates/map/modals/calcifications.template.html'
+    templateUrl: '../../templates/modals/calcifications.template.html'
 })
 export class CalcificationComponent implements OnChanges{
-    constructor(private dataservice: DataService, private translate: TranslateService) {
-        this.dataservice = dataservice;
-        this.translate = translate;
+    constructor(private dataservice: DataService, private pagectrl: PageController, private translate: TranslateService) {
+        // this.dataservice = dataservice;
+        // this.translate = translate;
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -28,7 +29,7 @@ export class CalcificationComponent implements OnChanges{
     private morphology: string;
     private distribution: string;
     hotKeys(keycode: number, argument: string, page?: number): void{
-        this.dataservice.disableSidebar();
+        // this.page.disableSidebar();
 
         if(page){
             page = 1;
@@ -87,8 +88,8 @@ export class CalcificationComponent implements OnChanges{
                         this.setFinding(keycode, argument);
                         this.modal2.hide();
                         this.addTable();
-                        this.dataservice.enableSidebar();
-                        this.dataservice.setShowmenu('');
+                        // this.dataservice.enableSidebar();
+                        this.pagectrl.setShowmenu('');
                         break;
                     default:
                         console.log("FOUTE SELECTIE");
@@ -202,6 +203,7 @@ export class CalcificationComponent implements OnChanges{
 
         }
     }
+
 
 
 

@@ -1,16 +1,17 @@
 import {Component, OnChanges, Input}      from '@angular/core';
-import { DataService } from "../../../services/data.service";
+import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
+import {PageController} from "../../services/page.controller";
 
 
 @Component({
     selector: 'asymmetries-component',
-    templateUrl: '../../../templates/map/modals/asymmetries.template.html'
+    templateUrl: '../../templates/modals/asymmetries.template.html'
 })
 export class AsymmetriesComponent implements OnChanges{
-    constructor(private dataservice: DataService, private translate: TranslateService) {
+    constructor(private dataservice: DataService, private pagectrl: PageController, private translate: TranslateService) {
         this.dataservice = dataservice;
         this.translate = translate;
     }
@@ -26,7 +27,7 @@ export class AsymmetriesComponent implements OnChanges{
 
     private asymmetry: string;
     hotKeys(keycode: number): void{
-        this.dataservice.disableSidebar();
+        // this.dataservice.disableSidebar();
 
         switch(keycode){
             case 49:
@@ -36,8 +37,8 @@ export class AsymmetriesComponent implements OnChanges{
                 this.setFinding(keycode);
                 this.addTable();
                 this.modal1.hide();
-                this.dataservice.enableSidebar();
-                this.dataservice.setShowmenu('');
+                // this.dataservice.enableSidebar();
+                this.pagectrl.setShowmenu('');
                 break;
             default:
                 console.log("FOUTE SELECTIE");
@@ -69,6 +70,7 @@ export class AsymmetriesComponent implements OnChanges{
         this.modal1.hide();
         this.addTable();
     }
+
 
 
 }

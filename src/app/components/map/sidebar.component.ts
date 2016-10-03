@@ -1,8 +1,5 @@
-import {Component, ElementRef}      from '@angular/core';
-import { DataService } from "../../services/data.service";
-import {TranslateService} from "ng2-translate";
-import {Draggable} from "../../directives/draggable.directive";
-import {elementAt} from "rxjs/operator/elementAt";
+import {Component}      from '@angular/core';
+import {PageController} from "../../services/page.controller";
 
 
 @Component({
@@ -10,42 +7,29 @@ import {elementAt} from "rxjs/operator/elementAt";
     templateUrl: '../../templates/map/sidebar.template.html'
 })
 export class SidebarComponent {
-    constructor(private dataservice: DataService, private translate: TranslateService, private elementref: ElementRef) {
-        this.dataservice = dataservice;
-        this.translate = translate;
-        this.elementref = elementref;
+    constructor(private pagectrl: PageController) {
     }
-
     hotKeys(keycode: number): void {
-        console.log('---------------Begin: hotKeys---------------');
-        console.log("In sidebar.component: hotKeys");
-        // console.log("getModalshow :"  + this.dataservice.getModalshow());
-        console.log("Disabled?   " + this.dataservice.getDisabled());
-        if (this.dataservice.getDisabled()) {
-            //do nothing
+        if (this.pagectrl.isMenuShown()) {
+            //if the menu is up, disable sidebar hotkeys
         }
         else {
-
             switch (keycode) {
                 case 81: //Q
-                    this.dataservice.setMethod('mass');
+                    this.pagectrl.setMethod('mass');
                     break;
                 case 87: //W
-                    this.dataservice.setMethod('distortion');
+                    this.pagectrl.setMethod('distortion');
                     break;
                 case 69: //E
-                    this.dataservice.setMethod('asymmetries');
+                    this.pagectrl.setMethod('asymmetries');
                     break;
                 case 82: //R
-                    this.dataservice.setMethod('calcifications');
+                    this.pagectrl.setMethod('calcifications');
                     break;
                 default:
             }
-
-
         }
-        console.log("this.dataservice.setMethod = " + this.dataservice.getMethod());
-        console.log('---------------End: hotKeys---------------');
     }
 
 

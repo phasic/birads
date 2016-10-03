@@ -1,37 +1,45 @@
 import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
-import { DataService } from "../../../services/data.service";
+import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
+import {PageController} from "../../services/page.controller";
 
 
 @Component({
     selector: 'mass-component',
-    templateUrl: '../../../templates/map/modals/mass.template.html'
+    templateUrl: '../../templates/modals/mass.template.html'
 })
 export class MassComponent implements OnChanges{
-    constructor(private dataservice: DataService, private translate: TranslateService, private element: ElementRef) {
-        this.dataservice = dataservice;
-        this.translate = translate;
-        this.element = element;
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef){
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
     @ViewChild('modal2') public modal2: ModalDirective;
     @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
-        console.log('---------------Begin: ngOnChanges---------------');
-        console.log("In mass.component: ngOnChanges");
         if(this.show) {
            this.modal1.show();
         }
-        console.log('---------------End: ngOnChanges---------------');
-
     }
-
+    mouseControl(argument: string, finding: string): void{
+        if(argument == 'shape'){
+            this.shape = finding;
+            this.modal1.hide();
+            this.modal2.show();
+        }
+        if(argument == 'margin'){
+            this.margin = finding;
+            this.modal2.hide();
+            this.modal3.show();
+        }
+        if(argument == 'density'){
+            this.density = finding;
+            this.modal3.hide();
+            this.endOfMenu();
+        }
+    }
     hotKeys(keycode: number, argument: string): void{
-        this.dataservice.disableSidebar();
-
         switch(keycode + argument){
             case 49+'shape':
             case 50+'shape':
@@ -53,15 +61,16 @@ export class MassComponent implements OnChanges{
             case 50+'density':
             case 51+'density':
                 this.setFinding(keycode,argument);
-                this.addTable();
                 this.modal3.hide();
-                this.dataservice.enableSidebar();
-                this.dataservice.setShowmenu('');
+                this.pagectrl.setShowmenu('');
+                this.endOfMenu();
+
                 break;
             default:
                 console.log("FOUTE SELECTIE");
         }
     }
+
     private shape: string;
     private margin: string;
     private density: string;
@@ -105,26 +114,23 @@ export class MassComponent implements OnChanges{
                 console.log("FOUTE SELECTIE");
         }
     }
+    endOfMenu():void{
+        this.addTable();
+        // this.pagectrl.setShowmenu('');
+        this.pagectrl.createBadge(this.elementref);
+    }
     addTable(): void{
         this.dataservice.addMass(0, this.shape, this.margin, this.density);
     }
+    //TODO IF SPAM KEY ON LAST MENU, MULTIPLE ARE ADDED, FIX THAT
 
-    mouseControl(argument: string, finding: string): void{
-        if(argument == 'shape'){
-            this.shape = finding;
-            this.modal1.hide();
-            this.modal2.show();
-        }
-        if(argument == 'margin'){
-            this.margin = finding;
-            this.modal2.hide();
-            this.modal3.show();
-        }
-        if(argument == 'density'){
-            this.density = finding;
-            this.modal3.hide();
-            this.addTable();
-        }
+    modalInterrupt(){
+        setTimeout(() => {
+            if(!this.modal1.isShown && !this.modal2.isShown && !this.modal3.isShown){
+                // this.dataservice.enableSidebar();
+                this.pagectrl.setShowmenu('');
+            }
+        }, 10);
     }
 
 
