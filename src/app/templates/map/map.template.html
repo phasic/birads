@@ -1,28 +1,28 @@
-<div align="center" (click)="clickHandler($event)">
+<div align="center" >
+<!--<div align="center" (click)="clickHandler($event)">-->
     <div class="row  col-sm-offset-0">
-        <div class="col-sm-2">
+        <div class="col-sm-2" (click)="clickHandler($event)">
+            <BR><BR>
             <img class="img-responsive" src="/assets/images/map/biradsRS.png" id="RS"/>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" (click)="clickHandler($event)">
             <img class="img-responsive" src="/assets/images/map/biradsRF.png" id="RF"/>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4" (click)="clickHandler($event)">
             <img class="img-responsive" src="/assets/images/map/biradsLF.png" id="LF"/>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" (click)="clickHandler($event)">
             <img class="img-responsive" src="/assets/images/map/biradsLS.png" id="LS"/>
         </div>
 
     </div>
 </div>
-<!--<img class="img-responsive" id="MapImg" rwdimagemap src="/assets/images/birads.jpg" usemap="#Map"/>-->
 <mass-component [show]="pagectrl.getShowmenu() == 'mass'"></mass-component>
 <distortion-component [show]="pagectrl.getShowmenu() == 'distortion'"></distortion-component>
 <asymmetries-component [show]="pagectrl.getShowmenu() == 'asymmetries'"></asymmetries-component>
 <calcification-component [show]="pagectrl.getShowmenu() == 'calcifications'"></calcification-component>
 
 
-<button (click)="test()">TEST</button>
 
 
 

@@ -68,10 +68,8 @@ export class MassComponent implements OnChanges{
                 this.modal3.hide();
                 this.pagectrl.setShowmenu('');
                 this.endOfMenu();
-
                 break;
             default:
-                console.log("FOUTE SELECTIE");
         }
     }
 
@@ -112,7 +110,6 @@ export class MassComponent implements OnChanges{
                 this.density = 'high';
                 break;
             default:
-                console.log("FOUTE SELECTIE");
         }
     }
     endOfMenu(): void{

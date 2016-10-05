@@ -36,7 +36,7 @@ import {ClassificationComponent} from "./components/table/classification.compone
         AsymmetriesComponent,
         TableComponent,
         ScreenResize,
-        ClassificationComponent
+        ClassificationComponent,
     ],
     imports: [
         BrowserModule,

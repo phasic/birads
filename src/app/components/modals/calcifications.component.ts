@@ -53,7 +53,6 @@ export class CalcificationComponent implements OnChanges{
                         this.modal2.show();
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
                 }
                 break;
             case 2+'morphology':
@@ -72,7 +71,6 @@ export class CalcificationComponent implements OnChanges{
                         this.modal2.show();
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
                 }
                 break;
             default:
@@ -88,7 +86,6 @@ export class CalcificationComponent implements OnChanges{
                         this.endOfMenu();
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
                 }
                 break;
         }
@@ -128,7 +125,6 @@ export class CalcificationComponent implements OnChanges{
                         this.morphology = 'punctate';
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
 
                 }
                 break;
@@ -153,7 +149,6 @@ export class CalcificationComponent implements OnChanges{
                         this.morphology = 'fine linear branching';
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
 
                 }
                 break;
@@ -175,7 +170,6 @@ export class CalcificationComponent implements OnChanges{
                         this.distribution = 'segmental';
                         break;
                     default:
-                        console.log("FOUTE SELECTIE");
                 }
                 break;
         }

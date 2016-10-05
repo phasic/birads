@@ -14,10 +14,10 @@ export class MapComponent {
     private firstimage: string;
 
     clickedMap(event: any): void{
-
         if(!this.pagectrl.isMenuShown() && (this.pagectrl.getMethod() !== '')) {
             this.pagectrl.addClick();
             if (this.pagectrl.getNumberOfClicks() == 1) {               //check if its the first time we clicked an image
+                this.pagectrl.setClickedHeight(event.offsetY/event.target.height); //keep the clickheight if <0.5 --> 0.5/ if > 0.5 --> 1
                 if (['RF', 'LF'].indexOf(event.target.id) !== -1) {
                     this.pagectrl.setFrontLoc(event.x, event.y);
                 }
@@ -29,7 +29,7 @@ export class MapComponent {
             else {                                                      //if it isn't the first time
                 switch (this.firstimage) {
                     case 'RS':
-                        if (event.target.id == 'RF') {
+                        if (event.target.id == 'RF' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
                             this.handleMenu('front', event);
                         }
                         else{
@@ -37,7 +37,7 @@ export class MapComponent {
                         }
                         break;
                     case 'RF':
-                        if (event.target.id == 'RS') {
+                        if (event.target.id == 'RS' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
                             this.handleMenu('side', event);
                         }
                         else{
@@ -45,7 +45,7 @@ export class MapComponent {
                         }
                         break;
                     case 'LS':
-                        if (event.target.id == 'LF') {
+                        if (event.target.id == 'LF' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
                             this.handleMenu('front', event);
                         }
                         else{
@@ -53,7 +53,7 @@ export class MapComponent {
                         }
                         break;
                     case 'LF':
-                        if (event.target.id == 'LS') {
+                        if (event.target.id == 'LS' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
                             this.handleMenu('side', event);
                         }
                         else{
@@ -81,8 +81,6 @@ export class MapComponent {
         }
         this.pagectrl.setNumberOfClicks(0);
 
-        console.log("IN HANDLE MENU");
-        console.log(this.pagectrl.getMethod());
         switch (this.pagectrl.getMethod()) {
             case 'mass':
                 this.pagectrl.setShowmenu('mass');
@@ -98,16 +96,26 @@ export class MapComponent {
                 break;
             default:
         }
-        console.log(`test: ${this.pagectrl.isMenuShown()}`);
     }
 
-    test(){
-        console.log("Sidebar Test:");
-        setTimeout(()=>{
-            console.log(this.pagectrl);
 
 
-        }, 10);
+    test(event){
+        console.log("IN TEST");
+
+        let imgheight: number = event.target.height;
+        let imgwidth: number = event.target.width;
+
+        let clickheight: number = event.offsetY;
+        let clickwidth: number = event.offsetX;
+        // console.log(event);
+        // console.log(`height: ${imgheight}, width: ${imgwidth}, ratio: ${imgheight/imgwidth}`);
+        // console.log(`click: (X,Y): (${clickwidth}, ${clickheight})`);
+
+
+        if((clickheight/imgheight) > 0.5){
+            console.log("over 50%");
+        }
     }
 }
 

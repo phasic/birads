@@ -39,7 +39,6 @@ export class AsymmetriesComponent implements OnChanges{
                 this.endOfMenu();
                 break;
             default:
-                console.log("FOUTE SELECTIE");
         }
     }
 
@@ -58,7 +57,6 @@ export class AsymmetriesComponent implements OnChanges{
                 this.asymmetry = "developing asymmetry";
                 break;
             default:
-                console.log("FOUTE SELECTIE");
         }
     }
 

@@ -14,7 +14,7 @@ export class ScreenResize {
         setTimeout(() => {
             this.screenX = window.innerWidth;
             this.screenY = window.innerHeight;
-            console.log(`screen size: ${this.screenX}, ${this.screenY}`);
+            // console.log(`screen size: ${this.screenX}, ${this.screenY}`);
         }, 100);
 
     }
@@ -44,11 +44,11 @@ export class ScreenResize {
             y = element.parentNode.style.top;
             // element.parentNode.style.left = x * this.wscale;
 
-            console.log(`old: ${x}, ${y}`);
+            // console.log(`old: ${x}, ${y}`);
 
             xn = x * this.wscale;
             yn = y * this.hscale;
-            console.log(`new: ${xn}, ${yn}`);
+            // console.log(`new: ${xn}, ${yn}`);
 
 
             // element.parentNode.style.top = y * this.hscale;

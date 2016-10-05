@@ -14,11 +14,9 @@ export class AppComponent {
   }
 
   test(keycode){
-    // console.log(keycode);
-    if(keycode == 84){
-      console.log(this.pagectrl);
-      // console.log(this.pagectrl.isMenuShown());
-    }
+    event.stopPropagation();
+    event.preventDefault();
+    console.log("TEEST RIGHT CLICK!!");
   }
 }
 

@@ -10,6 +10,7 @@ export class PageController {
         this.method = '';
         this.showmenu = '';
         this.numberofclicks = 0;
+        this.height = '';
     }
 
     setMethod(method: string): void {
@@ -19,19 +20,16 @@ export class PageController {
         return this.method;
     }
     setShowmenu(showmenu: string): void {
-        console.log("INSETSHOWMENU");
         this.showmenu = showmenu;
     }
     getShowmenu(): string {
         return this.showmenu;
     }
     isMenuShown(): boolean {
-        console.log(`Is Menu Shown? ${this.getShowmenu() !== ''}`);
         return (this.showmenu !== '');
     }
 
     createBadge(elementref: ElementRef) {
-        console.log('In createBadge');
         switch (this.getMethod()) {
             //TODO RIGHT CLICK TO DELETE FINDING
             case 'mass':
@@ -64,20 +62,21 @@ export class PageController {
             case 'C':
                 index = this.dataservice.getCalcifications().length;
         }
+
+
         let tmp: any;
         tmp = document.createElement('div');
-
+        tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.sideY - 5}; left:${this.sideX - 7}`;
+        tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.sideX - 7}`;
         console.log(tmp);
         elementref.nativeElement.appendChild(tmp);
 
-
+        //TODO WERE RENDERING NOTH BADGES ON THE SAME HEIGHT, THE IMAGES NEED TOBE ON THE SAME HEIGHT TOO THEN
         tmp = document.createElement('div');
 
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.frontX - 7}`;
-        console.log(tmp);
         elementref.nativeElement.appendChild(tmp);
     }
 
@@ -120,5 +119,33 @@ export class PageController {
     setFrontLoc(frontX: number, frontY: number): void{
         this.frontX = frontX;
         this.frontY = frontY;
+    }
+
+
+
+    test(event){
+        console.log("TEST");
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    private height: string;
+
+    setClickedHeight(height: number){
+        if(height <= 0.5){
+            this.height = "top";
+        }
+        else if(height > 0.5){
+            this.height = "bottom";
+        }
+    }
+    getclickedHeight(): string{
+        return this.height;
+    }
+
+    checkClickedHeight(clickoffset: number, imgsize: number): boolean{     //compares second click with height of the first click
+        let height2: number = clickoffset/imgsize;
+        return ((height2 <= 0.5 && this.height == 'top') || (height2 > 0.5 && this.height == 'bottom'));
+
     }
 }

@@ -1,17 +1,21 @@
-<div (window:keydown)="test($event.keyCode)">
-<div class="table-container wrapper" resize>
-    <div class="row ">
-        <div class="col-md-4">
-            <!--<legend-component></legend-component>-->
-            <classification-component></classification-component>
-        </div>
-        <div class="col-md-8">
-            <sidebar-component></sidebar-component>
-            <map-component></map-component>
-        </div>
+<div (window:keydown)="test($event.keyCode)"> <!-- for testing purposes) -->
+    <div class="table-container wrapper" resize>
+        <div class="row ">
+            <div class="col-md-4">
+                <!--<legend-component></legend-component>-->
+                <classification-component></classification-component>
+            </div>
+            <div class="col-md-8">
+                <sidebar-component></sidebar-component>
+                <map-component></map-component>
+            </div>
 
-    </div>
-    <div class="col-md-12">
-        <table-component></table-component>
+        </div>
+        <div class="col-md-12">
+            <table-component></table-component>
+        </div>
     </div>
 </div>
+
+
+
