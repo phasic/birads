@@ -1,16 +1,16 @@
-<!--<div (window:click) = "modalInterrupt()"> </div> &lt;!&ndash; get a handler in place to catch the case where you cut short the modal &ndash;&gt;-->
-<div (keydown)="hotKeys($event.keyCode)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
+<div (keydown)="hotKeys($event.keyCode)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Asymmetry</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <label class="btn btn-lg btn-default" (click)="mouseControl('asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="asymmetry">Asymmetry</label>
-                    <label class="btn btn-lg btn-default" (click)="mouseControl('focal asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="focal asymmetry">Focal Asymmetry</label>
-                    <label class="btn btn-lg btn-default" (click)="mouseControl('global asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="global asymmetry">Global Asymmetry</label>
-                    <label class="btn btn-lg btn-default" (click)="mouseControl('developing asymmetry')" [(ngModel)]="this.asymmetry" btnRadio="developing asymmetry">Developing Asymmetry</label>
+                    <label class="btn btn-lg btn-default" (click)="mouseControl('asymmetry')" [(ngModel)]="asymmetry" btnRadio="asymmetry">Asymmetry</label>
+                    <label class="btn btn-lg btn-default" (click)="mouseControl('focal asymmetry')" [(ngModel)]="asymmetry" btnRadio="focal asymmetry">Focal Asymmetry</label>
+                    <label class="btn btn-lg btn-default" (click)="mouseControl('global asymmetry')" [(ngModel)]="asymmetry" btnRadio="global asymmetry">Global Asymmetry</label>
+                    <label class="btn btn-lg btn-default" (click)="mouseControl('developing asymmetry')" [(ngModel)]="asymmetry" btnRadio="developing asymmetry">Developing Asymmetry</label>
                 </div>
             </div>
         </div>

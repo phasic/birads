@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input}      from '@angular/core';
+import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
@@ -11,14 +11,11 @@ import {PageController} from "../../services/page.controller";
     templateUrl: '../../templates/modals/calcifications.template.html'
 })
 export class CalcificationComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private translate: TranslateService) {
-        // this.dataservice = dataservice;
-        // this.translate = translate;
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
     @ViewChild('modal2') public modal2: ModalDirective;
-    @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
         if(this.show) {
             this.modal1.show();
@@ -87,9 +84,8 @@ export class CalcificationComponent implements OnChanges{
                     case 53:
                         this.setFinding(keycode, argument);
                         this.modal2.hide();
-                        this.addTable();
-                        // this.dataservice.enableSidebar();
                         this.pagectrl.setShowmenu('');
+                        this.endOfMenu();
                         break;
                     default:
                         console.log("FOUTE SELECTIE");
@@ -179,16 +175,12 @@ export class CalcificationComponent implements OnChanges{
                         this.distribution = 'segmental';
                         break;
                     default:
-                        console.log("AAAAAAAAAAAAAAAAAAAAAA");
+                        console.log("FOUTE SELECTIE");
                 }
                 break;
         }
     }
-    addTable(): void{
-        // this.dataservice.addMass(0, this.morphology, this.distribution, this.density);
-        this.dataservice.addCalcifications(this.morphology, this.distribution);
 
-    }
 
     mouseControl(argument: string, finding: string): void{
         if(argument == 'morphology'){
@@ -202,6 +194,21 @@ export class CalcificationComponent implements OnChanges{
             this.addTable();
 
         }
+    }
+    endOfMenu(): void{
+        this.addTable();
+        this.pagectrl.createBadge(this.elementref);
+    }
+    addTable(): void{
+        this.dataservice.addCalcifications(this.morphology, this.distribution);
+    }
+    modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
+        setTimeout(() => {
+            if(!this.modal1.isShown && !this.modal2.isShown  && (this.pagectrl.getShowmenu()!='')){
+                this.pagectrl.setShowmenu('');
+                this.pagectrl.setNumberOfClicks(0);
+            }
+        }, 10);
     }
 
 

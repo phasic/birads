@@ -14,7 +14,7 @@ var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var ng2_translate_1 = require('ng2-translate/ng2-translate');
 //Map Components
 var map_component_1 = require('./components/map/map.component');
-var legend_component_1 = require('./components/map/legend.component');
+var legend_component_1 = require('./components/table/legend.component.ts');
 var imagemap_directive_1 = require("./directives/imagemap.directive");
 //Table Components
 var table_component_1 = require('./components/table/table.component');

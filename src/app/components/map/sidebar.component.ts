@@ -10,10 +10,7 @@ export class SidebarComponent {
     constructor(private pagectrl: PageController) {
     }
     hotKeys(keycode: number): void {
-        if (this.pagectrl.isMenuShown()) {
-            //if the menu is up, disable sidebar hotkeys
-        }
-        else {
+        if(!this.pagectrl.isMenuShown()){   //if the modal menu isn't up
             switch (keycode) {
                 case 81: //Q
                     this.pagectrl.setMethod('mass');
@@ -30,6 +27,14 @@ export class SidebarComponent {
                 default:
             }
         }
+    }
+
+    test(){
+        console.log("Sidebar Test:");
+        setTimeout(()=>{
+            console.log(this.pagectrl.getMethod());
+
+        }, 10);
     }
 
 

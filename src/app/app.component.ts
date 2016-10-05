@@ -1,4 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
+import {PageController} from "./services/page.controller";
 
 @Component({
   selector: 'my-app',
@@ -7,12 +8,17 @@ import { Component, ViewContainerRef } from '@angular/core';
 })
 export class AppComponent {
   private  viewContainerRef: ViewContainerRef;
-  public constructor(viewContainerRef: ViewContainerRef){
+  public constructor(viewContainerRef: ViewContainerRef, private pagectrl: PageController){
     this.viewContainerRef = viewContainerRef;
+    this.pagectrl = pagectrl;
   }
 
-  test(event){
-    console.log("IERE MSS?");
+  test(keycode){
+    // console.log(keycode);
+    if(keycode == 84){
+      console.log(this.pagectrl);
+      // console.log(this.pagectrl.isMenuShown());
+    }
   }
 }
 

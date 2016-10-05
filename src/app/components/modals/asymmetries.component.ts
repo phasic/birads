@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input}      from '@angular/core';
+import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
@@ -11,14 +11,10 @@ import {PageController} from "../../services/page.controller";
     templateUrl: '../../templates/modals/asymmetries.template.html'
 })
 export class AsymmetriesComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private translate: TranslateService) {
-        this.dataservice = dataservice;
-        this.translate = translate;
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
-    @ViewChild('modal2') public modal2: ModalDirective;
-    @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
         if(this.show) {
             this.modal1.show();
@@ -26,19 +22,21 @@ export class AsymmetriesComponent implements OnChanges{
     }
 
     private asymmetry: string;
+    mouseControl(finding: string): void{
+        this.asymmetry = finding;
+        this.modal1.hide();
+        this.endOfMenu();
+    }
     hotKeys(keycode: number): void{
-        // this.dataservice.disableSidebar();
-
         switch(keycode){
             case 49:
             case 50:
             case 51:
             case 52:
                 this.setFinding(keycode);
-                this.addTable();
                 this.modal1.hide();
-                // this.dataservice.enableSidebar();
                 this.pagectrl.setShowmenu('');
+                this.endOfMenu();
                 break;
             default:
                 console.log("FOUTE SELECTIE");
@@ -58,19 +56,28 @@ export class AsymmetriesComponent implements OnChanges{
                 break;
             case 52:
                 this.asymmetry = "developing asymmetry";
+                break;
             default:
                 console.log("FOUTE SELECTIE");
         }
     }
+
+    endOfMenu(): void{
+        this.addTable();
+        this.pagectrl.createBadge(this.elementref);
+    }
     addTable(): void{
         this.dataservice.addAsymmetries(this.asymmetry);
     }
-    mouseControl(finding: string): void{
-        this.asymmetry = finding;
-        this.modal1.hide();
-        this.addTable();
-    }
 
+    modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
+        setTimeout(() => {
+            if(!this.modal1.isShown && (this.pagectrl.getShowmenu()!='')){
+                this.pagectrl.setShowmenu('');
+                this.pagectrl.setNumberOfClicks(0);
+            }
+        }, 10);
+    }
 
 
 }

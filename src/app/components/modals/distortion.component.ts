@@ -1,4 +1,4 @@
-import {Component, OnChanges, Input}      from '@angular/core';
+import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
@@ -11,9 +11,7 @@ import {PageController} from "../../services/page.controller";
     templateUrl: '../../templates/modals/distortion.template.html'
 })
 export class DistortionComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private translate: TranslateService) {
-        this.dataservice = dataservice;
-        this.translate = translate;
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -21,15 +19,18 @@ export class DistortionComponent implements OnChanges{
     @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
         if(this.show) {
-            this.addTable();
+            this.endOfMenu();
             setTimeout(() => { this.pagectrl.setShowmenu('');},10);
 
 
         }
 
     }
+    endOfMenu(): void{
+        this.addTable();
+        this.pagectrl.createBadge(this.elementref);
+    }
     addTable(): void{
-        console.log('IN ADDTABLE');
         this.dataservice.addDistortions("architectural distortion");
 
     }

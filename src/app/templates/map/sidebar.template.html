@@ -1,9 +1,9 @@
-<div (window:keydown)="hotKeys($event.keyCode)" >
-    <div class="btn-group-vertical">
-        <label class="btn btn-lg btn-default" [(ngModel)]="pagectrl.method" btnRadio="mass">Mass</label>
-        <label class="btn btn-lg btn-default" [(ngModel)]="pagectrl.method" btnRadio="distortion">Distortion</label>
-        <label class="btn btn-lg btn-default" [(ngModel)]="pagectrl.method" btnRadio="asymmetries">Asymmetries</label>
-        <label class="btn btn-lg btn-default" [(ngModel)]="pagectrl.method" btnRadio="calcifications">Calcifications</label>
-    </div>
+<div (window:keydown)="hotKeys($event.keyCode)">
+    <ul class="nav nav-pills nav-justified">
+        <li [(ngModel)]="this.pagectrl.method" btnRadio="mass"><a href="#">Mass</a></li>
+        <li [(ngModel)]="this.pagectrl.method" btnRadio="distortion"><a href="#">distortion</a></li>
+        <li [(ngModel)]="this.pagectrl.method" btnRadio="asymmetries"><a href="#">asymmetries</a></li>
+        <li [(ngModel)]="this.pagectrl.method" btnRadio="calcifications"><a href="#">calcifications</a></li>
+    </ul>
 </div>
 

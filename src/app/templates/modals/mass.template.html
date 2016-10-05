@@ -1,52 +1,52 @@
 <div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
 <!--SHAPE MODAL -->
-<div (keydown)="hotKeys($event.keyCode, 'shape')" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div (keydown)="hotKeys($event.keyCode, 'shape')" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Shape</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img src="/assets/images/round.png" (click)="mouseControl('shape', 'round')" [(ngModel)]="this.shape" btnRadio="round"/>
-                    <img src="/assets/images/oval.png" (click)="mouseControl('shape', 'oval')" [(ngModel)]="this.shape" btnRadio="oval"/>
-                    <img src="/assets/images/irregular.png" (click)="mouseControl('shape', 'irregular')" [(ngModel)]="this.shape" btnRadio="irregular"/>
+                    <img src="/assets/images/round.png" (click)="mouseControl('shape', 'round')" [(ngModel)]="shape" btnRadio="round"/>
+                    <img src="/assets/images/oval.png" (click)="mouseControl('shape', 'oval')" [(ngModel)]="shape" btnRadio="oval"/>
+                    <img src="/assets/images/irregular.png" (click)="mouseControl('shape', 'irregular')" [(ngModel)]="shape" btnRadio="irregular"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- MARGIN MODAL -->
-<div (keydown)="hotKeys($event.keyCode, 'margin')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div (keydown)="hotKeys($event.keyCode, 'margin')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Margin</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img src="/assets/images/circumscribed.png" (click)="mouseControl('margin', 'circumscribed')" [(ngModel)]="this.margin" btnRadio="circumscribed"/>
-                    <img src="/assets/images/obscured.png" (click)="mouseControl('margin', 'obscured')" [(ngModel)]="this.margin" btnRadio="obscured"/>
-                    <img src="/assets/images/microlobulated.png" (click)="mouseControl('margin', 'microlobulated')" [(ngModel)]="this.margin" btnRadio="microlobulated"/>
-                    <img src="/assets/images/indistinct.png" (click)="mouseControl('margin', 'indestinct')" [(ngModel)]="this.margin" btnRadio="indestinct"/>
-                    <img src="/assets/images/spiculated.png" (click)="mouseControl('margin', 'spiculated')" [(ngModel)]="this.margin" btnRadio="spiculated"/>
+                    <img src="/assets/images/circumscribed.png" (click)="mouseControl('margin', 'circumscribed')" [(ngModel)]="margin" btnRadio="circumscribed"/>
+                    <img src="/assets/images/obscured.png" (click)="mouseControl('margin', 'obscured')" [(ngModel)]="margin" btnRadio="obscured"/>
+                    <img src="/assets/images/microlobulated.png" (click)="mouseControl('margin', 'microlobulated')" [(ngModel)]="margin" btnRadio="microlobulated"/>
+                    <img src="/assets/images/indistinct.png" (click)="mouseControl('margin', 'indestinct')" [(ngModel)]="margin" btnRadio="indestinct"/>
+                    <img src="/assets/images/spiculated.png" (click)="mouseControl('margin', 'spiculated')" [(ngModel)]="margin" btnRadio="spiculated"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- DENSITY MODAL -->
-<div (keydown)="hotKeys($event.keyCode, 'density')" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div (keydown)="hotKeys($event.keyCode, 'density')" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Density</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img src="/assets/images/low.png" (click)="mouseControl('density', 'low')" [(ngModel)]="this.density" btnRadio="low"/>
-                    <img src="/assets/images/equal.png" (click)="mouseControl('density', 'equal')" [(ngModel)]="this.density" btnRadio="equal"/>
-                    <img src="/assets/images/high.png" (click)="mouseControl('density', 'high')" [(ngModel)]="this.density" btnRadio="high"/>
+                    <img src="/assets/images/low.png" (click)="mouseControl('density', 'low')" [(ngModel)]="density" btnRadio="low"/>
+                    <img src="/assets/images/equal.png" (click)="mouseControl('density', 'equal')" [(ngModel)]="density" btnRadio="equal"/>
+                    <img src="/assets/images/high.png" (click)="mouseControl('density', 'high')" [(ngModel)]="density" btnRadio="high"/>
                 </div>
             </div>
         </div>

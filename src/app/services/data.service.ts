@@ -2,6 +2,14 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class DataService {
+    private acr: {
+        right: number,
+        left: number
+    };
+    private birads: {
+        right: number,
+        left: number
+    };
     private composition: string;
     private mass: {
         size: number;
@@ -20,10 +28,72 @@ export class DataService {
         distribution: string;
     }[];
     constructor() {
+        this.acr = {
+            right : 0,
+            left: 0
+        };
+        this.birads = {
+            right: 0,
+            left: 0
+        };
         this.mass = []; // make an emty array so that the get length doesn't throw an error
         this.distortions = [];
         this.asymmetries = [];
         this.calcifications = [];
+    }
+    setAcr(left: number | string, right: number) : void{
+        if( typeof left === 'string'){
+            if(left == 'left'){
+                this.acr.left = right;
+            }
+            else if(left == 'right'){
+                this.acr.right = right;
+            }
+        }
+        else if(typeof  left === 'number'){
+            this.acr = {
+                left: left,
+                right: right
+            };
+        }
+    }
+    getAcr(side?: string): any{
+        if(side == null){
+            return this.acr;
+        }
+        else if(side == 'left'){
+            return this.acr.left;
+        }
+        else if(side == 'right'){
+            return this.acr.right;
+        }
+    }
+    setBirads(left: number | string, right: number) : void{
+        if( typeof left === 'string'){
+            if(left == 'left'){
+                this.birads.left = right;
+            }
+            else if(left == 'right'){
+                this.birads.right = right;
+            }
+        }
+        else if(typeof  left === 'number'){
+            this.birads = {
+                left: left,
+                right: right
+            };
+        }
+    }
+    getBirads(side?: string): any{
+        if(side == null){
+            return this.birads;
+        }
+        else if(side == 'left'){
+            return this.birads.left;
+        }
+        else if(side == 'right'){
+            return this.birads.right;
+        }
     }
     setComposition(composition: string): void {
         this.composition = composition;

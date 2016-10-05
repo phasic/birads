@@ -6,54 +6,62 @@ import {PageController} from "../../services/page.controller";
 })
 export class MapComponent {
     constructor(private pagectrl: PageController) {
-        this.pagectrl = pagectrl;
     }
     clickHandler(event: any): void {
-        //fist click, check which image we clicked
         this.clickedMap(event);
 
     }
     private firstimage: string;
 
     clickedMap(event: any): void{
-        console.log("evenement");
-        console.log(event);
-        if(!this.pagectrl.isMenuShown()) {
+
+        if(!this.pagectrl.isMenuShown() && (this.pagectrl.getMethod() !== '')) {
             this.pagectrl.addClick();
-            if (this.pagectrl.getNumberOfClicks() == 1) {
+            if (this.pagectrl.getNumberOfClicks() == 1) {               //check if its the first time we clicked an image
                 if (['RF', 'LF'].indexOf(event.target.id) !== -1) {
-                    //we clicked on a front image
                     this.pagectrl.setFrontLoc(event.x, event.y);
                 }
                 if (['RS', 'LS'].indexOf(event.target.id) !== -1) {
-                    //we clicked on a side image
-                    this.pagectrl.setSideLoc(event.x, event.y); //TODO WE NEED TO CHANGE THIS LATER ON TO USEABLE VALUES
+                    this.pagectrl.setSideLoc(event.x, event.y); //TODO WE NEED TO CHANGE THIS LATER ON TO USABLE VALUES
                 }
                 this.firstimage = event.target.id;
             }
-            else {
+            else {                                                      //if it isn't the first time
                 switch (this.firstimage) {
                     case 'RS':
                         if (event.target.id == 'RF') {
                             this.handleMenu('front', event);
+                        }
+                        else{
+                            this.pagectrl.setNumberOfClicks(0);         //if we dont click on the correct second image, then reset the progress
                         }
                         break;
                     case 'RF':
                         if (event.target.id == 'RS') {
                             this.handleMenu('side', event);
                         }
+                        else{
+                            this.pagectrl.setNumberOfClicks(0);
+                        }
                         break;
                     case 'LS':
                         if (event.target.id == 'LF') {
                             this.handleMenu('front', event);
+                        }
+                        else{
+                            this.pagectrl.setNumberOfClicks(0);
                         }
                         break;
                     case 'LF':
                         if (event.target.id == 'LS') {
                             this.handleMenu('side', event);
                         }
+                        else{
+                            this.pagectrl.setNumberOfClicks(0);
+                        }
                         break;
                     default:
+
                 }
 
             }
@@ -62,7 +70,7 @@ export class MapComponent {
     }
 
     handleMenu(lat: string, event: any): void{
-        switch (lat){           //set the second pair of coordinates
+        switch (lat){
             case 'front':
                 this.pagectrl.setFrontLoc(event.x, event.y);
                 break;
@@ -71,9 +79,11 @@ export class MapComponent {
                 break;
             default:
         }
-        this.pagectrl.setNumberOfClicks(0); //reset the amout of clicks
-        //show the modal
-        switch (this.pagectrl.getMethod()) { //is set by the sidebar
+        this.pagectrl.setNumberOfClicks(0);
+
+        console.log("IN HANDLE MENU");
+        console.log(this.pagectrl.getMethod());
+        switch (this.pagectrl.getMethod()) {
             case 'mass':
                 this.pagectrl.setShowmenu('mass');
                 break;
@@ -88,6 +98,16 @@ export class MapComponent {
                 break;
             default:
         }
+        console.log(`test: ${this.pagectrl.isMenuShown()}`);
+    }
+
+    test(){
+        console.log("Sidebar Test:");
+        setTimeout(()=>{
+            console.log(this.pagectrl);
+
+
+        }, 10);
     }
 }
 

@@ -15,7 +15,7 @@ var LegendComponent = (function () {
     LegendComponent = __decorate([
         core_1.Component({
             selector: 'legend-component',
-            templateUrl: '../../templates/map/legend.template.html'
+            templateUrl: '../../templates/table/legend.template.html'
         })
     ], LegendComponent);
     return LegendComponent;

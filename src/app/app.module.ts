@@ -8,7 +8,7 @@ import { Ng2BootstrapModule }   from 'ng2-bootstrap/ng2-bootstrap';
 import {TranslateModule, TranslateService, TranslateStaticLoader, TranslateLoader} from   'ng2-translate/ng2-translate';
 //Map Components
 import { MapComponent }         from './components/map/map.component';
-import { LegendComponent }      from './components/map/legend.component';
+import { LegendComponent }      from './components/table/legend.component';
 import { SidebarComponent }     from './components/map/sidebar.component';
 //Modals
 import { MassComponent }        from "./components/modals/mass.component";
@@ -18,14 +18,11 @@ import { AsymmetriesComponent }        from "./components/modals/asymmetries.com
 
 //Table Components
 import { TableComponent }       from './components/table/table.component';
-import { GuideComponent }       from './components/table/guide.component';
-import { Autosize }             from './directives/autosize.directive';
-import { OrderBy }              from './components/table/orderby';      //DONT USE THIS
 //Data Service
 import { DataService }           from './services/data.service';
-import { DraggableModule} from "./directives/draggable.directive";
 import {PageController} from "./services/page.controller";
 import {ScreenResize} from "./directives/screen.resize.directive";
+import {ClassificationComponent} from "./components/table/classification.component";
 
 @NgModule({
     declarations: [
@@ -38,17 +35,14 @@ import {ScreenResize} from "./directives/screen.resize.directive";
         DistortionComponent,
         AsymmetriesComponent,
         TableComponent,
-        GuideComponent,
-        Autosize,
-        OrderBy,
-        ScreenResize
+        ScreenResize,
+        ClassificationComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         Ng2BootstrapModule,
-        DraggableModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
             useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),

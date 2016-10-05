@@ -1,113 +1,100 @@
-<div>
-  ADD ACR AND BIRADS FINDING FOR EVERY BREAST SIDE HERE
-<BR>
-  PALPATATION IS ALSO SOMETHING IMPORTANT
-<BR>
-  GRAPHICS NEED TO BE SVG BASED
-  <BR>
+<!--<div>-->
+<!--ADD ACR AND BIRADS FINDING FOR EVERY BREAST SIDE HERE-->
+<!--<BR>-->
+<!--PALPATATION IS ALSO SOMETHING IMPORTANT-->
+<!--<BR>-->
+<!--GRAPHICS NEED TO BE SVG BASED-->
+<!--<BR>-->
 
-  UI CAN BE NICER
-</div>
-
-<div align="center">
-  <h3><b>Breast Composition</b></h3>
-</div>
-<div align="center">
-  <div class="btn-group">
-    <label class="btn btn-md btn-default" [(ngModel)]="this.composition" btnRadio="A">Almost entirely fatty</label>
-    <label class="btn btn-md btn-default" [(ngModel)]="this.composition" btnRadio="B">Scattered areas of fibroglandular density</label>
-    <label class="btn btn-md btn-default" [(ngModel)]="this.composition" btnRadio="C">Heterogeneously dense</label>
-    <label class="btn btn-md btn-default" [(ngModel)]="this.composition" btnRadio="D">Extremely dense</label>
-  </div>
-</div>
-
+<!--UI CAN BE NICER-->
+<!--</div>-->
 
 <div class="table-container">
-  <div *ngIf="this.dataservice.getMass().length > 0" class="panel panel-default col-sm-10">
-    <div class="panel-heading"><h4><b>Mass</b></h4></div>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Front</th>
-        <th>Side</th>
-        <th>Size</th>
-        <th>Shape</th>
-        <th>Margin</th>
-        <th>Density</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let entry of this.dataservice.getMass(); let i = index">
-        <td>{{i + 1}}</td>
-        <td>{{entry.sideX}},{{entry.sideY}}</td>
-        <td>{{entry.frontX}},{{entry.frontY}}</td>
-        <td>{{entry.size}}</td>
-        <td>{{entry.shape}}</td>
-        <td>{{entry.margin}}</td>
-        <td>{{entry.density}}</td>
-      </tr>
-      </tbody>
+    <div *ngIf="dataservice.getMass().length > 0" class="panel panel-default col-sm-10">
+        <div class="panel-heading"><h4><b>Mass</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Front</th>
+                <th>Side</th>
+                <th>Size</th>
+                <th>Shape</th>
+                <th>Margin</th>
+                <th>Density</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getMass(); let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{entry.sideX}},{{entry.sideY}}</td>
+                <td>{{entry.frontX}},{{entry.frontY}}</td>
+                <td>{{entry.size}}</td>
+                <td>{{entry.shape}}</td>
+                <td>{{entry.margin}}</td>
+                <td>{{entry.density}}</td>
+            </tr>
+            </tbody>
 
-    </table>
-  </div>
-  <div *ngIf="this.dataservice.getDistortions().length > 0" class="panel panel-default col-sm-6">
-    <div class="panel-heading"><h4><b>Distortion</b></h4></div>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Location</th>
-        <th>Finding</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let entry of this.dataservice.getDistortions(); let i = index">
-        <td>{{i + 1}}</td>
-        <td>0000</td>
-        <td>{{entry}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="this.dataservice.getAsymmetries().length > 0" class="panel panel-default col-sm-6">
-    <div class="panel-heading"><h4><b>Asymmetries</b></h4></div>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Location</th>
-        <th>Finding</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let entry of this.dataservice.getAsymmetries(); let i = index">
-        <td>{{i + 1}}</td>
-        <td>0000</td>
-        <td>{{entry}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="this.dataservice.getCalcifications().length > 0"   class="panel panel-default col-sm-6">
-    <div class="panel-heading"><h4><b>Calcifications</b></h4></div>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Location</th>
-        <th>Morphology</th>
-        <th>Distribution</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let entry of this.dataservice.getCalcifications(); let i = index">
-        <td>{{i + 1}}</td>
-        <td>0000</td>
-        <td>{{entry.morphology}}</td>
-        <td>{{entry.distribution}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getDistortions().length > 0" class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>Distortion</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Location</th>
+                <th>Finding</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getDistortions(); let i = index">
+                <td>{{i + 1}}</td>
+                <td>0000</td>
+                <td>{{entry}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getAsymmetries().length > 0" class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>Asymmetries</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Location</th>
+                <th>Finding</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getAsymmetries(); let i = index">
+                <td>{{i + 1}}</td>
+                <td>0000</td>
+                <td>{{entry}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getCalcifications().length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>Calcifications</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Location</th>
+                <th>Morphology</th>
+                <th>Distribution</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getCalcifications(); let i = index">
+                <td>{{i + 1}}</td>
+                <td>0000</td>
+                <td>{{entry.morphology}}</td>
+                <td>{{entry.distribution}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

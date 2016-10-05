@@ -1,10 +1,10 @@
 import { Component }      from '@angular/core';
 import { DataService } from "../../services/data.service";
 @Component({
-    selector: 'table-component',
-    templateUrl: '../../templates/table/table.template.html'
+    selector: 'classification-component',
+    templateUrl: '../../templates/table/classification.template.html'
 })
-export class TableComponent{
+export class ClassificationComponent{
     constructor(private dataservice: DataService){
     }
     test(){

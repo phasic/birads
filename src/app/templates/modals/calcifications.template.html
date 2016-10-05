@@ -1,47 +1,47 @@
-<!--<div (window:click) = "modalInterrupt()"> </div> &lt;!&ndash; get a handler in place to catch the case where you cut short the modal &ndash;&gt;-->
-<div (keydown)="hotKeys($event.keyCode, 'morphology', this.benign)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
+<div (keydown)="hotKeys($event.keyCode, 'morphology', this.benign)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Morphology (press ~ for more options)</h4>
             </div>
             <div class="modal-body">
                 <div *ngIf="this.benign">
-                    <img src="/assets/images/skin.png" (click)="mouseControl('morphology', 'skin calcification')" [(ngModel)]="this.morphology" btnRadio="skin calcification"/>
-                    <img src="/assets/images/milk.png" (click)="mouseControl('morphology', 'milk of calciun')" [(ngModel)]="this.morphology" btnRadio="milk of calcium"/>
-                    <img src="/assets/images/mastisis.png" (click)="mouseControl('morphology', 'rod-like - plasmacel mastisis')" [(ngModel)]="this.morphology" btnRadio="rod-like - plasmacel mastisis"/>
-                    <img src="/assets/images/dystrophic.png" (click)="mouseControl('morphology', 'dystrophic')" [(ngModel)]="this.morphology" btnRadio="dystrophic"/>
-                    <img src="/assets/images/popcorn.png" (click)="mouseControl('morphology', 'popcorn - fibroadenoma')" [(ngModel)]="this.morphology" btnRadio="popcorn - fibroadenoma"/>
-                    <img src="/assets/images/rim.png" (click)="mouseControl('morphology', 'rin calcification')" [(ngModel)]="this.morphology" btnRadio="rim calcification"/>
-                    <img src="/assets/images/vascular.png" (click)="mouseControl('morphology', 'vascular calcification')" [(ngModel)]="this.morphology" btnRadio="vascular calcification"/>
-                    <img src="/assets/images/roundcal.png" (click)="mouseControl('morphology', 'round')" [(ngModel)]="this.morphology" btnRadio="round"/>
-                    <img src="/assets/images/punctate.png" (click)="mouseControl('morphology', 'punctate')" [(ngModel)]="this.morphology" btnRadio="punctate"/>
+                    <img src="/assets/images/skin.png" (click)="mouseControl('morphology', 'skin calcification')" [(ngModel)]="morphology" btnRadio="skin calcification"/>
+                    <img src="/assets/images/milk.png" (click)="mouseControl('morphology', 'milk of calciun')" [(ngModel)]="morphology" btnRadio="milk of calcium"/>
+                    <img src="/assets/images/mastisis.png" (click)="mouseControl('morphology', 'rod-like - plasmacel mastisis')" [(ngModel)]="morphology" btnRadio="rod-like - plasmacel mastisis"/>
+                    <img src="/assets/images/dystrophic.png" (click)="mouseControl('morphology', 'dystrophic')" [(ngModel)]="morphology" btnRadio="dystrophic"/>
+                    <img src="/assets/images/popcorn.png" (click)="mouseControl('morphology', 'popcorn - fibroadenoma')" [(ngModel)]="morphology" btnRadio="popcorn - fibroadenoma"/>
+                    <img src="/assets/images/rim.png" (click)="mouseControl('morphology', 'rin calcification')" [(ngModel)]="morphology" btnRadio="rim calcification"/>
+                    <img src="/assets/images/vascular.png" (click)="mouseControl('morphology', 'vascular calcification')" [(ngModel)]="morphology" btnRadio="vascular calcification"/>
+                    <img src="/assets/images/roundcal.png" (click)="mouseControl('morphology', 'round')" [(ngModel)]="morphology" btnRadio="round"/>
+                    <img src="/assets/images/punctate.png" (click)="mouseControl('morphology', 'punctate')" [(ngModel)]="morphology" btnRadio="punctate"/>
                 </div>
                 <div  (keydown)="hotKeys($event.keyCode, 'morphology', 2)" *ngIf="!this.benign">
-                    <img src="/assets/images/benign.png" (click)="mouseControl('morphology', 'amorphous (benign')" [(ngModel)]="this.morphology" btnRadio="amorphous (benign)"/>
-                    <img src="/assets/images/dcis.png" (click)="mouseControl('morphology', 'amorphous (DCIS')" [(ngModel)]="this.morphology" btnRadio="amorphous (DCIS)"/>
-                    <img src="/assets/images/pleomorphic.png" (click)="mouseControl('morphology', 'fine pleomorphic')" [(ngModel)]="this.morphology" btnRadio="fine pleomorhpic"/>
-                    <img src="/assets/images/coarse.png" (click)="mouseControl('morphology', 'coarse heterogeneous')" [(ngModel)]="this.morphology" btnRadio="coarse heterogeneous"/>
-                    <img src="/assets/images/finelinear.png" (click)="mouseControl('morphology', 'fine linear')" [(ngModel)]="this.morphology" btnRadio="fine linear"/>
-                    <img src="/assets/images/branching.png" (click)="mouseControl('morphology', 'fine lenear branching')" [(ngModel)]="this.morphology" btnRadio="fine linear branching"/>
+                    <img src="/assets/images/benign.png" (click)="mouseControl('morphology', 'amorphous (benign')" [(ngModel)]="morphology" btnRadio="amorphous (benign)"/>
+                    <img src="/assets/images/dcis.png" (click)="mouseControl('morphology', 'amorphous (DCIS')" [(ngModel)]="morphology" btnRadio="amorphous (DCIS)"/>
+                    <img src="/assets/images/pleomorphic.png" (click)="mouseControl('morphology', 'fine pleomorphic')" [(ngModel)]="morphology" btnRadio="fine pleomorhpic"/>
+                    <img src="/assets/images/coarse.png" (click)="mouseControl('morphology', 'coarse heterogeneous')" [(ngModel)]="morphology" btnRadio="coarse heterogeneous"/>
+                    <img src="/assets/images/finelinear.png" (click)="mouseControl('morphology', 'fine linear')" [(ngModel)]="morphology" btnRadio="fine linear"/>
+                    <img src="/assets/images/branching.png" (click)="mouseControl('morphology', 'fine lenear branching')" [(ngModel)]="morphology" btnRadio="fine linear branching"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div (keydown)="hotKeys($event.keyCode, 'distribution')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div (keydown)="hotKeys($event.keyCode, 'distribution')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Distribution</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img src="/assets/images/diffuse.png" (click)="mouseControl('distribution', 'diffuse')" [(ngModel)]="this.distribution" btnRadio="diffuse"/>
-                    <img src="/assets/images/regional.png" (click)="mouseControl('distribution', 'regional')" [(ngModel)]="this.distribution" btnRadio="regional"/>
-                    <img src="/assets/images/group.png" (click)="mouseControl('distribution', 'group')" [(ngModel)]="this.distribution" btnRadio="group"/>
-                    <img src="/assets/images/linear.png" (click)="mouseControl('distribution', 'linear')" [(ngModel)]="this.distribution" btnRadio="linear"/>
-                    <img src="/assets/images/segmental.png" (click)="mouseControl('distribution', 'segmental')" [(ngModel)]="this.distribution" btnRadio="segmental"/>
+                    <img src="/assets/images/diffuse.png" (click)="mouseControl('distribution', 'diffuse')" [(ngModel)]="distribution" btnRadio="diffuse"/>
+                    <img src="/assets/images/regional.png" (click)="mouseControl('distribution', 'regional')" [(ngModel)]="distribution" btnRadio="regional"/>
+                    <img src="/assets/images/group.png" (click)="mouseControl('distribution', 'group')" [(ngModel)]="distribution" btnRadio="group"/>
+                    <img src="/assets/images/linear.png" (click)="mouseControl('distribution', 'linear')" [(ngModel)]="distribution" btnRadio="linear"/>
+                    <img src="/assets/images/segmental.png" (click)="mouseControl('distribution', 'segmental')" [(ngModel)]="distribution" btnRadio="segmental"/>
                 </div>
             </div>
         </div>

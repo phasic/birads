@@ -1,6 +1,5 @@
 import {Component, OnChanges, Input, ElementRef}      from '@angular/core';
 import { DataService } from "../../services/data.service";
-import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
@@ -17,11 +16,16 @@ export class MassComponent implements OnChanges{
     @ViewChild('modal1') public modal1: ModalDirective;
     @ViewChild('modal2') public modal2: ModalDirective;
     @ViewChild('modal3') public modal3: ModalDirective;
+
     ngOnChanges(changes){
         if(this.show) {
            this.modal1.show();
         }
     }
+
+    private shape: string;
+    private margin: string;
+    private density: string;
     mouseControl(argument: string, finding: string): void{
         if(argument == 'shape'){
             this.shape = finding;
@@ -71,9 +75,6 @@ export class MassComponent implements OnChanges{
         }
     }
 
-    private shape: string;
-    private margin: string;
-    private density: string;
 
     setFinding(keycode: number, argument: string): void {
         switch(keycode + argument){
@@ -114,12 +115,11 @@ export class MassComponent implements OnChanges{
                 console.log("FOUTE SELECTIE");
         }
     }
-    endOfMenu():void{
+    endOfMenu(): void{
         this.addTable();
-        // this.pagectrl.setShowmenu('');
-        this.pagectrl.createBadge(this.elementref);
+        this.pagectrl.createBadge(this.elementref);         //create a badge on the image
     }
-    addTable(): void{
+    addTable(): void{                       //add the data
         let sx ,sy, fx, fy: number;
         sx = this.pagectrl.getSideX();
         sy = this.pagectrl.getSideY();
@@ -128,15 +128,18 @@ export class MassComponent implements OnChanges{
         this.dataservice.addMass(0, sx, sy, fx, fy,  this.shape, this.margin, this.density);
     }
 
-    modalInterrupt(){
+    modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {
-            if(!this.modal1.isShown && !this.modal2.isShown && !this.modal3.isShown){
-                // this.dataservice.enableSidebar();
+            if(!this.modal1.isShown && !this.modal2.isShown && !this.modal3.isShown && (this.pagectrl.getShowmenu()!='')){
                 this.pagectrl.setShowmenu('');
+                this.pagectrl.setNumberOfClicks(0);
             }
         }, 10);
     }
 
+
+
+    // NUMBER OF CLICK DONT UPDATE, FIX THAT!!!!
 
 
 }

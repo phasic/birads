@@ -5,11 +5,11 @@ import {DataService} from "./data.service";
 export class PageController {
     private method: string;
     private showmenu: string;
-    private clientX: number;
-    private clientY: number;
+
     constructor( private dataservice: DataService) {
         this.method = '';
         this.showmenu = '';
+        this.numberofclicks = 0;
     }
 
     setMethod(method: string): void {
@@ -19,30 +19,17 @@ export class PageController {
         return this.method;
     }
     setShowmenu(showmenu: string): void {
+        console.log("INSETSHOWMENU");
         this.showmenu = showmenu;
     }
     getShowmenu(): string {
         return this.showmenu;
     }
     isMenuShown(): boolean {
+        console.log(`Is Menu Shown? ${this.getShowmenu() !== ''}`);
         return (this.showmenu !== '');
     }
-    setClientX(clientX: number): void{
-        this.clientX = clientX;
-    }
-    getClientX(): number{
-        return this.clientX;
-    }
-    setClientY(clientY: number): void{
-        this.clientY = clientY;
-    }
-    getClientY(): number{
-        return this.clientY;
-    }
-    setMouseLocation(clientX: number, clientY: number): void{
-        this.clientX = clientX;
-        this.clientY = clientY;
-    }
+
     createBadge(elementref: ElementRef) {
         console.log('In createBadge');
         switch (this.getMethod()) {
@@ -95,7 +82,7 @@ export class PageController {
     }
 
 
-    private numberofclicks: number = 0;
+    private numberofclicks: number;
 
     setNumberOfClicks(numberofclicks: number): void{
         this.numberofclicks = numberofclicks;
@@ -114,14 +101,8 @@ export class PageController {
     private frontY: number;
 
 
-    setSideX(sideX: number): void{
-        this.sideX = sideX;
-    }
     getSideX(): number{
         return this.sideX;
-    }
-    setSideY(sideY: number){
-        this.sideY = sideY;
     }
     getSideY(): number{
         return this.sideY;
@@ -130,14 +111,8 @@ export class PageController {
         this.sideX = sideX;
         this.sideY = sideY;
     }
-    setFrontX(frontX: number): void{
-        this.frontX = frontX;
-    }
     getFrontX(): number{
         return this.frontX;
-    }
-    setFrontY(frontY: number): void{
-        this.frontY = frontY;
     }
     getFrontY(): number{
         return this.frontY;
