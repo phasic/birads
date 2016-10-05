@@ -31,7 +31,6 @@ export class PageController {
 
     createBadge(elementref: ElementRef) {
         switch (this.getMethod()) {
-            //TODO RIGHT CLICK TO DELETE FINDING
             case 'mass':
                 this.renderBadge('M', elementref);
                 break;
@@ -69,14 +68,13 @@ export class PageController {
         tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.sideX - 7}`;
-        console.log(tmp);
+        tmp.id = argument + index + 'a';
         elementref.nativeElement.appendChild(tmp);
 
-        //TODO WERE RENDERING NOTH BADGES ON THE SAME HEIGHT, THE IMAGES NEED TOBE ON THE SAME HEIGHT TOO THEN
         tmp = document.createElement('div');
-
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.frontX - 7}`;
+        tmp.id = argument + index + 'b';
         elementref.nativeElement.appendChild(tmp);
     }
 

@@ -22,7 +22,7 @@ export class MapComponent {
                     this.pagectrl.setFrontLoc(event.x, event.y);
                 }
                 if (['RS', 'LS'].indexOf(event.target.id) !== -1) {
-                    this.pagectrl.setSideLoc(event.x, event.y); //TODO WE NEED TO CHANGE THIS LATER ON TO USABLE VALUES
+                    this.pagectrl.setSideLoc(event.x, event.y);
                 }
                 this.firstimage = event.target.id;
             }
