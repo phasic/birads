@@ -7,13 +7,14 @@ import { DataService } from "../../services/data.service";
 export class ClassificationComponent{
     constructor(private dataservice: DataService){
     }
-    test(){
-        console.log("In Test");
-        console.log(`ACR: right: ${this.dataservice.getAcr('right')}, left: ${this.dataservice.getAcr('left')}`);
-        console.log(`BIRADS: right: ${this.dataservice.getBirads('right')}, left: ${this.dataservice.getBirads('left')}`);
-        console.log(`Composition: ${this.dataservice.getComposition()}`);
-    }
-
+    private biradsscore: Array<number> = [0, 1, 2, 3, 4, 5, 6];
+    private acrscore: Array<string> = ['I', 'II', 'III', 'IV'];
+    private composition: Array<string> = [
+        'Almost entirely fatty',
+        'Scattered areas of fibroglandular density',
+        'Heterogeneously dense',
+        'Extremely dense'
+    ]
 }
 
 

@@ -86,10 +86,10 @@ export class PageController {
             case 'distortion':
                 this.renderBadge('D', elementref);
                 break;
-            case 'asymmetries':
+            case 'asymmetry':
                 this.renderBadge('A', elementref);
                 break;
-            case 'calcifications':
+            case 'calcification':
                 this.renderBadge('C', elementref);
                 break;
             default:
@@ -123,13 +123,13 @@ export class PageController {
         tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${this.frontY}; left:${this.sideX}`;
-        tmp.id = argument + index + 'a';
+        tmp.id = argument + index + 's';
         elementref.nativeElement.appendChild(tmp);
 
         tmp = document.createElement('div');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${this.frontY}; left:${this.frontX}`;
-        tmp.id = argument + index + 'b';
+        tmp.id = argument + index + 'f';
         elementref.nativeElement.appendChild(tmp);
 
         this.saveBadgeLocation(argument);
@@ -204,65 +204,29 @@ export class PageController {
 
         //TODO this can be wrond, look into it if it forms a problem
 
+        let badgecoordinates: any = {
+            side: {
+                x: this.sideX,
+                y: this.frontY
+            },
+            front: {
+                x: this.frontX,
+                y: this.frontY
+            }
+        };
         if (argument == 'M') {
-            this.badgelocations.mass.push(
-                {
-                    side: {
-                        x: this.sideX,
-                        y: this.frontY
-                    },
-                    front: {
-                        x: this.frontX,
-                        y: this.frontY
-                    }
-                }
-            );
+            this.badgelocations.mass.push(badgecoordinates);
         }
         else if(argument == 'D'){
-            this.badgelocations.distortion.push(
-                {
-                    side:{
-                        x : this.sideX,
-                        y : this.frontY
-                    },
-                    front:{
-                        x : this.frontX,
-                        y : this.frontY
-                    }
-                }
-            );
+            this.badgelocations.distortion.push(badgecoordinates);
         }
         else if(argument == 'A'){
-            this.badgelocations.asymmetry.push(
-                {
-                    side:{
-                        x : this.sideX,
-                        y : this.frontY
-                    },
-                    front:{
-                        x : this.frontX,
-                        y : this.frontY
-                    }
-                }
-            );
+            this.badgelocations.asymmetry.push(badgecoordinates);
         }
         else if(argument == 'C'){
-            this.badgelocations.calcification.push(
-                {
-                    side:{
-                        x : this.sideX,
-                        y : this.frontY
-                    },
-                    front:{
-                        x : this.frontX,
-                        y : this.frontY
-                    }
-                }
-            );
+            this.badgelocations.calcification.push(badgecoordinates);
         }
-
     }
-
     getBadgeLocations(): any{
         return this.badgelocations;
     }

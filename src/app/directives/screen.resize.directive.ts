@@ -50,44 +50,44 @@ export class ScreenResize {
         let locY: number;
 //TODO THIS IS TOO MESSY
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().mass.length; i++){
-            this.badge = document.getElementById('M' + i + 'a');
+            this.badge = document.getElementById('M' + i + 's');
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].side.x*this.wscale ;
              locY = this.imagediv.top + this.pagectrl.getBadgeLocations().mass[i-1].side.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-            this.badge = document.getElementById('M' + i + 'b');
+            this.badge = document.getElementById('M' + i + 'f');
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].front.x*this.wscale ;
              locY = this.imagediv.top + this.pagectrl.getBadgeLocations().mass[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
 
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().distortion.length; i++){
-            this.badge = document.getElementById('D' + i + 'a');
+            this.badge = document.getElementById('D' + i + 's');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().distortion[i-1].side.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().distortion[i-1].side.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-            this.badge = document.getElementById('D' + i + 'b');
+            this.badge = document.getElementById('D' + i + 'f');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().distortion[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().distortion[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
 
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().asymmetry.length; i++){
-            this.badge = document.getElementById('A' + i + 'a');
+            this.badge = document.getElementById('A' + i + 's');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().asymmetry[i-1].side.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().asymmetry[i-1].side.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-            this.badge = document.getElementById('A' + i + 'b');
+            this.badge = document.getElementById('A' + i + 'f');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().asymmetry[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().asymmetry[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
 
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().calcification.length; i++){
-            this.badge = document.getElementById('C' + i + 'a');
+            this.badge = document.getElementById('C' + i + 's');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().calcification[i-1].side.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().calcification[i-1].side.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-            this.badge = document.getElementById('C' + i + 'b');
+            this.badge = document.getElementById('C' + i + 'f');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().calcification[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().calcification[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;

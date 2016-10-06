@@ -22,6 +22,33 @@ export class CalcificationComponent implements OnChanges{
         }
     }
 
+    private morphologyarraybenign: Array<string> = [
+        'skin calcification',
+        'milk of calcium',
+        'rod-like - plasmacel mastisis',
+        'dystrophic',
+        'popcorn - fibroadenoma',
+        'rim calcification',
+        'vascular calcification',
+        'round',
+        'punctate'
+    ];
+    private morphologyarraynotbenign: Array<string> = [
+        'amorphous (benign)',
+        'amorphous (DCIS)',
+        'fine pleomorphic',
+        'coarse heterogeneous',
+        'fine linear',
+        'fine linear branching'
+    ];
+    private distributionarray: Array<string> = [
+        'diffuse',
+        'regional',
+        'group',
+        'linear',
+        'segmental'
+    ];
+
     private benign: boolean = true;
     private morphology: string;
     private distribution: string;
@@ -36,7 +63,7 @@ export class CalcificationComponent implements OnChanges{
         switch (page + argument) {
             case 1+'morphology':
                 switch (keycode) {
-                    case 192:
+                    case 192:       //~
                         this.benign = !this.benign;
                         break;
                     case 49:       //1
@@ -185,7 +212,7 @@ export class CalcificationComponent implements OnChanges{
         if(argument == 'distribution'){
             this.distribution = finding;
             this.modal2.hide();
-            this.addTable();
+            this.endOfMenu();
 
         }
     }

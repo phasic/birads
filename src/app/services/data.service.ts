@@ -2,31 +2,6 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class DataService {
-    private acr: {
-        right: number,
-        left: number
-    };
-    private birads: {
-        right: number,
-        left: number
-    };
-    private composition: string;
-    private mass: {
-        size: number;
-        sideX: number;
-        sideY: number;
-        frontX: number;
-        frontY: number;
-        shape: string;
-        margin: string;
-        density: string;
-    }[];
-    private distortions: Array<string>;
-    private asymmetries: Array<string>;
-    private calcifications: {
-        morphology: string;
-        distribution: string;
-    }[];
     constructor() {
         this.acr = {
             right : 0,
@@ -41,6 +16,17 @@ export class DataService {
         this.asymmetries = [];
         this.calcifications = [];
     }
+    /* Classifications Variables*/
+    private acr: {
+        right: number,
+        left: number
+    };
+    private birads: {
+        right: number,
+        left: number
+    };
+    private composition: string;
+
     setAcr(left: number | string, right: number) : void{
         if( typeof left === 'string'){
             if(left == 'left'){
@@ -101,6 +87,40 @@ export class DataService {
     getComposition(): string {
         return this.composition;
     }
+
+
+    /* Sidebar Variables */
+    private methods: Array<string> = [
+        'mass',
+        'distortion',
+        'asymmetry',
+        'calcification'
+    ];
+
+    getMethods(): Array<string>{
+        return this.methods;
+    }
+
+    /*Findings (map) Variables */
+    private mass: {
+        size: number;
+        sideX: number;
+        sideY: number;
+        frontX: number;
+        frontY: number;
+        shape: string;
+        margin: string;
+        density: string;
+    }[];
+    private distortions: Array<string>;
+    private asymmetries: Array<string>;
+    private calcifications: {
+        morphology: string;
+        distribution: string;
+    }[];
+
+
+
     setMass(size: number, sx: number, sy: number, fx: number, fy: number, shape: string, margin: string, density: string): void {
         this.mass = [{
             size: size,

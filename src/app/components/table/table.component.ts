@@ -7,18 +7,11 @@ import { DataService } from "../../services/data.service";
 export class TableComponent{
     constructor(private dataservice: DataService){
     }
-    test(){
-        console.log("In Test");
-        console.log(`ACR: right: ${this.dataservice.getAcr('right')}, left: ${this.dataservice.getAcr('left')}`);
-        console.log(`BIRADS: right: ${this.dataservice.getBirads('right')}, left: ${this.dataservice.getBirads('left')}`);
-        console.log(`Composition: ${this.dataservice.getComposition()}`);
-    }
-
-    removeEntry(index: number, method: string): void{
+    removeEntry(index: number, method: string): void{           //remove an entry from the table
         switch (method) {
-            case 'M':
-                this.dataservice.getMass().splice(index,1);
-                this.removeBadge(index, method);
+            case 'M':                                           //mass
+                this.dataservice.getMass().splice(index,1);     //remove it from the data
+                this.removeBadge(index, method);                //delete the badge
                 break;
             case 'D':
                 this.dataservice.getDistortions().splice(index,1);
@@ -37,18 +30,18 @@ export class TableComponent{
     }
 
     removeBadge(index: number, method: string): void{
-        let element:any = document.getElementById(method+ (index+1) + 'a');
-        element.remove();
-        element = document.getElementById(method+ (index+1) + 'b');
-        element.remove();
+        let element:any = document.getElementById(method+ (index+1) + 's');     //get the side badge
+        element.remove();                                                       //destroy that element
+        element = document.getElementById(method+ (index+1) + 'f');             //get the front badge
+        element.remove();                                                       //destroy that element
 
-        let datalength: any;
+        let datalength: any;                                        //the length of the array of that certain method
         switch (method){
             case 'M':
-                datalength = this.dataservice.getMass().length;
+                datalength = this.dataservice.getMass().length;    //get the amount of entries in the mass method
                 break;
             case 'D':
-                datalength = this.dataservice.getDistortions().length;
+                datalength = this.dataservice.getDistortions().length;          //same for the rest
                 break;
             case 'A':
                 datalength = this.dataservice.getAsymmetries().length;
@@ -59,14 +52,13 @@ export class TableComponent{
             default:
         }
 
-        for(let i = index+1; i <= datalength; i++){
-            element = document.getElementById(method+ (i + 1) + 'a');
-            element.id = method + i + 'a';
-            element.innerHTML = method + i;
-            element.innerHTML = `<div class='badge'>${method}${i}</div>`;
-            element = document.getElementById(method+ (i + 1) + 'b');
-            element.id = method + i + 'b';
-            element.innerHTML = `<div class='badge'>${method}${i}</div>`;
+        for(let i = index+1; i <= datalength; i++){  //iterate over the method array, starting from the removed element, until the end
+            element = document.getElementById(method+ (i + 1) + 's');           //get the side badge
+            element.id = method + i + 's';                                      //lower the id with 1
+            element.innerHTML = `<div class='badge'>${method}${i}</div>`;       //lower the innerHTML with 1
+            element = document.getElementById(method+ (i + 1) + 'f');           //get the front badge
+            element.id = method + i + 'f';                                      //lower the id with 1
+            element.innerHTML = `<div class='badge'>${method}${i}</div>`;       //lower the innerHTML wtih 1
 
         }
     }

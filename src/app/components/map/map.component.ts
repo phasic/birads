@@ -13,24 +13,24 @@ export class MapComponent {
     }
     private firstimage: string;
 
-    clickedMap(event: any): void{
-        if(!this.pagectrl.isMenuShown() && (this.pagectrl.getMethod() !== '')) {
-            this.pagectrl.addClick();
+    clickedMap(event: any): void{                                       //function gets called when an image is clicked
+        if(!this.pagectrl.isMenuShown() && (this.pagectrl.getMethod() !== '')) { //if the menu is not shown and we selected a method
+            this.pagectrl.addClick();                                   //we register the click
             if (this.pagectrl.getNumberOfClicks() == 1) {               //check if its the first time we clicked an image
                 this.pagectrl.setClickedHeight(event.offsetY/event.target.height); //keep the clickheight if <0.5 --> 0.5/ if > 0.5 --> 1
-                if (['RF', 'LF'].indexOf(event.target.id) !== -1) {
-                    this.pagectrl.setFrontLoc(event.x, event.y);
+                if (['RF', 'LF'].indexOf(event.target.id) !== -1) {     //did we click a 'front' image?
+                    this.pagectrl.setFrontLoc(event.x, event.y);        //set the click location of the front image
                 }
-                if (['RS', 'LS'].indexOf(event.target.id) !== -1) {
-                    this.pagectrl.setSideLoc(event.x, event.y);
+                if (['RS', 'LS'].indexOf(event.target.id) !== -1) {     //did we click a 'side' image?
+                    this.pagectrl.setSideLoc(event.x, event.y);         //set the click location of the side image
                 }
-                this.firstimage = event.target.id;
+                this.firstimage = event.target.id;                      //keep the id of the first clicked image
             }
-            else {                                                      //if it isn't the first time
-                switch (this.firstimage) {
+            else {                                                      //if it isn't the first time we clicked
+                switch (this.firstimage) {                              //use the first image as reference
                     case 'RS':
                         if (event.target.id == 'RF' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
-                            this.handleMenu('front', event);
+                            this.handleMenu('front', event);            //if we clicked RS first, and now RF, and we click the right height, then show the menu
                         }
                         else{
                             this.pagectrl.setNumberOfClicks(0);         //if we dont click on the correct second image, then reset the progress
@@ -38,7 +38,7 @@ export class MapComponent {
                         break;
                     case 'RF':
                         if (event.target.id == 'RS' && this.pagectrl.checkClickedHeight(event.offsetY, event.target.height)) {
-                            this.handleMenu('side', event);
+                            this.handleMenu('side', event);             //same way for the rest
                         }
                         else{
                             this.pagectrl.setNumberOfClicks(0);
@@ -61,60 +61,36 @@ export class MapComponent {
                         }
                         break;
                     default:
-
                 }
-
             }
-
         }
     }
-
-    handleMenu(lat: string, event: any): void{
+    handleMenu(lat: string, event: any): void{                       //gets called when we clicked 2 correct images in a row
         switch (lat){
-            case 'front':
+            case 'front':                                           //if our second image is a front image. set the click location
                 this.pagectrl.setFrontLoc(event.x, event.y);
                 break;
             case 'side':
-                this.pagectrl.setSideLoc(event.x, event.y);
+                this.pagectrl.setSideLoc(event.x, event.y);         //if our second image is a side image, set the click location
                 break;
             default:
         }
-        this.pagectrl.setNumberOfClicks(0);
+        this.pagectrl.setNumberOfClicks(0);                         //reset the registered clicks
 
-        switch (this.pagectrl.getMethod()) {
+        switch (this.pagectrl.getMethod()) {                        //get the selected method from the sidebar and show the correct menu (modal)
             case 'mass':
                 this.pagectrl.setShowmenu('mass');
                 break;
             case 'distortion':
                 this.pagectrl.setShowmenu('distortion');
                 break;
-            case 'asymmetries':
-                this.pagectrl.setShowmenu('asymmetries');
+            case 'asymmetry':
+                this.pagectrl.setShowmenu('asymmetry');
                 break;
-            case 'calcifications':
-                this.pagectrl.setShowmenu('calcifications');
+            case 'calcification':
+                this.pagectrl.setShowmenu('calcification');
                 break;
             default:
-        }
-    }
-
-
-
-    test(event){
-        console.log("IN TEST");
-
-        let imgheight: number = event.target.height;
-        let imgwidth: number = event.target.width;
-
-        let clickheight: number = event.offsetY;
-        let clickwidth: number = event.offsetX;
-        // console.log(event);
-        // console.log(`height: ${imgheight}, width: ${imgwidth}, ratio: ${imgheight/imgwidth}`);
-        // console.log(`click: (X,Y): (${clickwidth}, ${clickheight})`);
-
-
-        if((clickheight/imgheight) > 0.5){
-            console.log("over 50%");
         }
     }
 }
