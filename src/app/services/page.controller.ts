@@ -5,12 +5,61 @@ import {DataService} from "./data.service";
 export class PageController {
     private method: string;
     private showmenu: string;
+    private badgelocations: {
+        mass: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
+        }[],
+        distortion: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
+        }[],
+        asymmetry: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
+        }[],
+        calcification: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
+        }[]
+    };
+
 
     constructor( private dataservice: DataService) {
         this.method = '';
         this.showmenu = '';
         this.numberofclicks = 0;
         this.height = '';
+        this.badgelocations = {
+            mass: [],
+            distortion: [],
+            asymmetry: [],
+            calcification: []
+        };
     }
 
     setMethod(method: string): void {
@@ -63,24 +112,29 @@ export class PageController {
         }
 
 
+        this.sideX = this.sideX - 15;
+        this.sideY = this.sideY - 5;
+        this.frontX = this.frontX - 15;
+        this.frontY = this.frontY - 5;
+
+
         let tmp: any;
         tmp = document.createElement('div');
         tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.sideX - 7}`;
+        tmp.style = `position: fixed; top:${this.frontY}; left:${this.sideX}`;
         tmp.id = argument + index + 'a';
         elementref.nativeElement.appendChild(tmp);
 
         tmp = document.createElement('div');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.frontY - 5}; left:${this.frontX - 7}`;
+        tmp.style = `position: fixed; top:${this.frontY}; left:${this.frontX}`;
         tmp.id = argument + index + 'b';
         elementref.nativeElement.appendChild(tmp);
+
+        this.saveBadgeLocation(argument);
     }
-
-
     private numberofclicks: number;
-
     setNumberOfClicks(numberofclicks: number): void{
         this.numberofclicks = numberofclicks;
     }
@@ -90,14 +144,10 @@ export class PageController {
     addClick(): void{
         this.numberofclicks++;
     }
-
-
     private sideX: number;
     private sideY: number;
     private frontX: number;
     private frontY: number;
-
-
     getSideX(): number{
         return this.sideX;
     }
@@ -118,17 +168,12 @@ export class PageController {
         this.frontX = frontX;
         this.frontY = frontY;
     }
-
-
-
     test(event){
         console.log("TEST");
         event.preventDefault();
         event.stopPropagation();
     }
-
     private height: string;
-
     setClickedHeight(height: number){
         if(height <= 0.5){
             this.height = "top";
@@ -140,10 +185,85 @@ export class PageController {
     getclickedHeight(): string{
         return this.height;
     }
-
     checkClickedHeight(clickoffset: number, imgsize: number): boolean{     //compares second click with height of the first click
         let height2: number = clickoffset/imgsize;
         return ((height2 <= 0.5 && this.height == 'top') || (height2 > 0.5 && this.height == 'bottom'));
 
+    }
+
+
+
+    saveBadgeLocation(argument: string): void {
+        //make the badlocation first relative to the image instead of to the screen
+
+        let imagediv: any = document.getElementById('images').getBoundingClientRect();
+        this.sideX -= imagediv.left;
+        this.frontX -= imagediv.left;
+        this.sideY -= imagediv.top;
+        this.frontY -= imagediv.top;
+
+        //TODO this can be wrond, look into it if it forms a problem
+
+        if (argument == 'M') {
+            this.badgelocations.mass.push(
+                {
+                    side: {
+                        x: this.sideX,
+                        y: this.frontY
+                    },
+                    front: {
+                        x: this.frontX,
+                        y: this.frontY
+                    }
+                }
+            );
+        }
+        else if(argument == 'D'){
+            this.badgelocations.distortion.push(
+                {
+                    side:{
+                        x : this.sideX,
+                        y : this.frontY
+                    },
+                    front:{
+                        x : this.frontX,
+                        y : this.frontY
+                    }
+                }
+            );
+        }
+        else if(argument == 'A'){
+            this.badgelocations.asymmetry.push(
+                {
+                    side:{
+                        x : this.sideX,
+                        y : this.frontY
+                    },
+                    front:{
+                        x : this.frontX,
+                        y : this.frontY
+                    }
+                }
+            );
+        }
+        else if(argument == 'C'){
+            this.badgelocations.calcification.push(
+                {
+                    side:{
+                        x : this.sideX,
+                        y : this.frontY
+                    },
+                    front:{
+                        x : this.frontX,
+                        y : this.frontY
+                    }
+                }
+            );
+        }
+
+    }
+
+    getBadgeLocations(): any{
+        return this.badgelocations;
     }
 }

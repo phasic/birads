@@ -37,22 +37,38 @@ export class TableComponent{
     }
 
     removeBadge(index: number, method: string): void{
-        let x:any = document.getElementById(method+ (index+1) + 'a');
-        x.remove();
-        x = document.getElementById(method+ (index+1) + 'b');
-        x.remove();
+        let element:any = document.getElementById(method+ (index+1) + 'a');
+        element.remove();
+        element = document.getElementById(method+ (index+1) + 'b');
+        element.remove();
 
-        for(let i = index+1; i <= this.dataservice.getDistortions().length; i++){
-            x = document.getElementById(method+ (i + 1) + 'a');
-            x.id = method + i + 'a';
-            x.innerHTML = method + i;
-            x.innerHTML = `<div class='badge'>${method}${i}</div>`;
-            x = document.getElementById(method+ (i + 1) + 'b');
-            x.id = method + i + 'b';
-            x.innerHTML = `<div class='badge'>${method}${i}</div>`;
+        let datalength: any;
+        switch (method){
+            case 'M':
+                datalength = this.dataservice.getMass().length;
+                break;
+            case 'D':
+                datalength = this.dataservice.getDistortions().length;
+                break;
+            case 'A':
+                datalength = this.dataservice.getAsymmetries().length;
+                break;
+            case 'C':
+                datalength = this.dataservice.getCalcifications().length;
+                break;
+            default:
+        }
+
+        for(let i = index+1; i <= datalength; i++){
+            element = document.getElementById(method+ (i + 1) + 'a');
+            element.id = method + i + 'a';
+            element.innerHTML = method + i;
+            element.innerHTML = `<div class='badge'>${method}${i}</div>`;
+            element = document.getElementById(method+ (i + 1) + 'b');
+            element.id = method + i + 'b';
+            element.innerHTML = `<div class='badge'>${method}${i}</div>`;
 
         }
-        //TODO: DO THE SAME FOR THE OTHER METHODS
     }
 }
 
