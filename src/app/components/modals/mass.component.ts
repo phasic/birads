@@ -133,6 +133,7 @@ export class MassComponent implements OnChanges{
     endOfMenu(): void{
         this.addTable();                                    //add data to the table and dataervice
         this.pagectrl.createBadge(this.elementref);         //create a badge on the image
+        this.pagectrl.calculateBadgeDistance();
     }
     addTable(): void{                       //add the data
         let sx ,sy, fx, fy: number;                         //get the clicked locations

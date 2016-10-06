@@ -1,8 +1,6 @@
 import {Component}      from '@angular/core';
 import {PageController} from "../../services/page.controller";
 import {DataService} from "../../services/data.service";
-
-
 @Component({
     selector: 'sidebar-component',
     templateUrl: '../../templates/map/sidebar.template.html'
@@ -11,8 +9,8 @@ export class SidebarComponent {
     /**
      * Constructor of SidebarComponent
      *
-     * @param dataservice
-     * @param pagectrl
+     * @param dataservice   this service stores all the data
+     * @param pagectrl      page controller manages functions to assure functionality (tracking click, adding badges, ... )
      */
     constructor(private dataservice: DataService, private pagectrl: PageController) {
     }
@@ -21,7 +19,7 @@ export class SidebarComponent {
      * hotKeys gets called when we press a keyboard key
      * Change the keycodes if you want to change the hotkeys
      *
-     * @param keycode
+     * @param keycode   the keycode of the clicked keyboard key
      */
     hotKeys(keycode: number): void {
         if(!this.pagectrl.isMenuShown()){   //check if a menu (modal) is shown

@@ -34,16 +34,10 @@ export class ScreenResize {
     }
     @HostListener('window:resize',['$event'])
     onResize(event: Event): void{
-        //TODO RESIZE, DO THIS LATER
         this.imagediv = document.getElementById('images').getBoundingClientRect();
         this.wscale = this.imagediv.width / this.divW;
         this.hscale = this.imagediv.height / this.divH;
 
-        // console.log('111111111');
-        // console.log(this.pagectrl.getBadgeLocations());
-        // for(let x of this.pagectrl.getBadgeLocations()){
-        //     console.log(x)
-        // }
 
 
         let locX: number;
@@ -58,7 +52,6 @@ export class ScreenResize {
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].front.x*this.wscale ;
              locY = this.imagediv.top + this.pagectrl.getBadgeLocations().mass[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().distortion.length; i++){
             this.badge = document.getElementById('D' + i + 's');
@@ -69,7 +62,6 @@ export class ScreenResize {
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().distortion[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().distortion[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().asymmetry.length; i++){
             this.badge = document.getElementById('A' + i + 's');
@@ -80,7 +72,6 @@ export class ScreenResize {
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().asymmetry[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().asymmetry[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-
         }
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().calcification.length; i++){
             this.badge = document.getElementById('C' + i + 's');
@@ -91,20 +82,7 @@ export class ScreenResize {
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().calcification[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().calcification[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-
         }
-
-
-        // let locX: number = this.imagediv.left + this.pagectrl.getBadgeLocations().distortion[0].side.x*this.wscale ;
-        // let locY: number = this.imagediv.top + this.pagectrl.getBadgeLocations().distortion[0].side.y*this.hscale ;
-        //
-        // this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
-
-
-
     }
-
-
-
 }
 

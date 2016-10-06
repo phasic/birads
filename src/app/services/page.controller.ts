@@ -47,8 +47,6 @@ export class PageController {
             }
         }[]
     };
-
-
     constructor( private dataservice: DataService) {
         this.method = '';
         this.showmenu = '';
@@ -168,11 +166,6 @@ export class PageController {
         this.frontX = frontX;
         this.frontY = frontY;
     }
-    test(event){
-        console.log("TEST");
-        event.preventDefault();
-        event.stopPropagation();
-    }
     private height: string;
     setClickedHeight(height: number){
         if(height <= 0.5){
@@ -202,7 +195,6 @@ export class PageController {
         this.sideY -= imagediv.top;
         this.frontY -= imagediv.top;
 
-        //TODO this can be wrond, look into it if it forms a problem
 
         let badgecoordinates: any = {
             side: {
@@ -229,5 +221,50 @@ export class PageController {
     }
     getBadgeLocations(): any{
         return this.badgelocations;
+    }
+
+
+    private firstclickedimage: any;
+    setFirstClickedImage(clickedimage: any): void{
+        this.firstclickedimage = clickedimage;
+
+    }
+    private secondclickedimage: any;
+    setSecondClickedImage(clickedimage: any): void{
+        this.secondclickedimage = clickedimage;
+    }
+    calculateBadgeDistance(): void{
+        // console.log(`in calculateBadgeDistance`);
+        let sx ,sy, fx, fy, frontimagex, frontimagey, sideimagex, sideimagey: number;                         //get the clicked locations
+        sx = this.getSideX();
+        sy = this.getSideY();
+        fx = this.getFrontX();
+        fy = this.getFrontY();
+
+        if(this.firstclickedimage.id.slice(1,2) === 'F'){
+            frontimagex = this.firstclickedimage.width;
+            frontimagey = this.firstclickedimage.height;
+            sideimagex = this.secondclickedimage.width;
+            sideimagey = this.secondclickedimage.height;
+        }
+        else if(this.firstclickedimage.id.slice(1,2) === 'S'){
+            sideimagex = this.firstclickedimage.width;
+            sideimagey = this.firstclickedimage.height;
+            frontimagex = this.secondclickedimage.width;
+            sideimagey = this.secondclickedimage.height;
+        }
+
+
+        //TODO WE GOT THE CLICK LOCATION ON IMAGE, WE GOT THE SIZES OF IMAGES, NOG START THE MATH
+
+
+
+        console.log(this.firstclickedimage.id.slice(1,2));
+        console.log(this.secondclickedimage);
+        // console.log(event.offsetX);
+        // console.log(`image: ${event.target.width}`);
+
+        // console.log(`sx: ${sx}, sy: ${sy}, fx: ${fx}, fy: ${fy}`);
+
     }
 }
