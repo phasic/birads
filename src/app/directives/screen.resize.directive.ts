@@ -3,6 +3,7 @@ import {DataService} from "../services/data.service";
 import {element} from "protractor";
 import {PageController} from "../services/page.controller";
 
+//TODO AFTER AN ENTRY IS DELETED AND WE TRY TO RESIZE THE SCREEN, AN ARROR IS TROWN
 @Directive({
     selector: '[resize]'
 })
@@ -18,9 +19,6 @@ export class ScreenResize {
     private wscale: number;
     private hscale: number;
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementRef: ElementRef){
-        this.dataservice = dataservice;
-        this.pagectrl = pagectrl;
-        this.elementRef = elementRef;
         setTimeout(() => {
             this.imagediv = document.getElementById('images').getBoundingClientRect();
             this.divX = this.imagediv.left;
@@ -37,22 +35,42 @@ export class ScreenResize {
         this.imagediv = document.getElementById('images').getBoundingClientRect();
         this.wscale = this.imagediv.width / this.divW;
         this.hscale = this.imagediv.height / this.divH;
-
-
+        console.log(`WS: ${this.wscale}, HS: ${this.hscale}, W: ${this.divW}, H: ${this.divH}`);
 
         let locX: number;
         let locY: number;
-//TODO THIS IS TOO MESSY
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().mass.length; i++){
             this.badge = document.getElementById('M' + i + 's');
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].side.x*this.wscale ;
              locY = this.imagediv.top + this.pagectrl.getBadgeLocations().mass[i-1].side.y*this.hscale ;
+            // locX = ((this.pagectrl.getBadgeLocations().mass[i-1].side.x - this.imagediv.left) * this.wscale) + this.imagediv.left;
+            // locY = ((this.pagectrl.getBadgeLocations().mass[i-1].side.y - this.imagediv.top) * this.hscale) + this.imagediv.top;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
+
+
+
+
+
+
+
+
+
+
+
+
             this.badge = document.getElementById('M' + i + 'f');
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].front.x*this.wscale ;
              locY = this.imagediv.top + this.pagectrl.getBadgeLocations().mass[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
         }
+
+
+
+
+
+
+
+
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().distortion.length; i++){
             this.badge = document.getElementById('D' + i + 's');
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().distortion[i-1].side.x*this.wscale ;

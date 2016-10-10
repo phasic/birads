@@ -27,9 +27,9 @@ export class DistortionComponent implements OnChanges{
 
     }
     endOfMenu(): void{
-        this.addTable();
-        this.pagectrl.createBadge(this.elementref);
         this.pagectrl.calculateBadgeDistance();
+        this.addTable();
+        this.pagectrl.renderBadge(this.elementref);
     }
     addTable(): void{
         this.dataservice.addDistortions("architectural distortion");

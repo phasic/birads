@@ -13,10 +13,6 @@ export class AppComponent {
     this.pagectrl = pagectrl;
   }
 
-  test(keycode){
-    event.stopPropagation();
-    event.preventDefault();
-    console.log("TEEST RIGHT CLICK!!");
-  }
+
 }
 

@@ -22,7 +22,8 @@ export class SidebarComponent {
      * @param keycode   the keycode of the clicked keyboard key
      */
     hotKeys(keycode: number): void {
-        if(!this.pagectrl.isMenuShown()){   //check if a menu (modal) is shown
+        //TODO lock sidebar when modal is up
+
             switch (keycode) {
                 case 81: //Q
                     this.pagectrl.setMethod('mass');
@@ -38,6 +39,6 @@ export class SidebarComponent {
                     break;
                 default:
             }
-        }
+
     }
 }

@@ -3,6 +3,7 @@ import {DataService} from "./data.service";
 
 @Injectable()
 export class PageController {
+
     private method: string;
     private showmenu: string;
     private badgelocations: {
@@ -51,7 +52,6 @@ export class PageController {
         this.method = '';
         this.showmenu = '';
         this.numberofclicks = 0;
-        this.height = '';
         this.badgelocations = {
             mass: [],
             distortion: [],
@@ -59,7 +59,6 @@ export class PageController {
             calcification: []
         };
     }
-
     setMethod(method: string): void {
         this.method = method;
     }
@@ -76,26 +75,13 @@ export class PageController {
         return (this.showmenu !== '');
     }
 
-    createBadge(elementref: ElementRef) {
-        switch (this.getMethod()) {
-            case 'mass':
-                this.renderBadge('M', elementref);
-                break;
-            case 'distortion':
-                this.renderBadge('D', elementref);
-                break;
-            case 'asymmetry':
-                this.renderBadge('A', elementref);
-                break;
-            case 'calcification':
-                this.renderBadge('C', elementref);
-                break;
-            default:
-        }
-    }
-    renderBadge(argument: string, elementref: ElementRef): void {
+
+
+
+    renderBadge(elementref: ElementRef): void {
+        let argument: string;
         let index: number;
-        switch (argument) {
+        switch (argument = this.getMethod().slice(0,1).toLocaleUpperCase()) {
             case 'M':
                 index = this.dataservice.getMass().length;
                 break;
@@ -109,28 +95,27 @@ export class PageController {
                 index = this.dataservice.getCalcifications().length;
         }
 
-
-        this.sideX = this.sideX - 15;
-        this.sideY = this.sideY - 5;
-        this.frontX = this.frontX - 15;
-        this.frontY = this.frontY - 5;
-
+        let badgefrontX, badgefrontY, badgesideX : number;
+        badgefrontX = this.frontimage.x + this.frontclickedX - 15;
+        badgefrontY = this.frontimage.y + this.frontclickedY - 5;
+        badgesideX = this.sideimage.x + this.sideclickedX - 15;
 
         let tmp: any;
         tmp = document.createElement('div');
         tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.frontY}; left:${this.sideX}`;
+        tmp.style = `position: fixed; top:${badgefrontY}; left:${badgesideX}`;
         tmp.id = argument + index + 's';
         elementref.nativeElement.appendChild(tmp);
-
+        console.log(tmp);
         tmp = document.createElement('div');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${this.frontY}; left:${this.frontX}`;
+        tmp.style = `position: fixed; top:${badgefrontY}; left:${badgefrontX}`;
         tmp.id = argument + index + 'f';
         elementref.nativeElement.appendChild(tmp);
+        console.log(tmp);
 
-        this.saveBadgeLocation(argument);
+        this.saveBadgeLocation(argument, badgefrontX, badgefrontY, badgesideX, badgefrontY);
     }
     private numberofclicks: number;
     setNumberOfClicks(numberofclicks: number): void{
@@ -139,71 +124,29 @@ export class PageController {
     getNumberOfClicks(): number{
         return this.numberofclicks;
     }
-    addClick(): void{
-        this.numberofclicks++;
-    }
-    private sideX: number;
-    private sideY: number;
-    private frontX: number;
-    private frontY: number;
-    getSideX(): number{
-        return this.sideX;
-    }
-    getSideY(): number{
-        return this.sideY;
-    }
-    setSideLoc(sideX: number, sideY: number): void{
-        this.sideX = sideX;
-        this.sideY = sideY;
-    }
-    getFrontX(): number{
-        return this.frontX;
-    }
-    getFrontY(): number{
-        return this.frontY;
-    }
-    setFrontLoc(frontX: number, frontY: number): void{
-        this.frontX = frontX;
-        this.frontY = frontY;
-    }
-    private height: string;
-    setClickedHeight(height: number){
-        if(height <= 0.5){
-            this.height = "top";
-        }
-        else if(height > 0.5){
-            this.height = "bottom";
-        }
-    }
-    getclickedHeight(): string{
-        return this.height;
-    }
-    checkClickedHeight(clickoffset: number, imgsize: number): boolean{     //compares second click with height of the first click
-        let height2: number = clickoffset/imgsize;
-        return ((height2 <= 0.5 && this.height == 'top') || (height2 > 0.5 && this.height == 'bottom'));
 
-    }
+
+    saveBadgeLocation(argument: string, frontX: number, frontY: number, sideX: number, sideY: number): void{
+        console.log(`in saveBadgeLocation`);
+
+        let imgdiv: any = document.getElementById('images').getBoundingClientRect();
+        console.log(imgdiv);
+        frontX -= imgdiv.left;
+        frontY -= imgdiv.top;
+        sideX -= imgdiv.left;
+        sideY -= imgdiv.top;
 
 
 
-    saveBadgeLocation(argument: string): void {
-        //make the badlocation first relative to the image instead of to the screen
-
-        let imagediv: any = document.getElementById('images').getBoundingClientRect();
-        this.sideX -= imagediv.left;
-        this.frontX -= imagediv.left;
-        this.sideY -= imagediv.top;
-        this.frontY -= imagediv.top;
-
-
+        console.log(`${argument}, front: ${frontX}, ${frontY}, side: ${sideX}, ${sideY}`);
         let badgecoordinates: any = {
             side: {
-                x: this.sideX,
-                y: this.frontY
+                x: sideX,
+                y: sideY
             },
             front: {
-                x: this.frontX,
-                y: this.frontY
+                x: frontX,
+                y: frontY
             }
         };
         if (argument == 'M') {
@@ -218,53 +161,80 @@ export class PageController {
         else if(argument == 'C'){
             this.badgelocations.calcification.push(badgecoordinates);
         }
+
     }
     getBadgeLocations(): any{
         return this.badgelocations;
     }
 
 
-    private firstclickedimage: any;
-    setFirstClickedImage(clickedimage: any): void{
-        this.firstclickedimage = clickedimage;
 
+    /*--- MAP COMPONENT ---*/
+    private frontimage: any;
+    private sideimage: any;
+    private frontclickedX:number;
+    private frontclickedY: number;
+    private sideclickedX: number;
+    private sideclickedY: number;
+
+    setClickedImage(image: any, event: any): void{
+        if(image.id.slice(1,2) === 'F') {
+            this.frontimage = image;
+            this.frontclickedX = event.offsetX;
+            this.frontclickedY = event.offsetY;
+        }
+        else if(image.id.slice(1,2) === 'S'){
+            this.sideimage = image;
+            this.sideclickedX = event.offsetX;
+            this.sideclickedY = event.offsetY;
+        }
     }
-    private secondclickedimage: any;
-    setSecondClickedImage(clickedimage: any): void{
-        this.secondclickedimage = clickedimage;
+
+
+
+
+
+    private _distanceX: number;
+    private _distanceY: number;
+    private _distanceZ: number;
+    //TODO MAKE EVERY GETTER AND SETTER LIKE THIS
+    get distanceZ(): number {
+        return this._distanceZ;
+    }
+    set distanceZ(value: number) {
+        this._distanceZ = value;
+    }
+    get distanceY(): number {
+        return this._distanceY;
+    }
+    set distanceY(value: number) {
+        this._distanceY = value;
+    }
+    get distanceX(): number {
+        return this._distanceX;
+    }
+    set distanceX(value: number) {
+        this._distanceX = value;
     }
     calculateBadgeDistance(): void{
-        // console.log(`in calculateBadgeDistance`);
-        let sx ,sy, fx, fy, frontimagex, frontimagey, sideimagex, sideimagey: number;                         //get the clicked locations
-        sx = this.getSideX();
-        sy = this.getSideY();
-        fx = this.getFrontX();
-        fy = this.getFrontY();
+        //TODO CALCULATE THE DISTANCE SOONER IN CLICKEDMAP, AND CHECK IF WE CLICKED OUTSIDE THE BREAST
 
-        if(this.firstclickedimage.id.slice(1,2) === 'F'){
-            frontimagex = this.firstclickedimage.width;
-            frontimagey = this.firstclickedimage.height;
-            sideimagex = this.secondclickedimage.width;
-            sideimagey = this.secondclickedimage.height;
+        let originX, originY, originZ: number;
+
+        originY = this.frontimage.height * 0.5;
+        originZ = this.sideimage.width * 0.483;
+
+        if(this.frontimage.id.slice(0,1) == 'R') {
+            originX = this.frontimage.width * 0.516;  //DONT CHANGE THIS NUMBER!!!!
+            this.distanceX = parseFloat(((this.frontclickedX  - originX) / originX).toFixed(2));
+            this.distanceY = parseFloat((-(this.frontclickedY - originY) / originY).toFixed(2));
+            this.distanceZ = parseFloat(((this.sideclickedX - originZ) / originZ).toFixed(2));
         }
-        else if(this.firstclickedimage.id.slice(1,2) === 'S'){
-            sideimagex = this.firstclickedimage.width;
-            sideimagey = this.firstclickedimage.height;
-            frontimagex = this.secondclickedimage.width;
-            sideimagey = this.secondclickedimage.height;
+        else if(this.frontimage.id.slice(0,1) == 'L'){
+            originX = this.frontimage.width * 0.468;  //TODO MAKE EVERY IMAGE THE SAME SIZE THEN WE CAN DELETE THESE LINES
+            this.distanceX = parseFloat(((this.frontclickedX  - originX) / originX).toFixed(2));
+            this.distanceY = parseFloat((-(this.frontclickedY - originY) / originY).toFixed(2));
+            this.distanceZ = parseFloat((-(this.sideclickedX - originZ) / originZ).toFixed(2));
         }
-
-
-        //TODO WE GOT THE CLICK LOCATION ON IMAGE, WE GOT THE SIZES OF IMAGES, NOG START THE MATH
-
-
-
-        console.log(this.firstclickedimage.id.slice(1,2));
-        console.log(this.secondclickedimage);
-        // console.log(event.offsetX);
-        // console.log(`image: ${event.target.width}`);
-
-        // console.log(`sx: ${sx}, sy: ${sy}, fx: ${fx}, fy: ${fy}`);
-
     }
 }

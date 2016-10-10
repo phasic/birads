@@ -16,8 +16,9 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Front</th>
-                <th>Side</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
                 <th>Size</th>
                 <th>Shape</th>
                 <th>Margin</th>
@@ -27,8 +28,9 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getMass(); let i = index">
                 <td>{{i + 1}}</td>
-                <td>{{entry.sideX}},{{entry.sideY}}</td>
-                <td>{{entry.frontX}},{{entry.frontY}}</td>
+                <td>{{entry.distanceX}}</td>
+                <td>{{entry.distanceY}}</td>
+                <td>{{entry.distanceZ}}</td>
                 <td>{{entry.size}}</td>
                 <td>{{entry.shape}}</td>
                 <td>{{entry.margin}}</td>

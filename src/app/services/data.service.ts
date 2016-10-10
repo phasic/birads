@@ -104,10 +104,9 @@ export class DataService {
     /*Findings (map) Variables */
     private mass: {
         size: number;
-        sideX: number;
-        sideY: number;
-        frontX: number;
-        frontY: number;
+        distanceX: number;
+        distanceY: number;
+        distanceZ: number;
         shape: string;
         margin: string;
         density: string;
@@ -121,31 +120,29 @@ export class DataService {
 
 
 
-    setMass(size: number, sx: number, sy: number, fx: number, fy: number, shape: string, margin: string, density: string): void {
+    setMass(size: number, distanceX: number, distanceY: number, distanceZ: number , shape: string, margin: string, density: string): void {
         this.mass = [{
             size: size,
-            sideX: sx,
-            sideY: sy,
-            frontX: fx,
-            frontY: fy,
+            distanceX: distanceX,
+            distanceY: distanceY,
+            distanceZ: distanceZ,
             shape: shape,
             margin: margin,
             density: density
         }]
     }
-    addMass(size: number, sx: number, sy: number, fx: number, fy: number, shape: string, margin: string, density: string): void {
+    addMass(size: number, distanceX: number, distanceY: number, distanceZ: number , shape: string, margin: string, density: string): void {
         if (this.mass == null) {
-            this.setMass(size, sx, sy, fx, fy, shape, margin, density)
+            this.setMass(size, distanceX, distanceY, distanceZ, shape, margin, density)
         }
         else {
             this.mass.push({
                     size: size,
-                    sideX: sx,
-                    sideY: sy,
-                    frontX: fx,
-                    frontY: fy,
-                    density: density,
+                    distanceX: distanceX,
+                    distanceY: distanceY,
+                    distanceZ: distanceZ,
                     shape: shape,
+                    density: density,
                     margin: margin,
                 }
             );

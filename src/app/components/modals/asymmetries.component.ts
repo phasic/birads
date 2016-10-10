@@ -107,9 +107,9 @@ export class AsymmetriesComponent implements OnChanges{
      * Calls function to add the data to the dataervice, and creates a badge on the right location and calculate the distance
      */
     endOfMenu(): void{
-        this.addTable();
-        this.pagectrl.createBadge(this.elementref);
         this.pagectrl.calculateBadgeDistance();
+        this.addTable();
+        this.pagectrl.renderBadge(this.elementref);
 
     }
 
