@@ -117,7 +117,11 @@ export class AsymmetriesComponent implements OnChanges{
      * Binds the data to the dataservice
      */
     addTable(): void{
-        this.dataservice.addAsymmetries(this.asymmetry);
+        let distanceX ,distanceY, distanceZ: number;                         //get the clicked locations
+        distanceX = this.pagectrl.distanceX;
+        distanceY = this.pagectrl.distanceY;
+        distanceZ = this.pagectrl.distanceZ;
+        this.dataservice.addAsymmetries(distanceX, distanceY, distanceZ, this.asymmetry);
     }
 
     /**

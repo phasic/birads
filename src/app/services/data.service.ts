@@ -111,9 +111,23 @@ export class DataService {
         margin: string;
         density: string;
     }[];
-    private distortions: Array<string>;
-    private asymmetries: Array<string>;
+    private distortions: {
+        distanceX: number;
+        distanceY: number;
+        distanceZ: number;
+        distortion: string;
+    }[];
+    // private asymmetries: Array<string>;
+    private asymmetries: {
+        distanceX: number;
+        distanceY: number;
+        distanceZ: number;
+        asymmetry: string;
+    }[];
     private calcifications: {
+        distanceX: number;
+        distanceY: number;
+        distanceZ: number;
         morphology: string;
         distribution: string;
     }[];
@@ -155,18 +169,27 @@ export class DataService {
         else
             return this.mass[index];
     }
-    setDistortions(distortion: Array<string>): void {
-        this.distortions = distortion;
+    setDistortions( distanceX: number, distanceY: number, distanceZ: number, distortion: string): void {
+        this.distortions = [{
+            distanceX: distanceX,
+            distanceY: distanceY,
+            distanceZ: distanceZ,
+            distortion: distortion
+        }]
     }
-    addDistortions(distortion: string): void {
+    addDistortions(distanceX: number, distanceY: number, distanceZ: number, distortion: string): void {
         if (this.distortions == null) {
-            this.setDistortions([distortion]);
-
+            this.setDistortions(distanceX, distanceY, distanceZ, distortion);
         }
         else {
-            this.distortions.push(distortion);
+            this.distortions.push({
+                    distanceX: distanceX,
+                    distanceY: distanceY,
+                    distanceZ: distanceZ,
+                    distortion: distortion
+                }
+            );
         }
-
     }
     getDistortions(index?: number): any {
         if (index == null) {
@@ -175,16 +198,27 @@ export class DataService {
         else
             return this.distortions[index];
     }
-    setAsymmetries(asymmetries: Array<string>): void {
-        this.asymmetries = asymmetries;
+    setAsymmetries(distanceX: number, distanceY: number, distanceZ: number, asymmetry: string): void {
+        this.asymmetries = [{
+            distanceX: distanceX,
+            distanceY: distanceY,
+            distanceZ: distanceZ,
+            asymmetry: asymmetry
+        }]
     }
-    addAsymmetries(asymmetry: string): void {
+    addAsymmetries(distanceX: number, distanceY: number, distanceZ: number, asymmetry: string): void {
         if (this.asymmetries == null) {
-            this.setAsymmetries([asymmetry])
+            this.setAsymmetries(distanceX, distanceY, distanceZ, asymmetry)
 
         }
         else {
-            this.asymmetries.push(asymmetry);
+            this.asymmetries.push({
+                    distanceX: distanceX,
+                    distanceY: distanceY,
+                    distanceZ: distanceZ,
+                    asymmetry: asymmetry
+                }
+            );
         }
     }
     getAsymmetries(index?: number): any {
@@ -194,18 +228,24 @@ export class DataService {
         else
             return this.asymmetries[index];
     }
-    setCalcifications(morphology: string, distribution: string): void {
+    setCalcifications(distanceX: number, distanceY: number, distanceZ: number, morphology: string, distribution: string): void {
         this.calcifications = [{
+            distanceX: distanceX,
+            distanceY: distanceY,
+            distanceZ: distanceZ,
             morphology: morphology,
             distribution: distribution
         }]
     }
-    addCalcifications(morphology: string, distribution: string): void {
+    addCalcifications(distanceX: number, distanceY: number, distanceZ: number, morphology: string, distribution: string): void {
         if (this.calcifications == null) {
-            this.setCalcifications(morphology, distribution);
+            this.setCalcifications(distanceX, distanceY, distanceZ, morphology, distribution);
         }
         else {
             this.calcifications.push({
+                distanceX: distanceX,
+                distanceY: distanceY,
+                distanceZ: distanceZ,
                 morphology: morphology,
                 distribution: distribution
             });

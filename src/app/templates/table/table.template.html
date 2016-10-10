@@ -47,15 +47,19 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Location</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
                 <th>Finding</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let entry of dataservice.getDistortions(); let i = index">
                 <td>{{i + 1}}</td>
-                <td>0000</td>
-                <td>{{entry}}</td>
+                <td>{{entry.distanceX}}</td>
+                <td>{{entry.distanceY}}</td>
+                <td>{{entry.distanceZ}}</td>
+                <td>{{entry.distortion}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'D')"></div> </td>
             </tr>
             </tbody>
@@ -67,15 +71,19 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Location</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
                 <th>Finding</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let entry of dataservice.getAsymmetries(); let i = index">
                 <td>{{i + 1}}</td>
-                <td>0000</td>
-                <td>{{entry}}</td>
+                <td>{{entry.distanceX}}</td>
+                <td>{{entry.distanceY}}</td>
+                <td>{{entry.distanceZ}}</td>
+                <td>{{entry.asymmetry}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'A')"></div> </td>
             </tr>
             </tbody>
@@ -87,7 +95,9 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Location</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
                 <th>Morphology</th>
                 <th>Distribution</th>
             </tr>
@@ -95,7 +105,9 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getCalcifications(); let i = index">
                 <td>{{i + 1}}</td>
-                <td>0000</td>
+                <td>{{entry.distanceX}}</td>
+                <td>{{entry.distanceY}}</td>
+                <td>{{entry.distanceZ}}</td>
                 <td>{{entry.morphology}}</td>
                 <td>{{entry.distribution}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'C')"></div> </td>

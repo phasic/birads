@@ -14,26 +14,23 @@ export class DistortionComponent implements OnChanges{
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     @Input() show: string;
-    @ViewChild('modal1') public modal1: ModalDirective;
-    @ViewChild('modal2') public modal2: ModalDirective;
-    @ViewChild('modal3') public modal3: ModalDirective;
     ngOnChanges(changes){
         if(this.show) {
             this.endOfMenu();
             setTimeout(() => { this.pagectrl.setShowmenu('');},10);
-
-
         }
-
     }
     endOfMenu(): void{
         this.pagectrl.calculateBadgeDistance();
-        this.addTable();
+        this.addToTable();
         this.pagectrl.renderBadge(this.elementref);
     }
-    addTable(): void{
-        this.dataservice.addDistortions("architectural distortion");
-
+    addToTable(): void{
+        let distanceX ,distanceY, distanceZ: number;                         //get the clicked locations
+        distanceX = this.pagectrl.distanceX;
+        distanceY = this.pagectrl.distanceY;
+        distanceZ = this.pagectrl.distanceZ;
+        this.dataservice.addDistortions(distanceX, distanceY, distanceZ, "architectural distortion");
     }
 
 
