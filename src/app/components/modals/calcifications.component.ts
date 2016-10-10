@@ -22,7 +22,6 @@ export class CalcificationComponent implements OnChanges{
             this.pagectrl.setMenuActive(true);
         }
     }
-
     private morphologyarraybenign: Array<string> = [
         'skin calcification',
         'milk of calcium',
@@ -53,157 +52,6 @@ export class CalcificationComponent implements OnChanges{
     private benign: boolean = true;
     private morphology: string;
     private distribution: string;
-    hotKeys(keycode: number, argument: string, page?: number): void{
-        // this.page.disableSidebar();
-
-        if(page){
-            page = 1;
-        }
-        else
-            page = 2;
-        switch (page + argument) {
-            case 1+'morphology':
-                switch (keycode) {
-                    case 192:       //~
-                        this.benign = !this.benign;
-                        break;
-                    case 49:       //1
-                    case 50:       //2
-                    case 51:       //3
-                    case 52:       //4
-                    case 53:       //5
-                    case 54:       //6
-                    case 55:       //7
-                    case 56:       //8
-                    case 57:       //9
-                        this.setFinding(keycode, argument, page);
-                        this.modal1.hide();
-                        this.modal2.show();
-                        break;
-                    default:
-                }
-                break;
-            case 2+'morphology':
-                switch (keycode) {
-                    case 192:
-                        this.benign = !this.benign;
-                        break;
-                    case 49:       //1
-                    case 50:       //2
-                    case 51:       //3
-                    case 52:       //4
-                    case 53:       //5
-                    case 54:       //6
-                        this.setFinding(keycode, argument, page);
-                        this.modal1.hide();
-                        this.modal2.show();
-                        break;
-                    default:
-                }
-                break;
-            default:
-                switch (keycode) {
-                    case 49:
-                    case 50:
-                    case 51:
-                    case 52:
-                    case 53:
-                        this.setFinding(keycode, argument);
-                        this.modal2.hide();
-                        this.pagectrl.setShowmenu('');
-                        this.endOfMenu();
-                        break;
-                    default:
-                }
-                break;
-        }
-
-    }
-
-
-    setFinding(keycode: number, argument: string, page?: number): void {
-        switch (page) {
-            case 1:
-                switch (keycode + argument) {
-                    case 49 + 'morphology':
-                        this.morphology = 'skin calcification';
-                        break;
-                    case 50 + 'morphology':
-                        this.morphology = 'milk of calcium';
-                        break;
-                    case 51 + 'morphology':
-                        this.morphology = 'rold-like - plasmacel mastisis';
-                        break;
-                    case 52 + 'morphology':
-                        this.morphology = 'dystrophoc';
-                        break;
-                    case 53 + 'morphology':
-                        this.morphology = 'popcorn - fibroadenoma';
-                        break;
-                    case 54 + 'morphology':
-                        this.morphology = 'rim calcification';
-                        break;
-                    case 55 + 'morphology':
-                        this.morphology = 'vascular calcification';
-                        break;
-                    case 56 + 'morphology':
-                        this.morphology = 'round';
-                        break;
-                    case 57 + 'morphology':
-                        this.morphology = 'punctate';
-                        break;
-                    default:
-
-                }
-                break;
-            case 2:
-                switch (keycode + argument) {
-                    case 49 + 'morphology':
-                        this.morphology = 'amorphous (benign)';
-                        break;
-                    case 50 + 'morphology':
-                        this.morphology = 'amorphous (DCIS)';
-                        break;
-                    case 51 + 'morphology':
-                        this.morphology = 'fine pleomorhpic';
-                        break;
-                    case 52 + 'morphology':
-                        this.morphology = 'coarse heterogeneous';
-                        break;
-                    case 53 + 'morphology':
-                        this.morphology = 'fine linear';
-                        break;
-                    case 54 + 'morphology':
-                        this.morphology = 'fine linear branching';
-                        break;
-                    default:
-
-                }
-                break;
-            default:
-                switch (keycode + argument) {
-                    case 49 + 'distribution':
-                        this.distribution = 'diffuse';
-                        break;
-                    case 50 + 'distribution':
-                        this.distribution = 'regional';
-                        break;
-                    case 51 + 'distribution':
-                        this.distribution = 'group';
-                        break;
-                    case 52 + 'distribution':
-                        this.distribution = 'linear';
-                        break;
-                    case 53 + 'distribution':
-                        this.distribution = 'segmental';
-                        break;
-                    default:
-                }
-                break;
-        }
-    }
-
-
     mouseControl(argument: string, finding: string): void{
         if(argument == 'morphology'){
             this.morphology = finding;
@@ -217,6 +65,51 @@ export class CalcificationComponent implements OnChanges{
 
         }
     }
+    hotKeys(keycode: number, argument: string): void{
+        // this.page.disableSidebar();
+        if(keycode == 192){
+            this.benign = !this.benign;
+        }
+        if(argument == 'morphology' && this.benign){
+            this.morphology = (keycode == 49) ? 'skin calcification' :
+                (keycode == 50) ? 'milk of calcium' :
+                    (keycode == 51) ? 'rod-like - plasmacel mastitis' :
+                        (keycode == 52) ? 'dystrophic' :
+                            (keycode == 53) ? 'popcorn - fibroadenoma' :
+                                (keycode == 54) ? 'rim calcification' :
+                                    (keycode == 55) ? 'vascular calcification' :
+                                        (keycode == 56) ? 'round' :
+                                            (keycode == 57) ? 'punctate' : '';
+            if(this.morphology != ''){
+                this.modal1.hide();
+                this.modal2.show();
+            }
+        }
+        if(argument == 'morphology' && !this.benign){
+            this.morphology = (keycode == 49) ? 'amorphous (benign)' :
+                (keycode == 50) ? 'amorphous (DCIS)' :
+                    (keycode == 51) ? 'fine pleomorphic' :
+                        (keycode == 52) ? 'coarse heterogeneous' :
+                            (keycode == 53) ? 'fine linear' :
+                                (keycode == 54) ? 'fine linear branching' : '';
+            if(this.morphology != ''){
+                this.modal1.hide();
+                this.modal2.show();
+            }
+        }
+        if(argument == 'distribution'){
+            this.distribution = (keycode == 49) ? 'diffuse' :
+                (keycode == 50) ? 'regional' :
+                    (keycode == 51) ? 'group' :
+                        (keycode == 52) ? 'linear' :
+                            (keycode == 53) ? 'segmental' : '';
+            if(this.distribution != ''){
+                this.modal2.hide();
+                this.endOfMenu();
+            }
+        }
+    }
+
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);
         this.pagectrl.calculateBadgeDistance();
@@ -230,6 +123,7 @@ export class CalcificationComponent implements OnChanges{
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {
             if(!this.modal1.isShown && !this.modal2.isShown  && (this.pagectrl.getShowmenu()!='')){
+                this.pagectrl.setShowmenu('');
                 this.pagectrl.setNumberOfClicks(0);
             }
         }, 10);

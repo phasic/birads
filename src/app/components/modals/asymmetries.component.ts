@@ -31,35 +31,14 @@ export class AsymmetriesComponent implements OnChanges{
         this.modal1.hide();
         this.endOfMenu();
     }
-    hotKeys(keycode: number): void{
-        switch(keycode){
-            case 49:
-            case 50:
-            case 51:
-            case 52:
-                this.setFinding(keycode);
-                this.modal1.hide();
-                this.pagectrl.setShowmenu('');
-                this.endOfMenu();
-                break;
-            default:
-        }
-    }
-    setFinding(keycode: number): void {
-        switch(keycode){
-            case 49:
-                this.asymmetry = 'asymmetry';
-                break;
-            case 50:
-                this.asymmetry= 'focal asymmetry';
-                break;
-            case 51:
-                this.asymmetry = 'global asymmetry';
-                break;
-            case 52:
-                this.asymmetry = "developing asymmetry";
-                break;
-            default:
+    hotKeys(keycode: number): void {
+        this.asymmetry = (keycode == 49) ? 'asymmetry' :
+            (keycode == 50) ? 'focal asymmetry' :
+                (keycode == 51) ? 'global asymmetry' :
+                    (keycode == 52) ? 'developing asymmetry' : '';
+        if (this.asymmetry != '') {
+            this.modal1.hide();
+            this.endOfMenu();
         }
     }
     endOfMenu(): void{
@@ -67,19 +46,11 @@ export class AsymmetriesComponent implements OnChanges{
         this.pagectrl.calculateBadgeDistance();
         this.addTable();
         this.pagectrl.renderBadge(this.elementref);
-
     }
-
-
     addTable(): void{
-        let distanceX ,distanceY, distanceZ: number;
-        distanceX = this.pagectrl.distanceX;
-        distanceY = this.pagectrl.distanceY;
-        distanceZ = this.pagectrl.distanceZ;
-        this.dataservice.addAsymmetries(distanceX, distanceY, distanceZ, this.asymmetry);
+        this.dataservice.addAsymmetries(this.pagectrl.distanceX, this.pagectrl.distanceY,
+            this.pagectrl.distanceZ, this.asymmetry);
     }
-
-
     modalInterrupt(){
         setTimeout(() => {
             if(!this.modal1.isShown && (this.pagectrl.getShowmenu()!='')){

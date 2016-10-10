@@ -106,6 +106,7 @@ export class MassComponent implements OnChanges{
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {
             if(!this.modal1.isShown && !this.modal2.isShown && !this.modal3.isShown && (this.pagectrl.getShowmenu()!='')){
+                this.pagectrl.setShowmenu('');
                 this.pagectrl.setNumberOfClicks(0);
             }
         }, 10);

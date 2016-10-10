@@ -5,11 +5,11 @@
             <div class="modal-header">
                 <h4 class="modal-title">Morphology (press ~ for more options) <button type="button" (click)="hotKeys(192, 'morphology')">more</button></h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body"  (keydown)="hotKeys($event.keyCode, 'morphology')">
                 <div *ngIf="this.benign">
                     <img *ngFor="let element of morphologyarraybenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl('morphology', element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
                 </div>
-                <div  (keydown)="hotKeys($event.keyCode, 'morphology', 2)" *ngIf="!this.benign">
+                <div  *ngIf="!this.benign">
                     <img *ngFor="let element of morphologyarraynotbenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl('morphology', element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
                 </div>
             </div>

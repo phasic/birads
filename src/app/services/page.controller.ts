@@ -115,13 +115,11 @@ export class PageController {
         tmp.style = `position: fixed; top:${badgefrontY}; left:${badgesideX}`;
         tmp.id = argument + index + 's';
         elementref.nativeElement.appendChild(tmp);
-        console.log(tmp);
         tmp = document.createElement('div');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${badgefrontY}; left:${badgefrontX}`;
         tmp.id = argument + index + 'f';
         elementref.nativeElement.appendChild(tmp);
-        console.log(tmp);
 
         this.saveBadgeLocation(argument, badgefrontX, badgefrontY, badgesideX, badgefrontY);
     }
@@ -135,10 +133,8 @@ export class PageController {
 
 
     saveBadgeLocation(argument: string, frontX: number, frontY: number, sideX: number, sideY: number): void{
-        console.log(`in saveBadgeLocation`);
 
         let imgdiv: any = document.getElementById('images').getBoundingClientRect();
-        console.log(imgdiv);
         frontX -= imgdiv.left;
         frontY -= imgdiv.top;
         sideX -= imgdiv.left;
@@ -146,7 +142,6 @@ export class PageController {
 
 
 
-        console.log(`${argument}, front: ${frontX}, ${frontY}, side: ${sideX}, ${sideY}`);
         let badgecoordinates: any = {
             side: {
                 x: sideX,

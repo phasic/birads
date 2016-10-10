@@ -22,7 +22,6 @@ export class SidebarComponent {
      * @param keycode   the keycode of the clicked keyboard key
      */
     hotKeys(keycode: number): void {
-        //TODO lock sidebar when modal is up
         if (!this.pagectrl.getMenuActive()) {
             switch (keycode) {
                 case 81: //Q
