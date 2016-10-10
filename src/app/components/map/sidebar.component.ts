@@ -23,7 +23,7 @@ export class SidebarComponent {
      */
     hotKeys(keycode: number): void {
         //TODO lock sidebar when modal is up
-
+        if (!this.pagectrl.getMenuActive()) {
             switch (keycode) {
                 case 81: //Q
                     this.pagectrl.setMethod('mass');
@@ -40,5 +40,6 @@ export class SidebarComponent {
                 default:
             }
 
+        }
     }
 }

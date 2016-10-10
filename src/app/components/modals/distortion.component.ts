@@ -26,11 +26,8 @@ export class DistortionComponent implements OnChanges{
         this.pagectrl.renderBadge(this.elementref);
     }
     addToTable(): void{
-        let distanceX ,distanceY, distanceZ: number;                         //get the clicked locations
-        distanceX = this.pagectrl.distanceX;
-        distanceY = this.pagectrl.distanceY;
-        distanceZ = this.pagectrl.distanceZ;
-        this.dataservice.addDistortions(distanceX, distanceY, distanceZ, "architectural distortion");
+        this.dataservice.addDistortions(this.pagectrl.distanceX, this.pagectrl.distanceY,
+            this.pagectrl.distanceZ, "architectural distortion");
     }
 
 

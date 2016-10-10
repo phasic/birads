@@ -19,6 +19,7 @@ export class CalcificationComponent implements OnChanges{
     ngOnChanges(changes){
         if(this.show) {
             this.modal1.show();
+            this.pagectrl.setMenuActive(true);
         }
     }
 
@@ -217,21 +218,18 @@ export class CalcificationComponent implements OnChanges{
         }
     }
     endOfMenu(): void{
+        this.pagectrl.setMenuActive(false);
         this.pagectrl.calculateBadgeDistance();
         this.addTable();
         this.pagectrl.renderBadge(this.elementref);
     }
     addTable(): void{
-        let distanceX ,distanceY, distanceZ: number;                         //get the clicked locations
-        distanceX = this.pagectrl.distanceX;
-        distanceY = this.pagectrl.distanceY;
-        distanceZ = this.pagectrl.distanceZ;
-        this.dataservice.addCalcifications(distanceX, distanceY, distanceZ, this.morphology, this.distribution);
+        this.dataservice.addCalcifications(this.pagectrl.distanceX, this.pagectrl.distanceY,
+            this.pagectrl.distanceZ, this.morphology, this.distribution);
     }
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {
             if(!this.modal1.isShown && !this.modal2.isShown  && (this.pagectrl.getShowmenu()!='')){
-                this.pagectrl.setShowmenu('');
                 this.pagectrl.setNumberOfClicks(0);
             }
         }, 10);

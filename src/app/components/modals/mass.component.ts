@@ -20,6 +20,7 @@ export class MassComponent implements OnChanges{
     ngOnChanges(changes){
         if(this.show) {
             this.modal1.show();
+            this.pagectrl.setMenuActive(true);
         }
     }
     private shapearray: Array<string> = [       //values of shape
@@ -93,21 +94,18 @@ export class MassComponent implements OnChanges{
         }
     }
     endOfMenu(): void{
+        this.pagectrl.setMenuActive(false);
         this.pagectrl.calculateBadgeDistance();
         this.addToTable();                                    //add data to the table and dataervice
         this.pagectrl.renderBadge(this.elementref);         //create a badge on the image
     }
     addToTable(): void{                       //add the data
-        let distanceX ,distanceY, distanceZ: number;                         //get the clicked locations
-        distanceX = this.pagectrl.distanceX;
-        distanceY = this.pagectrl.distanceY;
-        distanceZ = this.pagectrl.distanceZ;
-        this.dataservice.addMass(0, distanceX, distanceY, distanceZ,  this.shape, this.margin, this.density);    //bind everything to the dataervice
+        this.dataservice.addMass(0, this.pagectrl.distanceX, this.pagectrl.distanceY,
+            this.pagectrl.distanceZ,  this.shape, this.margin, this.density);    //bind everything to the dataervice
     }
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {
             if(!this.modal1.isShown && !this.modal2.isShown && !this.modal3.isShown && (this.pagectrl.getShowmenu()!='')){
-                this.pagectrl.setShowmenu('');
                 this.pagectrl.setNumberOfClicks(0);
             }
         }, 10);

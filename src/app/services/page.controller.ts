@@ -74,6 +74,14 @@ export class PageController {
     isMenuShown(): boolean {
         return (this.showmenu !== '');
     }
+    private menuactive: boolean;
+
+    setMenuActive(value: boolean): void{
+        this.menuactive = value;
+    }
+    getMenuActive(): boolean{
+        return this.menuactive;
+    }
 
 
 
