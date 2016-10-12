@@ -7,7 +7,7 @@ import {HotkeyService} from "../../services/hotkey.service";
     templateUrl: '../../templates/table/table.template.html'
 })
 export class TableComponent{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private hotkey: HotkeyService){
+    constructor(private dataservice: DataService, private pagectrl: PageController){
     }
     removeEntry(index: number, method: string): void{           //remove an entry from the table
         switch (method) {
@@ -32,13 +32,10 @@ export class TableComponent{
     }
 
     removeBadge(index: number, method: string): void{
-
-
         let element:any = document.getElementById(method+ (index+1) + 's');     //get the side badge
         element.remove();                                                       //destroy that element
         element = document.getElementById(method+ (index+1) + 'f');             //get the front badge
         element.remove();                                                       //destroy that element
-
         let datalength: any;                                        //the length of the array of that certain method
         switch (method){
             case 'M':
@@ -59,7 +56,6 @@ export class TableComponent{
                 break;
             default:
         }
-
         for(let i = index+1; i <= datalength; i++){  //iterate over the method array, starting from the removed element, until the end
             element = document.getElementById(method+ (i + 1) + 's');           //get the side badge
             element.id = method + i + 's';                                      //lower the id with 1
@@ -71,8 +67,30 @@ export class TableComponent{
 
     }
 
-    test(): void{
-        this.hotkey.test();
+
+    setDistance(distance: any, method: string, index: number): void{
+        distance = parseFloat(distance);
+        let data: any = this.dataservice;
+        if(method == 'M'){
+            data = data.getMass(index);
+            data.distance = distance;
+            this.dataservice.setMass(data, index);
+        }
+        else if(method == 'D'){
+            data = data.getDistortions(index);
+            data.distance = distance;
+            this.dataservice.setDistortions(data, index);
+        }
+        else if(method == 'A'){
+            data = data.getAsymmetries(index);
+            data.distance = distance;
+            this.dataservice.setAsymmetries(data, index);
+        }
+        else if(method == 'C'){
+            data = data.getCalcifications(index);
+            data.distance = distance;
+            this.dataservice.setCalcifications(data, index);
+        }
     }
 }
 

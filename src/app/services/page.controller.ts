@@ -4,8 +4,14 @@ import {DataService} from "./data.service";
 @Injectable()
 export class PageController {
 
+
+
     private method: string;
     private showmenu: string;
+    private _firstclicklocation: {
+        x: number,
+        y: number
+    };
     private badgelocations: {
         mass: {
             side: {
@@ -103,24 +109,23 @@ export class PageController {
                 index = this.dataservice.getCalcifications().length;
         }
 
-        let badgefrontX, badgefrontY, badgesideX : number;
-        badgefrontX = this.frontimage.x + this.frontclickedX - 15;
-        badgefrontY = this.frontimage.y + this.frontclickedY - 5;
-        badgesideX = this.sideimage.x + this.sideclickedX - 15;
+        let badgefrontX: number = this.frontimage.x + this.frontclickedX;
+        let badgesideX: number = this.sideimage.x + this.sideclickedX;
+        let badgeY: number = this.firstimage.y + this.firstclickedY;
 
         let tmp: any;
         tmp = document.createElement('div');
-        tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${badgefrontY}; left:${badgesideX}`;
+        tmp.innerHTML = `<div class='circle-finding'>${argument}${index}</div>`;
+        tmp.style = `position: fixed; top:${badgeY}; left:${badgesideX}`;
         tmp.id = argument + index + 's';
         elementref.nativeElement.appendChild(tmp);
         tmp = document.createElement('div');
-        tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
-        tmp.style = `position: fixed; top:${badgefrontY}; left:${badgefrontX}`;
+        tmp.innerHTML = `<div class='circle-finding'>${argument}${index}</div>`;
+        tmp.style = `position: fixed; top:${badgeY}; left:${badgefrontX}`;
         tmp.id = argument + index + 'f';
         elementref.nativeElement.appendChild(tmp);
 
-        this.saveBadgeLocation(argument, badgefrontX, badgefrontY, badgesideX, badgefrontY);
+        this.saveBadgeLocation(argument, badgefrontX, badgeY, badgesideX, badgeY);
     }
     private numberofclicks: number;
     setNumberOfClicks(numberofclicks: number): void{
@@ -138,8 +143,6 @@ export class PageController {
         frontY -= imgdiv.top;
         sideX -= imgdiv.left;
         sideY -= imgdiv.top;
-
-
 
         let badgecoordinates: any = {
             side: {
@@ -171,6 +174,13 @@ export class PageController {
     setBadgeLocations(badgelocation: any): void{
         this.badgelocations = badgelocation;
     }
+    get firstclicklocation(): {x: number; y: number} {
+        return this._firstclicklocation;
+    }
+
+    set firstclicklocation(value: {x: number; y: number}) {
+        this._firstclicklocation = value;
+    }
 
     removeLocation(method: string, index: number): void{
         switch (method){
@@ -194,12 +204,18 @@ export class PageController {
     /*--- MAP COMPONENT ---*/
     private frontimage: any;
     private sideimage: any;
+    private firstimage: any;
     private frontclickedX:number;
     private frontclickedY: number;
     private sideclickedX: number;
     private sideclickedY: number;
+    private firstclickedY: number;
 
-    setClickedImage(image: any, event: any): void{
+    setClickedImage(image: any, event: any, first?: boolean): void{
+        if(first){
+            this.firstimage = image;
+            this.firstclickedY = event.offsetY;
+        }
         if(image.id.slice(1,2) === 'F') {
             this.frontimage = image;
             this.frontclickedX = event.offsetX;
@@ -215,11 +231,10 @@ export class PageController {
 
 
 
-
     private _distanceX: number;
     private _distanceY: number;
     private _distanceZ: number;
-    //TODO MAKE EVERY GETTER AND SETTER LIKE THIS
+    private _distance: number;
     get distanceZ(): number {
         return this._distanceZ;
     }
@@ -238,6 +253,13 @@ export class PageController {
     set distanceX(value: number) {
         this._distanceX = value;
     }
+    get distance(): number {
+        return this._distance;
+    }
+
+    set distance(value: number) {
+        this._distance = value;
+    }
     calculateBadgeDistance(): void{
         //TODO CALCULATE THE DISTANCE SOONER IN CLICKEDMAP, AND CHECK IF WE CLICKED OUTSIDE THE BREAST
 
@@ -248,15 +270,17 @@ export class PageController {
 
         if(this.frontimage.id.slice(0,1) == 'R') {
             originX = this.frontimage.width * 0.516;  //DONT CHANGE THIS NUMBER!!!!
-            this.distanceX = parseFloat(((this.frontclickedX  - originX) / originX).toFixed(2));
-            this.distanceY = parseFloat((-(this.frontclickedY - originY) / originY).toFixed(2));
-            this.distanceZ = parseFloat(((this.sideclickedX - originZ) / originZ).toFixed(2));
+            this.distanceX = (this.frontclickedX  - originX) / originX;
+            this.distanceY = -(this.frontclickedY - originY) / originY;
+            // this.distanceZ = parseFloat(((this.sideclickedX - originZ) / originZ).toFixed(2));
         }
         else if(this.frontimage.id.slice(0,1) == 'L'){
             originX = this.frontimage.width * 0.468;  //TODO MAKE EVERY IMAGE THE SAME SIZE THEN WE CAN DELETE THESE LINES
-            this.distanceX = parseFloat(((this.frontclickedX  - originX) / originX).toFixed(2));
-            this.distanceY = parseFloat((-(this.frontclickedY - originY) / originY).toFixed(2));
-            this.distanceZ = parseFloat((-(this.sideclickedX - originZ) / originZ).toFixed(2));
+            this.distanceX = (this.frontclickedX  - originX) / originX;
+            this.distanceY = -(this.frontclickedY - originY) / originY;
+            // this.distanceZ = parseFloat((-(this.sideclickedX - originZ) / originZ).toFixed(2));
         }
+        //TODO optimize this calculation
+        this.distance = parseFloat((Math.sqrt(Math.pow(this.distanceX, 2) + Math.pow(this.distanceY,2))/Math.sqrt(2)).toFixed(2));
     }
 }

@@ -118,8 +118,7 @@ export class CalcificationComponent implements OnChanges{
         this.pagectrl.renderBadge(this.elementref);
     }
     addTable(): void{
-        this.dataservice.addCalcifications(this.pagectrl.distanceX, this.pagectrl.distanceY,
-            this.pagectrl.distanceZ, this.morphology, this.distribution);
+        this.dataservice.addCalcifications(this.pagectrl.distance, this.morphology, this.distribution);
     }
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {

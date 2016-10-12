@@ -62,8 +62,6 @@ export class MassComponent implements OnChanges{
             this.endOfMenu();
         }
     }
-
-    //TODO MAKE A KEYBIND CONTROLLER, if we need to change keybinds, we can do it in 1 file (get it from json would be cool)
     hotKeys(keycode: number, argument: string): void{
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;
         if(argument == 'shape') {
@@ -103,8 +101,7 @@ export class MassComponent implements OnChanges{
         this.pagectrl.renderBadge(this.elementref);         //create a badge on the image
     }
     addToTable(): void{                       //add the data
-        this.dataservice.addMass(0, this.pagectrl.distanceX, this.pagectrl.distanceY,
-            this.pagectrl.distanceZ,  this.shape, this.margin, this.density);    //bind everything to the dataervice
+        this.dataservice.addMass(0, this.pagectrl.distance, this.shape, this.margin, this.density);    //bind everything to the dataervice
     }
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {

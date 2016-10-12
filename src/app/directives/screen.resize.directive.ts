@@ -37,6 +37,8 @@ export class ScreenResize {
 
         let locX: number;
         let locY: number;
+
+
         for(let i = 1; i <= this.pagectrl.getBadgeLocations().mass.length; i++){
             this.badge = document.getElementById('M' + i + 's');
              locX = this.imagediv.left + this.pagectrl.getBadgeLocations().mass[i-1].side.x*this.wscale ;
@@ -76,6 +78,13 @@ export class ScreenResize {
             locX = this.imagediv.left + this.pagectrl.getBadgeLocations().calcification[i-1].front.x*this.wscale ;
             locY = this.imagediv.top + this.pagectrl.getBadgeLocations().calcification[i-1].front.y*this.hscale ;
             this.badge.style = `position: fixed; top:${locY}; left:${locX}`;
+        }
+
+        let element: any;
+        if( (element = document.getElementById('firstlocation')) !== null) {
+            locX = this.imagediv.left + this.pagectrl.firstclicklocation.x * this.wscale;
+            locY = this.imagediv.top + this.pagectrl.firstclicklocation.y * this.hscale;
+            element.style = `position: fixed; top:${locY}; left:${locX}`;
         }
     }
 }

@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class DataService {
+
+
     constructor() {
         this.acr = {
             right : 0,
@@ -104,63 +106,37 @@ export class DataService {
     /*Findings (map) Variables */
     private mass: {
         size: number;
-        distanceX: number;
-        distanceY: number;
-        distanceZ: number;
+        distance: number,
         shape: string;
         margin: string;
         density: string;
     }[];
     private distortions: {
-        distanceX: number;
-        distanceY: number;
-        distanceZ: number;
+        distance: number;
         distortion: string;
     }[];
     // private asymmetries: Array<string>;
     private asymmetries: {
-        distanceX: number;
-        distanceY: number;
-        distanceZ: number;
+        distance: number;
         asymmetry: string;
     }[];
     private calcifications: {
-        distanceX: number;
-        distanceY: number;
-        distanceZ: number;
+        distance: number;
         morphology: string;
         distribution: string;
     }[];
-
-
-
-    setMass(size: number, distanceX: number, distanceY: number, distanceZ: number , shape: string, margin: string, density: string): void {
-        this.mass = [{
-            size: size,
-            distanceX: distanceX,
-            distanceY: distanceY,
-            distanceZ: distanceZ,
-            shape: shape,
-            margin: margin,
-            density: density
-        }]
+    setMass(mass: any, index: number): void{
+        this.mass[index] = mass;
     }
-    addMass(size: number, distanceX: number, distanceY: number, distanceZ: number , shape: string, margin: string, density: string): void {
-        if (this.mass == null) {
-            this.setMass(size, distanceX, distanceY, distanceZ, shape, margin, density)
-        }
-        else {
-            this.mass.push({
-                    size: size,
-                    distanceX: distanceX,
-                    distanceY: distanceY,
-                    distanceZ: distanceZ,
-                    shape: shape,
-                    density: density,
-                    margin: margin,
-                }
-            );
-        }
+    addMass(size: number, distance: number , shape: string, margin: string, density: string): void {
+        this.mass.push({
+                size: size,
+                distance: distance,
+                shape: shape,
+                density: density,
+                margin: margin,
+            }
+        );
     }
     getMass(index?: number): any {
         if (index == null) {
@@ -169,27 +145,15 @@ export class DataService {
         else
             return this.mass[index];
     }
-    setDistortions( distanceX: number, distanceY: number, distanceZ: number, distortion: string): void {
-        this.distortions = [{
-            distanceX: distanceX,
-            distanceY: distanceY,
-            distanceZ: distanceZ,
-            distortion: distortion
-        }]
+    setDistortions(distortion: any, index: number): void {
+        this.distortions[index] = distortion;
     }
-    addDistortions(distanceX: number, distanceY: number, distanceZ: number, distortion: string): void {
-        if (this.distortions == null) {
-            this.setDistortions(distanceX, distanceY, distanceZ, distortion);
-        }
-        else {
-            this.distortions.push({
-                    distanceX: distanceX,
-                    distanceY: distanceY,
-                    distanceZ: distanceZ,
-                    distortion: distortion
-                }
-            );
-        }
+    addDistortions(distance: number, distortion: string): void {
+        this.distortions.push({
+                distance: distance,
+                distortion: distortion
+            }
+        );
     }
     getDistortions(index?: number): any {
         if (index == null) {
@@ -198,28 +162,15 @@ export class DataService {
         else
             return this.distortions[index];
     }
-    setAsymmetries(distanceX: number, distanceY: number, distanceZ: number, asymmetry: string): void {
-        this.asymmetries = [{
-            distanceX: distanceX,
-            distanceY: distanceY,
-            distanceZ: distanceZ,
-            asymmetry: asymmetry
-        }]
+    setAsymmetries(asymmetry: any, index: number): void {
+        this.asymmetries[index] = asymmetry;
     }
-    addAsymmetries(distanceX: number, distanceY: number, distanceZ: number, asymmetry: string): void {
-        if (this.asymmetries == null) {
-            this.setAsymmetries(distanceX, distanceY, distanceZ, asymmetry)
-
-        }
-        else {
-            this.asymmetries.push({
-                    distanceX: distanceX,
-                    distanceY: distanceY,
-                    distanceZ: distanceZ,
-                    asymmetry: asymmetry
-                }
-            );
-        }
+    addAsymmetries(distance: number, asymmetry: string): void {
+        this.asymmetries.push({
+                distance: distance,
+                asymmetry: asymmetry
+            }
+        );
     }
     getAsymmetries(index?: number): any {
         if (index == null) {
@@ -228,28 +179,16 @@ export class DataService {
         else
             return this.asymmetries[index];
     }
-    setCalcifications(distanceX: number, distanceY: number, distanceZ: number, morphology: string, distribution: string): void {
-        this.calcifications = [{
-            distanceX: distanceX,
-            distanceY: distanceY,
-            distanceZ: distanceZ,
+    setCalcifications(calcification: any, index: number): void {
+        this.calcifications[index] = calcification;
+    }
+    addCalcifications(distance: number, morphology: string, distribution: string): void {
+        this.calcifications.push({
+            distance: distance,
             morphology: morphology,
             distribution: distribution
-        }]
-    }
-    addCalcifications(distanceX: number, distanceY: number, distanceZ: number, morphology: string, distribution: string): void {
-        if (this.calcifications == null) {
-            this.setCalcifications(distanceX, distanceY, distanceZ, morphology, distribution);
-        }
-        else {
-            this.calcifications.push({
-                distanceX: distanceX,
-                distanceY: distanceY,
-                distanceZ: distanceZ,
-                morphology: morphology,
-                distribution: distribution
-            });
-        }
+        });
+
     }
     getCalcifications(index?: number): any {
         if (index == null) {

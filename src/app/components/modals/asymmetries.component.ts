@@ -51,8 +51,7 @@ export class AsymmetriesComponent implements OnChanges{
         this.pagectrl.renderBadge(this.elementref);
     }
     addTable(): void{
-        this.dataservice.addAsymmetries(this.pagectrl.distanceX, this.pagectrl.distanceY,
-            this.pagectrl.distanceZ, this.asymmetry);
+        this.dataservice.addAsymmetries(this.pagectrl.distance, this.asymmetry);
     }
     modalInterrupt(){
         setTimeout(() => {
