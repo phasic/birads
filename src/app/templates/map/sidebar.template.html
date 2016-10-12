@@ -1,4 +1,4 @@
-<div (window:keydown)="hotKeys($event.keyCode)">
+<div (window:keypress)="hotKeys($event.keyCode)">
     <ul class="nav nav-pills nav-justified">
         <li *ngFor="let element of dataservice.getMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}"><a href="#">{{element}}</a></li>
     </ul>

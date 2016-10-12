@@ -20,6 +20,7 @@ import { AsymmetriesComponent }        from "./components/modals/asymmetries.com
 import { TableComponent }       from './components/table/table.component';
 //Data Service
 import { DataService }           from './services/data.service';
+import { HotkeyService }           from './services/hotkey.service';
 import {PageController} from "./services/page.controller";
 import {ScreenResize} from "./directives/screen.resize.directive";
 import {ClassificationComponent} from "./components/table/classification.component";
@@ -49,7 +50,7 @@ import {ClassificationComponent} from "./components/table/classification.compone
             deps: [Http]
         })
     ],
-    providers: [DataService, PageController],
+    providers: [DataService, PageController, HotkeyService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -3,13 +3,15 @@ import {DataService} from "../../services/data.service";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
+import {HotkeyService} from "../../services/hotkey.service";
 @Component({
     selector: 'asymmetries-component',
     templateUrl: '../../templates/modals/asymmetries.template.html'
 })
 export class AsymmetriesComponent implements OnChanges{
 
-    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
+    constructor(private dataservice: DataService, private pagectrl: PageController,
+                private elementref: ElementRef, private hotkeyservice: HotkeyService) {
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -32,10 +34,11 @@ export class AsymmetriesComponent implements OnChanges{
         this.endOfMenu();
     }
     hotKeys(keycode: number): void {
-        this.asymmetry = (keycode == 49) ? 'asymmetry' :
-            (keycode == 50) ? 'focal asymmetry' :
-                (keycode == 51) ? 'global asymmetry' :
-                    (keycode == 52) ? 'developing asymmetry' : '';
+        let hotkeys: any = this.hotkeyservice.hotkeys.modal;
+        this.asymmetry = (keycode == hotkeys.one) ? 'asymmetry' :
+            (keycode == hotkeys.two) ? 'focal asymmetry' :
+                (keycode == hotkeys.three) ? 'global asymmetry' :
+                    (keycode == hotkeys.four) ? 'developing asymmetry' : '';
         if (this.asymmetry != '') {
             this.modal1.hide();
             this.endOfMenu();

@@ -3,6 +3,7 @@ import { DataService } from "../../services/data.service";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
+import {HotkeyService} from "../../services/hotkey.service";
 
 
 @Component({
@@ -10,7 +11,8 @@ import {PageController} from "../../services/page.controller";
     templateUrl: '../../templates/modals/mass.template.html'
 })
 export class MassComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef){
+    constructor(private dataservice: DataService, private pagectrl: PageController,
+                private elementref: ElementRef, private hotkeyservice: HotkeyService){
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -63,30 +65,31 @@ export class MassComponent implements OnChanges{
 
     //TODO MAKE A KEYBIND CONTROLLER, if we need to change keybinds, we can do it in 1 file (get it from json would be cool)
     hotKeys(keycode: number, argument: string): void{
+        let hotkeys: any = this.hotkeyservice.hotkeys.modal;
         if(argument == 'shape') {
-            this.shape = (keycode == 49) ? 'round' :
-                (keycode == 50) ? 'oval' :
-                    (keycode == 51) ? 'irregular' : '';
+            this.shape = (keycode == hotkeys.one) ? 'round' :
+                (keycode == hotkeys.two) ? 'oval' :
+                    (keycode == hotkeys.three) ? 'irregular' : '';
             if(this.shape != '') {
                 this.modal1.hide();
                 this.modal2.show();
             }
         }
         else if(argument == 'margin') {
-            this.margin = (keycode == 49) ? 'circumscribed' :
-                (keycode == 50) ? 'obscured' :
-                    (keycode == 51) ? 'microlobulated' :
-                        (keycode == 51) ? 'indistinct' :
-                            (keycode == 51) ? 'spiculated' : '';
+            this.margin = (keycode == hotkeys.one) ? 'circumscribed' :
+                (keycode == hotkeys.two) ? 'obscured' :
+                    (keycode == hotkeys.three) ? 'microlobulated' :
+                        (keycode == hotkeys.four) ? 'indistinct' :
+                            (keycode == hotkeys.five) ? 'spiculated' : '';
             if(this.margin != '') {
                 this.modal2.hide();
                 this.modal3.show();
             }
         }
         if(argument == 'density') {
-            this.density = (keycode == 49) ? 'low' :
-                (keycode == 50) ? 'equal' :
-                    (keycode == 51) ? 'high' : '';
+            this.density = (keycode == hotkeys.one) ? 'low' :
+                (keycode == hotkeys.two) ? 'equal' :
+                    (keycode == hotkeys.three) ? 'high' : '';
             if(this.shape != '') {
                 this.modal3.hide();
                 this.endOfMenu();

@@ -1,11 +1,13 @@
 import { Component }      from '@angular/core';
 import { DataService } from "../../services/data.service";
+import {PageController} from "../../services/page.controller";
+import {HotkeyService} from "../../services/hotkey.service";
 @Component({
     selector: 'table-component',
     templateUrl: '../../templates/table/table.template.html'
 })
 export class TableComponent{
-    constructor(private dataservice: DataService){
+    constructor(private dataservice: DataService, private pagectrl: PageController, private hotkey: HotkeyService){
     }
     removeEntry(index: number, method: string): void{           //remove an entry from the table
         switch (method) {
@@ -30,6 +32,8 @@ export class TableComponent{
     }
 
     removeBadge(index: number, method: string): void{
+
+
         let element:any = document.getElementById(method+ (index+1) + 's');     //get the side badge
         element.remove();                                                       //destroy that element
         element = document.getElementById(method+ (index+1) + 'f');             //get the front badge
@@ -39,15 +43,19 @@ export class TableComponent{
         switch (method){
             case 'M':
                 datalength = this.dataservice.getMass().length;    //get the amount of entries in the mass method
+                this.pagectrl.removeLocation('M', index);
                 break;
             case 'D':
                 datalength = this.dataservice.getDistortions().length;          //same for the rest
+                this.pagectrl.removeLocation('D', index);
                 break;
             case 'A':
                 datalength = this.dataservice.getAsymmetries().length;
+                this.pagectrl.removeLocation('A', index);
                 break;
             case 'C':
                 datalength = this.dataservice.getCalcifications().length;
+                this.pagectrl.removeLocation('C', index);
                 break;
             default:
         }
@@ -59,8 +67,12 @@ export class TableComponent{
             element = document.getElementById(method+ (i + 1) + 'f');           //get the front badge
             element.id = method + i + 'f';                                      //lower the id with 1
             element.innerHTML = `<div class='badge'>${method}${i}</div>`;       //lower the innerHTML wtih 1
-
         }
+
+    }
+
+    test(): void{
+        this.hotkey.test();
     }
 }
 

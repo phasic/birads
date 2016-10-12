@@ -3,7 +3,6 @@ import {DataService} from "../services/data.service";
 import {element} from "protractor";
 import {PageController} from "../services/page.controller";
 
-//TODO AFTER AN ENTRY IS DELETED AND WE TRY TO RESIZE THE SCREEN, AN ARROR IS TROWN
 @Directive({
     selector: '[resize]'
 })
@@ -31,6 +30,7 @@ export class ScreenResize {
     }
     @HostListener('window:resize',['$event'])
     onResize(event: Event): void{
+
         this.imagediv = document.getElementById('images').getBoundingClientRect();
         this.wscale = this.imagediv.width / this.divW;
         this.hscale = this.imagediv.height / this.divH;

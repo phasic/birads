@@ -4,6 +4,7 @@ import {TranslateService} from "ng2-translate";
 import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
+import {HotkeyService} from "../../services/hotkey.service";
 
 
 @Component({
@@ -11,7 +12,7 @@ import {PageController} from "../../services/page.controller";
     templateUrl: '../../templates/modals/calcifications.template.html'
 })
 export class CalcificationComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef, private hotkeyservice: HotkeyService) {
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -66,43 +67,43 @@ export class CalcificationComponent implements OnChanges{
         }
     }
     hotKeys(keycode: number, argument: string): void{
-        // this.page.disableSidebar();
-        if(keycode == 192){
+        let hotkeys: any = this.hotkeyservice.hotkeys.modal;
+        if(keycode == hotkeys.toggle){
             this.benign = !this.benign;
         }
         if(argument == 'morphology' && this.benign){
-            this.morphology = (keycode == 49) ? 'skin calcification' :
-                (keycode == 50) ? 'milk of calcium' :
-                    (keycode == 51) ? 'rod-like - plasmacel mastitis' :
-                        (keycode == 52) ? 'dystrophic' :
-                            (keycode == 53) ? 'popcorn - fibroadenoma' :
-                                (keycode == 54) ? 'rim calcification' :
-                                    (keycode == 55) ? 'vascular calcification' :
-                                        (keycode == 56) ? 'round' :
-                                            (keycode == 57) ? 'punctate' : '';
+            this.morphology = (keycode == hotkeys.one) ? 'skin calcification' :
+                (keycode == hotkeys.two) ? 'milk of calcium' :
+                    (keycode == hotkeys.three) ? 'rod-like - plasmacel mastitis' :
+                        (keycode == hotkeys.four) ? 'dystrophic' :
+                            (keycode == hotkeys.five) ? 'popcorn - fibroadenoma' :
+                                (keycode == hotkeys.six) ? 'rim calcification' :
+                                    (keycode == hotkeys.seven) ? 'vascular calcification' :
+                                        (keycode == hotkeys.eight) ? 'round' :
+                                            (keycode == hotkeys.nine) ? 'punctate' : '';
             if(this.morphology != ''){
                 this.modal1.hide();
                 this.modal2.show();
             }
         }
         if(argument == 'morphology' && !this.benign){
-            this.morphology = (keycode == 49) ? 'amorphous (benign)' :
-                (keycode == 50) ? 'amorphous (DCIS)' :
-                    (keycode == 51) ? 'fine pleomorphic' :
-                        (keycode == 52) ? 'coarse heterogeneous' :
-                            (keycode == 53) ? 'fine linear' :
-                                (keycode == 54) ? 'fine linear branching' : '';
+            this.morphology = (keycode == hotkeys.one) ? 'amorphous (benign)' :
+                (keycode == hotkeys.two) ? 'amorphous (DCIS)' :
+                    (keycode == hotkeys.three) ? 'fine pleomorphic' :
+                        (keycode == hotkeys.four) ? 'coarse heterogeneous' :
+                            (keycode == hotkeys.five) ? 'fine linear' :
+                                (keycode == hotkeys.six) ? 'fine linear branching' : '';
             if(this.morphology != ''){
                 this.modal1.hide();
                 this.modal2.show();
             }
         }
         if(argument == 'distribution'){
-            this.distribution = (keycode == 49) ? 'diffuse' :
-                (keycode == 50) ? 'regional' :
-                    (keycode == 51) ? 'group' :
-                        (keycode == 52) ? 'linear' :
-                            (keycode == 53) ? 'segmental' : '';
+            this.distribution = (keycode == hotkeys.one) ? 'diffuse' :
+                (keycode == hotkeys.two) ? 'regional' :
+                    (keycode == hotkeys.three) ? 'group' :
+                        (keycode == hotkeys.four) ? 'linear' :
+                            (keycode == hotkeys.five) ? 'segmental' : '';
             if(this.distribution != ''){
                 this.modal2.hide();
                 this.endOfMenu();

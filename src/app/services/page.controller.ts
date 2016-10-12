@@ -110,7 +110,6 @@ export class PageController {
 
         let tmp: any;
         tmp = document.createElement('div');
-        tmp.setAttribute('context-menu', 'test($event)');
         tmp.innerHTML = `<div class='badge'>${argument}${index}</div>`;
         tmp.style = `position: fixed; top:${badgefrontY}; left:${badgesideX}`;
         tmp.id = argument + index + 's';
@@ -169,7 +168,27 @@ export class PageController {
     getBadgeLocations(): any{
         return this.badgelocations;
     }
+    setBadgeLocations(badgelocation: any): void{
+        this.badgelocations = badgelocation;
+    }
 
+    removeLocation(method: string, index: number): void{
+        switch (method){
+            case 'M':
+                this.badgelocations.mass.splice(index,1);
+                break;
+            case 'D':
+                this.badgelocations.distortion.splice(index,1);
+                break;
+            case 'A':
+                this.badgelocations.asymmetry.splice(index,1);
+                break;
+            case 'C':
+                this.badgelocations.calcification.splice(index,1);
+                break;
+            default:
+        }
+    }
 
 
     /*--- MAP COMPONENT ---*/

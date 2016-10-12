@@ -1,5 +1,5 @@
 <div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
-<div (keydown)="hotKeys($event.keyCode, 'shape')" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, 'shape')" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<div (keydown)="hotKeys($event.keyCode, 'margin')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, 'margin')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-<div (keydown)="hotKeys($event.keyCode, 'density')" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, 'density')" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
