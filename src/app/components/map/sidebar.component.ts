@@ -12,6 +12,7 @@ export class SidebarComponent {
      *
      * @param dataservice   this service stores all the data
      * @param pagectrl      page controller manages functions to assure functionality (tracking click, adding badges, ... )
+     * @param hotkeyservice
      */
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private hotkeyservice: HotkeyService) {
@@ -30,7 +31,9 @@ export class SidebarComponent {
             method = (keycode == hotkeys.one) ? 'mass' :
                 (keycode == hotkeys.two) ? 'distortion' :
                     (keycode == hotkeys.three) ? 'asymmetry' :
-                        (keycode == hotkeys.four) ? 'calcification' : '';
+                        (keycode == hotkeys.four) ? 'calcification' :
+                            (keycode == hotkeys.five) ? 'palpitation' :
+                                (keycode == hotkeys.six) ? 'scar' : '';
             if(method != ''){
                 this.pagectrl.setMethod(method);
             }

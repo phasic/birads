@@ -3,7 +3,12 @@
     "ONE": "q",
     "TWO": "w",
     "THREE": "e",
-    "FOUR": "r"
+    "FOUR": "r",
+    "FIVE": "t",
+    "SIX": "y",
+    "SEVEN": "u",
+    "EIGHT": "i",
+    "NINE": "o"
   },
   "MODAL": {
     "ONE": "1",

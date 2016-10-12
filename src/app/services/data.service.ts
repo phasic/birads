@@ -17,6 +17,8 @@ export class DataService {
         this.distortions = [];
         this.asymmetries = [];
         this.calcifications = [];
+        this.palpitations = [];
+        this.scars = [];
     }
     /* Classifications Variables*/
     private acr: {
@@ -96,7 +98,9 @@ export class DataService {
         'mass',
         'distortion',
         'asymmetry',
-        'calcification'
+        'calcification',
+        'palpitation',
+        'scar'
     ];
 
     getMethods(): Array<string>{
@@ -124,6 +128,12 @@ export class DataService {
         distance: number;
         morphology: string;
         distribution: string;
+    }[];
+    private palpitations: {
+        distance: number
+    }[];
+    private scars: {
+        distance: number
     }[];
     setMass(mass: any, index: number): void{
         this.mass[index] = mass;
@@ -196,5 +206,36 @@ export class DataService {
         }
         else
             return this.calcifications[index];
+    }
+
+    setPalpitations(palpitation: any, index: number): void{
+        this.palpitations[index] = palpitation;
+    }
+    addPalpitations(distance: number): void{
+        this.palpitations.push({
+            distance: distance
+        })
+    }
+    getPalpitations(index?: number): any{
+        if (index == null) {
+            return this.palpitations;
+        }
+        else
+            return this.palpitations[index];
+    }
+    setScars(scar: any, index: number): void{
+        this.scars[index] = scar;
+    }
+    addScars(distance: number): void{
+        this.scars.push({
+            distance: distance
+        })
+    }
+    getScars(index?: number): any{
+        if (index == null) {
+            return this.scars;
+        }
+        else
+            return this.scars[index];
     }
 }

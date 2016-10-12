@@ -1,43 +1,45 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import {HttpModule, Http} from '@angular/http';
-import { AppComponent } from './app.component';
-
-import { Ng2BootstrapModule }   from 'ng2-bootstrap/ng2-bootstrap';
-import {TranslateModule, TranslateService, TranslateStaticLoader, TranslateLoader} from   'ng2-translate/ng2-translate';
-//Map Components
-import { MapComponent }         from './components/map/map.component';
-import { LegendComponent }      from './components/table/legend.component';
-import { SidebarComponent }     from './components/map/sidebar.component';
-//Modals
-import { MassComponent }        from "./components/modals/mass.component";
-import { CalcificationComponent }        from "./components/modals/calcifications.component";
-import { DistortionComponent }        from "./components/modals/distortion.component";
-import { AsymmetriesComponent }        from "./components/modals/asymmetries.component";
-
-//Table Components
-import { TableComponent }       from './components/table/table.component';
-//Data Service
-import { DataService }           from './services/data.service';
-import { HotkeyService }           from './services/hotkey.service';
-import {PageController} from "./services/page.controller";
+import {NgModule} from "@angular/core/src/metadata/ng_module";
+import {AppComponent} from "./app.component";
 import {ScreenResize} from "./directives/screen.resize.directive";
+import {MapComponent} from "./components/map/map.component";
+import {SidebarComponent} from "./components/map/sidebar.component";
+import {AsymmetryComponent} from "./components/modals/asymmetries.component";
+import {CalcificationComponent} from "./components/modals/calcifications.component";
+import {DistortionComponent} from "./components/modals/distortion.component";
+import {MassComponent} from "./components/modals/mass.component";
+import {PalpitationComponent} from "./components/modals/palpitation.component";
+import {ScarComponent} from "./components/modals/scar.component";
 import {ClassificationComponent} from "./components/table/classification.component";
-
+import {LegendComponent} from "./components/table/legend.component";
+import {TableComponent} from "./components/table/table.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule} from "@angular/forms";
+import {HttpModule, Http} from "@angular/http";
+import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateService} from "ng2-translate";
+import {DataService} from "./services/data.service";
+import {PageController} from "./services/page.controller";
+import {HotkeyService} from "./services/hotkey.service";
 @NgModule({
     declarations: [
+        /*APP*/
         AppComponent,
+        /*RESIZE*/
+        ScreenResize,
+        /*MAP*/
         MapComponent,
-        LegendComponent,
         SidebarComponent,
-        MassComponent,
+        /*MODALS*/
+        AsymmetryComponent,
         CalcificationComponent,
         DistortionComponent,
-        AsymmetriesComponent,
-        TableComponent,
-        ScreenResize,
+        MassComponent,
+        PalpitationComponent,
+        ScarComponent,
+        /*TABLE*/
         ClassificationComponent,
+        LegendComponent,
+        TableComponent
     ],
     imports: [
         BrowserModule,

@@ -9,6 +9,8 @@ import {HotkeyService} from "../../services/hotkey.service";
 export class TableComponent{
     constructor(private dataservice: DataService, private pagectrl: PageController){
     }
+
+    //TODO REMOVE THE SWITCHES
     removeEntry(index: number, method: string): void{           //remove an entry from the table
         switch (method) {
             case 'M':                                           //mass
@@ -25,6 +27,14 @@ export class TableComponent{
                 break;
             case 'C':
                 this.dataservice.getCalcifications().splice(index,1);
+                this.removeBadge(index, method);
+                break;
+            case 'P':
+                this.dataservice.getPalpitations().splice(index,1);
+                this.removeBadge(index, method);
+                break;
+            case 'S':
+                this.dataservice.getScars().splice(index,1);
                 this.removeBadge(index, method);
                 break;
             default:
@@ -54,15 +64,23 @@ export class TableComponent{
                 datalength = this.dataservice.getCalcifications().length;
                 this.pagectrl.removeLocation('C', index);
                 break;
+            case 'P':
+                datalength = this.dataservice.getPalpitations().length;
+                this.pagectrl.removeLocation('P', index);
+                break;
+            case 'S':
+                datalength = this.dataservice.getScars().length;
+                this.pagectrl.removeLocation('P', index);
+                break;
             default:
         }
         for(let i = index+1; i <= datalength; i++){  //iterate over the method array, starting from the removed element, until the end
             element = document.getElementById(method+ (i + 1) + 's');           //get the side badge
             element.id = method + i + 's';                                      //lower the id with 1
-            element.innerHTML = `<div class='badge'>${method}${i}</div>`;       //lower the innerHTML with 1
+            element.innerHTML = `<div class='circle-finding'>${method}${i}</div>`;       //lower the innerHTML with 1
             element = document.getElementById(method+ (i + 1) + 'f');           //get the front badge
             element.id = method + i + 'f';                                      //lower the id with 1
-            element.innerHTML = `<div class='badge'>${method}${i}</div>`;       //lower the innerHTML wtih 1
+            element.innerHTML = `<div class='circle-finding'>${method}${i}</div>`;       //lower the innerHTML wtih 1
         }
 
     }
@@ -90,6 +108,16 @@ export class TableComponent{
             data = data.getCalcifications(index);
             data.distance = distance;
             this.dataservice.setCalcifications(data, index);
+        }
+        else if(method == 'P'){
+            data = data.getPalpitations(index);
+            data.distance = distance;
+            this.dataservice.setPalpitations(data, index);
+        }
+        else if(method == 'S'){
+            data = data.getScars(index);
+            data.distance = distance;
+            this.dataservice.setScars(data, index);
         }
     }
 }

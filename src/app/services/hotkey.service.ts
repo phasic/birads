@@ -3,6 +3,9 @@ import {Http, Response} from '@angular/http'
 
 @Injectable()
 export class HotkeyService {
+    get hotkeys(): {sidebar: {one: number; two: number; three: number; four: number; five: number; six: number; seven: number; eight: number; nine: number}; modal: {one: number; two: number; three: number; four: number; five: number; six: number; seven: number; eight: number; nine: number; toggle: number}} {
+        return this._hotkeys;
+    }
     constructor(private http: Http) {
         http.get('/assets/hotkeys.json')
             .map((res: Response) => res.json())
@@ -12,7 +15,12 @@ export class HotkeyService {
                         one : res["SIDEBAR"]["ONE"].charCodeAt(0),
                         two : res["SIDEBAR"]["TWO"].charCodeAt(0),
                         three : res["SIDEBAR"]["THREE"].charCodeAt(0),
-                        four : res["SIDEBAR"]["FOUR"].charCodeAt(0)
+                        four : res["SIDEBAR"]["FOUR"].charCodeAt(0),
+                        five : res["SIDEBAR"]["FIVE"].charCodeAt(0),
+                        six : res["SIDEBAR"]["SIX"].charCodeAt(0),
+                        seven : res["SIDEBAR"]["SEVEN"].charCodeAt(0),
+                        eight : res["SIDEBAR"]["EIGHT"].charCodeAt(0),
+                        nine : res["SIDEBAR"]["NINE"].charCodeAt(0)
                     },
                     modal: {
                         one : res["MODAL"]["ONE"].charCodeAt(0),
@@ -34,7 +42,12 @@ export class HotkeyService {
             one: number,
             two: number,
             three: number,
-            four: number
+            four: number,
+            five: number,
+            six: number,
+            seven: number,
+            eight: number,
+            nine: number
         },
         modal: {
             one: number,
@@ -49,9 +62,7 @@ export class HotkeyService {
             toggle: number
         }
     };
-    get hotkeys(): {sidebar: {one: number; two: number; three: number; four: number}; modal: {one: number; two: number; three: number; four: number; five: number; six: number; seven: number; eight: number; nine: number; toggle: number}} {
-        return this._hotkeys;
-    }
+
 
 
 }

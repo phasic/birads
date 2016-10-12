@@ -8,7 +8,7 @@ import {HotkeyService} from "../../services/hotkey.service";
     selector: 'asymmetries-component',
     templateUrl: '../../templates/modals/asymmetries.template.html'
 })
-export class AsymmetriesComponent implements OnChanges{
+export class AsymmetryComponent implements OnChanges{
 
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private elementref: ElementRef, private hotkeyservice: HotkeyService) {

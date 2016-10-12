@@ -52,6 +52,26 @@ export class PageController {
                 x: number,
                 y: number
             }
+        }[],
+        palpitation: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
+        }[],
+        scar: {
+            side: {
+                x: number,
+                y: number
+            },
+            front: {
+                x: number,
+                y: number
+            }
         }[]
     };
     constructor( private dataservice: DataService) {
@@ -62,7 +82,9 @@ export class PageController {
             mass: [],
             distortion: [],
             asymmetry: [],
-            calcification: []
+            calcification: [],
+            palpitation: [],
+            scar: []
         };
     }
     setMethod(method: string): void {
@@ -88,25 +110,26 @@ export class PageController {
     getMenuActive(): boolean{
         return this.menuactive;
     }
-
-
-
-
     renderBadge(elementref: ElementRef): void {
-        let argument: string;
+        let argument: string = this.getMethod().slice(0,1).toLocaleUpperCase();
         let index: number;
-        switch (argument = this.getMethod().slice(0,1).toLocaleUpperCase()) {
-            case 'M':
-                index = this.dataservice.getMass().length;
-                break;
-            case 'D':
-                index = this.dataservice.getDistortions().length;
-                break;
-            case 'A':
-                index = this.dataservice.getAsymmetries().length;
-                break;
-            case 'C':
-                index = this.dataservice.getCalcifications().length;
+        if(argument == 'M'){
+            index = this.dataservice.getMass().length;
+        }
+        else if(argument == 'D'){
+            index = this.dataservice.getDistortions().length;
+        }
+        else if(argument == 'A'){
+            index = this.dataservice.getAsymmetries().length;
+        }
+        else if(argument == 'C'){
+            index = this.dataservice.getCalcifications().length;
+        }
+        else if(argument == 'P'){
+            index = this.dataservice.getPalpitations().length;
+        }
+        else if(argument == 'S'){
+            index = this.dataservice.getScars().length;
         }
 
         let badgefrontX: number = this.frontimage.x + this.frontclickedX;
@@ -166,6 +189,12 @@ export class PageController {
         else if(argument == 'C'){
             this.badgelocations.calcification.push(badgecoordinates);
         }
+        else if(argument == 'P'){
+            this.badgelocations.palpitation.push(badgecoordinates);
+        }
+        else if(argument == 'S'){
+            this.badgelocations.scar.push(badgecoordinates);
+        }
 
     }
     getBadgeLocations(): any{
@@ -195,6 +224,12 @@ export class PageController {
                 break;
             case 'C':
                 this.badgelocations.calcification.splice(index,1);
+                break;
+            case 'P':
+                this.badgelocations.palpitation.splice(index,1);
+                break;
+            case 'S':
+                this.badgelocations.scar.splice(index,1);
                 break;
             default:
         }

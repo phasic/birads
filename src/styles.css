@@ -1,4 +1,5 @@
 .table-container{
+    /*TODO THE TABLE CONTAINER LENGTH IS TOO SHOTY, SCROLLING STARTS TOO SOON */
     overflow-y: auto;
     max-height: 90%;
 }

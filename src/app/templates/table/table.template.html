@@ -35,7 +35,6 @@
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'M')"></div> </td>
             </tr>
             </tbody>
-
         </table>
     </div>
     <div *ngIf="dataservice.getDistortions().length > 0" class="panel panel-default col-sm-6">
@@ -99,6 +98,44 @@
                 <td>{{entry.morphology}}</td>
                 <td>{{entry.distribution}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'C')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getPalpitations().length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>Palpitations</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Distance (cm)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getPalpitations(); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'P', i)"/></td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'P')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getScars().length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>Scars</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Distance (cm)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getScars(); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'S', i)"/></td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'S')"></div> </td>
             </tr>
             </tbody>
         </table>
