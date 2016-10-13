@@ -13,15 +13,11 @@ export class ScreenResize {
     private divY: number;
     private divW: number;
     private divH: number;
-    private badgeX: number;
-    private badgeY: number;
     private wscale: number;
     private hscale: number;
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementRef: ElementRef){
         setTimeout(() => {
             this.imagediv = document.getElementById('images').getBoundingClientRect();
-            this.divX = this.imagediv.left;
-            this.divY = this.imagediv.top;
             this.divW = this.imagediv.width;
             this.divH = this.imagediv.height;
 
@@ -31,6 +27,7 @@ export class ScreenResize {
     @HostListener('window:resize',['$event'])
     onResize(event: Event): void{
 
+        // this.pagectrl.resizeBadges(this.divW, this.divH);
         this.imagediv = document.getElementById('images').getBoundingClientRect();
         this.wscale = this.imagediv.width / this.divW;
         this.hscale = this.imagediv.height / this.divH;

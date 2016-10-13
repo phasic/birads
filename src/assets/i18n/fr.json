@@ -1,30 +1,59 @@
 {
-  "LEGEND":{
-    "ONE": "petite baguette",
-    "TWO": "escargot",
-    "THREE": "raclette",
-    "FOUR": "du vin",
-    "FIVE": "la seine",
-    "X": "la tour Eiffel"
-  },
-  "TABLE":{
-    "REGION": "Région",
-    "LEVEL": "Niveau",
-    "SIDE": "Côté",
-    "VOLUME": "Volume",
-    "COMMENT": "Commentaire",
-    "DIALOG": "Bob et Bobette au supermarché"
-  },
-  "DATA":{
-    "LEVEL": {
-      "BASE": "base",
-      "MID": "milieu",
-      "APEX": "sommet"
+  "LEGEND": {
+    "ZERO": {
+      "ASSESSMENT": "Category 0: Incomplete - need additional imaging evaluation",
+      "MANAGEMENT": "Recall for additional imaging",
+      "LIKELIHOOD": "N/A"
     },
-    "SIDE":{
-      "R": "D",
-      "L": "G"
+    "ONE": {
+      "ASSESSMENT": "Category 1: Negative, symmetrical and no masses, architectural disturbances or suspicious calcifications present",
+      "MANAGEMENT": "Routine screening",
+      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+    },
+    "TWO": {
+      "ASSESSMENT": "Category 2: Benign findings, interpreter may wish to describe a benign-appearing finding",
+      "MANAGEMENT": "Routine screening",
+      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+    },
+    "THREE": {
+      "ASSESSMENT": "Category 3: Probably benign, short interval follow-up suggested",
+      "MANAGEMENT": "Short-interval (6-month) follow-up or continued surveillance",
+      "LIKELIHOOD": "< 2% likelihood of malignancy"
+    },
+    "FOUR": {
+      "ASSESSMENT": "Category 4: Suspicious abnormality",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "< 30% likelihood of malignancy"
+    },
+    "FIVE": {
+      "ASSESSMENT": "Category 5: There is a mammographic appearance which is highly suggestive of malignancy, action should be taken",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "95% likelihood of malignancy"
+    },
+    "SIX": {
+      "ASSESSMENT": "Category 6: Known biopsy-proven malignancy",
+      "MANAGEMENT": "Surgical excision when clinically appropriate",
+      "LIKELIHOOD": "N/A"
+    }
+  },
+  "SIDEBAR": {
+    "MASS": "mass",
+    "DISTORTION": "distortion",
+    "ASYMMETRY": "asymmetry",
+    "CALCIFICATION": "calcification",
+    "OTHER": "other",
+    "PALPITATION": "palpitation",
+    "SCAR": "scar"
+  },
+  "CLASSIFICATION": {
+    "LEFT": "Left",
+    "RIGHT": "Right",
+    "COMPOSITION": {
+      "TITLE": "Breast Composition",
+      "ONE": "Almost entirely fatty",
+      "TWO": "Scattered areas of fibroglandular density",
+      "THREE": "Heterogeneously dense",
+      "FOUR": "Extremely dense"
     }
   }
 }
-

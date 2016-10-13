@@ -281,4 +281,11 @@ export class PageController {
         //TODO optimize this calculation
         this.distance = parseFloat((Math.sqrt(Math.pow(this.distanceX, 2) + Math.pow(this.distanceY,2))/Math.sqrt(2)).toFixed(2));
     }
+
+    // resizeBadges(divW: number, divH: number): void{
+    //
+    //
+    //
+    //
+    // }
 }
