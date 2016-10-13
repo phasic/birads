@@ -94,17 +94,22 @@ export class DataService {
 
 
     /* Sidebar Variables */
-    private methods: Array<string> = [
+    private mainmethods: Array<string> = [
         'mass',
         'distortion',
         'asymmetry',
-        'calcification',
+        'calcification'
+    ];
+    private othermethods: Array<string> = [
         'palpitation',
         'scar'
     ];
 
-    getMethods(): Array<string>{
-        return this.methods;
+    getMainMethods(): Array<string>{
+        return this.mainmethods;
+    }
+    getOtherMethods(): Array<string>{
+        return this.othermethods;
     }
 
     /*Findings (map) Variables */
@@ -135,6 +140,27 @@ export class DataService {
     private scars: {
         distance: number
     }[];
+    getData(method: string): any{
+        if(method == 'M'){
+            return this.getMass();
+        }
+        else if(method == 'D'){
+            return this.getDistortions();
+        }
+        else if(method == 'A'){
+            return this.getAsymmetries();
+        }
+        else if(method == 'C'){
+            return this.getCalcifications();
+        }
+        else if(method == 'P'){
+            return this.getPalpitations();
+        }
+        else if(method == 'S'){
+            return this.getPalpitations();
+        }
+
+    }
     setMass(mass: any, index: number): void{
         this.mass[index] = mass;
     }

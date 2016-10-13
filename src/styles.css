@@ -1,7 +1,6 @@
 .table-container{
-    /*TODO THE TABLE CONTAINER LENGTH IS TOO SHOTY, SCROLLING STARTS TOO SOON */
     overflow-y: auto;
-    max-height: 90%;
+    max-height: 50%;
 }
 .wrapper{
     padding-right: 15px;
@@ -37,4 +36,7 @@
     text-align: center;
     background: slategrey;
     opacity: 0.5;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
 }

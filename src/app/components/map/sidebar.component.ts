@@ -39,4 +39,12 @@ export class SidebarComponent {
             }
         }
     }
+
+    otherHeaderName(): string{
+        if(this.dataservice.getOtherMethods().indexOf(this.pagectrl.getMethod()) > -1){
+            return this.pagectrl.getMethod();
+        }
+        else
+            return 'other';
+    }
 }

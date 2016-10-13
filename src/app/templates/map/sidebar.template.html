@@ -1,6 +1,13 @@
 <div (window:keypress)="hotKeys($event.keyCode)">
     <ul class="nav nav-pills nav-justified">
-        <li *ngFor="let element of dataservice.getMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}"><a href="#">{{element}}</a></li>
+        <li *ngFor="let element of dataservice.getMainMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}"><a href="#">{{element}}</a></li>
+        <li  [(ngModel)]="this.pagectrl.method" btnRadio="{{otherHeaderName()}}" >
+            <a href="#" class="dropdown" dropdown>
+                <div class="dropdown-toggle" dropdownToggle>{{otherHeaderName()}}<span class="caret"></span> </div>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let element of dataservice.getOtherMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}"><a href="#">{{element}}</a></li>
+                </ul>
+            </a>
+        </li>
     </ul>
 </div>
-
