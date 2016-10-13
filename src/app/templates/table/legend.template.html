@@ -1,6 +1,4 @@
-<div class="glyphicon glyphicon-info-sign pull-left" (click)="show = !show">
-</div>
-<div class="pull-left" *ngIf="show">
+<div class="well legend row wrapper" *ngIf="show">
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -10,7 +8,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let category of categories; let i = index">
+        <tr *ngFor="let category of categories">
             <td>{{'LEGEND.' + category + '.ASSESSMENT' | translate}}</td>
             <td>{{'LEGEND.' + category + '.MANAGEMENT' | translate}}</td>
             <td>{{'LEGEND.' + category + '.LIKELIHOOD' | translate}}</td>
@@ -18,10 +16,18 @@
         </tbody>
     </table>
 </div>
+<div class="row wrapper">
+    <div>
+        <select #langSelect (change)="translate.use(langSelect.value)">
+            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+        </select>
+    </div>
+    <div class="glyphicon glyphicon-info-sign" (click)="show = !show">
+    </div>
+</div>
+
 <br>
-<select #langSelect (change)="translate.use(langSelect.value)">
-    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-</select>
+
 
 
 

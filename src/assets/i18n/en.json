@@ -6,34 +6,54 @@
       "LIKELIHOOD": "N/A"
     },
     "ONE": {
-      "ASSESSMENT": "Category 1: Negative",
+      "ASSESSMENT": "Category 1: Negative, symmetrical and no masses, architectural disturbances or suspicious calcifications present",
       "MANAGEMENT": "Routine screening",
       "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
     },
     "TWO": {
-      "ASSESSMENT": "Category 2: Benign",
+      "ASSESSMENT": "Category 2: Benign findings, interpreter may wish to describe a benign-appearing finding",
       "MANAGEMENT": "Routine screening",
       "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
     },
     "THREE": {
-      "ASSESSMENT": "Category 3: Probably benign",
+      "ASSESSMENT": "Category 3: Probably benign, short interval follow-up suggested",
       "MANAGEMENT": "Short-interval (6-month) follow-up or continued surveillance",
-      "LIKELIHOOD": "> 0% but ≤ 2% likelihood of malignancy"
+      "LIKELIHOOD": "< 2% likelihood of malignancy"
     },
     "FOUR": {
-      "ASSESSMENT": "Category 4: Suspicious     Category 4A: Low suspicion for      malignancy      Category 4B: Moderate suspicion for      malignancy      Category 4C: High suspicion for      malignancy",
+      "ASSESSMENT": "Category 4: Suspicious abnormality",
       "MANAGEMENT": "Tissue diagnosis",
-      "LIKELIHOOD": "> 2% but < 95% likelihood of      malignancy      > 2% to ≤ 10% likelihood of malignancy      > 10% to ≤ 50% likelihood of      malignancy      > 50% to < 95% likelihood of      malignancy"
+      "LIKELIHOOD": "< 30% likelihood of malignancy"
     },
     "FIVE": {
-      "ASSESSMENT": "Category 5: Highly suggestive of malignancy",
+      "ASSESSMENT": "Category 5: There is a mammographic appearance which is highly suggestive of malignancy, action should be taken",
       "MANAGEMENT": "Tissue diagnosis",
-      "LIKELIHOOD": "≥ 95% likelihood of malignancy"
+      "LIKELIHOOD": "95% likelihood of malignancy"
     },
     "SIX": {
       "ASSESSMENT": "Category 6: Known biopsy-proven malignancy",
       "MANAGEMENT": "Surgical excision when clinically appropriate",
       "LIKELIHOOD": "N/A"
+    }
+  },
+  "SIDEBAR": {
+    "MASS": "mass",
+    "DISTORTION": "distortion",
+    "ASYMMETRY": "asymmetry",
+    "CALCIFICATION": "calcification",
+    "OTHER": "other",
+    "PALPITATION": "palpitation",
+    "SCAR": "scar"
+  },
+  "CLASSIFICATION": {
+    "LEFT": "Left",
+    "RIGHT": "Right",
+    "COMPOSITION": {
+      "TITLE": "Breast Composition",
+      "ONE": "Almost entirely fatty",
+      "TWO": "Scattered areas of fibroglandular density",
+      "THREE": "Heterogeneously dense",
+      "FOUR": "Extremely dense"
     }
   }
 }

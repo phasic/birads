@@ -2,6 +2,7 @@ import {Component}      from '@angular/core';
 import {PageController} from "../../services/page.controller";
 import {DataService} from "../../services/data.service";
 import {HotkeyService} from "../../services/hotkey.service";
+import {TranslateService} from "ng2-translate";
 @Component({
     selector: 'sidebar-component',
     templateUrl: '../../templates/map/sidebar.template.html'
@@ -13,9 +14,10 @@ export class SidebarComponent {
      * @param dataservice   this service stores all the data
      * @param pagectrl      page controller manages functions to assure functionality (tracking click, adding badges, ... )
      * @param hotkeyservice
+     * @param translate
      */
     constructor(private dataservice: DataService, private pagectrl: PageController,
-                private hotkeyservice: HotkeyService) {
+                private hotkeyservice: HotkeyService, private translate: TranslateService) {
     }
 
     /**
@@ -40,11 +42,16 @@ export class SidebarComponent {
         }
     }
 
-    otherHeaderName(): string{
+    otherHeaderName(translate? : boolean): string{
+        let translation: any;
         if(this.dataservice.getOtherMethods().indexOf(this.pagectrl.getMethod()) > -1){
-            return this.pagectrl.getMethod();
+            translation =  this.translate.get("SIDEBAR." + this.pagectrl.getMethod().toLocaleUpperCase());
+            return (translate) ? translation.value : this.pagectrl.getMethod();
         }
-        else
-            return 'other';
+        else{
+            translation = this.translate.get("SIDEBAR.OTHER");
+            // console.log(translation.value);
+            return (translate) ? translation.value : 'other';
+        }
     }
 }

@@ -3,12 +3,14 @@
     <!---------------------------------------------------------------------------------------------->
     <tr>
         <td>
-            <b>Right</b>
+            <b>{{"CLASSIFICATION.RIGHT" | translate}}</b>
         </td>
         <td>
             ACR<br>
             <div class="btn-group">
-                <label  *ngFor="let element of acrscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.acr.right" btnRadio="{{i+1}}">{{element}}</label>
+                <label  *ngFor="let element of acrscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.acr.right" btnRadio="{{i+1}}">
+                    {{element}}
+                </label>
             </div>
         </td>
     </tr>
@@ -17,18 +19,22 @@
         <td>
             BIRADS<br>
             <div class="btn-group">
-                <label  *ngFor="let element of biradsscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.birads.right" btnRadio="{{element}}">{{element}}</label>
+                <label  *ngFor="let element of biradsscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.birads.right" btnRadio="{{element}}">
+                    {{element}}
+                </label>
             </div>
         </td>
     </tr>
     <tr>
         <td>
-            <b>Left</b>
+            <b>{{"CLASSIFICATION.LEFT" | translate}}</b>
         </td>
         <td>
             ACR<br>
             <div class="btn-group">
-                <label  *ngFor="let element of acrscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.acr.left" btnRadio="{{i+1}}">{{element}}</label>
+                <label  *ngFor="let element of acrscore; let i = index" class="btn btn-md btn-default" [(ngModel)]="dataservice.acr.left" btnRadio="{{i+1}}">
+                    {{element}}
+                </label>
             </div>
         </td>
     </tr>
@@ -37,20 +43,24 @@
         <td>
             BIRADS<br>
             <div class="btn-group">
-                <label  *ngFor="let element of biradsscore" class="btn btn-md btn-default" [(ngModel)]="dataservice.birads.left" btnRadio="{{element}}">{{element}}</label>
+                <label  *ngFor="let element of biradsscore" class="btn btn-md btn-default" [(ngModel)]="dataservice.birads.left" btnRadio="{{element}}">
+                    {{element}}
+                </label>
             </div>
         </td>
     </tr>
     <tr>
         <td>
-            <b>Breast Composition</b>
+            <b>{{"CLASSIFICATION.COMPOSITION.TITLE" | translate}}</b>
         </td>
         <td>
             <div class="btn-group">
-                <label  *ngFor="let element of composition" class="btn btn-md btn-default" [(ngModel)]="dataservice.composition" btnRadio="{{element}}">{{element}}</label>
+                <label  *ngFor="let element of composition" class="btn btn-md btn-default" [(ngModel)]="dataservice.composition" btnRadio="{{element}}">
+                    {{"CLASSIFICATION.COMPOSITION." + element | translate}}
+                </label>
             </div>
         </td>
     </tr>
     </tbody>
 </table>
-<legend-component></legend-component>
+<!--<legend-component></legend-component>-->

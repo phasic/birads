@@ -40,3 +40,13 @@
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
+.legend {
+    position: relative;
+    z-index: 10;
+}
+.legendbutton {
+    position: fixed;
+    bottom: 2px;
+    left: 2px;
+    width: 100%;
+}
