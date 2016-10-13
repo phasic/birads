@@ -1,22 +1,22 @@
 <div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
-<div (keypress)="hotKeys($event.keyCode, 'morphology', this.benign)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, this.menus[0], this.benign)" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Morphology (press ~ for more options) <button type="button" (click)="hotKeys(192, 'morphology')">more</button></h4>
+                <h4 class="modal-title">Morphology (press ~ for more options) <button type="button" (click)="hotKeys(hotkeys.toggle, this.menus[0])">more</button></h4>
             </div>
-            <div class="modal-body"  (keydown)="hotKeys($event.keyCode, 'morphology')">
+            <div class="modal-body"  (keydown)="hotKeys($event.keyCode, this.menus[0])">
                 <div *ngIf="this.benign">
-                    <img *ngFor="let element of morphologyarraybenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl('morphology', element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of morphologyarraybenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
                 </div>
                 <div  *ngIf="!this.benign">
-                    <img *ngFor="let element of morphologyarraynotbenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl('morphology', element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of morphologyarraynotbenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div (keypress)="hotKeys($event.keyCode, 'distribution')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, this.menus[1])" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +24,7 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of distributionarray" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl('distribution', element)" [(ngModel)]="distribution" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of distributionarray" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="distribution" btnRadio="{{element}}"/>
                 </div>
             </div>
         </div>

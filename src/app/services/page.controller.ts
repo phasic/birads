@@ -111,44 +111,35 @@ export class PageController {
         return this.menuactive;
     }
     renderBadge(elementref: ElementRef): void {
-        let argument: string = this.getMethod().slice(0,1).toLocaleUpperCase();
-        let index: number;
-        if(argument == 'M'){
-            index = this.dataservice.getMass().length;
-        }
-        else if(argument == 'D'){
-            index = this.dataservice.getDistortions().length;
-        }
-        else if(argument == 'A'){
-            index = this.dataservice.getAsymmetries().length;
-        }
-        else if(argument == 'C'){
-            index = this.dataservice.getCalcifications().length;
-        }
-        else if(argument == 'P'){
-            index = this.dataservice.getPalpitations().length;
-        }
-        else if(argument == 'S'){
-            index = this.dataservice.getScars().length;
-        }
 
+        let argument: string;
+        let index: number;
+
+        for(let method of this.dataservice.getMethods()){
+            if(this.getMethod() == method){
+                index = this.dataservice.getData(method).length;
+                argument = method;
+                break;
+            }
+        }
         let badgefrontX: number = this.frontimage.x + this.frontclickedX;
         let badgesideX: number = this.sideimage.x + this.sideclickedX;
         let badgeY: number = this.firstimage.y + this.firstclickedY;
 
         let tmp: any;
         tmp = document.createElement('div');
-        tmp.innerHTML = `<div class='circle-finding'>${argument}${index}</div>`;
+        tmp.innerHTML = `<div class='circle-finding'>${argument.slice(0,1).toLocaleUpperCase()}${index}</div>`;
         tmp.style = `position: fixed; top:${badgeY}; left:${badgesideX}`;
         tmp.id = argument + index + 's';
         elementref.nativeElement.appendChild(tmp);
         tmp = document.createElement('div');
-        tmp.innerHTML = `<div class='circle-finding'>${argument}${index}</div>`;
+        tmp.innerHTML = `<div class='circle-finding'>${argument.slice(0,1).toLocaleUpperCase()}${index}</div>`;
         tmp.style = `position: fixed; top:${badgeY}; left:${badgefrontX}`;
         tmp.id = argument + index + 'f';
         elementref.nativeElement.appendChild(tmp);
 
         this.saveBadgeLocation(argument, badgefrontX, badgeY, badgesideX, badgeY);
+
     }
     private numberofclicks: number;
     setNumberOfClicks(numberofclicks: number): void{
@@ -159,7 +150,7 @@ export class PageController {
     }
 
 
-    saveBadgeLocation(argument: string, frontX: number, frontY: number, sideX: number, sideY: number): void{
+    saveBadgeLocation(method: string, frontX: number, frontY: number, sideX: number, sideY: number): void{
 
         let imgdiv: any = document.getElementById('images').getBoundingClientRect();
         frontX -= imgdiv.left;
@@ -177,31 +168,23 @@ export class PageController {
                 y: frontY
             }
         };
-        if (argument == 'M') {
-            this.badgelocations.mass.push(badgecoordinates);
-        }
-        else if(argument == 'D'){
-            this.badgelocations.distortion.push(badgecoordinates);
-        }
-        else if(argument == 'A'){
-            this.badgelocations.asymmetry.push(badgecoordinates);
-        }
-        else if(argument == 'C'){
-            this.badgelocations.calcification.push(badgecoordinates);
-        }
-        else if(argument == 'P'){
-            this.badgelocations.palpitation.push(badgecoordinates);
-        }
-        else if(argument == 'S'){
-            this.badgelocations.scar.push(badgecoordinates);
-        }
+        this.addBadgeLocation(method, badgecoordinates);
 
     }
-    getBadgeLocations(): any{
-        return this.badgelocations;
+    getBadgeLocation(method: string): any{
+        for(let m of this.dataservice.getMethods()){
+            if(method == m){
+                return this.badgelocations[method];
+            }
+        }
     }
-    setBadgeLocations(badgelocation: any): void{
-        this.badgelocations = badgelocation;
+    addBadgeLocation(method: string, badgecoordinates: any): void {
+        for(let m of this.dataservice.getMethods()){
+            if(method == m){
+                this.badgelocations[method].push(badgecoordinates);
+                break;
+            }
+        }
     }
     get firstclicklocation(): {x: number; y: number} {
         return this._firstclicklocation;
@@ -212,27 +195,7 @@ export class PageController {
     }
 
     removeLocation(method: string, index: number): void{
-        switch (method){
-            case 'M':
-                this.badgelocations.mass.splice(index,1);
-                break;
-            case 'D':
-                this.badgelocations.distortion.splice(index,1);
-                break;
-            case 'A':
-                this.badgelocations.asymmetry.splice(index,1);
-                break;
-            case 'C':
-                this.badgelocations.calcification.splice(index,1);
-                break;
-            case 'P':
-                this.badgelocations.palpitation.splice(index,1);
-                break;
-            case 'S':
-                this.badgelocations.scar.splice(index,1);
-                break;
-            default:
-        }
+        this.getBadgeLocation(method).splice(index,1);
     }
 
 

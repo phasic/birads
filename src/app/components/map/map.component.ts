@@ -1,5 +1,6 @@
 import {Component, ElementRef}      from '@angular/core';
 import {PageController} from "../../services/page.controller";
+import {DataService} from "../../services/data.service";
 @Component({
     selector: 'map-component',
     templateUrl: '../../templates/map/map.template.html'
@@ -10,12 +11,10 @@ export class MapComponent {
      * @param pagectrl page controller manages functions to assure functionality (tracking click, adding badges, ... )
      * @param elementref
      */
-    constructor(private pagectrl: PageController, private elementref: ElementRef) {
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     clickHandler(event: any): void {
-
         this.clickedMap(event);
-
     }
     private firstimage: string;
     clickedMap(event: any): void{ //function gets called when an image is clicked
@@ -69,6 +68,8 @@ export class MapComponent {
         for(let i = 0; i < elements.length; i++){
             elements[i].parentNode.remove();
         }
+
+
     }
 }
 

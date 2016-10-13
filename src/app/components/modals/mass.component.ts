@@ -42,21 +42,26 @@ export class MassComponent implements OnChanges{
         'equal',
         'high'
     ];
+    private menus: Array<string> = [
+        'shape',
+        'margin',
+        'density'
+    ];
     private shape: string;                      //selected shape
     private margin: string;                     //selected margin
     private density: string;                    //selected density
     mouseControl(argument: string, finding: string): void{
-        if(argument == 'shape'){
+        if(argument == this.menus[0]){
             this.shape = finding;
             this.modal1.hide();
             this.modal2.show();
         }
-        else if(argument == 'margin'){
+        else if(argument == this.menus[1]){
             this.margin = finding;
             this.modal2.hide();
             this.modal3.show();
         }
-        else if(argument == 'density'){
+        else if(argument == this.menus[2]){
             this.density = finding;
             this.modal3.hide();
             this.endOfMenu();
@@ -64,31 +69,31 @@ export class MassComponent implements OnChanges{
     }
     hotKeys(keycode: number, argument: string): void{
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;
-        if(argument == 'shape') {
-            this.shape = (keycode == hotkeys.one) ? 'round' :
-                (keycode == hotkeys.two) ? 'oval' :
-                    (keycode == hotkeys.three) ? 'irregular' : '';
+        if(argument == this.menus[0]) {
+            this.shape = (keycode == hotkeys.one) ? this.shapearray[0] :
+                (keycode == hotkeys.two) ? this.shapearray[1] :
+                    (keycode == hotkeys.three) ? this.shapearray[2] : '';
             if(this.shape != '') {
                 this.modal1.hide();
                 this.modal2.show();
             }
         }
-        else if(argument == 'margin') {
-            this.margin = (keycode == hotkeys.one) ? 'circumscribed' :
-                (keycode == hotkeys.two) ? 'obscured' :
-                    (keycode == hotkeys.three) ? 'microlobulated' :
-                        (keycode == hotkeys.four) ? 'indistinct' :
-                            (keycode == hotkeys.five) ? 'spiculated' : '';
+        else if(argument == this.menus[1]) {
+            this.margin = (keycode == hotkeys.one) ? this.marginarray[0] :
+                (keycode == hotkeys.two) ? this.marginarray[1] :
+                    (keycode == hotkeys.three) ? this.marginarray[2] :
+                        (keycode == hotkeys.four) ? this.marginarray[3] :
+                            (keycode == hotkeys.five) ? this.marginarray[4] : '';
             if(this.margin != '') {
                 this.modal2.hide();
                 this.modal3.show();
             }
         }
-        if(argument == 'density') {
-            this.density = (keycode == hotkeys.one) ? 'low' :
-                (keycode == hotkeys.two) ? 'equal' :
-                    (keycode == hotkeys.three) ? 'high' : '';
-            if(this.shape != '') {
+        if(argument == this.menus[2]) {
+            this.density = (keycode == hotkeys.one) ? this.densityarray[0] :
+                (keycode == hotkeys.two) ? this.densityarray[1] :
+                    (keycode == hotkeys.three) ? this.densityarray[2] : '';
+            if(this.density != '') {
                 this.modal3.hide();
                 this.endOfMenu();
             }

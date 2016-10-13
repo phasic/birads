@@ -28,12 +28,12 @@ export class SidebarComponent {
         let hotkeys: any = this.hotkeyservice.hotkeys.sidebar;
         let method: string = '';
         if (!this.pagectrl.getMenuActive()) {
-            method = (keycode == hotkeys.one) ? 'mass' :
-                (keycode == hotkeys.two) ? 'distortion' :
-                    (keycode == hotkeys.three) ? 'asymmetry' :
-                        (keycode == hotkeys.four) ? 'calcification' :
-                            (keycode == hotkeys.five) ? 'palpitation' :
-                                (keycode == hotkeys.six) ? 'scar' : '';
+            method = (keycode == hotkeys.one) ? this.dataservice.getMainMethods()[0] :
+                (keycode == hotkeys.two) ? this.dataservice.getMainMethods()[1] :
+                    (keycode == hotkeys.three) ? this.dataservice.getMainMethods()[2] :
+                        (keycode == hotkeys.four) ? this.dataservice.getMainMethods()[3] :
+                            (keycode == hotkeys.five) ? this.dataservice.getOtherMethods()[0] :
+                                (keycode == hotkeys.six) ? this.dataservice.getOtherMethods()[1] : '';
             if(method != ''){
                 this.pagectrl.setMethod(method);
             }

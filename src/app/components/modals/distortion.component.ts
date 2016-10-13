@@ -27,6 +27,7 @@ export class DistortionComponent implements OnChanges{
     }
     addToTable(): void{
         this.dataservice.addDistortions(this.pagectrl.distance, "architectural distortion");
+
     }
 
 

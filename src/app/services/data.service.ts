@@ -14,11 +14,12 @@ export class DataService {
             left: 0
         };
         this.mass = []; // make an emty array so that the get length doesn't throw an error
-        this.distortions = [];
-        this.asymmetries = [];
-        this.calcifications = [];
-        this.palpitations = [];
-        this.scars = [];
+        this.distortion = [];
+        this.asymmetry = [];
+        this.calcification = [];
+        this.palpitation = [];
+        this.scar = [];
+        this.methods = this.mainmethods.concat(this.othermethods);
     }
     /* Classifications Variables*/
     private acr: {
@@ -30,7 +31,6 @@ export class DataService {
         left: number
     };
     private composition: string;
-
     setAcr(left: number | string, right: number) : void{
         if( typeof left === 'string'){
             if(left == 'left'){
@@ -91,10 +91,8 @@ export class DataService {
     getComposition(): string {
         return this.composition;
     }
-
-
-    /* Sidebar Variables */
-    private mainmethods: Array<string> = [
+    private methods: Array<string>;
+     private mainmethods: Array<string> = [
         'mass',
         'distortion',
         'asymmetry',
@@ -105,6 +103,9 @@ export class DataService {
         'scar'
     ];
 
+    getMethods(): Array<string>{
+        return this.methods;
+    }
     getMainMethods(): Array<string>{
         return this.mainmethods;
     }
@@ -120,49 +121,40 @@ export class DataService {
         margin: string;
         density: string;
     }[];
-    private distortions: {
+    private distortion: {
         distance: number;
         distortion: string;
     }[];
     // private asymmetries: Array<string>;
-    private asymmetries: {
+    private asymmetry: {
         distance: number;
         asymmetry: string;
     }[];
-    private calcifications: {
+    private calcification: {
         distance: number;
         morphology: string;
         distribution: string;
     }[];
-    private palpitations: {
+    private palpitation: {
         distance: number
     }[];
-    private scars: {
+    private scar: {
         distance: number
     }[];
     getData(method: string): any{
-        if(method == 'M'){
-            return this.getMass();
-        }
-        else if(method == 'D'){
-            return this.getDistortions();
-        }
-        else if(method == 'A'){
-            return this.getAsymmetries();
-        }
-        else if(method == 'C'){
-            return this.getCalcifications();
-        }
-        else if(method == 'P'){
-            return this.getPalpitations();
-        }
-        else if(method == 'S'){
-            return this.getPalpitations();
+        for(let m of this.getMethods()){
+            if(method == m){
+                return this[method];
+            }
         }
 
     }
-    setMass(mass: any, index: number): void{
-        this.mass[index] = mass;
+    setData(method: string, data: any, index: number): void{
+        for(let m of this.getMethods()){
+            if(method == m){
+                this[method][index] = data;
+            }
+        }
     }
     addMass(size: number, distance: number , shape: string, margin: string, density: string): void {
         this.mass.push({
@@ -174,94 +166,35 @@ export class DataService {
             }
         );
     }
-    getMass(index?: number): any {
-        if (index == null) {
-            return this.mass;
-        }
-        else
-            return this.mass[index];
-    }
-    setDistortions(distortion: any, index: number): void {
-        this.distortions[index] = distortion;
-    }
     addDistortions(distance: number, distortion: string): void {
-        this.distortions.push({
+        this.distortion.push({
                 distance: distance,
                 distortion: distortion
             }
         );
     }
-    getDistortions(index?: number): any {
-        if (index == null) {
-            return this.distortions;
-        }
-        else
-            return this.distortions[index];
-    }
-    setAsymmetries(asymmetry: any, index: number): void {
-        this.asymmetries[index] = asymmetry;
-    }
     addAsymmetries(distance: number, asymmetry: string): void {
-        this.asymmetries.push({
+        this.asymmetry.push({
                 distance: distance,
                 asymmetry: asymmetry
             }
         );
     }
-    getAsymmetries(index?: number): any {
-        if (index == null) {
-            return this.asymmetries;
-        }
-        else
-            return this.asymmetries[index];
-    }
-    setCalcifications(calcification: any, index: number): void {
-        this.calcifications[index] = calcification;
-    }
     addCalcifications(distance: number, morphology: string, distribution: string): void {
-        this.calcifications.push({
+        this.calcification.push({
             distance: distance,
             morphology: morphology,
             distribution: distribution
         });
-
-    }
-    getCalcifications(index?: number): any {
-        if (index == null) {
-            return this.calcifications;
-        }
-        else
-            return this.calcifications[index];
-    }
-
-    setPalpitations(palpitation: any, index: number): void{
-        this.palpitations[index] = palpitation;
     }
     addPalpitations(distance: number): void{
-        this.palpitations.push({
+        this.palpitation.push({
             distance: distance
         })
-    }
-    getPalpitations(index?: number): any{
-        if (index == null) {
-            return this.palpitations;
-        }
-        else
-            return this.palpitations[index];
-    }
-    setScars(scar: any, index: number): void{
-        this.scars[index] = scar;
     }
     addScars(distance: number): void{
-        this.scars.push({
+        this.scar.push({
             distance: distance
         })
-    }
-    getScars(index?: number): any{
-        if (index == null) {
-            return this.scars;
-        }
-        else
-            return this.scars[index];
     }
 }

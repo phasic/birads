@@ -16,12 +16,12 @@
 
     </div>
 </div>
-<mass-component [show]="pagectrl.getShowmenu() == 'mass'"></mass-component>
-<distortion-component [show]="pagectrl.getShowmenu() == 'distortion'"></distortion-component>
-<asymmetries-component [show]="pagectrl.getShowmenu() == 'asymmetry'"></asymmetries-component>
-<calcification-component [show]="pagectrl.getShowmenu() == 'calcification'"></calcification-component>
-<palpitation-component [show]="pagectrl.getShowmenu() == 'palpitation'"></palpitation-component>
-<scar-component [show]="pagectrl.getShowmenu() == 'scar'"></scar-component>
+<mass-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[0]"></mass-component>
+<distortion-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[1]"></distortion-component>
+<asymmetries-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[2]"></asymmetries-component>
+<calcification-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[3]"></calcification-component>
+<palpitation-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[4]"></palpitation-component>
+<scar-component [show]="pagectrl.getShowmenu() == dataservice.getMethods()[5]"></scar-component>
 
 
 

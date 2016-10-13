@@ -1,5 +1,5 @@
 <div (window:click) = "modalInterrupt()"></div> <!-- get a handler in place to catch the case where you cut short the modal -->
-<div (keypress)="hotKeys($event.keyCode, 'shape')" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, this.menus[0])" bsModal #modal1="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,13 +7,13 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of shapearray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl('shape', element)" [(ngModel)]="shape" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of shapearray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="shape" btnRadio="{{element}}"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div (keypress)="hotKeys($event.keyCode, 'margin')" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, this.menus[1])" bsModal #modal2="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,13 +21,13 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of marginarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl('margin', element)" [(ngModel)]="margin" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of marginarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="margin" btnRadio="{{element}}"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div (keypress)="hotKeys($event.keyCode, 'density')" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1">
+<div (keypress)="hotKeys($event.keyCode, this.menus[2])" bsModal #modal3="bs-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,7 +35,7 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of densityarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl('density', element)" [(ngModel)]="density" btnRadio="{{element}}"/>
+                    <img *ngFor="let element of densityarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[2], element)" [(ngModel)]="density" btnRadio="{{element}}"/>
                 </div>
             </div>
         </div>

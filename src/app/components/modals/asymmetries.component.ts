@@ -35,10 +35,10 @@ export class AsymmetryComponent implements OnChanges{
     }
     hotKeys(keycode: number): void {
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;
-        this.asymmetry = (keycode == hotkeys.one) ? 'asymmetry' :
-            (keycode == hotkeys.two) ? 'focal asymmetry' :
-                (keycode == hotkeys.three) ? 'global asymmetry' :
-                    (keycode == hotkeys.four) ? 'developing asymmetry' : '';
+        this.asymmetry = (keycode == hotkeys.one) ? this.asymmetryarray[0] :
+            (keycode == hotkeys.two) ? this.asymmetryarray[1] :
+                (keycode == hotkeys.three) ? this.asymmetryarray[2] :
+                    (keycode == hotkeys.four) ? this.asymmetryarray[3] : '';
         if (this.asymmetry != '') {
             this.modal1.hide();
             this.endOfMenu();
