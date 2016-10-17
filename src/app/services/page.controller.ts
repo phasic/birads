@@ -206,12 +206,12 @@ export class PageController {
 
     }
 
-    setClickLocation(image: any, event: any, first?: boolean): void{
-        // let imageelements: any = document.getElementsByClassName("map-image");
+    setClickLocation(target: any, event: any, first?: boolean): void{
+        let image: any = target.parentNode.previousElementSibling;    //convert the clicked map to the corresponding image
         let index: number = 0;
         let imagenumber: number;
         for(let argument of this.images){
-            if(argument.image === image){
+            if(argument.image.id === target.id + 'img'){
                 imagenumber = index;
                 break;
             }

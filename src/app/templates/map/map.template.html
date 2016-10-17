@@ -2,16 +2,28 @@
     <!--<div align="center" (click)="clickHandler($event)">-->
     <div class="row  col-sm-offset-0" id="images">
         <div class="col-sm-3">
-            <img (click)="clickHandler($event)" class="img-responsive map-image" src="/assets/images/map/biradsRS.png" id="RS"/>
+            <img class="img-responsive map-image" imagemap src="/assets/images/map/biradsRS.png" id="RSimg" usemap="#RS"/>
+            <map (click)="clickHandler($event)" name="RS">
+                <area  id="RS" shape="poly" coords="427,51,424,58,415,70,405,82,393,94,382,105,370,112,358,124,342,136,327,147,316,155,306,163,291,172,281,179,273,186,263,196,251,208,243,220,234,234,229,250,224,264,220,277,220,291,220,304,222,317,225,331,227,344,232,356,239,371,246,384,256,395,264,405,278,417,291,429,307,438,324,446,340,453,353,456,368,458,386,461,402,459,417,459,423,459" />
+            </map>
         </div>
         <div class="col-sm-3">
-            <img (click)="clickHandler($event)" class="img-responsive map-image" src="/assets/images/map/biradsRF.png" id="RF"/>
+            <img  class="img-responsive map-image" imagemap  src="/assets/images/map/biradsRF.png" id="RFimg" usemap="#RF"/>
+            <map (click)="clickHandler($event)" name="RF">
+                <area id="RF" shape="poly" coords="10,64,14,75,17,85,20,94,25,110,29,124,34,139,38,155,42,168,46,184,49,198,53,214,56,230,58,244,61,261,64,278,66,292,66,307,67,322,68,340,70,352,75,364,79,378,84,387,90,399,97,409,105,419,115,429,126,439,139,450,150,456,165,464,175,469,193,474,207,477,226,480,242,482,257,481,277,479,293,475,306,471,321,464,335,458,350,447,361,440,370,431,377,422,390,407,399,392,406,378,412,361,416,346,417,330,419,307,417,280,419,255,421,126,419,98,418,76,417,67" />
+            </map>
         </div>
         <div class="col-sm-3">
-            <img (click)="clickHandler($event)" class="img-responsive map-image" src="/assets/images/map/biradsLF.png" id="LF"/>
+            <img  class="img-responsive map-image" imagemap src="/assets/images/map/biradsLF.png" id="LFimg" usemap="#LF"/>
+            <map (click)="clickHandler($event)" name="LF">
+                <area id="LF" shape="poly" coords="442,66,435,89,427,110,423,128,418,147,412,167,407,188,403,207,399,231,395,250,392,268,391,286,389,302,389,319,388,335,385,354,380,368,371,389,364,402,356,413,346,424,336,434,326,445,312,452,300,460,290,465,278,470,259,475,241,479,224,481,210,481,191,480,172,478,159,474,138,467,123,460,109,451,94,440,82,428,72,417,62,403,52,386,46,372,40,353,37,334,35,308,35,291,36,268,37,256,38,88,39,73,40,65" />
+            </map>
         </div>
         <div class="col-sm-3">
-            <img (click)="clickHandler($event)" class="img-responsive map-image" src="/assets/images/map/biradsLS.png" id="LS"/>
+            <img  class="img-responsive map-image" imagemap src="/assets/images/map/biradsLS.png" id="LSimg" usemap="#LS"/>
+            <map (click)="clickHandler($event)" name="LS">
+                <area id="LS" shape="poly" coords="10,64,20,80,31,92,43,103,52,113,66,125,78,134,89,143,101,152,113,160,125,168,136,177,150,187,162,195,171,203,181,212,190,224,199,235,205,246,211,259,216,273,221,290,222,304,222,318,221,331,218,345,214,363,209,373,201,388,194,401,184,412,175,422,165,431,155,439,145,446,132,454,120,459,104,465,86,470,71,472,54,474,37,474,24,472,19,472,10,469" />
+            </map>
         </div>
 
     </div>

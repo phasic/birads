@@ -20,12 +20,14 @@ import {TranslateModule, TranslateLoader, TranslateStaticLoader, TranslateServic
 import {DataService} from "./services/data.service";
 import {PageController} from "./services/page.controller";
 import {HotkeyService} from "./services/hotkey.service";
+import {ImageMapResize} from "./directives/imagemap.resize.directive";
 @NgModule({
     declarations: [
         /*APP*/
         AppComponent,
-        /*RESIZE*/
+        /*DIRECTIVES*/
         ScreenResize,
+        ImageMapResize,
         /*MAP*/
         MapComponent,
         SidebarComponent,
