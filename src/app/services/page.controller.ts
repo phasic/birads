@@ -1,7 +1,6 @@
 import {Injectable, ElementRef} from "@angular/core";
 import {DataService} from "./data.service";
-import {element} from "protractor";
-
+//TODO  ADD DOCUMENTATION HERE
 @Injectable()
 export class PageController {
     get sideclicklocation(): {relX: number; relY: number; imagenumber: number} {
@@ -250,7 +249,6 @@ export class PageController {
             distanceY = -(this.frontclicklocation.relY - originY) / originY;
             // this.distanceZ = parseFloat((-(this.sideclickedX - originZ) / originZ).toFixed(2));
         }
-        //TODO optimize this calculation
         this.distance = parseFloat((Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY,2))/Math.sqrt(2)).toFixed(2));
     }
 

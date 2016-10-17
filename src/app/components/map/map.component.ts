@@ -1,7 +1,6 @@
 import {Component, ElementRef}      from '@angular/core';
 import {PageController} from "../../services/page.controller";
 import {DataService} from "../../services/data.service";
-import {element} from "protractor";
 @Component({
     selector: 'map-component',
     templateUrl: '../../templates/map/map.template.html'
@@ -11,79 +10,90 @@ export class MapComponent {
      * Constructor of MapComponent
      * @param dataservice
      * @param pagectrl page controller manages functions to assure functionality (tracking click, adding badges, ... )
-     * @param elementref
+     * @param elementref    references the clicked element
      */
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
 
     }
+
+    /**
+     * Get's called when the element is clicked.
+     * This function calls this.clickedMap(event)
+     * @param event
+     */
     clickHandler(event: any): void {
         this.clickedMap(event);
     }
+
+    /**
+     * Stores the first clicked image
+     */
     private firstimage: string;
+
+    /**
+     * Get's called in clickHandler
+     * This function executes a sequence of checks to see if the clicks are 'legal' clicks, if they are, show the right menu
+     * @param event is the event which is the origin of the click trigger
+     */
     clickedMap(event: any): void{ //function gets called when an image is clicked
         if(!this.pagectrl.isMenuShown() && (this.pagectrl.getMethod() !== '')) { //if the menu is not shown and we selected a method
-            this.pagectrl.setImages();
+            this.pagectrl.setImages();                                          //update the stoed images ( size, location, ...)
             if (this.firstClick()) {                                            //check if its the first time we clicked an image
-                this.pagectrl.setClickLocation(event.target, event, true);
-                this.renderFirstClickMarker(event);
-                this.firstimage = event.target.id;                      //keep the id of the first clicked image
+                this.pagectrl.setClickLocation(event.target, event, true);      //set the first click location
+                this.renderFirstClickMarker(event);                             //render a badge to offer some feedback of the first click location
+                this.firstimage = event.target.id;                              //keep the id of the first clicked image
             }
-            else{       //if it isn't the first time we clicked, and we clicked the correct height
-                if ((this.firstimage == 'RS' && event.target.id == 'RF') ||
-                    (this.firstimage == 'LS' && event.target.id == 'LF') ||
+            else{       //if it isn't the first time we clicked
+                if ((this.firstimage == 'RS' && event.target.id == 'RF') ||     //check if we clicked a corresponding image. if we first clicked Right Side, then now we want Right Front
+                    (this.firstimage == 'LS' && event.target.id == 'LF') ||     //check for the other possibilities too
                     (this.firstimage == 'RF' && event.target.id == 'RS') ||
                     (this.firstimage == 'LF' && event.target.id == 'LS')){
-                    this.pagectrl.setClickLocation(event.target, event);
-                    MapComponent.removeFirstClickMarker();
-                    this.pagectrl.setShowmenu(this.pagectrl.getMethod());
-                    this.pagectrl.setNumberOfClicks(0);
+                    this.pagectrl.setClickLocation(event.target, event);        //If we have a legal click sequence, set the clicked location
+                    MapComponent.removeFirstClickMarker();                      //delete the first clicked marker
+                    this.pagectrl.setShowmenu(this.pagectrl.getMethod());       //show the right menu
+                    this.pagectrl.setNumberOfClicks(0);                         //reset the number of clicks ( so we can re-detect a first click)
                 }
                 else{
-                    MapComponent.removeFirstClickMarker();
+                    MapComponent.removeFirstClickMarker();                      //if it wasnt a legal second click, remove the first marer, reset the number of clicks ( reset the squence)
                     this.pagectrl.setNumberOfClicks(0);
                 }
 
             }
         }
     }
+
+    /**
+     * Checks if it's the firs time we click an image.
+     * This function increments the number of clicks
+     * @returns {boolean} true if it's the first time we clicked an image
+     */
     firstClick(): boolean{
-        this.pagectrl.setNumberOfClicks(this.pagectrl.getNumberOfClicks() + 1);
-        return this.pagectrl.getNumberOfClicks() == 1;
+        this.pagectrl.setNumberOfClicks(this.pagectrl.getNumberOfClicks() + 1); //increment the number of clicks
+        return this.pagectrl.getNumberOfClicks() == 1;                          //if it's 1, then it's the first time we clicked an image, return true
     }
+
+    /**
+     * renders a marker after we clicked for the first time on an image.
+     * @param event pass the event to get the clicked location
+     */
     renderFirstClickMarker(event: any): void{
-        let clickedX: number = event.clientX;
-        let clickedY: number = event.clientY;
-        let tmp: any = document.createElement('div');
-        tmp.innerHTML = `<div class='circle-firstclick'></div>`;
-        tmp.id = 'firstlocation';
-        tmp.style = `position: fixed; top:${clickedY}; left:${clickedX}`;
-        this.elementref.nativeElement.appendChild(tmp);
-    }
-    calculateFirstClickLocation(clickedX: number, clickedY: number){
-        let index: number = 0;
-        let relX: number;
-        let relY: number;
-        let image: any;
-        for(let element of this.pagectrl.images){
-            if(clickedX > element.locX &&
-                clickedX < (element.locX + element.width) &&
-                clickedY > element.locY &&
-                clickedY < (element.locY + element.height)){
-                relX = (clickedX - element.locX) / element.width;
-                relY = (clickedY - element.locY) / element.height;
-                image = element;
-                break;
-            }
-            index++;
-        }
-        this.pagectrl.firstclicklocation = { relX : relX, relY: relY, imagenumber: index};
-
+        let clickedX: number = event.clientX;                                   //get the x coordinate of the click (absolute)
+        let clickedY: number = event.clientY;                                   //get the y coordinate of the click (absolute)
+        let tmp: any = document.createElement('div');                           //create a new div element to render a badge in
+        tmp.innerHTML = `<div class='circle-firstclick'></div>`;                //create a badge in the new div
+        tmp.id = 'firstlocation';                                               //set the id
+        tmp.style = `position: fixed; top:${clickedY}; left:${clickedX}`;       //set the correct location (clicklocation)
+        this.elementref.nativeElement.appendChild(tmp);                         //add it to the body
     }
 
+    /**
+     * When we have an illegal click, or we are going to show the menu, delete the first clicked marker.
+     * we dont need it anymore then
+     */
     static removeFirstClickMarker(): void{
-        let elements: any = document.getElementsByClassName('circle-firstclick');
-        for(let i = 0; i < elements.length; i++){
-            elements[i].parentNode.remove();
+        let elements: any = document.getElementsByClassName('circle-firstclick');//get all elements with this class (it should be one, but just to be sure we delete them all)
+        for(let i = 0; i < elements.length; i++){                               //iterate over all found elements
+            elements[i].parentNode.remove();                                    //get the parent ( the div) and delete them
         }
     }
 }

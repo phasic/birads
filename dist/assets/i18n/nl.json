@@ -1,29 +1,71 @@
 {
-  "LEGEND":{
-    "ONE": "zeer laag (klinisch significante kanker is hoogst onwaarschijnlijk",
-    "TWO": "laag (klinisch significante kanker is onwaarschijnlijk",
-    "THREE": "gemiddeld (de aanwezigheid van klinisch significante kanker is twijfelachtig",
-    "FOUR": "hoog (zoge waarschijnlijkheid op klinisch significante kanker",
-    "FIVE": "zeer hoog (zeer hoge waarschijnlijkheid op klinisch significante kanker",
-    "X": "technisch inadequaat of niet getest"
-  },
-  "TABLE":{
-    "REGION": "Regio",
-    "LEVEL": "Niveau",
-    "SIDE": "Kant",
-    "VOLUME": "Volume",
-    "COMMENT": "Opmerkingen",
-    "DIALOG": "U staat op het punt om meer dan 4 bevindingen toe te voeg, wilt u doorgaan?"
-  },
-  "DATA":{
-    "LEVEL": {
-      "BASE": "basis",
-      "MID": "midden",
-      "APEX": "top"
+  "LEGEND": {
+    "ZERO": {
+      "ASSESSMENT": "Categorie 0:",
+      "MANAGEMENT": "Herroep voor extra scans",
+      "LIKELIHOOD": "NVT"
     },
-    "SIDE":{
-      "R": "R",
-      "L": "L"
+    "ONE": {
+      "ASSESSMENT": "Categorie 1:",
+      "MANAGEMENT": "Routine screening ",
+      "LIKELIHOOD": "Wezenlijk 0% kans op kwaadaardigheid"
+    },
+    "TWO": {
+      "ASSESSMENT": "Categorie 2:",
+      "MANAGEMENT": "Routine screening",
+      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+    },
+    "THREE": {
+      "ASSESSMENT": "Categorie 3:",
+      "MANAGEMENT": "Short-interval (6-month) follow-up or continued surveillance",
+      "LIKELIHOOD": "< 2% likelihood of malignancy"
+    },
+    "FOUR": {
+      "ASSESSMENT": "Categorie 4:",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "< 30% likelihood of malignancy"
+    },
+    "FIVE": {
+      "ASSESSMENT": "Categorie 5:",
+      "MANAGEMENT": "Tissue diagnosis",
+      "LIKELIHOOD": "95% likelihood of malignancy"
+    },
+    "SIX": {
+      "ASSESSMENT": "Categorie 6:",
+      "MANAGEMENT": "Surgical excision when clinically appropriate",
+      "LIKELIHOOD": "N/A"
+    }
+  },
+  "SIDEBAR": {
+    "MASS": "massa",
+    "DISTORTION": "distortie",
+    "ASYMMETRY": "asymmetrie",
+    "CALCIFICATION": "calcificatie",
+    "OTHER": "andere",
+    "PALPITATION": "palpitatie",
+    "SCAR": "litteken"
+  },
+  "CLASSIFICATION": {
+    "LEFT": "Links",
+    "RIGHT": "Rechts",
+    "COMPOSITION": {
+      "TITLE": "Borst compositie",
+      "ONE": "Bijna volledig vet",
+      "TWO": "Verspreide zone's van fibroglandulaire densiteit",
+      "THREE": "Heterogeen dense",
+      "FOUR": "Extreem dense"
+    }
+  },
+  "TABLE": {
+    "MASS": {
+      "NAME": "massa",
+      "DISTANCE": "Afstand (cm)",
+      "SIZE": "Grootte",
+      "SHAPE": {
+        "NAME": "Vorm"
+      },
+      "MARGIN": "Marge",
+      "DENSITY": "Densiteit"
     }
   }
 }

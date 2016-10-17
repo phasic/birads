@@ -7,23 +7,29 @@ import {PageController} from "../services/page.controller";
     selector: '[resize]'
 })
 export class ScreenResize {
-    private imagediv: any;
-    private badge: any;
-    private divX: number;
-    private divY: number;
-    private divW: number;
-    private divH: number;
-    private wscale: number;
-    private hscale: number;
+    /**
+     *
+     * @param dataservice
+     * @param pagectrl
+     * @param elementRef
+     */
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementRef: ElementRef){
-           }
+    }
     @HostListener('window:resize',['$event'])
+    /**
+     * When the screen is resized, onResized gets called, and handles the resizing and repositioning of the badges
+     * @param event holds the resize event
+     */
     onResize(event: Event): void{
-        this.pagectrl.resizeBadges();
+        this.pagectrl.resizeBadges();                       //handles the repositioning and resizing of the badges
     }
     @HostListener('window:scroll', ['$event'])
+    /**
+     * When we scroll in the screen, onScroll gets called, and handles the resizing and repositioning of the badges
+     * @param event
+     */
     onScroll(event: Event): void{
-        this.pagectrl.resizeBadges();
+        this.pagectrl.resizeBadges();                       //handles the repositioning and resizing of the badges
     }
 }
 

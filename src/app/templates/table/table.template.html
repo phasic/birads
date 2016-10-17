@@ -1,16 +1,16 @@
 <div class="table-container wrapper">
     <div class="row">
         <div *ngIf="dataservice.getData('mass').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Mass</b></h4></div>
-            <table class="table">       <!-- todo make it with divs, to make it more responsive when scaling -->
+            <div class="panel-heading"><h4><b>{{"TABLE.MASS.NAME" | translate}}</b></h4></div>
+            <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
-                    <th>Size</th>
-                    <th>Shape</th>
-                    <th>Margin</th>
-                    <th>Density</th>
+                    <th>{{"TABLE.MASS.DISTANCE" | translate}}</th>
+                    <th>{{"TABLE.MASS.SIZE" | translate}}</th>
+                    <th>{{"TABLE.MASS.SHAPE" | translate}}</th>
+                    <th>{{"TABLE.MASS.MARGIN" | translate}}</th>
+                    <th>{{"TABLE.MASS.DENSITY" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -18,7 +18,8 @@
                     <td>{{i + 1}}</td>
                     <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
                                #distance (keyup)="setDistance(distance.value, 'mass', i)"/></td>
-                    <td>{{entry.size}}</td>
+                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                               #size (keyup)="setSize(size.value, 'mass', i)"/></td>
                     <td>{{entry.shape}}</td>
                     <td>{{entry.margin}}</td>
                     <td>{{entry.density}}</td>
@@ -28,13 +29,13 @@
             </table>
         </div>
         <div *ngIf="dataservice.getData('distortion').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Distortion</b></h4></div>
+            <div class="panel-heading"><h4><b>{{"TABLE.DISTORTION.NAME" | translate}}</b></h4></div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
-                    <th>Finding</th>
+                    <th>{{"TABLE.DISTORTION.DISTANCE" | translate}}</th>
+                    <th>{{"TABLE.DISTORTION.FINDING" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,13 +52,13 @@
     </div>
     <div class="row">
         <div *ngIf="dataservice.getData('asymmetry').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Asymmetries</b></h4></div>
+            <div class="panel-heading"><h4><b><th>{{"TABLE.ASYMMETRY.NAME" | translate}}</th></b></h4></div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
-                    <th>Finding</th>
+                    <th>{{"TABLE.ASYMMETRY.DISTANCE" | translate}}</th>
+                    <th>{{"TABLE.ASYMMETRY.FINDING" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,14 +73,14 @@
             </table>
         </div>
         <div *ngIf="dataservice.getData('calcification').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Calcifications</b></h4></div>
+            <div class="panel-heading"><h4><b>{{"TABLE.CALCIFICATION.NAME" | translate}}</b></h4></div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
-                    <th>Morphology</th>
-                    <th>Distribution</th>
+                    <th>{{"TABLE.CALCIFICATION.DISTANCE" | translate}}</th>
+                    <th>{{"TABLE.CALCIFICATION.MORPHOLOGY" | translate}}</th>
+                    <th>{{"TABLE.CALCIFICATION.DISTRIBUTION" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,12 +98,12 @@
     </div>
     <div class="row">
         <div *ngIf="dataservice.getData('palpitation').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Palpitations</b></h4></div>
+            <div class="panel-heading"><h4><b>{{"TABLE.PALPITATION.NAME" | translate}}</b></h4></div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
+                    <th>{{"TABLE.PALPITATION.DISTANCE" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -118,12 +119,12 @@
             </table>
         </div>
         <div *ngIf="dataservice.getData('scar').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>Scars</b></h4></div>
+            <div class="panel-heading"><h4><b>{{"TABLE.SCAR.NAME" | translate}}</b></h4></div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Distance (cm)</th>
+                    <th>{{"TABLE.SCAR.DISTANCE" | translate}}</th>
                 </tr>
                 </thead>
                 <tbody>

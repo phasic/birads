@@ -37,13 +37,13 @@
     }
   },
   "SIDEBAR": {
-    "MASS": "massa",
-    "DISTORTION": "distortie",
-    "ASYMMETRY": "asymmetrie",
-    "CALCIFICATION": "calcificatie",
-    "OTHER": "andere",
-    "PALPITATION": "palpitatie",
-    "SCAR": "litteken"
+    "MASS": "Massa",
+    "DISTORTION": "Distortie",
+    "ASYMMETRY": "Asymmetrie",
+    "CALCIFICATION": "Calcificatie",
+    "OTHER": "Andere",
+    "PALPITATION": "Palpitatie",
+    "SCAR": "Litteken"
   },
   "CLASSIFICATION": {
     "LEFT": "Links",
@@ -54,6 +54,40 @@
       "TWO": "Verspreide zone's van fibroglandulaire densiteit",
       "THREE": "Heterogeen dense",
       "FOUR": "Extreem dense"
+    }
+  },
+  "TABLE": {
+    "MASS": {
+      "NAME": "Massa",
+      "DISTANCE": "Afstand (cm)",
+      "SIZE": "Grootte (cm)",
+      "SHAPE": "Vorm",
+      "MARGIN": "Marge",
+      "DENSITY": "Densiteit"
+    },
+    "DISTORTION": {
+      "NAME": "Distorties",
+      "DISTANCE": "Afstand (cm)",
+      "FINDING": "Bevinding"
+    },
+    "ASYMMETRY": {
+      "NAME": "Asymmetrieën",
+      "DISTANCE": "Afstand (cm)",
+      "FINDING": "Bevinding"
+    },
+    "CALCIFICATION": {
+      "NAME": "Calcificaties",
+      "DISTANCE": "Afstand (cm)",
+      "MORPHOLOGY": "Morfologie",
+      "DISTRIBUTION": "Distributie"
+    },
+    "PALPITATION": {
+      "NAME": "Palpitaties",
+      "DISTANCE": "Afstand (cm)"
+    },
+    "SCAR": {
+      "NAME": "Litteken",
+      "DISTANCE": "Afstand (cm)"
     }
   }
 }

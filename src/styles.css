@@ -1,16 +1,11 @@
 .table-container{
     overflow-y: auto;
-    max-height: 50%;
+    max-height: 55%;
 }
 .wrapper{
     padding-right: 15px;
     padding-left: 15px;
 }
-/*.header-wrapper{*/
-    /*padding-right: 30px;*/
-    /*padding-left: 30px;*/
-/*}*/
-
 .circle-finding {
     width: 20px;
     height: 20px;
@@ -23,7 +18,6 @@
     text-align: center;
     background: slategrey;
 }
-
 .circle-firstclick {
     width: 20px;
     height: 20px;

@@ -37,13 +37,13 @@
     }
   },
   "SIDEBAR": {
-    "MASS": "mass",
-    "DISTORTION": "distortion",
-    "ASYMMETRY": "asymmetry",
-    "CALCIFICATION": "calcification",
-    "OTHER": "other",
-    "PALPITATION": "palpitation",
-    "SCAR": "scar"
+    "MASS": "Mass",
+    "DISTORTION": "Distortion",
+    "ASYMMETRY": "Asymmetry",
+    "CALCIFICATION": "Calcification",
+    "OTHER": "Other",
+    "PALPITATION": "Palpitation",
+    "SCAR": "Scar"
   },
   "CLASSIFICATION": {
     "LEFT": "Left",
@@ -54,6 +54,40 @@
       "TWO": "Scattered areas of fibroglandular density",
       "THREE": "Heterogeneously dense",
       "FOUR": "Extremely dense"
+    }
+  },
+  "TABLE": {
+    "MASS": {
+      "NAME": "Mass",
+      "DISTANCE": "Distance (cm)",
+      "SIZE": "Size (cm)",
+      "SHAPE": "Shape",
+      "MARGIN": "Margin",
+      "DENSITY": "Density"
+    },
+    "DISTORTION": {
+      "NAME": "Distortions",
+      "DISTANCE": "Distance (cm)",
+      "FINDING": "Finding"
+    },
+    "ASYMMETRY": {
+      "NAME": "Asymmetries",
+      "DISTANCE": "Distance (cm)",
+      "FINDING": "Finding"
+    },
+    "CALCIFICATION": {
+      "NAME": "Calcifications",
+      "DISTANCE": "Distance (cm)",
+      "MORPHOLOGY": "Morphology",
+      "DISTRIBUTION": "Distribution"
+    },
+    "PALPITATION": {
+      "NAME": "Palpitations",
+      "DISTANCE": "Distance (cm)"
+    },
+    "SCAR": {
+      "NAME": "Scar",
+      "DISTANCE": "Distance (cm)"
     }
   }
 }
