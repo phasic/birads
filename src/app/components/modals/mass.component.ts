@@ -101,7 +101,7 @@ export class MassComponent implements OnChanges{
     }
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);
-        this.pagectrl.calculateBadgeDistance();
+        this.pagectrl.calculateDistance();
         this.addToTable();                                    //add data to the table and dataervice
         this.pagectrl.renderBadge(this.elementref);         //create a badge on the image
     }

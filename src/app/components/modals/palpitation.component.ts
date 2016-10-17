@@ -18,7 +18,7 @@ export class PalpitationComponent implements OnChanges{
         }
     }
     endOfMenu(): void{
-        this.pagectrl.calculateBadgeDistance();
+        this.pagectrl.calculateDistance();
         this.addToTable();
         this.pagectrl.renderBadge(this.elementref);
     }

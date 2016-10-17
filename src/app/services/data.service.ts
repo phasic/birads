@@ -2,6 +2,9 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class DataService {
+    get methods(): Array<string> {
+        return this._methods;
+    }
 
 
     constructor() {
@@ -19,7 +22,7 @@ export class DataService {
         this.calcification = [];
         this.palpitation = [];
         this.scar = [];
-        this.methods = this.mainmethods.concat(this.othermethods);
+        this._methods = this.mainmethods.concat(this.othermethods);
     }
     /* Classifications Variables*/
     private acr: {
@@ -91,7 +94,7 @@ export class DataService {
     getComposition(): string {
         return this.composition;
     }
-    private methods: Array<string>;
+    private _methods: Array<string>;
      private mainmethods: Array<string> = [
         'mass',
         'distortion',
@@ -103,9 +106,7 @@ export class DataService {
         'scar'
     ];
 
-    getMethods(): Array<string>{
-        return this.methods;
-    }
+
     getMainMethods(): Array<string>{
         return this.mainmethods;
     }
@@ -142,7 +143,7 @@ export class DataService {
         distance: number
     }[];
     getData(method: string): any{
-        for(let m of this.getMethods()){
+        for(let m of this.methods){
             if(method == m){
                 return this[method];
             }
@@ -150,7 +151,7 @@ export class DataService {
 
     }
     setData(method: string, data: any, index: number): void{
-        for(let m of this.getMethods()){
+        for(let m of this.methods){
             if(method == m){
                 this[method][index] = data;
             }

@@ -46,7 +46,7 @@ export class AsymmetryComponent implements OnChanges{
     }
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);
-        this.pagectrl.calculateBadgeDistance();
+        this.pagectrl.calculateDistance();
         this.addTable();
         this.pagectrl.renderBadge(this.elementref);
     }
