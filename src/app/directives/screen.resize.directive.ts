@@ -19,9 +19,7 @@ export class ScreenResize {
            }
     @HostListener('window:resize',['$event'])
     onResize(event: Event): void{
-        // this.pagectrl.resizeBadges(this.divW, this.divH);
-        this.pagectrl.resizeBadges(); //todo rename it
-
+        this.pagectrl.resizeBadges();
     }
     @HostListener('window:scroll', ['$event'])
     onScroll(event: Event): void{
