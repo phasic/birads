@@ -106,7 +106,8 @@
       "DISTANCE": "Distance (cm)",
       "MORPHOLOGY": {
         "NAME": "Morphology",
-        "HEADERNAME": "Morphology (press ~ for more options)",
+        "HEADERNAME": "Morphology, for more options press {{value}} or click",
+        "MOREBUTTON": "more",
         "SKIN CALCIFICATION": "Skin calcification",
         "MILK OF CALCIUM": "Milk of calcium",
         "ROD-LIKE - PLASMACEL MASTISIS": "Rod-like - plasmacel mastisis",

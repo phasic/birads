@@ -59,6 +59,8 @@ import {ImageMapResize} from "./directives/imagemap.resize.directive";
 })
 export class AppModule {
     constructor(translate: TranslateService){
+
+
         translate.addLangs(["en", "fr", "nl"]);
         translate.setDefaultLang('en');
         translate.use('en');

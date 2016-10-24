@@ -7,7 +7,8 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <label *ngFor="let element of asymmetryarray" class="btn btn-lg btn-default" (click)="mouseControl(element)" [(ngModel)]="asymmetry" btnRadio="{{element}}">{{element}}</label>
+                    <label *ngFor="let element of asymmetryarray" class="btn btn-lg btn-default" (click)="mouseControl(element)" [(ngModel)]="asymmetry" btnRadio="{{element}}">
+                        {{"TABLE.ASYMMETRY.FINDING." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
             </div>
         </div>

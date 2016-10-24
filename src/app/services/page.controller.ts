@@ -1,7 +1,6 @@
 import {Injectable, ElementRef} from "@angular/core";
 import {DataService} from "./data.service";
 import {TranslateService} from "ng2-translate";
-//TODO  ADD DOCUMENTATION HERE
 @Injectable()
 export class PageController {
     /**

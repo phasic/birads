@@ -12,7 +12,13 @@ import {HotkeyService} from "../../services/hotkey.service";
     templateUrl: '../../templates/modals/calcifications.template.html'
 })
 export class CalcificationComponent implements OnChanges{
-    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef, private hotkeyservice: HotkeyService) {
+    constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef, private hotkeyservice: HotkeyService,
+    translate: TranslateService) {
+        setTimeout(() => {
+            this.togglebutton = String.fromCharCode(hotkeyservice.hotkeys.modal.toggle);
+            let x: any = translate.get("TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME");
+            this.headername = x.value + ' ' + this.togglebutton;
+        }, 10);
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -30,6 +36,14 @@ export class CalcificationComponent implements OnChanges{
         }
     }
 
+    /**
+     * The button name of the toggle button in the header of the menu, save this so the button changes when we change the hotkeys
+     */
+    private togglebutton: any;
+    /**
+     * the full string of the header of the menu, changes depending on keybinds and translations
+     */
+    private headername: string;
     /**
      * array to keep all possible selections of benign morphologies
      * name the files for the images, the same as these strings
@@ -114,7 +128,7 @@ export class CalcificationComponent implements OnChanges{
         }
     }
 
-    private hotkeys: any;
+    private hotkeys: any = '';
 
     /**
      * When a menu is shown and we press a key on the keyboard, this function will get called

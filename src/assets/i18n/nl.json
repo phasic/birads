@@ -106,7 +106,8 @@
       "DISTANCE": "Afstand (cm)",
       "MORPHOLOGY": {
         "NAME": "Morfologie",
-        "HEADERNAME": "Morfologie (klik ~ voor meer opties)",
+        "HEADERNAME": "Morfologie, voor meer opties druk {{value}} of klik",
+        "MOREBUTTON": "meer",
         "SKIN CALCIFICATION": "Huid calcificatie",
         "MILK OF CALCIUM": "Calciummelk",
         "ROD-LIKE - PLASMACEL MASTISIS": "Staafvormige - plasmacel mastisis",
