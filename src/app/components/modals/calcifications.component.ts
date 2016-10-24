@@ -32,6 +32,7 @@ export class CalcificationComponent implements OnChanges{
 
     /**
      * array to keep all possible selections of benign morphologies
+     * name the files for the images, the same as these strings
      * @type {(string|string|string|string|string|string|string|string|string)[]}
      */
     private morphologyarraybenign: Array<string> = [
@@ -47,6 +48,7 @@ export class CalcificationComponent implements OnChanges{
     ];
     /**
      * array to keep all possible selections of non benign morphologies
+     * name the files for the images, the same as these strings
      * @type {(string|string|string|string|string|string)[]}
      */
     private morphologyarraynotbenign: Array<string> = [
@@ -59,6 +61,7 @@ export class CalcificationComponent implements OnChanges{
     ];
     /**
      * array to keep all possible selections of distributions
+     * name the files for the images, the same as these strings
      * @type {(string|string|string|string|string)[]}
      */
     private distributionarray: Array<string> = [
@@ -70,6 +73,7 @@ export class CalcificationComponent implements OnChanges{
     ];
     /**
      * array to keep all menus
+     * name the files for the images, the same as these strings
      * @type {(string|string)[]}
      */
     private menus: Array<string> = [

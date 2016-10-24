@@ -4,6 +4,7 @@ import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
 import {HotkeyService} from "../../services/hotkey.service";
+import {TranslateService} from "ng2-translate";
 
 
 @Component({
@@ -12,7 +13,8 @@ import {HotkeyService} from "../../services/hotkey.service";
 })
 export class MassComponent implements OnChanges{
     constructor(private dataservice: DataService, private pagectrl: PageController,
-                private elementref: ElementRef, private hotkeyservice: HotkeyService){
+                private elementref: ElementRef, private hotkeyservice: HotkeyService,
+                private translate: TranslateService){
     }
     @Input() show: boolean;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -33,6 +35,7 @@ export class MassComponent implements OnChanges{
 
     /**
      * array to keep all possible selections of shapes
+     * name the files for the images, the same as these strings
      * @type {(string|string|string)[]}
      */
     private shapearray: Array<string> = [       //values of shape
@@ -42,6 +45,7 @@ export class MassComponent implements OnChanges{
     ];
     /**
      * array to keep all possible selections of margins
+     * name the files for the images, the same as these strings
      * @type {(string|string|string|string|string)[]}
      */
     private marginarray: Array<string> = [      //values of margin
@@ -53,6 +57,7 @@ export class MassComponent implements OnChanges{
     ];
     /**
      * array to keep all possible selections of densities
+     * name the files for the images, the same as these strings
      * @type {(string|string|string)[]}
      */
     private densityarray: Array<string> = [     //values of density

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Morphology (press ~ for more options) <button type="button" (click)="hotKeys(hotkeys.toggle, this.menus[0])">more</button></h4>
+                <h4 class="modal-title">{{"TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME" | translate}}<button type="button" (click)="hotKeys(hotkeys.toggle, this.menus[0])">more</button></h4>
             </div>
             <div class="modal-body"  (keydown)="hotKeys($event.keyCode, this.menus[0])">
                 <div *ngIf="this.benign">
@@ -20,7 +20,7 @@
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Distribution</h4>
+                <h4 class="modal-title">{{"TABLE.CALCIFICATION.DISTRIBUTION.NAME" | translate}}</h4>
             </div>
             <div class="modal-body">
                 <div class="btn-group">
