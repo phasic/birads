@@ -1,144 +1,138 @@
 <div class="table-container wrapper">
-    <div class="row">
-        <div *ngIf="dataservice.getData('mass').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>{{"TABLE.MASS.NAME" | translate}}</b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.MASS.DISTANCE" | translate}}</th>
-                    <th>{{"TABLE.MASS.SIZE" | translate}}</th>
-                    <th>{{"TABLE.MASS.SHAPE.NAME" | translate}}</th>
-                    <th>{{"TABLE.MASS.MARGIN.NAME" | translate}}</th>
-                    <th>{{"TABLE.MASS.DENSITY.NAME" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('mass'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'mass', i)"/></td>
-                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
-                               #size (keyup)="setSize(size.value, 'mass', i)"/></td>
-                    <td>{{"TABLE.MASS.SHAPE." + entry.shape.toLocaleUpperCase() | translate}}</td>
-                    <td>{{"TABLE.MASS.MARGIN." + entry.margin.toLocaleUpperCase() | translate}}</td>
-                    <td>{{"TABLE.MASS.DENSITY." + entry.density.toLocaleUpperCase() | translate}}</td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'mass')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div *ngIf="dataservice.getData('distortion').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>{{"TABLE.DISTORTION.NAME" | translate}}</b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.DISTORTION.DISTANCE" | translate}}</th>
-                    <th>{{"TABLE.DISTORTION.FINDING.NAME" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('distortion'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'distortion', i)"/></td>
-                    <td>{{"TABLE.DISTORTION.FINDING." + entry.distortion.toLocaleUpperCase() | translate}}</td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'distortion')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div *ngIf="dataservice.getData('mass').length > 0" class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.MASS.NAME" | translate}}</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.MASS.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.MASS.SIZE" | translate}}</th>
+                <th>{{"TABLE.MASS.SHAPE.NAME" | translate}}</th>
+                <th>{{"TABLE.MASS.MARGIN.NAME" | translate}}</th>
+                <th>{{"TABLE.MASS.DENSITY.NAME" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('mass'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'mass', i)"/></td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #size (keyup)="setSize(size.value, 'mass', i)"/></td>
+                <td>{{"TABLE.MASS.SHAPE." + entry.shape.toLocaleUpperCase() | translate}}</td>
+                <td>{{"TABLE.MASS.MARGIN." + entry.margin.toLocaleUpperCase() | translate}}</td>
+                <td>{{"TABLE.MASS.DENSITY." + entry.density.toLocaleUpperCase() | translate}}</td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'mass')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="row">
-        <div *ngIf="dataservice.getData('asymmetry').length > 0" class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b><th>{{"TABLE.ASYMMETRY.NAME" | translate}}</th></b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.ASYMMETRY.DISTANCE" | translate}}</th>
-                    <th>{{"TABLE.ASYMMETRY.FINDING.NAME" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('asymmetry'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'asymmetry', i)"/></td>
-                    <td>{{"TABLE.ASYMMETRY.FINDING." + entry.asymmetry.toLocaleUpperCase() | translate}}</td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'asymmetry')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div *ngIf="dataservice.getData('calcification').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>{{"TABLE.CALCIFICATION.NAME" | translate}}</b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.CALCIFICATION.DISTANCE" | translate}}</th>
-                    <th>{{"TABLE.CALCIFICATION.MORPHOLOGY.NAME" | translate}}</th>
-                    <th>{{"TABLE.CALCIFICATION.DISTRIBUTION.NAME" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('calcification'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'calcification', i)"/></td>
-                    <td>{{"TABLE.CALCIFICATION.MORPHOLOGY." + entry.morphology.toLocaleUpperCase() | translate}}</td>
-                    <td>{{"TABLE.CALCIFICATION.DISTRIBUTION." + entry.distribution.toLocaleUpperCase() | translate}}</td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'calcification')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div *ngIf="dataservice.getData('distortion').length > 0" class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.DISTORTION.NAME" | translate}}</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.DISTORTION.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.DISTORTION.FINDING.NAME" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('distortion'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'distortion', i)"/></td>
+                <td>{{"TABLE.DISTORTION.FINDING." + entry.distortion.toLocaleUpperCase() | translate}}</td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'distortion')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="row">
-        <div *ngIf="dataservice.getData('palpitation').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>{{"TABLE.PALPITATION.NAME" | translate}}</b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.PALPITATION.DISTANCE" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('palpitation'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><label>
-                        <input height="100%" align="left" class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'palpitation', i)"/>
-                    </label></td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'palpitation')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div *ngIf="dataservice.getData('scar').length > 0"   class="panel panel-default col-sm-6">
-            <div class="panel-heading"><h4><b>{{"TABLE.SCAR.NAME" | translate}}</b></h4></div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>{{"TABLE.SCAR.DISTANCE" | translate}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let entry of dataservice.getData('scar'); let i = index">
-                    <td>{{i + 1}}</td>
-                    <td><label>
-                        <input height="100%" align="left" class="form-control" type="number" step="0.1"
-                               #distance (keyup)="setDistance(distance.value, 'scar', i)"/>
-                    </label></td>
-                    <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'scar')"></div> </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div *ngIf="dataservice.getData('asymmetry').length > 0" class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b><th>{{"TABLE.ASYMMETRY.NAME" | translate}}</th></b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.ASYMMETRY.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.ASYMMETRY.FINDING.NAME" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('asymmetry'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'asymmetry', i)"/></td>
+                <td>{{"TABLE.ASYMMETRY.FINDING." + entry.asymmetry.toLocaleUpperCase() | translate}}</td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'asymmetry')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getData('calcification').length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.CALCIFICATION.NAME" | translate}}</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.CALCIFICATION.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.CALCIFICATION.MORPHOLOGY.NAME" | translate}}</th>
+                <th>{{"TABLE.CALCIFICATION.DISTRIBUTION.NAME" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('calcification'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'calcification', i)"/></td>
+                <td>{{"TABLE.CALCIFICATION.MORPHOLOGY." + entry.morphology.toLocaleUpperCase() | translate}}</td>
+                <td>{{"TABLE.CALCIFICATION.DISTRIBUTION." + entry.distribution.toLocaleUpperCase() | translate}}</td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'calcification')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getData('palpitation').length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.PALPITATION.NAME" | translate}}</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.PALPITATION.DISTANCE" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('palpitation'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><label>
+                    <input height="100%" align="left" class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'palpitation', i)"/>
+                </label></td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'palpitation')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dataservice.getData('scar').length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.SCAR.NAME" | translate}}</b></h4></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>{{"TABLE.SCAR.DISTANCE" | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let entry of dataservice.getData('scar'); let i = index">
+                <td>{{i + 1}}</td>
+                <td><label>
+                    <input height="100%" align="left" class="form-control" type="number" step="0.1"
+                           #distance (keyup)="setDistance(distance.value, 'scar', i)"/>
+                </label></td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'scar')"></div> </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

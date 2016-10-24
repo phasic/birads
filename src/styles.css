@@ -1,6 +1,6 @@
 .table-container{
     overflow-y: auto;
-    max-height: 52%;
+    max-height: 52vh;
 }
 .wrapper{
     padding-right: 15px;
