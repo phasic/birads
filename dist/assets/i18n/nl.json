@@ -37,13 +37,13 @@
     }
   },
   "SIDEBAR": {
-    "MASS": "massa",
-    "DISTORTION": "distortie",
-    "ASYMMETRY": "asymmetrie",
-    "CALCIFICATION": "calcificatie",
-    "OTHER": "andere",
-    "PALPITATION": "palpitatie",
-    "SCAR": "litteken"
+    "MASS": "Massa",
+    "DISTORTION": "Distortie",
+    "ASYMMETRY": "Asymmetrie",
+    "CALCIFICATION": "Calcificatie",
+    "OTHER": "Andere",
+    "PALPITATION": "Palpitatie",
+    "SCAR": "Litteken"
   },
   "CLASSIFICATION": {
     "LEFT": "Links",
@@ -58,14 +58,87 @@
   },
   "TABLE": {
     "MASS": {
-      "NAME": "massa",
+      "NAME": "Massa",
       "DISTANCE": "Afstand (cm)",
-      "SIZE": "Grootte",
+      "SIZE": "Grootte (cm)",
       "SHAPE": {
-        "NAME": "Vorm"
+        "NAME": "Vorm",
+        "ROUND": "Rond",
+        "OVAL": "Ovaal",
+        "IRREGULAR": "Irregulier"
       },
-      "MARGIN": "Marge",
-      "DENSITY": "Densiteit"
+      "MARGIN": {
+        "NAME": "Marge",
+        "CIRCUMSCRIBED": "Omschreven",
+        "OBSCURED": "Belemmerd",
+        "MICROLOBULATED": "Microgelobd",
+        "INDISTINCT": "Indistinct",
+        "SPICULATED": "spiculated"
+      },
+      "DENSITY": {
+        "NAME": "Dichtheid",
+        "LOW": "Laag",
+        "EQUAL": "Gelijk",
+        "HIGH": "Hoog"
+      }
+    },
+    "DISTORTION": {
+      "NAME": "Distorties",
+      "DISTANCE": "Afsand (cm)",
+      "FINDING": {
+        "NAME": "Bevinding",
+        "ARCHITECTURAL DISTORTION": "Architecturale distortie"
+      }
+    },
+    "ASYMMETRY": {
+      "NAME": "Asymmetrieën",
+      "DISTANCE": "Afstand (cm)",
+      "FINDING": {
+        "NAME": "Bevinding",
+        "ASYMMETRY": "Asymmetrie",
+        "FOCAL ASYMMETRY": "Focale asymmetrie",
+        "GLOBAL ASYMMETRY": "Globale asymmetrie",
+        "DEVELOPING ASYMMETRY": "Ontwikkelende asymmetrie"
+      }
+    },
+    "CALCIFICATION": {
+      "NAME": "Calcificaties",
+      "DISTANCE": "Afstand (cm)",
+      "MORPHOLOGY": {
+        "NAME": "Morfologie",
+        "HEADERNAME": "Morfologie (klik ~ voor meer opties)",
+        "SKIN CALCIFICATION": "Huid calcificatie",
+        "MILK OF CALCIUM": "Calciummelk",
+        "ROD-LIKE - PLASMACEL MASTISIS": "Staafvormige - plasmacel mastisis",
+        "DYSTROPHIC": "Dystrofisch",
+        "POPCORN - FIBROADENOMA": "Popcorn - fibroadenoma",
+        "RIM CALCIFICATION": "Randcalcificatie",
+        "VASCULAR CALCIFICATION": "Vaatcalcificatie",
+        "ROUND": "Rond",
+        "PUNCTATE": "Gestippeld",
+        "AMORPHOUS (BENIGN)": "Vormloos (goedaardig)",
+        "AMORPHOUS (DCIS)": "Vormloos (dcis)",
+        "FINE PLEOMORPHIC": "Fijn pleomorfisch",
+        "COARSE HETEROGENEOUS": "Grof heterogeen",
+        "FINE LINEAR": "Fijn linear",
+        "FINE LINEAR BRANCHING": "Fijn lineare vertakking"
+      },
+      "DISTRIBUTION": {
+        "NAME": "Distributie",
+        "DIFFUSE": "Diffuus",
+        "REGIONAL": "Regionaal",
+        "GROUP": "Groep",
+        "LINEAR": "Linear",
+        "SEGMENTAL": "Segmenteel"
+      }
+    },
+    "PALPITATION": {
+      "NAME": "Palpitaties",
+      "DISTANCE": "Afstand (cm)"
+    },
+    "SCAR": {
+      "NAME": "Litteken",
+      "DISTANCE": "Afstand (cm)"
     }
   }
 }
