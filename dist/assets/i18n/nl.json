@@ -1,39 +1,44 @@
 {
   "LEGEND": {
+    "HEADER": {
+      "ASSESSMENT": "Beoordeling",
+      "MANAGEMENT": "Beheer",
+      "LIKELIHOOD": "Waarschijnlijkheid"
+    },
     "ZERO": {
-      "ASSESSMENT": "Categorie 0:",
-      "MANAGEMENT": "Herroep voor extra scans",
+      "ASSESSMENT": "Categorie 0: Incompleet - behoefte aan extra beeldvorming",
+      "MANAGEMENT": "Terugroepen voor aanvullende scans",
       "LIKELIHOOD": "NVT"
     },
     "ONE": {
-      "ASSESSMENT": "Categorie 1:",
+      "ASSESSMENT": "Categorie 1: Negatief, symmetrisch en geen massa's, architectonische verstoringen of verdachte verkalkingen aanwezig",
       "MANAGEMENT": "Routine screening ",
-      "LIKELIHOOD": "Wezenlijk 0% kans op kwaadaardigheid"
+      "LIKELIHOOD": "In wezen 0% kans op maligniteit"
     },
     "TWO": {
-      "ASSESSMENT": "Categorie 2:",
+      "ASSESSMENT": "Categorie 2: Goedaardige bevindingen, radioloog kan wensen om een ​​goedaardige  bevinding beschrijven",
       "MANAGEMENT": "Routine screening",
-      "LIKELIHOOD": "Essentially 0% likelihood of malignancy"
+      "LIKELIHOOD": "In wezen 0% kans op maligniteit"
     },
     "THREE": {
-      "ASSESSMENT": "Categorie 3:",
-      "MANAGEMENT": "Short-interval (6-month) follow-up or continued surveillance",
-      "LIKELIHOOD": "< 2% likelihood of malignancy"
+      "ASSESSMENT": "Categorie 3: Waarschijnlijk goedaardig, kort interval follow-up voorgesteld",
+      "MANAGEMENT": "Kort-interval (6 maanden) follow-up of permanent toezicht",
+      "LIKELIHOOD": "In wezen < 2% kans op maligniteit"
     },
     "FOUR": {
-      "ASSESSMENT": "Categorie 4:",
-      "MANAGEMENT": "Tissue diagnosis",
-      "LIKELIHOOD": "< 30% likelihood of malignancy"
+      "ASSESSMENT": "Categorie 4: Verdachte abnormaliteit",
+      "MANAGEMENT": "Weefseldiagnose",
+      "LIKELIHOOD": "In wezen < 30% kans op maligniteit"
     },
     "FIVE": {
-      "ASSESSMENT": "Categorie 5:",
-      "MANAGEMENT": "Tissue diagnosis",
-      "LIKELIHOOD": "95% likelihood of malignancy"
+      "ASSESSMENT": "Categorie 5: Er is een mammografische schijn die zeer suggestief van maligniteit is, moeten maatregelen worden genomen",
+      "MANAGEMENT": "Weefseldiagnose",
+      "LIKELIHOOD": "In wezen 95% kans op maligniteit"
     },
     "SIX": {
-      "ASSESSMENT": "Categorie 6:",
-      "MANAGEMENT": "Surgical excision when clinically appropriate",
-      "LIKELIHOOD": "N/A"
+      "ASSESSMENT": "Categorie 6: Bekend biopsie bewezen maligniteit",
+      "MANAGEMENT": "Chirurgische excisie wanneer klinisch verantwoord",
+      "LIKELIHOOD": "NVT"
     }
   },
   "SIDEBAR": {

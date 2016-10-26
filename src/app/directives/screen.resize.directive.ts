@@ -30,6 +30,8 @@ export class ScreenResize {
      */
     onScroll(event: Event): void{
         this.pagectrl.resizeBadges();                       //handles the repositioning and resizing of the badges
+        console.log(`scrolled`);
     }
+
 }
 

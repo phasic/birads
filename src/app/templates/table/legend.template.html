@@ -1,5 +1,15 @@
-<div class="well legend row wrapper" *ngIf="show">
-    <table class="table table-bordered">
+
+<!--<div class="row ">-->
+<!--<div>-->
+<!--<select #langSelect (change)="translate.use(langSelect.value)">-->
+<!--<option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>-->
+<!--</select>-->
+<!--</div>-->
+<div *ngIf="!show" class="glyphicon glyphicon-info-sign" (click)="show = !show">
+</div>
+<div *ngIf="show" class="well">
+    <div class="glyphicon glyphicon-remove" (click)="show = !show"></div>
+    <table class="table table-bordered wrapper">
         <thead>
         <tr>
             <th align="center">{{'LEGEND.HEADER.ASSESSMENT' | translate}}</th>
@@ -16,17 +26,8 @@
         </tbody>
     </table>
 </div>
-<div class="row wrapper">
-    <div>
-        <select #langSelect (change)="translate.use(langSelect.value)">
-            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-        </select>
-    </div>
-    <div class="glyphicon glyphicon-info-sign" (click)="show = !show">
-    </div>
-</div>
+<!--</div>-->
 
-<br>
 
 
 

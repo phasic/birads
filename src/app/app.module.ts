@@ -62,8 +62,9 @@ export class AppModule {
 
 
         translate.addLangs(["en", "fr", "nl"]);
-        translate.setDefaultLang('en');
-        translate.use('en');
+        translate.setDefaultLang('en');     //if we don't find a translation for the selected language, fall back to english
+        // translate.use('en');
+        translate.use(translate.getBrowserLang());
     }
 }
 

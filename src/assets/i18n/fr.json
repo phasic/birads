@@ -1,5 +1,10 @@
 {
   "LEGEND": {
+    "HEADER": {
+      "ASSESSMENT": "Assessment",
+      "MANAGEMENT": "Management",
+      "LIKELIHOOD": "Likelihood"
+    },
     "ZERO": {
       "ASSESSMENT": "Category 0: Incomplete - need additional imaging evaluation",
       "MANAGEMENT": "Recall for additional imaging",
@@ -37,13 +42,13 @@
     }
   },
   "SIDEBAR": {
-    "MASS": "mass",
-    "DISTORTION": "distortion",
-    "ASYMMETRY": "asymmetry",
-    "CALCIFICATION": "calcification",
-    "OTHER": "other",
-    "PALPITATION": "palpitation",
-    "SCAR": "scar"
+    "MASS": "Mass",
+    "DISTORTION": "Distortion",
+    "ASYMMETRY": "Asymmetry",
+    "CALCIFICATION": "Calcification",
+    "OTHER": "Other",
+    "PALPITATION": "Palpitation",
+    "SCAR": "Scar"
   },
   "CLASSIFICATION": {
     "LEFT": "Left",
@@ -54,6 +59,92 @@
       "TWO": "Scattered areas of fibroglandular density",
       "THREE": "Heterogeneously dense",
       "FOUR": "Extremely dense"
+    }
+  },
+  "TABLE": {
+    "MASS": {
+      "NAME": "Mass",
+      "DISTANCE": "Distance (cm)",
+      "SIZE": "Size (cm)",
+      "SHAPE": {
+        "NAME": "Shape",
+        "ROUND": "Round",
+        "OVAL": "Oval",
+        "IRREGULAR": "Irregular"
+      },
+      "MARGIN": {
+        "NAME": "Margin",
+        "CIRCUMSCRIBED": "Circumscribed",
+        "OBSCURED": "Obscured",
+        "MICROLOBULATED": "Microlobulated",
+        "INDISTINCT": "Indistinct",
+        "SPICULATED": "Spiculated"
+      },
+      "DENSITY": {
+        "NAME": "Density",
+        "LOW": "Low",
+        "EQUAL": "Equal",
+        "HIGH": "High"
+      }
+    },
+    "DISTORTION": {
+      "NAME": "Distortions",
+      "DISTANCE": "Distance (cm)",
+      "FINDING": {
+        "NAME": "Finding",
+        "ARCHITECTURAL DISTORTION": "Architectural distortion"
+      }
+    },
+    "ASYMMETRY": {
+      "NAME": "Asymmetries",
+      "DISTANCE": "Distance (cm)",
+      "FINDING": {
+        "NAME": "Finding",
+        "ASYMMETRY": "Asymmetry",
+        "FOCAL ASYMMETRY": "Focal asymmetry",
+        "GLOBAL ASYMMETRY": "Global asymmetry",
+        "DEVELOPING ASYMMETRY": "Developing asymmetry"
+      }
+    },
+    "CALCIFICATION": {
+      "NAME": "Calcifications",
+      "DISTANCE": "Distance (cm)",
+      "MORPHOLOGY": {
+        "NAME": "Morphology",
+        "HEADERNAME": "Morphology, for more options press {{value}} or click",
+        "MOREBUTTON": "more",
+        "SKIN CALCIFICATION": "Skin calcification",
+        "MILK OF CALCIUM": "Milk of calcium",
+        "ROD-LIKE - PLASMACEL MASTISIS": "Rod-like - plasmacel mastisis",
+        "DYSTROPHIC": "Dystrophic",
+        "POPCORN - FIBROADENOMA": "Popcorn - fibroadenoma",
+        "RIM CALCIFICATION": "Rim calcification",
+        "VASCULAR CALCIFICATION": "Vascular calcification",
+        "ROUND": "Round",
+        "PUNCTATE": "Punctate",
+        "AMORPHOUS (BENIGN)": "Amorphous (benign)",
+        "AMORPHOUS (DCIS)": "Amorphous (dcis)",
+        "FINE PLEOMORPHIC": "Fine pleomorphic",
+        "COARSE HETEROGENEOUS": "Coarse heterogeneous",
+        "FINE LINEAR": "Fine linear",
+        "FINE LINEAR BRANCHING": "Fine linear branching"
+      },
+      "DISTRIBUTION": {
+        "NAME": "Distribution",
+        "DIFFUSE": "Diffuse",
+        "REGIONAL": "Regional",
+        "GROUP": "Group",
+        "LINEAR": "Linear",
+        "SEGMENTAL": "Segmental"
+      }
+    },
+    "PALPITATION": {
+      "NAME": "Palpitations",
+      "DISTANCE": "Distance (cm)"
+    },
+    "SCAR": {
+      "NAME": "Scar",
+      "DISTANCE": "Distance (cm)"
     }
   }
 }

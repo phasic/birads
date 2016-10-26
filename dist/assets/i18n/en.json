@@ -1,5 +1,10 @@
 {
   "LEGEND": {
+    "HEADER": {
+      "ASSESSMENT": "Assessment",
+      "MANAGEMENT": "Management",
+      "LIKELIHOOD": "Likelihood"
+    },
     "ZERO": {
       "ASSESSMENT": "Category 0: Incomplete - need additional imaging evaluation",
       "MANAGEMENT": "Recall for additional imaging",

@@ -15,9 +15,9 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getData('mass'); let i = index">
                 <td>{{i + 1}}</td>
-                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'mass', i)"/></td>
-                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
                            #size (keyup)="setSize(size.value, 'mass', i)"/></td>
                 <td>{{"TABLE.MASS.SHAPE." + entry.shape.toLocaleUpperCase() | translate}}</td>
                 <td>{{"TABLE.MASS.MARGIN." + entry.margin.toLocaleUpperCase() | translate}}</td>
@@ -40,7 +40,7 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getData('distortion'); let i = index">
                 <td>{{i + 1}}</td>
-                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'distortion', i)"/></td>
                 <td>{{"TABLE.DISTORTION.FINDING." + entry.distortion.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'distortion')"></div> </td>
@@ -61,7 +61,7 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getData('asymmetry'); let i = index">
                 <td>{{i + 1}}</td>
-                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'asymmetry', i)"/></td>
                 <td>{{"TABLE.ASYMMETRY.FINDING." + entry.asymmetry.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'asymmetry')"></div> </td>
@@ -83,7 +83,7 @@
             <tbody>
             <tr *ngFor="let entry of dataservice.getData('calcification'); let i = index">
                 <td>{{i + 1}}</td>
-                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1"
+                <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'calcification', i)"/></td>
                 <td>{{"TABLE.CALCIFICATION.MORPHOLOGY." + entry.morphology.toLocaleUpperCase() | translate}}</td>
                 <td>{{"TABLE.CALCIFICATION.DISTRIBUTION." + entry.distribution.toLocaleUpperCase() | translate}}</td>
@@ -105,7 +105,7 @@
             <tr *ngFor="let entry of dataservice.getData('palpitation'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><label>
-                    <input height="100%" align="left" class="form-control" type="number" step="0.1"
+                    <input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'palpitation', i)"/>
                 </label></td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'palpitation')"></div> </td>
@@ -126,7 +126,7 @@
             <tr *ngFor="let entry of dataservice.getData('scar'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><label>
-                    <input height="100%" align="left" class="form-control" type="number" step="0.1"
+                    <input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
                            #distance (keyup)="setDistance(distance.value, 'scar', i)"/>
                 </label></td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'scar')"></div> </td>
