@@ -117,29 +117,36 @@ export class MassComponent implements OnChanges{
     hotKeys(keycode: number, argument: string): void{
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;            //get the hotkeys of the hotkey service
         if(argument == this.menus[0]) {                                 //if were in the first menu
-            this.shape = (keycode == hotkeys.one) ? this.shapearray[0] :    //check which button is pressed and bind the corresponding value
-                (keycode == hotkeys.two) ? this.shapearray[1] :
-                    (keycode == hotkeys.three) ? this.shapearray[2] : '';   //default or wrong button is an empty string
+         this.shape = {
+             [hotkeys.one] : this.shapearray[0],
+             [hotkeys.two] : this.shapearray[1],
+             [hotkeys.three] : this.shapearray[2],
+         }[keycode] || '';
+            console.log(this.shape);
             if(this.shape != '') {                                      //if we pressed a correct button
                 this.modal1.hide();                                     //hide the first menu
                 this.modal2.show();                                     //show the second menu
             }
         }
         else if(argument == this.menus[1]) {                            //if were in the second menu
-            this.margin = (keycode == hotkeys.one) ? this.marginarray[0] :  //check which button is pressed and bind the corresponding value
-                (keycode == hotkeys.two) ? this.marginarray[1] :
-                    (keycode == hotkeys.three) ? this.marginarray[2] :
-                        (keycode == hotkeys.four) ? this.marginarray[3] :
-                            (keycode == hotkeys.five) ? this.marginarray[4] : '';   //default or wrong button is an empty string
+            this.margin = {
+                [hotkeys.one] : this.marginarray[0],
+                [hotkeys.two] : this.marginarray[1],
+                [hotkeys.three] : this.marginarray[2],
+                [hotkeys.four] : this.marginarray[3],
+                [hotkeys.five] : this.marginarray[4],
+            }[keycode] || '';
             if(this.margin != '') {                                     //if we pressed a correct button
                 this.modal2.hide();                                     //hide the second menu
                 this.modal3.show();                                     //show the third menu
             }
         }
         if(argument == this.menus[2]) {                                 //if where in the third menu
-            this.density = (keycode == hotkeys.one) ? this.densityarray[0] :    //check which button is pressed and bind the corresponding value
-                (keycode == hotkeys.two) ? this.densityarray[1] :
-                    (keycode == hotkeys.three) ? this.densityarray[2] : '';     //default or wrong button is an empty string
+            this.density = {
+                [hotkeys.one] : this.densityarray[0],
+                [hotkeys.two] : this.densityarray[1],
+                [hotkeys.three] : this.densityarray[2],
+            }[keycode] || '';
             if(this.density != '') {                                    //if we pressed a correct button
                 this.modal3.hide();                                     //hide the third menu
                 this.endOfMenu();                                       //bind the data, and clean up

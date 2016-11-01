@@ -66,10 +66,12 @@ export class AsymmetryComponent implements OnChanges{
      */
     hotKeys(keycode: number): void {
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;                //get the hotkeys of the hotkey service
-        this.asymmetry = (keycode == hotkeys.one) ? this.asymmetryarray[0] :    //check which key is pressed, and select the correct value to bind
-            (keycode == hotkeys.two) ? this.asymmetryarray[1] :
-                (keycode == hotkeys.three) ? this.asymmetryarray[2] :
-                    (keycode == hotkeys.four) ? this.asymmetryarray[3] : '';    //keep  the selection empty if a wrong key is pressed
+        this.asymmetry = {
+            [hotkeys.one] : this.asymmetryarray[0],
+            [hotkeys.two] : this.asymmetryarray[1],
+            [hotkeys.three] : this.asymmetryarray[2],
+            [hotkeys.four] : this.asymmetryarray[3]
+        }[keycode] || '';
         if (this.asymmetry != '') {                                         //if a correct key is pressed
             this.modal1.hide();                                             //hide the first menu
             this.endOfMenu();                                               //go to the end of menu function, which handles the data binding and cleanup

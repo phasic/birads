@@ -142,38 +142,44 @@ export class CalcificationComponent implements OnChanges{
             this.benign = !this.benign;                                 //change to the other morphology menu
         }
         if(argument == this.menus[0] && this.benign){                   //if were in the benign morphology menus
-            this.morphology = (keycode == hotkeys.one) ? this.morphologyarraybenign[0] :        //check which button is pressed, and bind the corresponding value
-                (keycode == hotkeys.two) ? this.morphologyarraybenign[1] :
-                    (keycode == hotkeys.three) ? this.morphologyarraybenign[2] :
-                        (keycode == hotkeys.four) ? this.morphologyarraybenign[3] :
-                            (keycode == hotkeys.five) ? this.morphologyarraybenign[4] :
-                                (keycode == hotkeys.six) ? this.morphologyarraybenign[5] :
-                                    (keycode == hotkeys.seven) ? this.morphologyarraybenign[6] :
-                                        (keycode == hotkeys.eight) ? this.morphologyarraybenign[7] :
-                                            (keycode == hotkeys.nine) ? this.morphologyarraybenign[8] : ''; //default, or wrong button pressed is an empty string
+            this.morphology = {
+                [hotkeys.one]: this.morphologyarraybenign[0],
+                [hotkeys.two]: this.morphologyarraybenign[1],
+                [hotkeys.three]: this.morphologyarraybenign[2],
+                [hotkeys.four]: this.morphologyarraybenign[3],
+                [hotkeys.five]: this.morphologyarraybenign[4],
+                [hotkeys.six]: this.morphologyarraybenign[5],
+                [hotkeys.seven]: this.morphologyarraybenign[6],
+                [hotkeys.eight]: this.morphologyarraybenign[7],
+                [hotkeys.nine]: this.morphologyarraybenign[8],
+            }[keycode] || '';
             if(this.morphology != ''){                                  //if a correct button is pressed
                 this.modal1.hide();                                     //hide the first menu
                 this.modal2.show();                                     //show the second menu
             }
         }
         if(argument == this.menus[0] && !this.benign){                   //if were in the non benign morphology menus
-            this.morphology = (keycode == hotkeys.one) ? this.morphologyarraynotbenign[0] ://check which button is pressed, and bind the corresponding value
-                (keycode == hotkeys.two) ? this.morphologyarraynotbenign[1] :
-                    (keycode == hotkeys.three) ? this.morphologyarraynotbenign[2] :
-                        (keycode == hotkeys.four) ? this.morphologyarraynotbenign[3] :
-                            (keycode == hotkeys.five) ? this.morphologyarraynotbenign[4] :
-                                (keycode == hotkeys.six) ? this.morphologyarraynotbenign[5] : '';//default, or wrong button pressed is an empty string
+            this.morphology = {
+                [hotkeys.one]: this.morphologyarraynotbenign[0],
+                [hotkeys.two]: this.morphologyarraynotbenign[1],
+                [hotkeys.three]: this.morphologyarraynotbenign[2],
+                [hotkeys.four]: this.morphologyarraynotbenign[3],
+                [hotkeys.five]: this.morphologyarraynotbenign[4],
+                [hotkeys.six]: this.morphologyarraynotbenign[5]
+            }[keycode] || '';
             if(this.morphology != ''){                                  //if a correct button is pressed
                 this.modal1.hide();                                     //hide the first menu
                 this.modal2.show();                                     //show the second menu
             }
         }
         if(argument == this.menus[1]){                                  //ifwe are in the seoond, distribution, menu
-            this.distribution = (keycode == hotkeys.one) ? this.distributionarray[0] :  //check which button is pressed, and bind the corresponding value
-                (keycode == hotkeys.two) ? this.distributionarray[1] :
-                    (keycode == hotkeys.three) ? this.distributionarray[2] :
-                        (keycode == hotkeys.four) ? this.distributionarray[3] :
-                            (keycode == hotkeys.five) ? this.distributionarray[4] : '';//default, or wrong button pressed is an empty string
+           this.distribution = {
+               [hotkeys.one]: this.distributionarray[0],
+               [hotkeys.two]: this.distributionarray[1],
+               [hotkeys.three]: this.distributionarray[2],
+               [hotkeys.four]: this.distributionarray[3],
+               [hotkeys.five]: this.distributionarray[4],
+           }[keycode] || '';
             if(this.distribution != ''){                                //if a correct button is pressed
                 this.modal2.hide();                                     //hide the second menu
                 this.endOfMenu();                                       //go to the end of menu function, which handles the data binding and cleanup

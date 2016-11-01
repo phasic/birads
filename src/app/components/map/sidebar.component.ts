@@ -20,6 +20,7 @@ export class SidebarComponent {
                 private hotkeyservice: HotkeyService, private translate: TranslateService) {
     }
 
+    private method: string = '';
     /**
      * hotKeys gets called when we press a keyboard key
      * if you want to change the hotkeys, change the hotkeys.json file
@@ -30,15 +31,15 @@ export class SidebarComponent {
         let hotkeys: any = this.hotkeyservice.hotkeys.sidebar;                  //get the hotkeys from the hotkey service
         let method: string = '';                                                //initialize an empty method
         if (!this.pagectrl.getMenuActive()) {                                   //if theres no active menu
-            method = (keycode == hotkeys.one) ? this.dataservice.getMainMethods()[0] ://check which hotkey we pressed, and bind the correct value to it
-                (keycode == hotkeys.two) ? this.dataservice.getMainMethods()[1] :
-                    (keycode == hotkeys.three) ? this.dataservice.getMainMethods()[2] :
-                        (keycode == hotkeys.four) ? this.dataservice.getMainMethods()[3] :
-                            (keycode == hotkeys.five) ? this.dataservice.getOtherMethods()[0] :
-                                (keycode == hotkeys.six) ? this.dataservice.getOtherMethods()[1] : '';  //by default, keep the string empty
-            if(method != ''){
-                this.pagectrl.setMethod(method);                             //if we pressed a correct key, set the corresponding method
-            }
+            this.method = ({
+                    [hotkeys.one] : this.dataservice.getMainMethods()[0],
+                    [hotkeys.two] : this.dataservice.getMainMethods()[1],
+                    [hotkeys.three] : this.dataservice.getMainMethods()[2],
+                    [hotkeys.four] : this.dataservice.getMainMethods()[3],
+                    [hotkeys.five] : this.dataservice.getOtherMethods()[0],
+                    [hotkeys.six] :this.dataservice.getOtherMethods()[1],
+                }[keycode] || this.method);
+            this.pagectrl.setMethod(this.method);
         }
     }
 
