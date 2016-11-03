@@ -122,7 +122,6 @@ export class MassComponent implements OnChanges{
              [hotkeys.two] : this.shapearray[1],
              [hotkeys.three] : this.shapearray[2],
          }[keycode] || '';
-            console.log(this.shape);
             if(this.shape != '') {                                      //if we pressed a correct button
                 this.modal1.hide();                                     //hide the first menu
                 this.modal2.show();                                     //show the second menu
