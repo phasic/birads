@@ -68,5 +68,5 @@ export class AppModule {
     }
 }
 
-
+// TODO PROBLEM WITH TRANSLATIONS AFTER BUILDING
 
