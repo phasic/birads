@@ -19,6 +19,8 @@ export class CalcificationComponent implements OnChanges{
             let x: any = translate.get("TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME");
             this.headername = x.value + ' ' + this.togglebutton;
         }, 10);
+
+        this.benign = true;
     }
     @Input() show: string;
     @ViewChild('modal1') public modal1: ModalDirective;
@@ -44,6 +46,24 @@ export class CalcificationComponent implements OnChanges{
      * the full string of the header of the menu, changes depending on keybinds and translations
      */
     private headername: string;
+
+    private morphologyarray: Array<String> = [
+        'skin calcification',
+        'milk of calcium',
+        'rod-like - plasmacel mastisis',
+        'dystrophic',
+        'popcorn - fibroadenoma',
+        'rim calcification',
+        'vascular calcification',
+        'round',
+        'punctate',
+        'amorphous (benign)',
+        'amorphous (DCIS)',
+        'fine pleomorphic',
+        'coarse heterogeneous',
+        'fine linear',
+        'fine linear branching'
+    ];
     /**
      * array to keep all possible selections of benign morphologies
      * name the files for the images, the same as these strings
@@ -99,7 +119,7 @@ export class CalcificationComponent implements OnChanges{
      * used to toggle between benign and non-benign morphology choices
      * @type {boolean}
      */
-    private benign: boolean = true;
+    private benign: boolean;
     /**
      * store the selected morphology
      */

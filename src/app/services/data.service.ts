@@ -22,9 +22,8 @@ export class DataService {
         this.distortion = [];
         this.asymmetry = [];
         this.calcification = [];
-        this.palpitation = [];
-        this.scar = [];
-        this._methods = this.mainmethods.concat(this.othermethods); //methods is mainmethods and othermethods combined
+        this.other = [];
+        // this._methods = this.mainmethods;
     }
 
     /**
@@ -50,40 +49,23 @@ export class DataService {
     /**
      * methods contains all the possible methods. mainmethods and othermethods combined
      */
-    private _methods: Array<string>;
     /**
      * all the methods wo are not in a submenu in the sidebar
      * @type {(string|string|string|string)[]}
      */
-     private mainmethods: Array<string> = [
+     private _methods: Array<string> = [
         'mass',
         'distortion',
         'asymmetry',
-        'calcification'
+        'calcification',
+        'other'
     ];
-    /**
-     * all the method who are in the 'other' submenu
-     * @type {(string|string)[]}
-     */
-    private othermethods: Array<string> = [
-        'palpitation',
-        'scar'
-    ];
-
     /**
      * gets the data of the main method array
      * @returns {Array<string>}
      */
     getMainMethods(): Array<string>{
-        return this.mainmethods;
-    }
-
-    /**
-     * gets the data of the other methods array
-     * @returns {Array<string>}
-     */
-    getOtherMethods(): Array<string>{
-        return this.othermethods;
+        return this._methods;
     }
 
     /**
@@ -119,18 +101,12 @@ export class DataService {
         distribution: string;
     }[];
     /**
-     * palpitation structure
+     * other structure
      */
-    private palpitation: {
-        distance: number
+    private other: {
+        distance: number,
+        name: string
     }[];
-    /**
-     * scar structure
-     */
-    private scar: {
-        distance: number
-    }[];
-
     /**
      * returns the request data structure. mass, distortion, ...
      * @param method    string that contains the wanted data structure
@@ -217,23 +193,10 @@ export class DataService {
         });
     }
 
-    /**
-     * add a palpitation entry to the palpitation array
-     * @param distance
-     */
-    addPalpitations(distance: number): void{
-        this.palpitation.push({
-            distance: distance
-        })
-    }
-
-    /**
-     * add a scar entry to the scar array
-     * @param distance
-     */
-    addScars(distance: number): void{
-        this.scar.push({
-            distance: distance
-        })
+    addOther(distance: number, name: string){
+        this.other.push({
+            distance: distance,
+            name: name
+        });
     }
 }

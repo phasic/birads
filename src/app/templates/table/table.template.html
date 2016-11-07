@@ -5,7 +5,7 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>{{"TABLE.MASS.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.DISTANCE" | translate}}</th>
                 <th>{{"TABLE.MASS.SIZE" | translate}}</th>
                 <th>{{"TABLE.MASS.SHAPE.NAME" | translate}}</th>
                 <th>{{"TABLE.MASS.MARGIN.NAME" | translate}}</th>
@@ -33,8 +33,8 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>{{"TABLE.DISTORTION.DISTANCE" | translate}}</th>
-                <th>{{"TABLE.DISTORTION.FINDING.NAME" | translate}}</th>
+                <th>{{"TABLE.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.FINDING" | translate}}</th>
             </tr>
             </thead>
             <tbody>
@@ -54,8 +54,8 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>{{"TABLE.ASYMMETRY.DISTANCE" | translate}}</th>
-                <th>{{"TABLE.ASYMMETRY.FINDING.NAME" | translate}}</th>
+                <th>{{"TABLE.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.FINDING" | translate}}</th>
             </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>{{"TABLE.CALCIFICATION.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.DISTANCE" | translate}}</th>
                 <th>{{"TABLE.CALCIFICATION.MORPHOLOGY.NAME" | translate}}</th>
                 <th>{{"TABLE.CALCIFICATION.DISTRIBUTION.NAME" | translate}}</th>
             </tr>
@@ -92,44 +92,23 @@
             </tbody>
         </table>
     </div>
-    <div *ngIf="dataservice.getData('palpitation').length > 0"   class="panel panel-default col-sm-6">
-        <div class="panel-heading"><h4><b>{{"TABLE.PALPITATION.NAME" | translate}}</b></h4></div>
+    <div *ngIf="dataservice.getData('other').length > 0"   class="panel panel-default col-sm-6">
+        <div class="panel-heading"><h4><b>{{"TABLE.OTHER.NAME" | translate}}</b></h4></div>
         <table class="table">
             <thead>
             <tr>
                 <th>#</th>
-                <th>{{"TABLE.PALPITATION.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.DISTANCE" | translate}}</th>
+                <th>{{"TABLE.FINDING" | translate}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let entry of dataservice.getData('palpitation'); let i = index">
+            <tr *ngFor="let entry of dataservice.getData('other'); let i = index">
                 <td>{{i + 1}}</td>
-                <td><label>
-                    <input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'palpitation', i)"/>
-                </label></td>
-                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'palpitation')"></div> </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div *ngIf="dataservice.getData('scar').length > 0"   class="panel panel-default col-sm-6">
-        <div class="panel-heading"><h4><b>{{"TABLE.SCAR.NAME" | translate}}</b></h4></div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>{{"TABLE.SCAR.DISTANCE" | translate}}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let entry of dataservice.getData('scar'); let i = index">
-                <td>{{i + 1}}</td>
-                <td><label>
-                    <input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'scar', i)"/>
-                </label></td>
-                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'scar')"></div> </td>
+                <td><input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
+                           #distance (keyup)="setDistance(distance.value, 'other', i)"/></td>
+                <td>{{"TABLE.OTHER.FINDING." + entry.name.toLocaleUpperCase() | translate}}</td>
+                <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'other')"></div> </td>
             </tr>
             </tbody>
         </table>

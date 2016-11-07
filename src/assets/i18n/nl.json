@@ -62,9 +62,10 @@
     }
   },
   "TABLE": {
+    "DISTANCE": "Afstand (cm)",
+    "FINDING": "Bevinding",
     "MASS": {
       "NAME": "Massa",
-      "DISTANCE": "Afstand (cm)",
       "SIZE": "Grootte (cm)",
       "SHAPE": {
         "NAME": "Vorm",
@@ -78,7 +79,7 @@
         "OBSCURED": "Belemmerd",
         "MICROLOBULATED": "Microgelobd",
         "INDISTINCT": "Indistinct",
-        "SPICULATED": "spiculated"
+        "SPICULATED": "Spiculated"
       },
       "DENSITY": {
         "NAME": "Dichtheid",
@@ -89,17 +90,13 @@
     },
     "DISTORTION": {
       "NAME": "Distorties",
-      "DISTANCE": "Afsand (cm)",
       "FINDING": {
-        "NAME": "Bevinding",
         "ARCHITECTURAL DISTORTION": "Architecturale distortie"
       }
     },
     "ASYMMETRY": {
       "NAME": "Asymmetrieën",
-      "DISTANCE": "Afstand (cm)",
       "FINDING": {
-        "NAME": "Bevinding",
         "ASYMMETRY": "Asymmetrie",
         "FOCAL ASYMMETRY": "Focale asymmetrie",
         "GLOBAL ASYMMETRY": "Globale asymmetrie",
@@ -108,7 +105,6 @@
     },
     "CALCIFICATION": {
       "NAME": "Calcificaties",
-      "DISTANCE": "Afstand (cm)",
       "MORPHOLOGY": {
         "NAME": "Morfologie",
         "HEADERNAME": "Morfologie, voor meer opties druk {{value}} of klik",
@@ -138,13 +134,12 @@
         "SEGMENTAL": "Segmenteel"
       }
     },
-    "PALPITATION": {
-      "NAME": "Palpitaties",
-      "DISTANCE": "Afstand (cm)"
-    },
-    "SCAR": {
-      "NAME": "Litteken",
-      "DISTANCE": "Afstand (cm)"
+    "OTHER": {
+      "NAME" : "Other",
+      "FINDING": {
+        "PALPITATION": "Palpitatie",
+        "SCAR": "Litteken"
+      }
     }
   }
 }

@@ -7,8 +7,6 @@ import {AsymmetryComponent} from "./components/modals/asymmetries.component";
 import {CalcificationComponent} from "./components/modals/calcifications.component";
 import {DistortionComponent} from "./components/modals/distortion.component";
 import {MassComponent} from "./components/modals/mass.component";
-import {PalpitationComponent} from "./components/modals/palpitation.component";
-import {ScarComponent} from "./components/modals/scar.component";
 import {ClassificationComponent} from "./components/table/classification.component";
 import {LegendComponent} from "./components/table/legend.component";
 import {TableComponent} from "./components/table/table.component";
@@ -21,6 +19,7 @@ import {DataService} from "./services/data.service";
 import {PageController} from "./services/page.controller";
 import {HotkeyService} from "./services/hotkey.service";
 import {ImageMapResize} from "./directives/imagemap.resize.directive";
+import {OtherComponent} from "./components/modals/other.component";
 @NgModule({
     declarations: [
         /*APP*/
@@ -36,8 +35,7 @@ import {ImageMapResize} from "./directives/imagemap.resize.directive";
         CalcificationComponent,
         DistortionComponent,
         MassComponent,
-        PalpitationComponent,
-        ScarComponent,
+        OtherComponent,
         /*TABLE*/
         ClassificationComponent,
         LegendComponent,

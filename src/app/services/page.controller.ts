@@ -193,21 +193,7 @@ export class PageController {
                 id: string
             }
         }[],
-        palpitation: {
-            side: {
-                relX: number,
-                relY: number,
-                imagenumber: number,
-                id: string
-            },
-            front: {
-                relX: number,
-                relY: number,
-                imagenumber: number,
-                id: string
-            }
-        }[],
-        scar: {
+        other: {
             side: {
                 relX: number,
                 relY: number,
@@ -237,8 +223,7 @@ export class PageController {
             distortion: [],
             asymmetry: [],
             calcification: [],
-            palpitation: [],
-            scar: []
+            other: []
         };
 
     }

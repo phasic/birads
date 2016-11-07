@@ -36,8 +36,7 @@ export class SidebarComponent {
                     [hotkeys.two] : this.dataservice.getMainMethods()[1],
                     [hotkeys.three] : this.dataservice.getMainMethods()[2],
                     [hotkeys.four] : this.dataservice.getMainMethods()[3],
-                    [hotkeys.five] : this.dataservice.getOtherMethods()[0],
-                    [hotkeys.six] :this.dataservice.getOtherMethods()[1],
+                    [hotkeys.five] : this.dataservice.getMainMethods()[4]
                 }[keycode] || this.method);
             this.pagectrl.setMethod(this.method);
         }
@@ -49,15 +48,15 @@ export class SidebarComponent {
      * @param translate boolean, make it true if you want to translate the value, want to do this if we use the returned string in the view, but we have 1 instance where we use it for data binding
      * @returns {any}   return the correct word to show as the name of the menu
      */
-    otherHeaderName(translate? : boolean): string{
-        let translation: any;                                                   //variable to store the correct translation
-        if(this.dataservice.getOtherMethods().indexOf(this.pagectrl.getMethod()) > -1){     //if our selected method is an element of our submenu
-            translation =  this.translate.get("SIDEBAR." + this.pagectrl.getMethod().toLocaleUpperCase());  //then get the method, translate it
-            return (translate) ? translation.value : this.pagectrl.getMethod(); //we only want to translate the view, not the data binding behind it
-        }
-        else{
-            translation = this.translate.get("SIDEBAR.OTHER");                 //if the selected method is not an element of the submenu
-            return (translate) ? translation.value : 'other';                 //just return 'other' or a translated value of it
-        }
-    }
+    // otherHeaderName(translate? : boolean): string{
+    //     let translation: any;                                                   //variable to store the correct translation
+    //     if(this.dataservice.getOtherMethods().indexOf(this.pagectrl.getMethod()) > -1){     //if our selected method is an element of our submenu
+    //         translation =  this.translate.get("SIDEBAR." + this.pagectrl.getMethod().toLocaleUpperCase());  //then get the method, translate it
+    //         return (translate) ? translation.value : this.pagectrl.getMethod(); //we only want to translate the view, not the data binding behind it
+    //     }
+    //     else{
+    //         translation = this.translate.get("SIDEBAR.OTHER");                 //if the selected method is not an element of the submenu
+    //         return (translate) ? translation.value : 'other';                 //just return 'other' or a translated value of it
+    //     }
+    // }
 }

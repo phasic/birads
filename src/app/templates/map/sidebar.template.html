@@ -3,15 +3,15 @@
         <li *ngFor="let element of dataservice.getMainMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}">
             <a href="#">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>
         </li>
-        <li  [(ngModel)]="this.pagectrl.method" btnRadio="{{otherHeaderName()}}" >
-            <a href="#" class="dropdown" dropdown>
-                <div class="dropdown-toggle" dropdownToggle>{{otherHeaderName(true)}}<span class="caret"></span> </div>
-                <ul class="dropdown-menu">
-                    <li *ngFor="let element of dataservice.getOtherMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}">
-                        <a href="#">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>
-                    </li>
-                </ul>
-            </a>
-        </li>
+        <!--<li  [(ngModel)]="this.pagectrl.method" btnRadio="{{otherHeaderName()}}" >-->
+            <!--<a href="#" class="dropdown" dropdown>-->
+                <!--<div class="dropdown-toggle" dropdownToggle>{{otherHeaderName(true)}}<span class="caret"></span> </div>-->
+                <!--<ul class="dropdown-menu">-->
+                    <!--<li *ngFor="let element of dataservice.getOtherMethods()" [(ngModel)]="this.pagectrl.method" btnRadio="{{element}}">-->
+                        <!--<a href="#">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</a>-->
+        <!--</li>-->
     </ul>
 </div>

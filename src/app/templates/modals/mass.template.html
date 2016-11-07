@@ -7,7 +7,8 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of shapearray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="shape" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of shapearray" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="shape" btnRadio="{{element}}">
+                        {{"TABLE.MASS.SHAPE." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
             </div>
         </div>
@@ -21,7 +22,8 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of marginarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="margin" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of marginarray" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="margin" btnRadio="{{element}}">
+                        {{"TABLE.MASS.MARGIN." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
             </div>
         </div>
@@ -35,7 +37,8 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of densityarray" src="/assets/images/mass/{{element}}.png" (click)="mouseControl(this.menus[2], element)" [(ngModel)]="density" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of densityarray" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[2], element)" [(ngModel)]="density" btnRadio="{{element}}">
+                        {{"TABLE.MASS.DENSITY." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
             </div>
         </div>

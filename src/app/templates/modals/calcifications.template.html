@@ -3,14 +3,16 @@
     <div class="modal-dialog modal-lg" align="center">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{"TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME"|translate:{value:this.togglebutton} }} <button type="button" (click)="hotKeys(hotkeys.toggle, this.menus[0])">{{"TABLE.CALCIFICATION.MORPHOLOGY.MOREBUTTON" | translate}}</button></h4>
+                <h4 class="modal-title">{{"TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME"|translate:{value:this.togglebutton} }} <button type="button" (click)="this.benign = !this.benign">{{"TABLE.CALCIFICATION.MORPHOLOGY.MOREBUTTON" | translate}}</button></h4>
             </div>
             <div class="modal-body"  (keydown)="hotKeys($event.keyCode, this.menus[0])">
                 <div *ngIf="this.benign">
-                    <img *ngFor="let element of morphologyarraybenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of morphologyarraybenign" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}">
+                    {{"TABLE.CALCIFICATION.MORPHOLOGY." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
                 <div  *ngIf="!this.benign">
-                    <img *ngFor="let element of morphologyarraynotbenign" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of morphologyarraynotbenign" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[0], element)" [(ngModel)]="morphology" btnRadio="{{element}}">
+                    {{"TABLE.CALCIFICATION.MORPHOLOGY." + element.toLocaleUpperCase() | translate}}</label>
                 </div>
             </div>
         </div>
@@ -24,7 +26,9 @@
             </div>
             <div class="modal-body">
                 <div class="btn-group">
-                    <img *ngFor="let element of distributionarray" src="/assets/images/calcifications/{{element}}.png" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="distribution" btnRadio="{{element}}"/>
+                    <label *ngFor="let element of distributionarray" class="btn btn-lg btn-default" (click)="mouseControl(this.menus[1], element)" [(ngModel)]="distribution" btnRadio="{{element}}">
+                        {{"TABLE.CALCIFICATION.DISTRIBUTION." + element.toLocaleUpperCase() | translate}}</label>
+
                 </div>
             </div>
         </div>
