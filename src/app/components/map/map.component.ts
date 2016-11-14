@@ -1,6 +1,9 @@
 import {Component, ElementRef}      from '@angular/core';
 import {PageController} from "../../services/page.controller";
 import {DataService} from "../../services/data.service";
+/**
+ * This component contains the breast images, and all the needed functionality for those images
+ */
 @Component({
     selector: 'map-component',
     templateUrl: '../../templates/map/map.template.html'
@@ -8,30 +11,25 @@ import {DataService} from "../../services/data.service";
 export class MapComponent {
     /**
      * Constructor of MapComponent
-     * @param dataservice
+     * @param dataservice   this service stores all the data
      * @param pagectrl page controller manages functions to assure functionality (tracking click, adding badges, ... )
-     * @param elementref    references the clicked element
+     * @param elementref    references the element containing the images
      */
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
-
     }
-
     /**
-     * Get's called when the element is clicked.
-     * This function calls this.clickedMap(event)
-     * @param event
+     * Gets called when an image is clicked. It gets the event and passes it to clickedMap
+     * @param event The click event.
      */
     clickHandler(event: any): void {
         this.clickedMap(event);
     }
-
     /**
      * Stores the first clicked image
      */
     private firstimage: string;
-
     /**
-     * Get's called in clickHandler
+     * Gets called in clickHandler
      * This function executes a sequence of checks to see if the clicks are 'legal' clicks, if they are, show the right menu
      * @param event is the event which is the origin of the click trigger
      */
@@ -61,19 +59,17 @@ export class MapComponent {
             }
         }
     }
-
     /**
-     * Checks if it's the firs time we click an image.
-     * This function increments the number of clicks
+     * Checks if it's the first time we click an image.
+     * This function also increments the number of clicks
      * @returns {boolean} true if it's the first time we clicked an image
      */
     firstClick(): boolean{
         this.pagectrl.setNumberOfClicks(this.pagectrl.getNumberOfClicks() + 1); //increment the number of clicks
         return this.pagectrl.getNumberOfClicks() == 1;                          //if it's 1, then it's the first time we clicked an image, return true
     }
-
     /**
-     * renders a marker after we clicked for the first time on an image.
+     * renders a marker after we clicked for the first time on an image. This offers the user visual feedback of the first click
      * @param event pass the event to get the clicked location
      */
     renderFirstClickMarker(event: any): void{

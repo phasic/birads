@@ -48,7 +48,7 @@ import {OtherComponent} from "./components/modals/other.component";
         Ng2BootstrapModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
-            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            useFactory: (http: Http) => new TranslateStaticLoader(http, 'assets/i18n', '.json'),
             deps: [Http]
         })
     ],
@@ -66,5 +66,4 @@ export class AppModule {
     }
 }
 
-// TODO PROBLEM WITH TRANSLATIONS AFTER BUILDING
 

@@ -2,6 +2,9 @@ import {Injectable} from "@angular/core";
 import {Http, Response} from '@angular/http'
 
 @Injectable()
+/**
+ * Responsible for getting the keybindings out of the json file and bind them to an array that we can use in the code
+ */
 export class HotkeyService {
     /**
      * returns the array containing all the bound hotkeys
@@ -16,7 +19,7 @@ export class HotkeyService {
      * @param http used to read the json file
      */
     constructor(private http: Http) {
-        http.get('/assets/hotkeys.json')                //send a get request to the hotkeys.json file
+        http.get('assets/hotkeys.json')                //send a get request to the hotkeys.json file
             .map((res: Response) => res.json())         //get the response, parse it to jason
             .subscribe(res => {                         //makes an observable on res
                 this._hotkeys = {                       //bind the hotkeys array

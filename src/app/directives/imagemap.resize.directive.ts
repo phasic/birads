@@ -34,7 +34,7 @@ export class ImageMapResize {
     }
 
     /**
-     * this function is used to kep the size of the image map the same as the size of the corresponding image
+     * this function is used to keep the size of the image map the same as the size of the corresponding image
      */
     resizeImageMap(): void{
         let w: number = this.elementRef.nativeElement.width;            //get the current width of the image

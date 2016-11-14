@@ -1,6 +1,9 @@
 import {Injectable} from "@angular/core";
 
 @Injectable()
+/**
+ * Stores all the data
+ */
 export class DataService {
     /**
      * get the possible methods

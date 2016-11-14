@@ -62,9 +62,10 @@
     }
   },
   "TABLE": {
+    "DISTANCE": "Distance (cm)",
+    "FINDING": "Finding",
     "MASS": {
       "NAME": "Mass",
-      "DISTANCE": "Distance (cm)",
       "SIZE": "Size (cm)",
       "SHAPE": {
         "NAME": "Shape",
@@ -97,9 +98,7 @@
     },
     "ASYMMETRY": {
       "NAME": "Asymmetries",
-      "DISTANCE": "Distance (cm)",
       "FINDING": {
-        "NAME": "Finding",
         "ASYMMETRY": "Asymmetry",
         "FOCAL ASYMMETRY": "Focal asymmetry",
         "GLOBAL ASYMMETRY": "Global asymmetry",
@@ -108,7 +107,6 @@
     },
     "CALCIFICATION": {
       "NAME": "Calcifications",
-      "DISTANCE": "Distance (cm)",
       "MORPHOLOGY": {
         "NAME": "Morphology",
         "HEADERNAME": "Morphology, for more options press {{value}} or click",
@@ -138,13 +136,12 @@
         "SEGMENTAL": "Segmental"
       }
     },
-    "PALPITATION": {
-      "NAME": "Palpitations",
-      "DISTANCE": "Distance (cm)"
-    },
-    "SCAR": {
-      "NAME": "Scar",
-      "DISTANCE": "Distance (cm)"
+    "OTHER": {
+      "NAME" : "Other",
+      "FINDING": {
+        "PALPITATION": "Palpitation",
+        "SCAR": "Scar"
+      }
     }
   }
 }
