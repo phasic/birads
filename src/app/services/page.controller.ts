@@ -1,10 +1,13 @@
 import {Injectable, ElementRef} from "@angular/core";
 import {DataService} from "./data.service";
 import {TranslateService} from "ng2-translate";
+/**
+ * Service that handles the manipulation of the clicking on the maps. It tracks the click locations, stores all the badge locations, keeps track of active menus and render badges.
+ */
 @Injectable()
 export class PageController {
     /**
-     * Returns the location where we clicked on a side image
+     * Returns the location where we clicked on a side image.
      * @returns {{relX: number, relY: number, imagenumber: number}} returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)
      */
     get sideclicklocation(): {relX: number; relY: number; imagenumber: number} {
@@ -12,8 +15,8 @@ export class PageController {
     }
 
     /**
-     * Sets the clicklocation where we clicked on a side image
-     * relX, relY: coordinates relative to the upper left corner of the image
+     * Sets the click location where we clicked on a side image.
+     * relX, relY: coordinates relative to the upper left corner of the image.
      * imagenumber: which number of image we clicked (0-3)
      * @param value
      */
@@ -22,16 +25,17 @@ export class PageController {
     }
 
     /**
-     * Returns the location where we clicked on a front image
+     * Returns the location where we clicked on a front image.
      * @returns {{relX: number, relY: number, imagenumber: number}} returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)
      */
     get frontclicklocation(): {relX: number; relY: number; imagenumber: number} {
         return this._frontclicklocation;
     }
     /**
-     * Sets the clicklocation where we clicked on a front image
-     * relX, relY: coordinates relative to the upper left corner of the image
-     * imagenumber: which number of image we clicked (0-3)
+    /**
+     * Sets the click location where we clicked on a front image.
+     * relX, relY: coordinates relative to the upper left corner of the image.
+     * imagenumber: which number of image we clicked (0-3).
      * @param value
      */
     set frontclicklocation(value: {relX: number; relY: number; imagenumber: number}) {
@@ -39,16 +43,16 @@ export class PageController {
     }
 
     /**
-     * returns the location of our first click
-     * @returns {{relX: number, relY: number, imagenumber: number}} returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)
+     * Returns the location of our first click.
+     * @returns {{relX: number, relY: number, imagenumber: number}} Returns the X and Y coordinate values relative to the upper left corner of the image. and which number image we clicked (0-3)
      */
     get firstclicklocation(): {relX: number; relY: number; imagenumber: number} {
         return this._firstclicklocation;
     }
     /**
-     * Sets the clicklocation where we first clicked on an image
-     * relX, relY: coordinates relative to the upper left corner of the image
-     * imagenumber: which number of image we clicked (0-3)
+     * Sets the click location where we first clicked on an image.
+     * relX, relY: Coordinates relative to the upper left corner of the image
+     * imagenumber: Which number of image we clicked (0-3)
      * @param value
      */
     set firstclicklocation(value: {relX: number; relY: number; imagenumber: number}) {
@@ -56,7 +60,7 @@ export class PageController {
     }
 
     /**
-     * returns the calculated distance (not shown in tables anymore)
+     * Returns the calculated distance (not shown in tables anymore).
      * @returns {number}
      */
     get distance(): number {
@@ -64,7 +68,7 @@ export class PageController {
     }
 
     /**
-     * set the distance to a calculated value (not shown in table anymore)
+     * Set the distance to a calculated value (not shown in table anymore).
      * @param value
      */
     set distance(value: number) {
@@ -72,7 +76,7 @@ export class PageController {
     }
 
     /**
-     * Gets all the images, their location and their width and height, store them in an array
+     * Gets all the images, their location and their width and height, store them in an array.
      * @returns {{image: any, locX: number, locY: number, width: number, height: number}[]}
      */
     get images(): {image: any; locX: number; locY: number; width: number; height: number}[] {
@@ -80,27 +84,27 @@ export class PageController {
     }
 
     /**
-     * The selected method (mass, distortion, ...)
+     * The selected method (mass, distortion, ...).
      */
     private method: string;
     /**
-     * variable string that stores which menu is shown, its empty if none is shown, used to trigger menu popup
+     * Variable string that stores which menu is shown, its empty if none is shown, used to trigger menu popup.
      */
     private showmenu: string;
     /**
-     * boolean that's true when a menu is active
+     * Boolean that's true when a menu is active.
      */
     private menuactive: boolean;
     /**
-     * stores the number of clicks on an image. to keep track of the first click, and check if the second click is a 'legal' click
+     * Stores the number of clicks on an image. to keep track of the first click, and check if the second click is a 'legal' click.
      */
     private numberofclicks: number;
     /**
-     * variable that stores a calculated distance (not shown in the table anymore)
+     * Variable that stores a calculated distance (not shown in the table anymore).
      */
     private _distance: number;
     /**
-     * Stores the location of our first click, the relative coordinates on the image, and which imagenumber
+     * Stores the location of our first click, the relative coordinates on the image, and which imagenumber.
      */
     private _firstclicklocation: {
         relX: number,
@@ -108,7 +112,7 @@ export class PageController {
         imagenumber: number
     };
     /**
-     * stores the clicklocation on a front image, the relative coordinates on the image, and which imagenumber
+     * Stores the clicklocation on a front image, the relative coordinates on the image, and which imagenumber.
      */
     private _frontclicklocation: {
         relX: number,
@@ -116,7 +120,7 @@ export class PageController {
         imagenumber: number
     };
     /**
-     * stores the clicllocation on a sideimage, the relative coordinates on the image, and which imagenumber
+     * Stores the clicllocation on a sideimage, the relative coordinates on the image, and which imagenumber.
      */
     private _sideclicklocation: {
         relX: number,
@@ -124,7 +128,7 @@ export class PageController {
         imagenumber: number
     };
     /**
-     * Array that stores all the images. the image element itself, the location on the page, the width and the height
+     * Array that stores all the images. the image element itself, the location on the page, the width and the height.
      */
     private _images: {
         image: any,
@@ -134,7 +138,7 @@ export class PageController {
         height: number
     }[];
     /**
-     * Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations
+     * Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations.
      */
     private badgelocations: {
         mass: {
@@ -210,9 +214,9 @@ export class PageController {
     };
 
     /**
-     * Constructor of pagecontroller
-     * @param dataservice
-     * @param translate
+     *
+     * @param dataservice This service contains all the data. This is used to set and get the correct data we want
+     * @param translate Translate service
      */
     constructor( private dataservice: DataService, private translate: TranslateService) {
         this.method = '';               //initialize our set method to an empty string , no method selected
@@ -229,7 +233,7 @@ export class PageController {
     }
 
     /**
-     * sets the method we want to use (mass, distortion, asymmetry,...). This value is set by the sidebar
+     * Sets the method we want to use (mass, distortion, asymmetry,...). This value is set by the sidebar.
      * @param method
      */
     setMethod(method: string): void {
@@ -237,7 +241,7 @@ export class PageController {
     }
 
     /**
-     * Returns the set method, when we pop up the menu, we need to show the correct menu corresponding to the right method
+     * Returns the set method, when we pop up the menu, we need to show the correct menu corresponding to the right method.
      * @returns {string}
      */
     getMethod(): string {
@@ -245,7 +249,7 @@ export class PageController {
     }
 
     /**
-     * sets a value to showmenu, so the modal event onchange listeners will trigger, and will show the correct menu
+     * Sets a value to showmenu, so the modal event onchange listeners will trigger, and will show the correct menu.
      * @param showmenu
      */
     setShowmenu(showmenu: string): void {
@@ -253,7 +257,7 @@ export class PageController {
     }
 
     /**
-     * returns the showmenu variable
+     * Returns the showmenu variable.
      * @returns {string}
      */
     getShowmenu(): string {
@@ -261,7 +265,7 @@ export class PageController {
     }
 
     /**
-     * returns true if there is a menu shown
+     * Returns true if there is a menu shown.
      * @returns {boolean}
      */
     isMenuShown(): boolean {
@@ -269,7 +273,7 @@ export class PageController {
     }
 
     /**
-     * Set the amount of times we clicked on the images
+     * Set the amount of times we clicked on the images.
      * @param numberofclicks
      */
     setNumberOfClicks(numberofclicks: number): void{
@@ -277,7 +281,7 @@ export class PageController {
     }
 
     /**
-     * returns the amount of clicks we did on the images
+     * Returns the amount of clicks we did on the images.
      * @returns {number}
      */
     getNumberOfClicks(): number{
@@ -285,7 +289,7 @@ export class PageController {
     }
 
     /**
-     * used by the sidebar to check is a menu is active, if it is, block all sidebar functionality
+     * Used by the sidebar to check is a menu is active, if it is, block all sidebar functionality.
      * @param value
      */
     setMenuActive(value: boolean): void{
@@ -293,7 +297,7 @@ export class PageController {
     }
 
     /**
-     * check if there is an active menu
+     * Check if there is an active menu.
      * @returns {boolean}
      */
     getMenuActive(): boolean{
@@ -301,7 +305,7 @@ export class PageController {
     }
 
     /**
-     * gets the breast images, and stores the correct variables to the images structure
+     * Gets the breast images, and stores the correct variables to the images structure.
      */
     setImages(){
         let imageelements: any;
@@ -320,7 +324,7 @@ export class PageController {
     }
 
     /**
-     * when we clicked an image, we save that clicked location, so know where to render a badge later on
+     * When we clicked an image, we save that clicked location, so know where to render a badge later on.
      * @param target    the clicked image
      * @param event     the click event itself, so we can get the clicklocation
      * @param first     boolean to indicate if this is our first click or not
@@ -350,7 +354,9 @@ export class PageController {
     }
 
     /**
-     * calculate the distance from the nipple, dont change the integer variables, those are specific to this image aspect ratio
+     * Calculate the distance from the nipple, don't change the integer variables, those are specific to this image aspect ratio.
+     *
+     * This isn't shown in the tables. The values are kept in the background.
      */
     calculateDistance(): void{
         let frontimage: any = this.images[this.frontclicklocation.imagenumber].image;   //gets the clicked front image
@@ -377,8 +383,8 @@ export class PageController {
     }
 
     /**
-     * once we entered all the data via the menu's, we render a badge on the original click locations
-     * @param elementref renders a badge on the invisible div, which also holds the menus
+     * Once we entered all the data via the menu's, we render a badge on the original click locations.
+     * @param elementref Renders a badge on the invisible div, which also holds the menus
      */
     renderBadge(elementref: ElementRef): void {
         let argument: string;
@@ -424,7 +430,7 @@ export class PageController {
     }
 
     /**
-     * adds a pair of badges to the badgelocation structure
+     * Adds a pair of badges to the badgelocation structure.
      * @param method    the selected method
      * @param sideX     X coordinate of the side badge
      * @param sideY     Y coordinate of the side badge
@@ -461,7 +467,7 @@ export class PageController {
     }
 
     /**
-     * removes a badgelocation out of the badgelocations struture, used to remove an entry
+     * Removes a badgelocation out of the badgelocations struture, used to remove an entry.
      * @param method    which method
      * @param index     what index of the array
      */
@@ -470,8 +476,10 @@ export class PageController {
     }
 
     /**
-     * get the badgelocation array of a certain method
-     * we can shorten this, but I prefer to keep the for loop as an extra check to look if the method really exists
+     * Get the badgelocation array of a certain method.
+     *
+     *
+     * We can shorten this, but I prefer to keep the for loop as an extra check to look if the method really exists.
      * @param method    the selected method
      * @returns {any}   array containing the badgelocations of that method
      */
@@ -484,7 +492,7 @@ export class PageController {
     }
 
     /**
-     * when the screen is resized, or we scroll. recalculate the location of all the badges
+     * When the screen is resized, or we scroll. recalculate the location of all the badges.
      */
     resizeBadges(){
         this.setImages(); //update the images

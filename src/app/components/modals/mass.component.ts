@@ -6,12 +6,28 @@ import {PageController} from "../../services/page.controller";
 import {HotkeyService} from "../../services/hotkey.service";
 import {TranslateService} from "ng2-translate";
 
-
+/**
+ * This component contains the functionality of the mass menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * It will bind the data to the data service once we went through the menus.
+ *
+ *
+ *          selector: 'mass-component'
+ *          templateUrl: '../../templates/modals/mass.template.html'
+ */
 @Component({
     selector: 'mass-component',
     templateUrl: '../../templates/modals/mass.template.html'
 })
 export class MassComponent implements OnChanges{
+    /**
+     *
+     * @param dataservice   This service stores all the data
+     * @param pagectrl      Page controller manages functions to assure functionality (tracking click, adding badges, ... )
+     * @param elementref    The element that contains the menu
+     * @param hotkeyservice Gets the keybindings from a json file, and binds them to the right button.
+     * @param translate     Translate service
+     */
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private elementref: ElementRef, private hotkeyservice: HotkeyService,
                 private translate: TranslateService){
@@ -34,8 +50,8 @@ export class MassComponent implements OnChanges{
     }
 
     /**
-     * array to keep all possible selections of shapes
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of shapes.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string)[]}
      */
     private shapearray: Array<string> = [       //values of shape
@@ -44,8 +60,8 @@ export class MassComponent implements OnChanges{
         'irregular'
     ];
     /**
-     * array to keep all possible selections of margins
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of margins.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string|string|string)[]}
      */
     private marginarray: Array<string> = [      //values of margin
@@ -56,8 +72,8 @@ export class MassComponent implements OnChanges{
         'spiculated'
     ];
     /**
-     * array to keep all possible selections of densities
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of densities.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string)[]}
      */
     private densityarray: Array<string> = [     //values of density
@@ -66,7 +82,7 @@ export class MassComponent implements OnChanges{
         'high'
     ];
     /**
-     * array to keep all possible menus
+     * Array to keep all possible menus.
      * @type {(string|string|string)[]}
      */
     private menus: Array<string> = [
@@ -75,21 +91,25 @@ export class MassComponent implements OnChanges{
         'density'
     ];
     /**
-     * selected shape
+     * Selected shape.
      */
     private shape: string;                      //selected shape
     /**
-     * selected margin
+     * Selected margin.
      */
     private margin: string;                     //selected margin
     /**
-     * selected density
+     * Selected density.
      */
     private density: string;                    //selected density
     /**
-     * if we click in a menu, mouseControl will be called
-     * @param argument shape, margin or density
-     * @param finding   element of the findings arrays
+     * If we click in a menu, mouseControl will be called.
+     * It will check in which menu we are (first, second or third). And will hide it and show the next one.
+     *
+     * If we clicked the last menu, then go to endOfMenu.
+
+     * @param argument Shape, margin or density
+     * @param finding   Element of the findings arrays
      */
     mouseControl(argument: string, finding: string): void{
         if(argument == this.menus[0]){          //if the passed argument corresponds with the first element in the menus array (shape)
@@ -110,7 +130,9 @@ export class MassComponent implements OnChanges{
     }
 
     /**
-     * When a menu is shown and we press a key on the keyboard, this function will get called
+     * When a menu is shown and we press a key on the keyboard, this function will get called.
+     *
+     * It will set the finding corresponding to the hotkey. Also depending on in which menu we are.
      * @param keycode code that stores the pressed key
      * @param argument shape, margin, density
      */
@@ -153,7 +175,9 @@ export class MassComponent implements OnChanges{
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps
+     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
+     *
+     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
      */
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);                                 //tell the pagecontroller that the menu isn't active anymore
@@ -163,13 +187,15 @@ export class MassComponent implements OnChanges{
     }
 
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables
+     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
      */
     addToTable(): void{                       //add the data
         this.dataservice.addMass(0, this.pagectrl.distance, this.shape, this.margin, this.density);    //bind everything to the dataervice
     }
     /**
-     * If we cut short the menu interaction, we need to clean everything up so we can start again
+     * If we cut short the menu interaction, we need to clean everything up so we can start again.
+     *
+     * Set the show menu to an empty array (so we indicate that there is no menu showing). Reset the number of clicks.
      */
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {

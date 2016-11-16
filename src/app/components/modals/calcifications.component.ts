@@ -6,12 +6,30 @@ import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
 import {HotkeyService} from "../../services/hotkey.service";
 
-
+/**
+ * This component contains the functionality of the calcifications menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * It will bind the data to the data service once we went through the menus.
+ *
+ *          selector: 'calcification-component'
+ *          templateUrl: '../../templates/modals/calcifications.template.html'
+ */
 @Component({
     selector: 'calcification-component',
     templateUrl: '../../templates/modals/calcifications.template.html'
 })
 export class CalcificationComponent implements OnChanges{
+    /**
+     * The menu contains a toggle button to show more selections for the morphology, initialize the right translation for this button and header.
+     *
+     * The constructor will initialize the following
+     *
+     * @param dataservice   This service stores all the data
+     * @param pagectrl      Page controller manages functions to assure functionality (tracking click, adding badges, ... )
+     * @param elementref    The element that contains the menu
+     * @param hotkeyservice Gets the keybindings from a json file, and binds them to the right buttons
+     * @param translate     Translate service
+     */
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef, private hotkeyservice: HotkeyService,
     translate: TranslateService) {
         setTimeout(() => {
@@ -39,34 +57,17 @@ export class CalcificationComponent implements OnChanges{
     }
 
     /**
-     * The button name of the toggle button in the header of the menu, save this so the button changes when we change the hotkeys
+     * The button name of the toggle button in the header of the menu, save this so the button changes when we change the hotkeys.
      */
     private togglebutton: any;
     /**
-     * the full string of the header of the menu, changes depending on keybinds and translations
+     * the full string of the header of the menu, changes depending on keybindings and translations.
      */
     private headername: string;
-
-    private morphologyarray: Array<String> = [
-        'skin calcification',
-        'milk of calcium',
-        'rod-like - plasmacel mastisis',
-        'dystrophic',
-        'popcorn - fibroadenoma',
-        'rim calcification',
-        'vascular calcification',
-        'round',
-        'punctate',
-        'amorphous (benign)',
-        'amorphous (DCIS)',
-        'fine pleomorphic',
-        'coarse heterogeneous',
-        'fine linear',
-        'fine linear branching'
-    ];
     /**
-     * array to keep all possible selections of benign morphologies
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of benign morphologies.
+     *
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string|string|string|string|string|string|string)[]}
      */
     private morphologyarraybenign: Array<string> = [
@@ -81,8 +82,8 @@ export class CalcificationComponent implements OnChanges{
         'punctate'
     ];
     /**
-     * array to keep all possible selections of non benign morphologies
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of non benign morphologies.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string|string|string|string)[]}
      */
     private morphologyarraynotbenign: Array<string> = [
@@ -94,8 +95,8 @@ export class CalcificationComponent implements OnChanges{
         'fine linear branching'
     ];
     /**
-     * array to keep all possible selections of distributions
-     * name the files for the images, the same as these strings
+     * Array to keep all possible selections of distributions.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string|string|string|string)[]}
      */
     private distributionarray: Array<string> = [
@@ -106,8 +107,8 @@ export class CalcificationComponent implements OnChanges{
         'segmental'
     ];
     /**
-     * array to keep all menus
-     * name the files for the images, the same as these strings
+     * Array to keep all menus.
+     * Name the files for the images, the same as these strings.
      * @type {(string|string)[]}
      */
     private menus: Array<string> = [
@@ -116,23 +117,27 @@ export class CalcificationComponent implements OnChanges{
     ];
 
     /**
-     * used to toggle between benign and non-benign morphology choices
+     * Used to toggle between benign and non-benign morphology choices.
      * @type {boolean}
      */
     private benign: boolean;
     /**
-     * store the selected morphology
+     * Store the selected morphology.
      */
     private morphology: string;
     /**
-     * store the selected distribution
+     * Store the selected distribution.
      */
     private distribution: string;
 
     /**
-     * if we click in a menu, mouseControl will be called
-     * @param argument morphology or distribution
-     * @param finding  string that contains an element of the selection arrays
+     * If we click in a menu, mouseControl will be called.
+     *
+     * It will check in which menu we are (first or second). And will hide it and show the next one.
+     *
+     * If we clicked the second menu, then go to endOfMenu.
+     * @param argument Morphology or distribution
+     * @param finding  String that contains an element of the selection arrays
      */
     mouseControl(argument: string, finding: string): void{
         if(argument == this.menus[0]){          //if the passed argument corresponds with the first element in the menus array (morphology)
@@ -148,10 +153,16 @@ export class CalcificationComponent implements OnChanges{
         }
     }
 
+    /**
+     * Variable used to store the hotkeys of the hotkeyService. Initialize it empty.
+     * @type {string}
+     */
     private hotkeys: any = '';
 
     /**
-     * When a menu is shown and we press a key on the keyboard, this function will get called
+     * When a menu is shown and we press a key on the keyboard, this function will get called.
+     *
+     * It will set the finding corresponding to the hotkey. Also depending on in which menu we are.
      * @param keycode code that stores the pressed key
      * @param argument morphology or distribution
      */
@@ -208,7 +219,9 @@ export class CalcificationComponent implements OnChanges{
     }
 
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps
+     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
+     *
+     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
      */
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);                                 //tell the pagecontroller that the menu isn't active anymore
@@ -217,13 +230,15 @@ export class CalcificationComponent implements OnChanges{
         this.pagectrl.renderBadge(this.elementref);                         //render a badge at the right locations we determined earlier
     }
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables
+     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
      */
     addToTable(): void{
         this.dataservice.addCalcifications(this.pagectrl.distance, this.morphology, this.distribution);
     }
     /**
-     * If we cut short the menu interaction, we need to clean everything up so we can start again
+     * If we cut short the menu interaction, we need to clean everything up so we can start again.
+     *
+     * Set the show menu to an empty array (so we indicate that there is no menu showing). Reset the number of clicks.
      */
     modalInterrupt(){               //if we cut the modal interaction short, reset the showMenu
         setTimeout(() => {

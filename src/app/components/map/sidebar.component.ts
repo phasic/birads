@@ -3,33 +3,41 @@ import {PageController} from "../../services/page.controller";
 import {DataService} from "../../services/data.service";
 import {HotkeyService} from "../../services/hotkey.service";
 import {TranslateService} from "ng2-translate";
+/**
+ * This component contains the bar with all the possible methods of which we can add findings (mass, distortion, ...). It also enables the functionality to select them with hotkeys.
+ *
+ *      selector: 'sidebar-component'
+ *      templateUrl: '../../templates/map/sidebar.template.html'
+ *
+ */
 @Component({
     selector: 'sidebar-component',
     templateUrl: '../../templates/map/sidebar.template.html'
 })
 export class SidebarComponent {
     /**
-     * Constructor of SidebarComponent
-     * This component handles the method selection menu
-     * @param dataservice   this service stores all the data
-     * @param pagectrl      page controller manages functions to assure functionality (tracking click, adding badges, ... )
-     * @param hotkeyservice gets the keybindings from a json file, and binds them to the right buttons
-     * @param translate     translate service
+     * Constructor of SidebarComponent.
+     * The constructor will initialize the following
+
+     * @param dataservice   This service stores all the data
+     * @param pagectrl      Page controller manages functions to assure functionality (tracking click, adding badges, ... )
+     * @param hotkeyservice Gets the keybindings from a json file, and binds them to the right buttons
+     * @param translate     Translate service
      */
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private hotkeyservice: HotkeyService, private translate: TranslateService) {
     }
 
     /**
-     * When we first open the page, there is no selected method
+     * When we first open the page, there is no selected method.
      * @type {string}
      */
     private method: string = '';
     /**
-     * hotKeys gets called when we press a keyboard key
-     * if you want to change the hotkeys, change the hotkeys.json file
+     * HotKeys gets called when we press a keyboard key.
+     * If you want to change the hotkeys, change the hotkeys.json file.
      *
-     * @param keycode   the keycode of the clicked keyboard key
+     * @param keycode   The keycode of the pressed keyboard key.
      */
     hotKeys(keycode: number): void {
         let hotkeys: any = this.hotkeyservice.hotkeys.sidebar;                  //get the hotkeys from the hotkey service

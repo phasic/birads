@@ -1,21 +1,27 @@
 import { Component }      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {PageController} from "../../services/page.controller";
+/**
+ * This component contains the table. And show all the finding in smaller tables.
+ *
+ *          selector: 'table-component'
+ *          templateUrl: '../../templates/table/table.template.html'
+ */
 @Component({
     selector: 'table-component',
     templateUrl: '../../templates/table/table.template.html'
 })
 export class TableComponent{
     /**
-     *
-     * @param dataservice
-     * @param pagectrl
+     * The constructor will initialize the following
+     * @param dataservice   This service stores all the data
+     * @param pagectrl      Page controller manages functions to assure functionality (tracking click, adding badges, ... )
      */
     constructor(private dataservice: DataService, private pagectrl: PageController){
     }
 
     /**
-     * when the remove button on a row is pressed, removeEntry will be alled and removes that row and the correcponding badge
+     * When the remove button on a row is pressed, removeEntry will be alled and removes that row and the corresponding badge.
      * @param index     the row number of the entry
      * @param method    name of the table
      */
@@ -25,9 +31,9 @@ export class TableComponent{
     }
 
     /**
-     * removes the badges which correctpond to the correct entry determined by the index and method
-     * @param index     the row number of the entry
-     * @param method    name of the table
+     * Removes the badges which corresponds to the correct entry determined by the index and method.
+     * @param index     The row number of the entry
+     * @param method    Name of the table
      */
     removeBadge(index: number, method: string): void{
         let element:any = document.getElementById(method+ (index+1) + 's');     //get the side badge
@@ -48,10 +54,10 @@ export class TableComponent{
     }
 
     /**
-     * set the distance of that certain entry, based on a value of an input box
-     * @param distance  passed value, which is entered in an input box
-     * @param method    name of the table
-     * @param index     row number of the entry
+     * Set the distance of that certain entry, based on a value of an input box.
+     * @param distance  Passed value, which is entered in an input box
+     * @param method    Name of the table (name is based on a method)
+     * @param index     Row number of the entry
      */
     setDistance(distance: any, method: string, index: number): void{
         distance = parseFloat(distance);                        //change the distance to a float ( gets passed as a string on runtime, we dont want that)
@@ -61,10 +67,10 @@ export class TableComponent{
     }
 
     /**
-     * set the size of that certain entry, based on a value of and input box
-     * @param size      passed value, which is entered in an input box
-     * @param method    name of the table
-     * @param index     row number of the entry
+     * Set the size of that certain entry, based on a value of and input box.
+     * @param size      Passed value, which is entered in an input box
+     * @param method    Name of the table (name is based on a method)
+     * @param index     Row number of the entry
      */
     setSize(size: any, method: string, index: number): void{
         size = parseFloat(size);                                //change the size to a float ( gets passed as a string on runtime, we dont want that)

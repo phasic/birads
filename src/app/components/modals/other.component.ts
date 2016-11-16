@@ -4,17 +4,25 @@ import {ModalDirective} from "ng2-bootstrap";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {PageController} from "../../services/page.controller";
 import {HotkeyService} from "../../services/hotkey.service";
+/**
+ * This component contains the functionality of the other menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * It will bind the data to the data service once we went through the menus.
+ *
+ *          selector: 'other-component'
+ *          templateUrl: '../../templates/modals/other.template.html'
+ */
 @Component({
     selector: 'other-component',
     templateUrl: '../../templates/modals/other.template.html'
 })
 export class OtherComponent implements OnChanges{
     /**
-     *
-     * @param dataservice
-     * @param pagectrl
-     * @param elementref
-     * @param hotkeyservice
+     * The constructor will initialize the following
+     * @param dataservice   This service stores all the data
+     * @param pagectrl      Page controller manages functions to assure functionality (tracking click, adding badges, ... )
+     * @param elementref    The element that contains the menu
+     * @param hotkeyservice Gets the keybindings from a json file, and binds them to the right buttons
      */
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private elementref: ElementRef, private hotkeyservice: HotkeyService) {
@@ -36,7 +44,7 @@ export class OtherComponent implements OnChanges{
     }
 
     /**
-     * array to keep all possible selections of others
+     * Array to keep all possible selections of others.
      * @type {(string|string|string|string)[]}
      */
     private otherarray: Array<string> = [
@@ -44,13 +52,15 @@ export class OtherComponent implements OnChanges{
         'scar'
     ];
     /**
-     * variable to keep track of the selected 'other'
+     * Variable to keep track of the selected 'other'.
      */
     private other: string;
 
     /**
-     * if we click in a menu, mouseControl will be called
-     * @param finding element of the asymmetryarray
+     * If we click in a menu, mouseControl will be called.
+     *
+     * Set the 'other' to the passed finding. And hide the menu, then call endOfMenu.
+     * @param finding Element of the otherarray
      */
     mouseControl(finding: string): void{
         this.other = finding;               //set the selected 'other' to the right value
@@ -60,7 +70,9 @@ export class OtherComponent implements OnChanges{
 
     /**
      * When a menu is shown and we press a key on the keyboard, this function will get called
-     * @param keycode   keycode of the pressed key
+     *
+     * It will set the finding corresponding with the pressed key.
+     *  @param keycode   Keycode of the pressed key
      */
     hotKeys(keycode: number): void {
         let hotkeys: any = this.hotkeyservice.hotkeys.modal;                //get the hotkeys of the hotkey service
@@ -75,7 +87,9 @@ export class OtherComponent implements OnChanges{
     }
 
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps
+     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
+     *
+     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
      */
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);                                 //tell the pagecontroller that the menu isn't active anymore
@@ -85,14 +99,16 @@ export class OtherComponent implements OnChanges{
     }
 
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables
+     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
      */
     addToTable(): void{
         this.dataservice.addOther(this.pagectrl.distance, this.other);
     }
 
     /**
-     * If we cut short the menu interaction, we need to clean everything up so we can start again
+     * If we cut short the menu interaction, we need to clean everything up so we can start again.
+     *
+     * Set the show menu to an empty array (so we indicate that there is no menu showing). Reset the number of clicks.
      */
     modalInterrupt(){
         setTimeout(() => {

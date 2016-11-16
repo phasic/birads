@@ -1,0 +1,570 @@
+[
+  {
+    "name": "AppModule",
+    "file": "src/app/app.module.ts",
+    "providers": [
+      {
+        "name": "DataService"
+      },
+      {
+        "name": "PageController"
+      },
+      {
+        "name": "HotkeyService"
+      }
+    ],
+    "declarations": [
+      {
+        "name": "AppComponent",
+        "file": "src/app/app.component.ts",
+        "selector": "my-app",
+        "providers": [],
+        "templateUrl": [
+          "app.component.html"
+        ],
+        "styleUrls": [
+          "app.component.css"
+        ],
+        "__raw": [
+          {
+            "kind": 253,
+            "pos": 133,
+            "end": 154,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 133,
+              "end": 144,
+              "flags": 0,
+              "text": "selector"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 145,
+              "end": 154,
+              "flags": 0,
+              "text": "my-app"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 155,
+            "end": 193,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 155,
+              "end": 169,
+              "flags": 0,
+              "text": "templateUrl"
+            },
+            "initializer": {
+              "kind": 9,
+              "pos": 170,
+              "end": 193,
+              "flags": 0,
+              "text": "./app.component.html"
+            }
+          },
+          {
+            "kind": 253,
+            "pos": 194,
+            "end": 229,
+            "flags": 0,
+            "name": {
+              "kind": 69,
+              "pos": 194,
+              "end": 206,
+              "flags": 0,
+              "text": "styleUrls"
+            },
+            "initializer": {
+              "kind": 170,
+              "pos": 207,
+              "end": 229,
+              "flags": 0,
+              "elements": [
+                {
+                  "kind": 9,
+                  "pos": 209,
+                  "end": 228,
+                  "flags": 0,
+                  "text": "app.component.css"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ScreenResize"
+      },
+      {
+        "name": "ImageMapResize"
+      },
+      {
+        "name": "MapComponent"
+      },
+      {
+        "name": "SidebarComponent"
+      },
+      {
+        "name": "AsymmetryComponent"
+      },
+      {
+        "name": "CalcificationComponent"
+      },
+      {
+        "name": "DistortionComponent"
+      },
+      {
+        "name": "MassComponent"
+      },
+      {
+        "name": "OtherComponent"
+      },
+      {
+        "name": "ClassificationComponent"
+      },
+      {
+        "name": "LegendComponent"
+      },
+      {
+        "name": "TableComponent"
+      }
+    ],
+    "imports": [
+      {
+        "name": "BrowserModule"
+      },
+      {
+        "name": "FormsModule"
+      },
+      {
+        "name": "HttpModule"
+      },
+      {
+        "name": "Ng2BootstrapModule"
+      },
+      {
+        "ns": "TranslateModule",
+        "name": "TranslateModule.forRoot(args)"
+      }
+    ],
+    "exports": [],
+    "bootstrap": [
+      {
+        "name": "AppComponent"
+      }
+    ],
+    "__raw": [
+      {
+        "kind": 253,
+        "pos": 1479,
+        "end": 1950,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 1479,
+          "end": 1497,
+          "flags": 0,
+          "text": "declarations"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 1498,
+          "end": 1950,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 1500,
+              "end": 1539,
+              "flags": 0,
+              "text": "AppComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1540,
+              "end": 1586,
+              "flags": 0,
+              "text": "ScreenResize"
+            },
+            {
+              "kind": 69,
+              "pos": 1587,
+              "end": 1611,
+              "flags": 0,
+              "text": "ImageMapResize"
+            },
+            {
+              "kind": 69,
+              "pos": 1612,
+              "end": 1651,
+              "flags": 0,
+              "text": "MapComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1652,
+              "end": 1678,
+              "flags": 0,
+              "text": "SidebarComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1679,
+              "end": 1727,
+              "flags": 0,
+              "text": "AsymmetryComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1728,
+              "end": 1760,
+              "flags": 0,
+              "text": "CalcificationComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1761,
+              "end": 1790,
+              "flags": 0,
+              "text": "DistortionComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1791,
+              "end": 1814,
+              "flags": 0,
+              "text": "MassComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1815,
+              "end": 1839,
+              "flags": 0,
+              "text": "OtherComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1840,
+              "end": 1892,
+              "flags": 0,
+              "text": "ClassificationComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1893,
+              "end": 1918,
+              "flags": 0,
+              "text": "LegendComponent"
+            },
+            {
+              "kind": 69,
+              "pos": 1919,
+              "end": 1943,
+              "flags": 0,
+              "text": "TableComponent"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 1951,
+        "end": 2280,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 1951,
+          "end": 1964,
+          "flags": 0,
+          "text": "imports"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 1965,
+          "end": 2280,
+          "flags": 0,
+          "multiLine": true,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 1967,
+              "end": 1990,
+              "flags": 0,
+              "text": "BrowserModule"
+            },
+            {
+              "kind": 69,
+              "pos": 1991,
+              "end": 2012,
+              "flags": 0,
+              "text": "FormsModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2013,
+              "end": 2033,
+              "flags": 0,
+              "text": "HttpModule"
+            },
+            {
+              "kind": 69,
+              "pos": 2034,
+              "end": 2062,
+              "flags": 0,
+              "text": "Ng2BootstrapModule"
+            },
+            {
+              "kind": 174,
+              "pos": 2063,
+              "end": 2273,
+              "flags": 0,
+              "expression": {
+                "kind": 172,
+                "pos": 2063,
+                "end": 2096,
+                "flags": 0,
+                "expression": {
+                  "kind": 69,
+                  "pos": 2063,
+                  "end": 2088,
+                  "flags": 0,
+                  "text": "TranslateModule"
+                },
+                "name": {
+                  "kind": 69,
+                  "pos": 2089,
+                  "end": 2096,
+                  "flags": 0,
+                  "text": "forRoot"
+                }
+              },
+              "arguments": [
+                {
+                  "kind": 171,
+                  "pos": 2097,
+                  "end": 2272,
+                  "flags": 0,
+                  "multiLine": true,
+                  "properties": [
+                    {
+                      "kind": 253,
+                      "pos": 2098,
+                      "end": 2136,
+                      "flags": 0,
+                      "name": {
+                        "kind": 69,
+                        "pos": 2098,
+                        "end": 2119,
+                        "flags": 0,
+                        "text": "provide"
+                      },
+                      "initializer": {
+                        "kind": 69,
+                        "pos": 2120,
+                        "end": 2136,
+                        "flags": 0,
+                        "text": "TranslateLoader"
+                      }
+                    },
+                    {
+                      "kind": 253,
+                      "pos": 2137,
+                      "end": 2234,
+                      "flags": 0,
+                      "name": {
+                        "kind": 69,
+                        "pos": 2137,
+                        "end": 2161,
+                        "flags": 0,
+                        "text": "useFactory"
+                      },
+                      "initializer": {
+                        "kind": 180,
+                        "pos": 2162,
+                        "end": 2234,
+                        "flags": 0,
+                        "parameters": [
+                          {
+                            "kind": 142,
+                            "pos": 2164,
+                            "end": 2174,
+                            "flags": 0,
+                            "name": {
+                              "kind": 69,
+                              "pos": 2164,
+                              "end": 2168,
+                              "flags": 0,
+                              "text": "http"
+                            },
+                            "type": {
+                              "kind": 155,
+                              "pos": 2169,
+                              "end": 2174,
+                              "flags": 0,
+                              "typeName": {
+                                "kind": 69,
+                                "pos": 2169,
+                                "end": 2174,
+                                "flags": 0,
+                                "text": "Http"
+                              }
+                            }
+                          }
+                        ],
+                        "equalsGreaterThanToken": {
+                          "kind": 34,
+                          "pos": 2175,
+                          "end": 2178,
+                          "flags": 0
+                        },
+                        "body": {
+                          "kind": 175,
+                          "pos": 2178,
+                          "end": 2234,
+                          "flags": 0,
+                          "expression": {
+                            "kind": 69,
+                            "pos": 2182,
+                            "end": 2204,
+                            "flags": 0,
+                            "text": "TranslateStaticLoader"
+                          },
+                          "arguments": [
+                            {
+                              "kind": 69,
+                              "pos": 2205,
+                              "end": 2209,
+                              "flags": 0,
+                              "text": "http"
+                            },
+                            {
+                              "kind": 9,
+                              "pos": 2210,
+                              "end": 2224,
+                              "flags": 0,
+                              "text": "assets/i18n"
+                            },
+                            {
+                              "kind": 9,
+                              "pos": 2225,
+                              "end": 2233,
+                              "flags": 0,
+                              "text": ".json"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "kind": 253,
+                      "pos": 2235,
+                      "end": 2261,
+                      "flags": 0,
+                      "name": {
+                        "kind": 69,
+                        "pos": 2235,
+                        "end": 2253,
+                        "flags": 0,
+                        "text": "deps"
+                      },
+                      "initializer": {
+                        "kind": 170,
+                        "pos": 2254,
+                        "end": 2261,
+                        "flags": 0,
+                        "elements": [
+                          {
+                            "kind": 69,
+                            "pos": 2256,
+                            "end": 2260,
+                            "flags": 0,
+                            "text": "Http"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 2281,
+        "end": 2342,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 2281,
+          "end": 2296,
+          "flags": 0,
+          "text": "providers"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 2297,
+          "end": 2342,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 2299,
+              "end": 2310,
+              "flags": 0,
+              "text": "DataService"
+            },
+            {
+              "kind": 69,
+              "pos": 2311,
+              "end": 2326,
+              "flags": 0,
+              "text": "PageController"
+            },
+            {
+              "kind": 69,
+              "pos": 2327,
+              "end": 2341,
+              "flags": 0,
+              "text": "HotkeyService"
+            }
+          ]
+        }
+      },
+      {
+        "kind": 253,
+        "pos": 2343,
+        "end": 2374,
+        "flags": 0,
+        "name": {
+          "kind": 69,
+          "pos": 2343,
+          "end": 2358,
+          "flags": 0,
+          "text": "bootstrap"
+        },
+        "initializer": {
+          "kind": 170,
+          "pos": 2359,
+          "end": 2374,
+          "flags": 0,
+          "elements": [
+            {
+              "kind": 69,
+              "pos": 2361,
+              "end": 2373,
+              "flags": 0,
+              "text": "AppComponent"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

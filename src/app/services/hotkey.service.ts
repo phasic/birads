@@ -1,13 +1,46 @@
 import {Injectable} from "@angular/core";
 import {Http, Response} from '@angular/http'
-
-@Injectable()
 /**
- * Responsible for getting the keybindings out of the json file and bind them to an array that we can use in the code
+ * The HotkeyService reads the hotkeys.json file, and parses it into an array that can be used in the code to assign keybindings to functionality.
+ *
+ * When you want to change hotkeys, change the file and reload the page.
+ *
+ * Structure of the hotkeys array:
+ *
+ *        private _hotkeys: {
+ *                      sidebar: {
+ *                          one: number,
+ *                          two: number,
+ *                          three: number,
+ *                          four: number,
+ *                          five: number,
+ *                          six: number,
+ *                          seven: number,
+ *                          eight: number,
+ *                          nine: number
+ *                      },
+ *                      modal: {
+ *                          one: number,
+ *                          two: number,
+ *                          three: number,
+ *                          four: number,
+ *                          five: number,
+ *                          six: number,
+ *                          seven: number,
+ *                          eight: number,
+ *                          nine: number,
+ *                          toggle: number
+ *                      }
+ *       };
+ *
+ *
+ * The hotkeys array will contains the keycodes of the hotkeys.
+ *
  */
+@Injectable()
 export class HotkeyService {
     /**
-     * returns the array containing all the bound hotkeys
+     * Getter that returns the hotkey array.
      * @returns {{sidebar: {one: number, two: number, three: number, four: number, five: number, six: number, seven: number, eight: number, nine: number}, modal: {one: number, two: number, three: number, four: number, five: number, six: number, seven: number, eight: number, nine: number, toggle: number}}}
      */
     get hotkeys(): {sidebar: {one: number; two: number; three: number; four: number; five: number; six: number; seven: number; eight: number; nine: number}; modal: {one: number; two: number; three: number; four: number; five: number; six: number; seven: number; eight: number; nine: number; toggle: number}} {
@@ -15,7 +48,8 @@ export class HotkeyService {
     }
 
     /**
-     *
+     * http service gets the hotkeys.json file and maps it to a response. That response will get assigned to the hotkeys array.
+     * The hotkeys array contains the keycodes of the hotkeys.
      * @param http used to read the json file
      */
     constructor(private http: Http) {
@@ -51,7 +85,7 @@ export class HotkeyService {
     }
 
     /**
-     * hotkeys array structure
+     * Hotkeys array structure.
      */
     private _hotkeys: {
         sidebar: {

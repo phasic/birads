@@ -1,5 +1,10 @@
 import {ElementRef, HostListener, Directive} from '@angular/core';
-
+/**
+ * Directive used to rescale the imagemaps when the page is rescaled. So the imagemaps keep corresponding the underlying sector map image.
+ *
+ *      selector: '[imagemap]'
+ *
+ */
 @Directive({
     selector: '[imagemap]'
 })
@@ -12,10 +17,11 @@ export class ImageMapResize {
      * height of the image which corresponds with the image map
      */
     private imgheight: number;
-
     /**
+     * The constructor will define the element, the image map, when initialized.
      *
-     * @param elementRef the image with an image map
+     * After 100ms we will get the natural, unscaled, width of the image
+     * @param elementRef
      */
     constructor(private elementRef: ElementRef){
         setTimeout(() => {
@@ -24,17 +30,31 @@ export class ImageMapResize {
             this.resizeImageMap();                                      //call resizeImageMap
         }, 100);                                                        //wait 100ms before execute previous statements
     }
-    @HostListener('window:resize',['$event'])
     /**
-     * when the screen is resized call this fuction
-     * @param event     resize event
+     * When we resize the page, this will get called.
+     *
+     * When we resize, we need to rescale the imagemap, because this isn't inherently responsive unlike the underlying image.
+     * @param event The resize event
      */
+    @HostListener('window:resize',['$event'])
     onResize(event: Event): void{
         this.resizeImageMap();                                          //resize the image map
     }
 
     /**
-     * this function is used to keep the size of the image map the same as the size of the corresponding image
+     * When we rescale the page, we need to scale the imagemap with the same proportions as the underlying image.
+     *
+     * First we get the current width and height of the image, calculate a scale (current width / original width)
+     *
+     * Once we got a width and height scale, we get the area elements of the imagemap. Get the coords and split them.
+     *
+     *
+     * The even coordinates we'll multiply by the width scale, the odd coordinates by the height scale.
+     *
+     * Then assign those coordinates again to the corresponding area.
+     *
+     * At the end set the imgwidth en imgheight to the current width and height. (calculating the scale happens iteratively every time we rescale the page,
+     * it's not calculated from the native size, but from the current size en previous size)
      */
     resizeImageMap(): void{
         let w: number = this.elementRef.nativeElement.width;            //get the current width of the image

@@ -1,17 +1,25 @@
 import {Injectable} from "@angular/core";
 
-@Injectable()
 /**
- * Stores all the data
+ * This service stores all the data entered. All the different method in different tables
+ *
+ * The DataService is called when we need to find, add, set or get data.
  */
+@Injectable()
 export class DataService {
     /**
-     * get the possible methods
+     * Get the possible methods.
      * @returns {Array<string>}
      */
     get methods(): Array<string> {
         return this._methods;
     }
+
+    /**
+     * Set the ACR and BIRADS score to 0.
+     *
+     * Initializes empty arrays for every method;
+     */
     constructor() {
         this.acr = {        //initialize the ACR scores on zero
             right : 0,
@@ -26,34 +34,28 @@ export class DataService {
         this.asymmetry = [];
         this.calcification = [];
         this.other = [];
-        // this._methods = this.mainmethods;
     }
 
     /**
-     * holds the acr score
+     * Holds the acr score.
      */
     private acr: {
         right: number,
         left: number
     };
     /**
-     * holds the birads score
+     * Holds the birads score.
      */
     private birads: {
         right: number,
         left: number
     };
     /**
-     * holds the breast composition
+     * Holds the breast composition.
      */
     private composition: string;
-
-
     /**
-     * methods contains all the possible methods. mainmethods and othermethods combined
-     */
-    /**
-     * all the methods wo are not in a submenu in the sidebar
+     * All the possbile methods.
      * @type {(string|string|string|string)[]}
      */
      private _methods: Array<string> = [
@@ -64,7 +66,7 @@ export class DataService {
         'other'
     ];
     /**
-     * gets the data of the main method array
+     * Gets the data of the method array.
      * @returns {Array<string>}
      */
     getMainMethods(): Array<string>{
@@ -72,7 +74,7 @@ export class DataService {
     }
 
     /**
-     * mass structure
+     * Mass structure.
      */
     private mass: {
         size: number;
@@ -82,21 +84,21 @@ export class DataService {
         density: string;
     }[];
     /**
-     * distortion structure
+     * Distortion structure.
      */
     private distortion: {
         distance: number;
         distortion: string;
     }[];
     /**
-     * asymmetry structure
+     * Asymmetry structure.
      */
     private asymmetry: {
         distance: number;
         asymmetry: string;
     }[];
     /**
-     * calcification structure
+     * Calcification structure.
      */
     private calcification: {
         distance: number;
@@ -104,16 +106,16 @@ export class DataService {
         distribution: string;
     }[];
     /**
-     * other structure
+     * Other structure.
      */
     private other: {
         distance: number,
         name: string
     }[];
     /**
-     * returns the request data structure. mass, distortion, ...
-     * @param method    string that contains the wanted data structure
-     * @returns {any}   array that contains the data structure
+     * Returns the request data structure. mass, distortion, ...
+     * @param method    String that contains the wanted data structure
+     * @returns {any}   Array that contains the data structure
      */
     getData(method: string): any{
         for(let m of this.methods){     //iterate over all the methods
@@ -124,7 +126,7 @@ export class DataService {
     }
 
     /**
-     * set the data of a certain method, at a certain index
+     * Set the data of a certain method, at a certain index.
      * @param method    mass, distortion,...
      * @param data      the data to bind
      * @param index     the index of the array where to bind it
@@ -138,7 +140,7 @@ export class DataService {
     }
 
     /**
-     * add a mass entry to the mass array
+     * Add a mass entry to the mass array.
      * @param size
      * @param distance
      * @param shape
@@ -157,7 +159,7 @@ export class DataService {
     }
 
     /**
-     * ass a distortion entry to the distortion array
+     * Add a distortion entry to the distortion array.
      * @param distance
      * @param distortion
      */
@@ -170,7 +172,7 @@ export class DataService {
     }
 
     /**
-     * add an asymmtry entry to the asymmetry array
+     * Add an asymmetry entry to the asymmetry array.
      * @param distance
      * @param asymmetry
      */
@@ -183,7 +185,7 @@ export class DataService {
     }
 
     /**
-     * add a calcification entry to the calcification array
+     * Add a calcification entry to the calcification array.
      * @param distance
      * @param morphology
      * @param distribution
@@ -196,6 +198,11 @@ export class DataService {
         });
     }
 
+    /**
+     * Add an 'other' entry to the other array.
+     * @param distance
+     * @param name
+     */
     addOther(distance: number, name: string){
         this.other.push({
             distance: distance,
