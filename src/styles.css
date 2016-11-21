@@ -49,4 +49,11 @@
 .absolute-position {
     position: absolute;
 }
+div {
+    -webkit-user-select: none;
+    cursor: default;
+}
+a:hover {
+    cursor: pointer;
+}
 

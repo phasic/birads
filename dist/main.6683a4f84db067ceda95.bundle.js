@@ -45218,6 +45218,8 @@ let AppComponent = class AppComponent {
     }
     /**
      * This handler disables the right clicks on the page. So the user doesn't see the right click menu.
+     *
+     * It prevents the default action of the right mouse click.
      * @param event
      */
     keyPressHandler(event) {
@@ -70906,7 +70908,7 @@ module.exports = ""
 /* 711 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <legend-component class=\"legend-component \"></legend-component>\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
+module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <legend-component class=\"legend-component\"></legend-component>\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 712 */
@@ -73165,4 +73167,4 @@ module.exports = __webpack_require__(409);
 
 /***/ }
 ],[766]);
-//# sourceMappingURL=main.74386accaa335d82efa9.bundle.map
+//# sourceMappingURL=main.6683a4f84db067ceda95.bundle.map
