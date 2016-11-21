@@ -9,6 +9,8 @@ import {TranslateService} from "ng2-translate";
 /**
  * This component contains the functionality of the mass menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
  *
+ * Once two legal clicks are made on the images, and the mass selected on the sidebar, the mass menu will pop up.
+ *
  * It will bind the data to the data service once we went through the menus.
  *
  *
@@ -32,9 +34,22 @@ export class MassComponent implements OnChanges{
                 private elementref: ElementRef, private hotkeyservice: HotkeyService,
                 private translate: TranslateService){
     }
+    /**
+     * When this input is true, show the first menu. This input is set by selecting a method in the sidebar and then
+     * clicking making two legal clicks on the images.
+     */
     @Input() show: boolean;
+    /**
+     * The first menu.
+     */
     @ViewChild('modal1') public modal1: ModalDirective;
+    /**
+     * The second menu.
+     */
     @ViewChild('modal2') public modal2: ModalDirective;
+    /**
+     * The third menu.
+     */
     @ViewChild('modal3') public modal3: ModalDirective;
     /**
      * When we detect changes on the input, call this function.
@@ -175,9 +190,15 @@ export class MassComponent implements OnChanges{
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);                                 //tell the pagecontroller that the menu isn't active anymore
@@ -187,7 +208,7 @@ export class MassComponent implements OnChanges{
     }
 
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable(): void{                       //add the data
         this.dataservice.addMass(0, this.pagectrl.distance, this.shape, this.margin, this.density);    //bind everything to the dataervice

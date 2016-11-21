@@ -7,6 +7,8 @@ import {HotkeyService} from "../../services/hotkey.service";
 /**
  * This component contains the functionality of the asymmetries menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
  *
+ * Once two legal clicks are made on the images, and the asymmetries are selected on the sidebar, the asymmetries menu will pop up.
+ *
  * It will bind the data to the data service once we went through the menus.
  *
  *          selector: 'asymmetries-component'
@@ -28,7 +30,15 @@ export class AsymmetryComponent implements OnChanges{
     constructor(private dataservice: DataService, private pagectrl: PageController,
                 private elementref: ElementRef, private hotkeyservice: HotkeyService) {
     }
+
+    /**
+     * When this input is true, show the first menu. This input is set by selecting a method in the sidebar and then
+     * clicking making two legal clicks on the images.
+     */
     @Input() show: boolean;
+    /**
+     * The first menu.
+     */
     @ViewChild('modal1') public modal1: ModalDirective;
 
     /**
@@ -92,9 +102,15 @@ export class AsymmetryComponent implements OnChanges{
     }
 
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu(): void{
         this.pagectrl.setMenuActive(false);                                 //tell the pagecontroller that the menu isn't active anymore
@@ -104,7 +120,7 @@ export class AsymmetryComponent implements OnChanges{
     }
 
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable(): void{
         this.dataservice.addAsymmetries(this.pagectrl.distance, this.asymmetry);

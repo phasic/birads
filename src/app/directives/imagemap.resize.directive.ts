@@ -18,7 +18,7 @@ export class ImageMapResize {
      */
     private imgheight: number;
     /**
-     * The constructor will define the element, the image map, when initialized.
+     * The constructor will define the element, the image, when initialized.
      *
      * After 100ms we will get the natural, unscaled, width of the image
      * @param elementRef

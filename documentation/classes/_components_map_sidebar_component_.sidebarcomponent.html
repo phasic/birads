@@ -74,6 +74,7 @@
 					<div class="lead">
 						<p>This component contains the bar with all the possible methods of which we can add findings (mass, distortion, ...). It also enables the functionality to select them with hotkeys.</p>
 					</div>
+					<p>When we want to add a finding to the report, we first need to select a method from this sidebar. (with hotkeys or mouse click)</p>
 					<pre><code> <span class="hljs-attribute">selector</span>: <span class="hljs-string">'sidebar-component'</span>
  <span class="hljs-attribute">templateUrl</span>: <span class="hljs-string">'../../templates/map/sidebar.template.html'</span>
 </code></pre>
@@ -128,7 +129,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L17">components/map/sidebar.component.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L19">components/map/sidebar.component.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -185,7 +186,7 @@
 					<div class="tsd-signature tsd-kind-icon">dataservice<span class="tsd-signature-symbol">:</span> <a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L27">components/map/sidebar.component.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L29">components/map/sidebar.component.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -200,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">hotkeyservice<span class="tsd-signature-symbol">:</span> <a href="_services_hotkey_service_.hotkeyservice.html" class="tsd-signature-type">HotkeyService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L28">components/map/sidebar.component.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L30">components/map/sidebar.component.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,12 +216,12 @@
 					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L35">components/map/sidebar.component.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L37">components/map/sidebar.component.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>When we first open the page, there is no selected method.</p>
+							<p>When we first open the page, there is no selected method. Nothing is selected in the sidebar.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>type</dt>
@@ -235,7 +236,7 @@
 					<div class="tsd-signature tsd-kind-icon">pagectrl<span class="tsd-signature-symbol">:</span> <a href="_services_page_controller_.pagecontroller.html" class="tsd-signature-type">PageController</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L27">components/map/sidebar.component.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L29">components/map/sidebar.component.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -250,7 +251,7 @@
 					<div class="tsd-signature tsd-kind-icon">translate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TranslateService</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L28">components/map/sidebar.component.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L30">components/map/sidebar.component.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -272,14 +273,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/sidebar.component.ts#L42">components/map/sidebar.component.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/sidebar.component.ts#L48">components/map/sidebar.component.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>HotKeys gets called when we press a keyboard key.
-									If you want to change the hotkeys, change the hotkeys.json file.</p>
+									<p>HotKeys gets called when we press a keyboard key. Checks the keycode with the stored keycodes of the hotkeyservice,
+									and sets the corresponding method.</p>
 								</div>
+								<p>If you want to change the hotkeys, change the hotkeys.json file.</p>
+								<p>By default Q, W, E, R, T are used to select the methods.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">

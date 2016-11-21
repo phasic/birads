@@ -4,6 +4,8 @@ import {TranslateService} from "ng2-translate";
 /**
  * This component contains the BIRADS and ACR scores.
  *
+ * It shows a set of buttons to select the BIRADS and ACR scores per breast.
+ *
  *
  *      selector: 'classification-component'
  *      templateUrl: '../../templates/table/classification.template.html'

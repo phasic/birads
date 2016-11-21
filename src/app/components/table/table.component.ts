@@ -2,7 +2,11 @@ import { Component }      from '@angular/core';
 import { DataService } from "../../services/data.service";
 import {PageController} from "../../services/page.controller";
 /**
- * This component contains the table. And show all the finding in smaller tables.
+ * This component contains the table.
+ *
+ * Every method (mass, distortion, asymmetry, ...) has a different table for their findings.
+ *
+ * Once a finding is entered via the menus, that data will be automatically added to the table corresponding with the selected method.
  *
  *          selector: 'table-component'
  *          templateUrl: '../../templates/table/table.template.html'
@@ -32,6 +36,8 @@ export class TableComponent{
 
     /**
      * Removes the badges which corresponds to the correct entry determined by the index and method.
+     *
+     * When the badge is removed, the other badges of the same method need to be adjusted to the correct number again.
      * @param index     The row number of the entry
      * @param method    Name of the table
      */

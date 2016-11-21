@@ -138,7 +138,12 @@ export class PageController {
         height: number
     }[];
     /**
-     * Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations.
+     * Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations).
+     *
+     * Every badge has an X and Y coordinate. This coordinate is a relative coordinate based of the left upper corner of the clicked image.
+     * Therefor we also store the imagenumber for every badge. Also the id of the badge is stored.
+     *
+     * For every finding of every method we have a side and a front badge.
      */
     private badgelocations: {
         mass: {
@@ -215,6 +220,18 @@ export class PageController {
 
     /**
      *
+     * The constructor initializes the following variables to an empty value:
+     *
+     * method: the selected method.
+     *
+     * showmenu: tell the pagecontroller that there is no menu showing.
+     *
+     * numberofclicks: no image is clicked yet.
+     *
+     * badgelocation: there aren't any images clicked yet.
+     *
+     *
+     * The constructor initializes the following.
      * @param dataservice This service contains all the data. This is used to set and get the correct data we want
      * @param translate Translate service
      */
@@ -305,7 +322,18 @@ export class PageController {
     }
 
     /**
-     * Gets the breast images, and stores the correct variables to the images structure.
+     * Gets the breast images, and stores the following parameters of the images in an array:
+     *
+     * image: image element itself
+     *
+     * locX: the X coordinate of the image on the page
+     *
+     * locY: the Y coordinate of the image on the page
+     *
+     * width: the width of the image
+     *
+     * height: the height of the image
+     *
      */
     setImages(){
         let imageelements: any;
@@ -314,7 +342,7 @@ export class PageController {
         for(let element of imageelements){                                  //iterate over all the found images
             this._images.push({                                             //add them to the empty array
                 image: element,                                             //add the image element itself
-                locX: element.getBoundingClientRect().left,                 //the x coorcinate on the page
+                locX: element.getBoundingClientRect().left,                 //the x coordinate on the page
                 locY: element.getBoundingClientRect().top,                  //the y coordinate on the page
                 width: element.width,                                       //the width of the image
                 height: element.height                                      //the height of the image
@@ -325,6 +353,8 @@ export class PageController {
 
     /**
      * When we clicked an image, we save that clicked location, so know where to render a badge later on.
+     *
+     * We store the click location as a relative coordinate. Relative to the upper left corner of the clicked image.
      * @param target    the clicked image
      * @param event     the click event itself, so we can get the clicklocation
      * @param first     boolean to indicate if this is our first click or not
@@ -384,6 +414,10 @@ export class PageController {
 
     /**
      * Once we entered all the data via the menu's, we render a badge on the original click locations.
+     *
+     * The badge had a letter and a number. The letter is the first letter of the method. e.g. Mass --> M
+     *
+     * The number is the nth finding of that specific method.
      * @param elementref Renders a badge on the invisible div, which also holds the menus
      */
     renderBadge(elementref: ElementRef): void {
@@ -430,7 +464,9 @@ export class PageController {
     }
 
     /**
-     * Adds a pair of badges to the badgelocation structure.
+     *
+     * Once the badges are rendered, save them in the badgelocation structure. This is so we can get the badges easily later on when we rescale the page
+     * or scroll the page.
      * @param method    the selected method
      * @param sideX     X coordinate of the side badge
      * @param sideY     Y coordinate of the side badge
@@ -468,6 +504,9 @@ export class PageController {
 
     /**
      * Removes a badgelocation out of the badgelocations struture, used to remove an entry.
+     *
+     * When we remove an entry from the data, it isn't enough to just remove it from the table. The badge will still be there.
+     * We need to remove it from the badgelocation structure too.
      * @param method    which method
      * @param index     what index of the array
      */
@@ -492,7 +531,7 @@ export class PageController {
     }
 
     /**
-     * When the screen is resized, or we scroll. recalculate the location of all the badges.
+     * When the screen is resized, or we scroll the page. recalculate the location of all the badges.
      */
     resizeBadges(){
         this.setImages(); //update the images

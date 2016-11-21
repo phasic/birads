@@ -74,6 +74,14 @@
 					<div class="lead">
 						<p>This component contains the breast images, and all the needed functionality for those images</p>
 					</div>
+					<p>When we have a method selected from the sidebar, and we click an image for the first time,
+					a small transparent annotation will be rendered to show the user where he clicked.</p>
+					<p>When we click a second image, there will be a check if it&#39;s a legal click.</p>
+					<p>A legal click is:</p>
+					<p>A second click on the same breast (left or right), but on the other perspective.</p>
+					<p>When an illegal click is made (clicked on wrong corresponding image, the same image twice, out of the image),
+					the transparent badge will disappear and the user needs to place the first click again.</p>
+					<p>Once a second legal click is made, the menu of the selected method will pop up. From there the pagecontroller takes over.</p>
 					<pre><code>     <span class="hljs-attribute">selector</span>: <span class="hljs-string">'map-component'</span>
      <span class="hljs-attribute">templateUrl</span>: <span class="hljs-string">'../../templates/map/map.template.html'</span>
 </code></pre>
@@ -131,13 +139,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L14">components/map/map.component.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L29">components/map/map.component.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructor of MapComponent</p>
+									<p>Constructor of MapComponent.</p>
 								</div>
+								<p>This controller initializes the following</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -179,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">dataservice<span class="tsd-signature-symbol">:</span> <a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L21">components/map/map.component.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L38">components/map/map.component.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -194,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">elementref<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ElementRef</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L21">components/map/map.component.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L38">components/map/map.component.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -209,12 +218,12 @@
 					<div class="tsd-signature tsd-kind-icon">firstimage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L33">components/map/map.component.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L50">components/map/map.component.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Stores the first clicked image.</p>
+							<p>Stores the first clicked image by id.</p>
 						</div>
 					</div>
 				</section>
@@ -224,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">pagectrl<span class="tsd-signature-symbol">:</span> <a href="_services_page_controller_.pagecontroller.html" class="tsd-signature-type">PageController</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L21">components/map/map.component.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L38">components/map/map.component.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,12 +255,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L27">components/map/map.component.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L44">components/map/map.component.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets called when an image is clicked. It gets the event and passes it to clickedMap.</p>
+									<p>Gets called when an image is clicked. It gets the click event and passes it to clickedMap.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -277,7 +286,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L44">components/map/map.component.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L61">components/map/map.component.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -312,7 +321,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L76">components/map/map.component.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L93">components/map/map.component.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -336,7 +345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L84">components/map/map.component.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L101">components/map/map.component.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -367,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/components/map/map.component.ts#L97">components/map/map.component.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/components/map/map.component.ts#L114">components/map/map.component.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

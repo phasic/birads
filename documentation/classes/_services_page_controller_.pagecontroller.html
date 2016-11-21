@@ -158,10 +158,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L214">services/page.controller.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L219">services/page.controller.ts:219</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The constructor initializes the following variables to an empty value:</p>
+								</div>
+								<p>method: the selected method.</p>
+								<p>showmenu: tell the pagecontroller that there is no menu showing.</p>
+								<p>numberofclicks: no image is clicked yet.</p>
+								<p>badgelocation: there aren&#39;t any images clicked yet.</p>
+								<p>The constructor initializes the following.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -195,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">_distance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L105">services/page.controller.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L105">services/page.controller.ts:105</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -210,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">_firstclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L109">services/page.controller.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L109">services/page.controller.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -239,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">_frontclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L117">services/page.controller.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L117">services/page.controller.ts:117</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,7 +276,7 @@
 					<div class="tsd-signature tsd-kind-icon">_images<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L133">services/page.controller.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L133">services/page.controller.ts:133</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -303,7 +311,7 @@
 					<div class="tsd-signature tsd-kind-icon">_sideclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L125">services/page.controller.ts:125</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L125">services/page.controller.ts:125</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -332,13 +340,16 @@
 					<div class="tsd-signature tsd-kind-icon">badgelocations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L143">services/page.controller.ts:143</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L148">services/page.controller.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations.</p>
+							<p>Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations).</p>
 						</div>
+						<p>Every badge has an X and Y coordinate. This coordinate is a relative coordinate based of the left upper corner of the clicked image.
+						Therefor we also store the imagenumber for every badge. Also the id of the badge is stored.</p>
+						<p>For every finding of every method we have a side and a front badge.</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -547,7 +558,7 @@
 					<div class="tsd-signature tsd-kind-icon">dataservice<span class="tsd-signature-symbol">:</span> <a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L221">services/page.controller.ts:221</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L238">services/page.controller.ts:238</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -562,7 +573,7 @@
 					<div class="tsd-signature tsd-kind-icon">menuactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L97">services/page.controller.ts:97</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L97">services/page.controller.ts:97</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -577,7 +588,7 @@
 					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L89">services/page.controller.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L89">services/page.controller.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -592,7 +603,7 @@
 					<div class="tsd-signature tsd-kind-icon">numberofclicks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L101">services/page.controller.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L101">services/page.controller.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -607,7 +618,7 @@
 					<div class="tsd-signature tsd-kind-icon">showmenu<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L93">services/page.controller.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L93">services/page.controller.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -622,7 +633,7 @@
 					<div class="tsd-signature tsd-kind-icon">translate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TranslateService</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L221">services/page.controller.ts:221</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L238">services/page.controller.ts:238</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -645,7 +656,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L66">services/page.controller.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L66">services/page.controller.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -658,7 +669,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L74">services/page.controller.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L74">services/page.controller.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -691,7 +702,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L49">services/page.controller.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L49">services/page.controller.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -716,7 +727,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L58">services/page.controller.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L58">services/page.controller.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -763,7 +774,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L31">services/page.controller.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L31">services/page.controller.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -788,7 +799,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L41">services/page.controller.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L41">services/page.controller.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -835,7 +846,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L82">services/page.controller.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L82">services/page.controller.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -876,7 +887,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L13">services/page.controller.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L13">services/page.controller.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -901,7 +912,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L23">services/page.controller.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L23">services/page.controller.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -950,7 +961,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L361">services/page.controller.ts:361</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L391">services/page.controller.ts:391</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -973,7 +984,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L486">services/page.controller.ts:486</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L525">services/page.controller.ts:525</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1006,7 +1017,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L303">services/page.controller.ts:303</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L320">services/page.controller.ts:320</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1028,7 +1039,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L247">services/page.controller.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L264">services/page.controller.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1050,7 +1061,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L287">services/page.controller.ts:287</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L304">services/page.controller.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1072,7 +1083,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L263">services/page.controller.ts:263</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L280">services/page.controller.ts:280</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1094,7 +1105,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L271">services/page.controller.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L288">services/page.controller.ts:288</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1116,13 +1127,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L474">services/page.controller.ts:474</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L513">services/page.controller.ts:513</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Removes a badgelocation out of the badgelocations struture, used to remove an entry.</p>
 								</div>
+								<p>When we remove an entry from the data, it isn&#39;t enough to just remove it from the table. The badge will still be there.
+								We need to remove it from the badgelocation structure too.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1153,13 +1166,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L389">services/page.controller.ts:389</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L423">services/page.controller.ts:423</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Once we entered all the data via the menu&#39;s, we render a badge on the original click locations.</p>
 								</div>
+								<p>The badge had a letter and a number. The letter is the first letter of the method. e.g. Mass --&gt; M</p>
+								<p>The number is the nth finding of that specific method.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1184,12 +1199,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L497">services/page.controller.ts:497</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L536">services/page.controller.ts:536</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>When the screen is resized, or we scroll. recalculate the location of all the badges.</p>
+									<p>When the screen is resized, or we scroll the page. recalculate the location of all the badges.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1206,12 +1221,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L444">services/page.controller.ts:444</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L480">services/page.controller.ts:480</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Adds a pair of badges to the badgelocation structure.</p>
+									<p>Once the badges are rendered, save them in the badgelocation structure. This is so we can get the badges easily later on when we rescale the page
+									or scroll the page.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1285,13 +1301,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L332">services/page.controller.ts:332</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L362">services/page.controller.ts:362</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>When we clicked an image, we save that clicked location, so know where to render a badge later on.</p>
 								</div>
+								<p>We store the click location as a relative coordinate. Relative to the upper left corner of the clicked image.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -1328,13 +1345,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L310">services/page.controller.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L338">services/page.controller.ts:338</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the breast images, and stores the correct variables to the images structure.</p>
+									<p>Gets the breast images, and stores the following parameters of the images in an array:</p>
 								</div>
+								<p>image: image element itself</p>
+								<p>locX: the X coordinate of the image on the page</p>
+								<p>locY: the Y coordinate of the image on the page</p>
+								<p>width: the width of the image</p>
+								<p>height: the height of the image</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -1350,7 +1372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L295">services/page.controller.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L312">services/page.controller.ts:312</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1380,7 +1402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L239">services/page.controller.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L256">services/page.controller.ts:256</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1410,7 +1432,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L279">services/page.controller.ts:279</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L296">services/page.controller.ts:296</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1440,7 +1462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/383182a/src/app/services/page.controller.ts#L255">services/page.controller.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1c2a74e/src/app/services/page.controller.ts#L272">services/page.controller.ts:272</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

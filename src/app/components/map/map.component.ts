@@ -4,6 +4,21 @@ import {DataService} from "../../services/data.service";
 /**
  * This component contains the breast images, and all the needed functionality for those images
  *
+ * When we have a method selected from the sidebar, and we click an image for the first time,
+ * a small transparent annotation will be rendered to show the user where he clicked.
+ *
+ * When we click a second image, there will be a check if it's a legal click.
+ *
+ * A legal click is:
+ *
+ * A second click on the same breast (left or right), but on the other perspective.
+ *
+ * When an illegal click is made (clicked on wrong corresponding image, the same image twice, out of the image),
+ * the transparent badge will disappear and the user needs to place the first click again.
+ *
+ *
+ * Once a second legal click is made, the menu of the selected method will pop up. From there the pagecontroller takes over.
+ *
  *          selector: 'map-component'
  *          templateUrl: '../../templates/map/map.template.html'
  */
@@ -13,7 +28,9 @@ import {DataService} from "../../services/data.service";
 })
 export class MapComponent {
     /**
-     * Constructor of MapComponent
+     * Constructor of MapComponent.
+     *
+     * This controller initializes the following
      * @param dataservice   This service stores all the data.
      * @param pagectrl      PageController manages functions to assure functionality (tracking click, adding badges, ... ).
      * @param elementref    References the element containing the images.
@@ -21,14 +38,14 @@ export class MapComponent {
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
     /**
-     * Gets called when an image is clicked. It gets the event and passes it to clickedMap.
+     * Gets called when an image is clicked. It gets the click event and passes it to clickedMap.
      * @param event The click event.
      */
     clickHandler(event: any): void {
         this.clickedMap(event);
     }
     /**
-     * Stores the first clicked image.
+     * Stores the first clicked image by id.
      */
     private firstimage: string;
     /**

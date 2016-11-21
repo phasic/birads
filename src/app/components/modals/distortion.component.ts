@@ -8,6 +8,8 @@ import {PageController} from "../../services/page.controller";
 /**
  * This component contains the functionality of the distortion menu.
  *
+ * Once two legal clicks are made on the images, and the distortion are selected on the sidebar, a distortion finding will be added to the table.
+ *
  * Once we clicked on the imagemap and a distortion finding will be added to the dataservice.
  *
  *          selector: 'distortion-component'
@@ -26,6 +28,10 @@ export class DistortionComponent implements OnChanges{
      */
     constructor(private dataservice: DataService, private pagectrl: PageController, private elementref: ElementRef) {
     }
+    /**
+     * When this input is true, show the first menu. This input is set by selecting a method in the sidebar and then
+     * clicking making two legal clicks on the images.
+     */
     @Input() show: string;
     /**
      * When we detect changes on the input, call this function.
@@ -40,9 +46,15 @@ export class DistortionComponent implements OnChanges{
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu(): void{
         this.pagectrl.calculateDistance();                                  //calculate distance (notu sed anymore, but still kept in the background)

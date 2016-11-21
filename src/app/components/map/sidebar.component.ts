@@ -6,6 +6,8 @@ import {TranslateService} from "ng2-translate";
 /**
  * This component contains the bar with all the possible methods of which we can add findings (mass, distortion, ...). It also enables the functionality to select them with hotkeys.
  *
+ * When we want to add a finding to the report, we first need to select a method from this sidebar. (with hotkeys or mouse click)
+ *
  *      selector: 'sidebar-component'
  *      templateUrl: '../../templates/map/sidebar.template.html'
  *
@@ -29,14 +31,18 @@ export class SidebarComponent {
     }
 
     /**
-     * When we first open the page, there is no selected method.
+     * When we first open the page, there is no selected method. Nothing is selected in the sidebar.
      * @type {string}
      */
     private method: string = '';
     /**
-     * HotKeys gets called when we press a keyboard key.
+     * HotKeys gets called when we press a keyboard key. Checks the keycode with the stored keycodes of the hotkeyservice,
+     * and sets the corresponding method.
+     *
+     *
      * If you want to change the hotkeys, change the hotkeys.json file.
      *
+     * By default Q, W, E, R, T are used to select the methods.
      * @param keycode   The keycode of the pressed keyboard key.
      */
     hotKeys(keycode: number): void {
