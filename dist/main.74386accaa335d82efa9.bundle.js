@@ -6195,6 +6195,18 @@ const ng2_translate_1 = __webpack_require__(67);
 let PageController = class PageController {
     /**
      *
+     * The constructor initializes the following variables to an empty value:
+     *
+     * method: the selected method.
+     *
+     * showmenu: tell the pagecontroller that there is no menu showing.
+     *
+     * numberofclicks: no image is clicked yet.
+     *
+     * badgelocation: there aren't any images clicked yet.
+     *
+     *
+     * The constructor initializes the following.
      * @param dataservice This service contains all the data. This is used to set and get the correct data we want
      * @param translate Translate service
      */
@@ -6346,7 +6358,18 @@ let PageController = class PageController {
         return this.menuactive;
     }
     /**
-     * Gets the breast images, and stores the correct variables to the images structure.
+     * Gets the breast images, and stores the following parameters of the images in an array:
+     *
+     * image: image element itself
+     *
+     * locX: the X coordinate of the image on the page
+     *
+     * locY: the Y coordinate of the image on the page
+     *
+     * width: the width of the image
+     *
+     * height: the height of the image
+     *
      */
     setImages() {
         let imageelements;
@@ -6364,6 +6387,8 @@ let PageController = class PageController {
     }
     /**
      * When we clicked an image, we save that clicked location, so know where to render a badge later on.
+     *
+     * We store the click location as a relative coordinate. Relative to the upper left corner of the clicked image.
      * @param target    the clicked image
      * @param event     the click event itself, so we can get the clicklocation
      * @param first     boolean to indicate if this is our first click or not
@@ -6421,6 +6446,10 @@ let PageController = class PageController {
     }
     /**
      * Once we entered all the data via the menu's, we render a badge on the original click locations.
+     *
+     * The badge had a letter and a number. The letter is the first letter of the method. e.g. Mass --> M
+     *
+     * The number is the nth finding of that specific method.
      * @param elementref Renders a badge on the invisible div, which also holds the menus
      */
     renderBadge(elementref) {
@@ -6461,7 +6490,9 @@ let PageController = class PageController {
         this.saveBadgeLocation(argument, sideclick.relX, firstclick.relY, sideclick.imagenumber, idside, frontclick.relX, firstclick.relY, frontclick.imagenumber, idfront); //save the badge location in the badgelocation structure, so we can later access it to move them
     }
     /**
-     * Adds a pair of badges to the badgelocation structure.
+     *
+     * Once the badges are rendered, save them in the badgelocation structure. This is so we can get the badges easily later on when we rescale the page
+     * or scroll the page.
      * @param method    the selected method
      * @param sideX     X coordinate of the side badge
      * @param sideY     Y coordinate of the side badge
@@ -6496,6 +6527,9 @@ let PageController = class PageController {
     }
     /**
      * Removes a badgelocation out of the badgelocations struture, used to remove an entry.
+     *
+     * When we remove an entry from the data, it isn't enough to just remove it from the table. The badge will still be there.
+     * We need to remove it from the badgelocation structure too.
      * @param method    which method
      * @param index     what index of the array
      */
@@ -6518,7 +6552,7 @@ let PageController = class PageController {
         }
     }
     /**
-     * When the screen is resized, or we scroll. recalculate the location of all the badges.
+     * When the screen is resized, or we scroll the page. recalculate the location of all the badges.
      */
     resizeBadges() {
         this.setImages(); //update the images
@@ -45182,6 +45216,13 @@ let AppComponent = class AppComponent {
         // this.viewContainerRef = viewContainerRef;
         // this.pagectrl = pagectrl;
     }
+    /**
+     * This handler disables the right clicks on the page. So the user doesn't see the right click menu.
+     * @param event
+     */
+    keyPressHandler(event) {
+        event.preventDefault();
+    }
 };
 AppComponent = __decorate([
     core_1.Component({
@@ -60749,12 +60790,29 @@ const data_service_1 = __webpack_require__(31);
 /**
  * This component contains the breast images, and all the needed functionality for those images
  *
+ * When we have a method selected from the sidebar, and we click an image for the first time,
+ * a small transparent annotation will be rendered to show the user where he clicked.
+ *
+ * When we click a second image, there will be a check if it's a legal click.
+ *
+ * A legal click is:
+ *
+ * A second click on the same breast (left or right), but on the other perspective.
+ *
+ * When an illegal click is made (clicked on wrong corresponding image, the same image twice, out of the image),
+ * the transparent badge will disappear and the user needs to place the first click again.
+ *
+ *
+ * Once a second legal click is made, the menu of the selected method will pop up. From there the pagecontroller takes over.
+ *
  *          selector: 'map-component'
  *          template: require('../../templates/map/map.template.html')
  */
 let MapComponent_1 = class MapComponent {
     /**
-     * Constructor of MapComponent
+     * Constructor of MapComponent.
+     *
+     * This controller initializes the following
      * @param dataservice   This service stores all the data.
      * @param pagectrl      PageController manages functions to assure functionality (tracking click, adding badges, ... ).
      * @param elementref    References the element containing the images.
@@ -60765,7 +60823,7 @@ let MapComponent_1 = class MapComponent {
         this.elementref = elementref;
     }
     /**
-     * Gets called when an image is clicked. It gets the event and passes it to clickedMap.
+     * Gets called when an image is clicked. It gets the click event and passes it to clickedMap.
      * @param event The click event.
      */
     clickHandler(event) {
@@ -60874,6 +60932,8 @@ const ng2_translate_1 = __webpack_require__(67);
 /**
  * This component contains the bar with all the possible methods of which we can add findings (mass, distortion, ...). It also enables the functionality to select them with hotkeys.
  *
+ * When we want to add a finding to the report, we first need to select a method from this sidebar. (with hotkeys or mouse click)
+ *
  *      selector: 'sidebar-component'
  *      template: require('../../templates/map/sidebar.template.html')
  *
@@ -60894,29 +60954,35 @@ let SidebarComponent = class SidebarComponent {
         this.hotkeyservice = hotkeyservice;
         this.translate = translate;
         /**
-         * When we first open the page, there is no selected method.
+         * When we first open the page, there is no selected method. Nothing is selected in the sidebar.
          * @type {string}
          */
         this.method = '';
     }
     /**
-     * HotKeys gets called when we press a keyboard key.
+     * HotKeys gets called when we press a keyboard key. Checks the keycode with the stored keycodes of the hotkeyservice,
+     * and sets the corresponding method.
+     *
+     *
      * If you want to change the hotkeys, change the hotkeys.json file.
      *
+     * By default Q, W, E, R, T are used to select the methods.
      * @param keycode   The keycode of the pressed keyboard key.
      */
     hotKeys(keycode) {
-        let hotkeys = this.hotkeyservice.hotkeys.sidebar; //get the hotkeys from the hotkey service
-        let method = ''; //initialize an empty method
-        if (!this.pagectrl.getMenuActive()) {
-            this.method = ({
-                [hotkeys.one]: this.dataservice.getMainMethods()[0],
-                [hotkeys.two]: this.dataservice.getMainMethods()[1],
-                [hotkeys.three]: this.dataservice.getMainMethods()[2],
-                [hotkeys.four]: this.dataservice.getMainMethods()[3],
-                [hotkeys.five]: this.dataservice.getMainMethods()[4]
-            }[keycode] || this.method);
-            this.pagectrl.setMethod(this.method); //set the correct method
+        if (!(document.activeElement.nodeName == 'TEXTAREA' || document.activeElement.nodeName == 'INPUT')) {
+            let hotkeys = this.hotkeyservice.hotkeys.sidebar; //get the hotkeys from the hotkey service
+            let method = ''; //initialize an empty method
+            if (!this.pagectrl.getMenuActive()) {
+                this.method = ({
+                    [hotkeys.one]: this.dataservice.getMainMethods()[0],
+                    [hotkeys.two]: this.dataservice.getMainMethods()[1],
+                    [hotkeys.three]: this.dataservice.getMainMethods()[2],
+                    [hotkeys.four]: this.dataservice.getMainMethods()[3],
+                    [hotkeys.five]: this.dataservice.getMainMethods()[4]
+                }[keycode] || this.method);
+                this.pagectrl.setMethod(this.method); //set the correct method
+            }
         }
     }
 };
@@ -60954,6 +61020,8 @@ const page_controller_1 = __webpack_require__(34);
 const hotkey_service_1 = __webpack_require__(74);
 /**
  * This component contains the functionality of the asymmetries menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * Once two legal clicks are made on the images, and the asymmetries are selected on the sidebar, the asymmetries menu will pop up.
  *
  * It will bind the data to the data service once we went through the menus.
  *
@@ -61028,9 +61096,15 @@ let AsymmetryComponent = class AsymmetryComponent {
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu() {
         this.pagectrl.setMenuActive(false); //tell the pagecontroller that the menu isn't active anymore
@@ -61039,7 +61113,7 @@ let AsymmetryComponent = class AsymmetryComponent {
         this.pagectrl.renderBadge(this.elementref); //render a badge at the right locations we determined earlier
     }
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable() {
         this.dataservice.addAsymmetries(this.pagectrl.distance, this.asymmetry);
@@ -61101,6 +61175,8 @@ const page_controller_1 = __webpack_require__(34);
 const hotkey_service_1 = __webpack_require__(74);
 /**
  * This component contains the functionality of the calcifications menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * Once two legal clicks are made on the images, and the calcifications are selected on the sidebar, the calcifications menu will pop up.
  *
  * It will bind the data to the data service once we went through the menus.
  *
@@ -61279,9 +61355,15 @@ let CalcificationComponent = class CalcificationComponent {
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu() {
         this.pagectrl.setMenuActive(false); //tell the pagecontroller that the menu isn't active anymore
@@ -61290,7 +61372,7 @@ let CalcificationComponent = class CalcificationComponent {
         this.pagectrl.renderBadge(this.elementref); //render a badge at the right locations we determined earlier
     }
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable() {
         this.dataservice.addCalcifications(this.pagectrl.distance, this.morphology, this.distribution);
@@ -61353,6 +61435,8 @@ const page_controller_1 = __webpack_require__(34);
 /**
  * This component contains the functionality of the distortion menu.
  *
+ * Once two legal clicks are made on the images, and the distortion are selected on the sidebar, a distortion finding will be added to the table.
+ *
  * Once we clicked on the imagemap and a distortion finding will be added to the dataservice.
  *
  *          selector: 'distortion-component'
@@ -61383,9 +61467,15 @@ let DistortionComponent = class DistortionComponent {
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu() {
         this.pagectrl.calculateDistance(); //calculate distance (notu sed anymore, but still kept in the background)
@@ -61438,6 +61528,8 @@ const hotkey_service_1 = __webpack_require__(74);
 const ng2_translate_1 = __webpack_require__(67);
 /**
  * This component contains the functionality of the mass menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
+ *
+ * Once two legal clicks are made on the images, and the mass selected on the sidebar, the mass menu will pop up.
  *
  * It will bind the data to the data service once we went through the menus.
  *
@@ -61586,9 +61678,15 @@ let MassComponent = class MassComponent {
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu() {
         this.pagectrl.setMenuActive(false); //tell the pagecontroller that the menu isn't active anymore
@@ -61597,7 +61695,7 @@ let MassComponent = class MassComponent {
         this.pagectrl.renderBadge(this.elementref); //render a badge at the right locations we determined earlier
     }
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable() {
         this.dataservice.addMass(0, this.pagectrl.distance, this.shape, this.margin, this.density); //bind everything to the dataervice
@@ -61667,6 +61765,8 @@ const hotkey_service_1 = __webpack_require__(74);
 /**
  * This component contains the functionality of the other menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
  *
+ * Once two legal clicks are made on the images, and 'other' selected on the sidebar, the 'other' menu will pop up.
+ *
  * It will bind the data to the data service once we went through the menus.
  *
  *          selector: 'other-component'
@@ -61735,9 +61835,15 @@ let OtherComponent = class OtherComponent {
         }
     }
     /**
-     * Handles the data binding to the dataservice and cleans up. So we can restart adding findings to the maps.
      *
-     * set the menu inactive (no menu showing), calculate the distance (not used anymore), add the data to the table and render the badge.
+     * Lets the pagecontroller know there isn't an active menu anymore.
+     *
+     * Calculate the distance from the mammary (not used anymore)
+     *
+     * Adds the entered data from the menu to the table
+     *
+     * Render a badge on the images corresponding with the original click location.
+     *
      */
     endOfMenu() {
         this.pagectrl.setMenuActive(false); //tell the pagecontroller that the menu isn't active anymore
@@ -61746,7 +61852,7 @@ let OtherComponent = class OtherComponent {
         this.pagectrl.renderBadge(this.elementref); //render a badge at the right locations we determined earlier
     }
     /**
-     * Add the data selected via the menu's to the dataservice so it's shown in the tables.
+     * Add the data selected via the menus to the dataservice so it's shown in the tables.
      */
     addToTable() {
         this.dataservice.addOther(this.pagectrl.distance, this.other);
@@ -61804,6 +61910,8 @@ const data_service_1 = __webpack_require__(31);
 const ng2_translate_1 = __webpack_require__(67);
 /**
  * This component contains the BIRADS and ACR scores.
+ *
+ * It shows a set of buttons to select the BIRADS and ACR scores per breast.
  *
  *
  *      selector: 'classification-component'
@@ -61921,7 +62029,11 @@ const core_1 = __webpack_require__(0);
 const data_service_1 = __webpack_require__(31);
 const page_controller_1 = __webpack_require__(34);
 /**
- * This component contains the table. And show all the finding in smaller tables.
+ * This component contains the table.
+ *
+ * Every method (mass, distortion, asymmetry, ...) has a different table for their findings.
+ *
+ * Once a finding is entered via the menus, that data will be automatically added to the table corresponding with the selected method.
  *
  *          selector: 'table-component'
  *          template: require('../../templates/table/table.template.html')
@@ -61947,6 +62059,8 @@ let TableComponent = class TableComponent {
     }
     /**
      * Removes the badges which corresponds to the correct entry determined by the index and method.
+     *
+     * When the badge is removed, the other badges of the same method need to be adjusted to the correct number again.
      * @param index     The row number of the entry
      * @param method    Name of the table
      */
@@ -61974,9 +62088,8 @@ let TableComponent = class TableComponent {
      */
     setDistance(distance, method, index) {
         distance = parseFloat(distance); //change the distance to a float ( gets passed as a string on runtime, we dont want that)
-        let data = this.dataservice.getData(method); //get the data of the selected row and table
+        let data = this.dataservice.getData(method)[index]; //get the data of the selected row and table
         data.distance = distance; //change the original distance to the new distance
-        this.dataservice.setData(method, data, index); //bind the data again with the updated distance value
     }
     /**
      * Set the size of that certain entry, based on a value of and input box.
@@ -61986,9 +62099,8 @@ let TableComponent = class TableComponent {
      */
     setSize(size, method, index) {
         size = parseFloat(size); //change the size to a float ( gets passed as a string on runtime, we dont want that)
-        let data = this.dataservice.getData(method); //get the data of the selected row and table
+        let data = this.dataservice.getData(method)[index]; //get the data of the selected row and table
         data.size = size; //change the original size to the new size
-        this.dataservice.setData(method, data, index); //bind the data again with the updated size value
     }
 };
 TableComponent = __decorate([
@@ -62026,7 +62138,7 @@ const core_1 = __webpack_require__(0);
  */
 let ImageMapResize = class ImageMapResize {
     /**
-     * The constructor will define the element, the image map, when initialized.
+     * The constructor will define the element, the image, when initialized.
      *
      * After 100ms we will get the natural, unscaled, width of the image
      * @param elementRef
@@ -70794,7 +70906,7 @@ module.exports = ""
 /* 711 */
 /***/ function(module, exports) {
 
-module.exports = "    <div class=\"wrapper\" resize>\r\n        <div class=\"row \">\r\n            <div class=\"col-md-5\">\r\n                <classification-component></classification-component>\r\n\r\n            </div>\r\n            <div class=\"col-md-7\">\r\n                <sidebar-component></sidebar-component>\r\n                <map-component></map-component>\r\n            </div>\r\n\r\n        </div>\r\n        <br>\r\n        <div class=\"row wrapper\">\r\n            <div class=\"col-md-12\">\r\n                <legend-component class=\"legend-component \"></legend-component>\r\n                <table-component></table-component>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n\r\n    <!--<div class=\"row wrapper\">-->\r\n    <!--<legend-component class=\"legendbutton\">-->\r\n    <!--</legend-component>-->\r\n    <!--</div>-->\r\n\r\n\r\n"
+module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <legend-component class=\"legend-component \"></legend-component>\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 712 */
@@ -70806,7 +70918,7 @@ module.exports = "<div align=\"center\" >\r\n    <!--<div align=\"center\" (clic
 /* 713 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:keypress)=\"hotKeys($event.keyCode)\">\r\n    <ul class=\"nav nav-pills nav-justified\">\r\n        <li *ngFor=\"let element of dataservice.getMainMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">\r\n            <a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>\r\n        </li>\r\n        <!--<li  [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{otherHeaderName()}}\" >-->\r\n            <!--<a href=\"#\" class=\"dropdown\" dropdown>-->\r\n                <!--<div class=\"dropdown-toggle\" dropdownToggle>{{otherHeaderName(true)}}<span class=\"caret\"></span> </div>-->\r\n                <!--<ul class=\"dropdown-menu\">-->\r\n                    <!--<li *ngFor=\"let element of dataservice.getOtherMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">-->\r\n                        <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n                    <!--</li>-->\r\n                <!--</ul>-->\r\n            <!--</a>-->\r\n        <!--</li>-->\r\n    </ul>\r\n</div>\r\n"
+module.exports = "<div (window:keypress)=\"hotKeys($event.keyCode)\">\r\n    <ul class=\"nav nav-pills nav-justified\">\r\n        <li *ngFor=\"let element of dataservice.getMainMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">\r\n            <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n            <a>{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>\r\n        </li>\r\n        <!--<li  [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{otherHeaderName()}}\" >-->\r\n            <!--<a href=\"#\" class=\"dropdown\" dropdown>-->\r\n                <!--<div class=\"dropdown-toggle\" dropdownToggle>{{otherHeaderName(true)}}<span class=\"caret\"></span> </div>-->\r\n                <!--<ul class=\"dropdown-menu\">-->\r\n                    <!--<li *ngFor=\"let element of dataservice.getOtherMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">-->\r\n                        <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n                    <!--</li>-->\r\n                <!--</ul>-->\r\n            <!--</a>-->\r\n        <!--</li>-->\r\n    </ul>\r\n</div>\r\n"
 
 /***/ },
 /* 714 */
@@ -70842,7 +70954,7 @@ module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a h
 /* 719 */
 /***/ function(module, exports) {
 
-module.exports = "<table class=\"table\">\r\n    <tbody>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.RIGHT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.right\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.right\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.LEFT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.left\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.left\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.COMPOSITION.TITLE\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of composition\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.composition\" btnRadio=\"{{element}}\">\r\n                    {{\"CLASSIFICATION.COMPOSITION.\" + element | translate}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n\r\n\r\n\r\n"
+module.exports = "<table class=\"table\">\r\n    <tbody>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.RIGHT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.right\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.right\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.LEFT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.left\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.left\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.COMPOSITION.TITLE\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of composition\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.composition\" btnRadio=\"{{element}}\">\r\n                    {{\"CLASSIFICATION.COMPOSITION.\" + element | translate}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n\r\n\r\n"
 
 /***/ },
 /* 720 */
@@ -70854,7 +70966,7 @@ module.exports = "\r\n<!--<div class=\"row \">-->\r\n<!--<div>-->\r\n<!--<select
 /* 721 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"table-container wrapper\">\r\n    <div *ngIf=\"dataservice.getData('mass').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.MASS.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SIZE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('mass'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'mass', i)\"/></td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #size (keyup)=\"setSize(size.value, 'mass', i)\"/></td>\r\n                <td>{{\"TABLE.MASS.SHAPE.\" + entry.shape.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.MARGIN.\" + entry.margin.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.DENSITY.\" + entry.density.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'mass')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('distortion').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.DISTORTION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('distortion'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'distortion', i)\"/></td>\r\n                <td>{{\"TABLE.DISTORTION.FINDING.\" + entry.distortion.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'distortion')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('asymmetry').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b><th>{{\"TABLE.ASYMMETRY.NAME\" | translate}}</th></b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('asymmetry'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'asymmetry', i)\"/></td>\r\n                <td>{{\"TABLE.ASYMMETRY.FINDING.\" + entry.asymmetry.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'asymmetry')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('calcification').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.CALCIFICATION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.MORPHOLOGY.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('calcification'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'calcification', i)\"/></td>\r\n                <td>{{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + entry.morphology.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + entry.distribution.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'calcification')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('other').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.OTHER.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('other'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\" class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'other', i)\"/></td>\r\n                <td>{{\"TABLE.OTHER.FINDING.\" + entry.name.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'other')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n"
+module.exports = "<div class=\"table-container wrapper\">\r\n    <div *ngIf=\"dataservice.getData('mass').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.MASS.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SIZE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('mass'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'mass', i)\" (click)=\"setDistance(distance.value, 'mass', i)\"/></td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #size (keyup)=\"setSize(size.value, 'mass', i)\" (click)=\"setSize(size.value, 'mass', i)\"/></td>\r\n                <td>{{\"TABLE.MASS.SHAPE.\" + entry.shape.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.MARGIN.\" + entry.margin.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.DENSITY.\" + entry.density.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'mass')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('distortion').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.DISTORTION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('distortion'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'distortion', i)\" (click)=\"setDistance(distance.value, 'distortion', i)\"/></td>\r\n                <td>{{\"TABLE.DISTORTION.FINDING.\" + entry.distortion.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'distortion')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('asymmetry').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b><th>{{\"TABLE.ASYMMETRY.NAME\" | translate}}</th></b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('asymmetry'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'asymmetry', i)\" (click)=\"setDistance(distance.value, 'asymmetry', i)\"/></td>\r\n                <td>{{\"TABLE.ASYMMETRY.FINDING.\" + entry.asymmetry.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'asymmetry')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('calcification').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.CALCIFICATION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.MORPHOLOGY.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('calcification'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'calcification', i)\" (click)=\"setDistance(distance.value, 'calcification', i)\"/></td>\r\n                <td>{{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + entry.morphology.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + entry.distribution.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'calcification')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('other').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.OTHER.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('other'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\" class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'other', i)\" (click)=\"setDistance(distance.value, 'other', i)\"/></td>\r\n                <td>{{\"TABLE.OTHER.FINDING.\" + entry.name.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'other')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n"
 
 /***/ },
 /* 722 */
@@ -73053,4 +73165,4 @@ module.exports = __webpack_require__(409);
 
 /***/ }
 ],[766]);
-//# sourceMappingURL=main.2e85825175a90bcec783.bundle.map
+//# sourceMappingURL=main.74386accaa335d82efa9.bundle.map

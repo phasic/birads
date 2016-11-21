@@ -16,9 +16,9 @@
             <tr *ngFor="let entry of dataservice.getData('mass'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'mass', i)"/></td>
+                           #distance (keyup)="setDistance(distance.value, 'mass', i)" (click)="setDistance(distance.value, 'mass', i)"/></td>
                 <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
-                           #size (keyup)="setSize(size.value, 'mass', i)"/></td>
+                           #size (keyup)="setSize(size.value, 'mass', i)" (click)="setSize(size.value, 'mass', i)"/></td>
                 <td>{{"TABLE.MASS.SHAPE." + entry.shape.toLocaleUpperCase() | translate}}</td>
                 <td>{{"TABLE.MASS.MARGIN." + entry.margin.toLocaleUpperCase() | translate}}</td>
                 <td>{{"TABLE.MASS.DENSITY." + entry.density.toLocaleUpperCase() | translate}}</td>
@@ -41,7 +41,7 @@
             <tr *ngFor="let entry of dataservice.getData('distortion'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'distortion', i)"/></td>
+                           #distance (keyup)="setDistance(distance.value, 'distortion', i)" (click)="setDistance(distance.value, 'distortion', i)"/></td>
                 <td>{{"TABLE.DISTORTION.FINDING." + entry.distortion.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'distortion')"></div> </td>
             </tr>
@@ -62,7 +62,7 @@
             <tr *ngFor="let entry of dataservice.getData('asymmetry'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'asymmetry', i)"/></td>
+                           #distance (keyup)="setDistance(distance.value, 'asymmetry', i)" (click)="setDistance(distance.value, 'asymmetry', i)"/></td>
                 <td>{{"TABLE.ASYMMETRY.FINDING." + entry.asymmetry.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'asymmetry')"></div> </td>
             </tr>
@@ -84,7 +84,7 @@
             <tr *ngFor="let entry of dataservice.getData('calcification'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><input height="100%" align="left"  class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'calcification', i)"/></td>
+                           #distance (keyup)="setDistance(distance.value, 'calcification', i)" (click)="setDistance(distance.value, 'calcification', i)"/></td>
                 <td>{{"TABLE.CALCIFICATION.MORPHOLOGY." + entry.morphology.toLocaleUpperCase() | translate}}</td>
                 <td>{{"TABLE.CALCIFICATION.DISTRIBUTION." + entry.distribution.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'calcification')"></div> </td>
@@ -106,7 +106,7 @@
             <tr *ngFor="let entry of dataservice.getData('other'); let i = index">
                 <td>{{i + 1}}</td>
                 <td><input height="100%" align="left" class="form-control" type="number" step="0.1" min="0"
-                           #distance (keyup)="setDistance(distance.value, 'other', i)"/></td>
+                           #distance (keyup)="setDistance(distance.value, 'other', i)" (click)="setDistance(distance.value, 'other', i)"/></td>
                 <td>{{"TABLE.OTHER.FINDING." + entry.name.toLocaleUpperCase() | translate}}</td>
                 <td><div class="glyphicon glyphicon-remove" (click)="removeEntry(i, 'other')"></div> </td>
             </tr>

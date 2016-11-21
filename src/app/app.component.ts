@@ -21,6 +21,14 @@ export class AppComponent {
     // this.pagectrl = pagectrl;
   }
 
+  /**
+   * This handler disables the right clicks on the page. So the user doesn't see the right click menu.
+   * @param event
+   */
+  keyPressHandler(event: any){
+    event.preventDefault();
+  }
+
 
 }
 

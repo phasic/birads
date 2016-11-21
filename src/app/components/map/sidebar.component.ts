@@ -46,17 +46,19 @@ export class SidebarComponent {
      * @param keycode   The keycode of the pressed keyboard key.
      */
     hotKeys(keycode: number): void {
-        let hotkeys: any = this.hotkeyservice.hotkeys.sidebar;                  //get the hotkeys from the hotkey service
-        let method: string = '';                                                //initialize an empty method
-        if (!this.pagectrl.getMenuActive()) {                                   //if theres no active menu
-            this.method = ({                                                    //check which key we clicked
-                    [hotkeys.one] : this.dataservice.getMainMethods()[0],
-                    [hotkeys.two] : this.dataservice.getMainMethods()[1],
-                    [hotkeys.three] : this.dataservice.getMainMethods()[2],
-                    [hotkeys.four] : this.dataservice.getMainMethods()[3],
-                    [hotkeys.five] : this.dataservice.getMainMethods()[4]
+        if (!(document.activeElement.nodeName == 'TEXTAREA' || document.activeElement.nodeName == 'INPUT')) {
+            let hotkeys: any = this.hotkeyservice.hotkeys.sidebar;                  //get the hotkeys from the hotkey service
+            let method: string = '';                                                //initialize an empty method
+            if (!this.pagectrl.getMenuActive()) {                                   //if theres no active menu
+                this.method = ({                                                    //check which key we clicked
+                    [hotkeys.one]: this.dataservice.getMainMethods()[0],
+                    [hotkeys.two]: this.dataservice.getMainMethods()[1],
+                    [hotkeys.three]: this.dataservice.getMainMethods()[2],
+                    [hotkeys.four]: this.dataservice.getMainMethods()[3],
+                    [hotkeys.five]: this.dataservice.getMainMethods()[4]
                 }[keycode] || this.method);
-            this.pagectrl.setMethod(this.method);                               //set the correct method
+                this.pagectrl.setMethod(this.method);                               //set the correct method
+            }
         }
     }
 }

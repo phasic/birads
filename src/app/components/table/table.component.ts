@@ -67,9 +67,8 @@ export class TableComponent{
      */
     setDistance(distance: any, method: string, index: number): void{
         distance = parseFloat(distance);                        //change the distance to a float ( gets passed as a string on runtime, we dont want that)
-        let data: any  = this.dataservice.getData(method);      //get the data of the selected row and table
+        let data: any  = this.dataservice.getData(method)[index];      //get the data of the selected row and table
         data.distance = distance;                               //change the original distance to the new distance
-        this.dataservice.setData(method, data, index);          //bind the data again with the updated distance value
     }
 
     /**
@@ -80,9 +79,8 @@ export class TableComponent{
      */
     setSize(size: any, method: string, index: number): void{
         size = parseFloat(size);                                //change the size to a float ( gets passed as a string on runtime, we dont want that)
-        let data: any  = this.dataservice.getData(method);      //get the data of the selected row and table
+        let data: any  = this.dataservice.getData(method)[index];      //get the data of the selected row and table
         data.size = size;                                       //change the original size to the new size
-        this.dataservice.setData(method, data, index);          //bind the data again with the updated size value
     }
 
 }
