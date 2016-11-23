@@ -20,6 +20,9 @@ import {PageController} from "./services/page.controller";
 import {HotkeyService} from "./services/hotkey.service";
 import {ImageMapResize} from "./directives/imagemap.resize.directive";
 import {OtherComponent} from "./components/modals/other.component";
+import {ScreeningComponent} from "./components/table/screening.component";
+import {Autosize} from "./directives/autosize.directive";
+
 /**
  * Module that declares all the used components and modules. Imported or self-made
  */
@@ -30,6 +33,7 @@ import {OtherComponent} from "./components/modals/other.component";
         /*DIRECTIVES*/
         ScreenResize,
         ImageMapResize,
+        Autosize,
         /*MAP*/
         MapComponent,
         SidebarComponent,
@@ -41,6 +45,7 @@ import {OtherComponent} from "./components/modals/other.component";
         OtherComponent,
         /*TABLE*/
         ClassificationComponent,
+        ScreeningComponent,
         LegendComponent,
         TableComponent
     ],
@@ -73,8 +78,9 @@ export class AppModule {
     constructor(translate: TranslateService){
         translate.addLangs(["en", "fr", "nl"]);
         translate.setDefaultLang('en');     //if we don't find a translation for the selected language, fall back to english
-       translate.use(translate.getBrowserLang());
+        translate.use(translate.getBrowserLang());
     }
+
 }
 
 

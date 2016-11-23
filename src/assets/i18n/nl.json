@@ -141,5 +141,31 @@
         "SCAR": "Litteken"
       }
     }
+  },
+  "SCREENING": {
+    "HEADER": "Technische kwaliteit",
+    "RIGHT": "R",
+    "LEFT": "L",
+    "CATEGORIES": {
+      "1": "Foto direct hernomen",
+      "2": "Foto bij recall",
+      "3": "Goed",
+      "4": "Niet goed",
+      "5": "Technish-fysisch",
+      "6": "Artefacten/beeldverwerking/roostertekening",
+      "7": "Belichting",
+      "8": "Beeldonscherpte",
+      "9": "Onvoldoende compressie",
+      "10": "Positionering",
+      "11": "Pectoralis-OBL niet tot tepelhoogte",
+      "12": "Tepel niet tangentieel",
+      "13": "Inframammaire plooi",
+      "14": "Afstand tepel-pectoralis is niet gelijk",
+      "15": "Geen Eklund",
+      "16": "Plooiensuperpositie",
+      "17": "Deel van de borst niet afgebeeld",
+      "18": "Niet goed, maar kan niet beter"
+    },
+    "REASON": "Reden"
   }
 }

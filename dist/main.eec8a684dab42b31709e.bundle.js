@@ -157,7 +157,7 @@ webpackJsonp([0,3],[
 var global    = __webpack_require__(13)
   , core      = __webpack_require__(12)
   , hide      = __webpack_require__(49)
-  , redefine  = __webpack_require__(28)
+  , redefine  = __webpack_require__(29)
   , ctx       = __webpack_require__(75)
   , PROTOTYPE = 'prototype';
 
@@ -595,7 +595,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 3 */
@@ -994,7 +994,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 4 */
@@ -1013,7 +1013,7 @@ module.exports = function(it){
 "use strict";
 "use strict";
 var root_1 = __webpack_require__(53);
-var toSubscriber_1 = __webpack_require__(759);
+var toSubscriber_1 = __webpack_require__(762);
 var observable_1 = __webpack_require__(246);
 /**
  * A representation of any set of values over any amount of time. This the most basic building block
@@ -3455,7 +3455,7 @@ var ComponentStillLoadingError = __WEBPACK_IMPORTED_MODULE_0__angular_core__["__
 
 var anObject       = __webpack_require__(4)
   , IE8_DOM_DEFINE = __webpack_require__(342)
-  , toPrimitive    = __webpack_require__(66)
+  , toPrimitive    = __webpack_require__(67)
   , dP             = Object.defineProperty;
 
 exports.f = __webpack_require__(21) ? Object.defineProperty : function defineProperty(O, P, Attributes){
@@ -3867,7 +3867,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 19 */
@@ -4948,7 +4948,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 24 */
@@ -5347,7 +5347,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 25 */
@@ -5804,155 +5804,10 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 27 */
-/***/ function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function(it, key){
-  return hasOwnProperty.call(it, key);
-};
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-var global    = __webpack_require__(13)
-  , hide      = __webpack_require__(49)
-  , has       = __webpack_require__(27)
-  , SRC       = __webpack_require__(99)('src')
-  , TO_STRING = 'toString'
-  , $toString = Function[TO_STRING]
-  , TPL       = ('' + $toString).split(TO_STRING);
-
-__webpack_require__(12).inspectSource = function(it){
-  return $toString.call(it);
-};
-
-(module.exports = function(O, key, val, safe){
-  var isFunction = typeof val == 'function';
-  if(isFunction)has(val, 'name') || hide(val, 'name', key);
-  if(O[key] === val)return;
-  if(isFunction)has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-  if(O === global){
-    O[key] = val;
-  } else {
-    if(!safe){
-      delete O[key];
-      hide(O, key, val);
-    } else {
-      if(O[key])O[key] = val;
-      else hide(O, key, val);
-    }
-  }
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, TO_STRING, function toString(){
-  return typeof this == 'function' && this[SRC] || $toString.call(this);
-});
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(1)
-  , fails   = __webpack_require__(6)
-  , defined = __webpack_require__(48)
-  , quot    = /"/g;
-// B.2.3.2.1 CreateHTML(string, tag, attribute, value)
-var createHTML = function(string, tag, attribute, value) {
-  var S  = String(defined(string))
-    , p1 = '<' + tag;
-  if(attribute !== '')p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
-  return p1 + '>' + S + '</' + tag + '>';
-};
-module.exports = function(NAME, exec){
-  var O = {};
-  O[NAME] = exec(createHTML);
-  $export($export.P + $export.F * fails(function(){
-    var test = ''[NAME]('"');
-    return test !== test.toLowerCase() || test.split('"').length > 3;
-  }), 'String', O);
-};
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ exports["a"] = unimplemented;
-/* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return BaseError; });
-/* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return WrappedError; });
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-function unimplemented() {
-    throw new Error('unimplemented');
-}
-/**
- * @stable
- */
-var BaseError = (function (_super) {
-    __extends(BaseError, _super);
-    function BaseError(message) {
-        // Errors don't use current this, instead they create a new instance.
-        // We have to do forward all of our api to the nativeInstance.
-        var nativeError = _super.call(this, message);
-        this._nativeError = nativeError;
-    }
-    Object.defineProperty(BaseError.prototype, "message", {
-        get: function () { return this._nativeError.message; },
-        set: function (message) { this._nativeError.message = message; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(BaseError.prototype, "name", {
-        get: function () { return this._nativeError.name; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(BaseError.prototype, "stack", {
-        get: function () { return this._nativeError.stack; },
-        set: function (value) { this._nativeError.stack = value; },
-        enumerable: true,
-        configurable: true
-    });
-    BaseError.prototype.toString = function () { return this._nativeError.toString(); };
-    return BaseError;
-}(Error));
-/**
- * @stable
- */
-var WrappedError = (function (_super) {
-    __extends(WrappedError, _super);
-    function WrappedError(message, error) {
-        _super.call(this, message + " caused by: " + (error instanceof Error ? error.message : error));
-        this.originalError = error;
-    }
-    Object.defineProperty(WrappedError.prototype, "stack", {
-        get: function () {
-            return (this.originalError instanceof Error ? this.originalError : this._nativeError)
-                .stack;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return WrappedError;
-}(BaseError));
-//# sourceMappingURL=errors.js.map
-
-/***/ },
-/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6003,6 +5858,34 @@ let DataService = class DataService {
         this.asymmetry = [];
         this.calcification = [];
         this.other = [];
+        this._screening = [];
+        for (let i = 0; i < 19; i++) {
+            this._screening.push({
+                R: false,
+                L: false
+            });
+        }
+    }
+    /**
+     * Set the reason value of the reason field within the flemish form
+     * @param value
+     */
+    set screeningreason(value) {
+        this._screeningreason = value;
+    }
+    /**
+     * Get the reason value of the reason field within the flemish form
+     * @returns {string}
+     */
+    get screeningreason() {
+        return this._screeningreason;
+    }
+    /**
+     * Get all the selection of the flemish form
+     * @returns {{R: boolean, L: boolean}[]}
+     */
+    get screening() {
+        return this._screening;
     }
     /**
      * Get the possible methods.
@@ -6115,6 +5998,151 @@ exports.DataService = DataService;
 
 
 /***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function(it, key){
+  return hasOwnProperty.call(it, key);
+};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+var global    = __webpack_require__(13)
+  , hide      = __webpack_require__(49)
+  , has       = __webpack_require__(28)
+  , SRC       = __webpack_require__(99)('src')
+  , TO_STRING = 'toString'
+  , $toString = Function[TO_STRING]
+  , TPL       = ('' + $toString).split(TO_STRING);
+
+__webpack_require__(12).inspectSource = function(it){
+  return $toString.call(it);
+};
+
+(module.exports = function(O, key, val, safe){
+  var isFunction = typeof val == 'function';
+  if(isFunction)has(val, 'name') || hide(val, 'name', key);
+  if(O[key] === val)return;
+  if(isFunction)has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if(O === global){
+    O[key] = val;
+  } else {
+    if(!safe){
+      delete O[key];
+      hide(O, key, val);
+    } else {
+      if(O[key])O[key] = val;
+      else hide(O, key, val);
+    }
+  }
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, TO_STRING, function toString(){
+  return typeof this == 'function' && this[SRC] || $toString.call(this);
+});
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(1)
+  , fails   = __webpack_require__(6)
+  , defined = __webpack_require__(48)
+  , quot    = /"/g;
+// B.2.3.2.1 CreateHTML(string, tag, attribute, value)
+var createHTML = function(string, tag, attribute, value) {
+  var S  = String(defined(string))
+    , p1 = '<' + tag;
+  if(attribute !== '')p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
+  return p1 + '>' + S + '</' + tag + '>';
+};
+module.exports = function(NAME, exec){
+  var O = {};
+  O[NAME] = exec(createHTML);
+  $export($export.P + $export.F * fails(function(){
+    var test = ''[NAME]('"');
+    return test !== test.toLowerCase() || test.split('"').length > 3;
+  }), 'String', O);
+};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ exports["a"] = unimplemented;
+/* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return BaseError; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return WrappedError; });
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+function unimplemented() {
+    throw new Error('unimplemented');
+}
+/**
+ * @stable
+ */
+var BaseError = (function (_super) {
+    __extends(BaseError, _super);
+    function BaseError(message) {
+        // Errors don't use current this, instead they create a new instance.
+        // We have to do forward all of our api to the nativeInstance.
+        var nativeError = _super.call(this, message);
+        this._nativeError = nativeError;
+    }
+    Object.defineProperty(BaseError.prototype, "message", {
+        get: function () { return this._nativeError.message; },
+        set: function (message) { this._nativeError.message = message; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseError.prototype, "name", {
+        get: function () { return this._nativeError.name; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BaseError.prototype, "stack", {
+        get: function () { return this._nativeError.stack; },
+        set: function (value) { this._nativeError.stack = value; },
+        enumerable: true,
+        configurable: true
+    });
+    BaseError.prototype.toString = function () { return this._nativeError.toString(); };
+    return BaseError;
+}(Error));
+/**
+ * @stable
+ */
+var WrappedError = (function (_super) {
+    __extends(WrappedError, _super);
+    function WrappedError(message, error) {
+        _super.call(this, message + " caused by: " + (error instanceof Error ? error.message : error));
+        this.originalError = error;
+    }
+    Object.defineProperty(WrappedError.prototype, "stack", {
+        get: function () {
+            return (this.originalError instanceof Error ? this.originalError : this._nativeError)
+                .stack;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return WrappedError;
+}(BaseError));
+//# sourceMappingURL=errors.js.map
+
+/***/ },
 /* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -6187,8 +6215,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
-const ng2_translate_1 = __webpack_require__(67);
+const data_service_1 = __webpack_require__(27);
+const ng2_translate_1 = __webpack_require__(61);
 /**
  * Service that handles the manipulation of the clicking on the maps. It tracks the click locations, stores all the badge locations, keeps track of active menus and render badges.
  */
@@ -7029,7 +7057,7 @@ var SetWrapper = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(751);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(754);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__facade_lang__ = __webpack_require__(23);
@@ -7209,7 +7237,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var isFunction_1 = __webpack_require__(403);
 var Subscription_1 = __webpack_require__(101);
-var Observer_1 = __webpack_require__(724);
+var Observer_1 = __webpack_require__(727);
 var rxSubscriber_1 = __webpack_require__(247);
 /**
  * Implements the {@link Observer} interface and extends the
@@ -7949,7 +7977,7 @@ var ctx      = __webpack_require__(75)
   , IObject  = __webpack_require__(95)
   , toObject = __webpack_require__(37)
   , toLength = __webpack_require__(32)
-  , asc      = __webpack_require__(547);
+  , asc      = __webpack_require__(549);
 module.exports = function(TYPE, $create){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -7998,7 +8026,7 @@ module.exports = function(it){
 /***/ function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(17)
-  , createDesc = __webpack_require__(65);
+  , createDesc = __webpack_require__(66);
 module.exports = __webpack_require__(21) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
@@ -8013,7 +8041,7 @@ module.exports = __webpack_require__(21) ? function(object, key, value){
 var Map     = __webpack_require__(361)
   , $export = __webpack_require__(1)
   , shared  = __webpack_require__(139)('metadata')
-  , store   = shared.store || (shared.store = new (__webpack_require__(668)));
+  , store   = shared.store || (shared.store = new (__webpack_require__(670)));
 
 var getOrCreateMetadataMap = function(target, targetKey, create){
   var targetMetadata = store.get(target);
@@ -8067,7 +8095,7 @@ module.exports = {
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has         = __webpack_require__(27)
+var has         = __webpack_require__(28)
   , toObject    = __webpack_require__(37)
   , IE_PROTO    = __webpack_require__(213)('IE_PROTO')
   , ObjectProto = Object.prototype;
@@ -8206,7 +8234,7 @@ if (freeGlobal && (freeGlobal.global === freeGlobal || freeGlobal.window === fre
     exports.root = freeGlobal;
 }
 //# sourceMappingURL=root.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 54 */
@@ -8965,7 +8993,7 @@ var SetWrapper = (function () {
 
 var META     = __webpack_require__(99)('meta')
   , isObject = __webpack_require__(9)
-  , has      = __webpack_require__(27)
+  , has      = __webpack_require__(28)
   , setDesc  = __webpack_require__(17).f
   , id       = 0;
 var isExtensible = Object.isExtensible || function(){
@@ -9022,10 +9050,10 @@ var meta = module.exports = {
 /***/ function(module, exports, __webpack_require__) {
 
 var pIE            = __webpack_require__(137)
-  , createDesc     = __webpack_require__(65)
+  , createDesc     = __webpack_require__(66)
   , toIObject      = __webpack_require__(36)
-  , toPrimitive    = __webpack_require__(66)
-  , has            = __webpack_require__(27)
+  , toPrimitive    = __webpack_require__(67)
+  , has            = __webpack_require__(28)
   , IE8_DOM_DEFINE = __webpack_require__(342)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
@@ -9040,138 +9068,6 @@ exports.f = __webpack_require__(21) ? gOPD : function getOwnPropertyDescriptor(O
 
 /***/ },
 /* 61 */
-/***/ function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() { return this; })();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__abstract_control_directive__ = __webpack_require__(181);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return NgControl; });
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-
-function unimplemented() {
-    throw new Error('unimplemented');
-}
-/**
- * A base class that all control directive extend.
- * It binds a {@link FormControl} object to a DOM element.
- *
- * Used internally by Angular forms.
- *
- * @stable
- */
-var NgControl = (function (_super) {
-    __extends(NgControl, _super);
-    function NgControl() {
-        _super.apply(this, arguments);
-        /** @internal */
-        this._parent = null;
-        this.name = null;
-        this.valueAccessor = null;
-        /** @internal */
-        this._rawValidators = [];
-        /** @internal */
-        this._rawAsyncValidators = [];
-    }
-    Object.defineProperty(NgControl.prototype, "validator", {
-        get: function () { return unimplemented(); },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(NgControl.prototype, "asyncValidator", {
-        get: function () { return unimplemented(); },
-        enumerable: true,
-        configurable: true
-    });
-    return NgControl;
-}(__WEBPACK_IMPORTED_MODULE_0__abstract_control_directive__["a" /* AbstractControlDirective */]));
-//# sourceMappingURL=ng_control.js.map
-
-/***/ },
-/* 63 */
-/***/ function(module, exports) {
-
-module.exports = function(it){
-  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-/***/ },
-/* 64 */
-/***/ function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function(it){
-  return toString.call(it).slice(8, -1);
-};
-
-/***/ },
-/* 65 */
-/***/ function(module, exports) {
-
-module.exports = function(bitmap, value){
-  return {
-    enumerable  : !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable    : !(bitmap & 4),
-    value       : value
-  };
-};
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(9);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function(it, S){
-  if(!isObject(it))return it;
-  var fn, val;
-  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-/***/ },
-/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9235,6 +9131,138 @@ var TranslateModule = (function () {
 }());
 exports.TranslateModule = TranslateModule;
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmcyLXRyYW5zbGF0ZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nMi10cmFuc2xhdGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7OztBQUFBLHFCQUE0QyxlQUFlLENBQUMsQ0FBQTtBQUM1RCxxQkFBK0IsZUFBZSxDQUFDLENBQUE7QUFDL0MsK0JBQTRCLHNCQUFzQixDQUFDLENBQUE7QUFDbkQsa0NBQXVFLHlCQUF5QixDQUFDLENBQUE7QUFFakcsaUJBQWMsc0JBQXNCLENBQUMsRUFBQTtBQUNyQyxpQkFBYyx5QkFBeUIsQ0FBQyxFQUFBO0FBQ3hDLGlCQUFjLHdCQUF3QixDQUFDLEVBQUE7QUFHdkM7a0JBQWU7SUFDWCxLQUFLLEVBQUUsQ0FBQyw4QkFBYSxDQUFDO0lBQ3RCLFNBQVMsRUFBRSxDQUFDLG9DQUFnQixDQUFDO0NBQ2hDLENBQUM7QUFFRixnQ0FBdUMsSUFBVTtJQUM3QyxNQUFNLENBQUMsSUFBSSx5Q0FBcUIsQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUMzQyxDQUFDO0FBRmUsOEJBQXNCLHlCQUVyQyxDQUFBO0FBWUQ7SUFBQTtJQVdBLENBQUM7SUFWVSx1QkFBTyxHQUFkLFVBQWUsY0FJZDtRQUpjLDhCQUlkLEdBSmM7WUFDWCxPQUFPLEVBQUUsbUNBQWU7WUFDeEIsVUFBVSxFQUFFLHNCQUFzQjtZQUNsQyxJQUFJLEVBQUUsQ0FBQyxXQUFJLENBQUM7U0FDZjtRQUNHLE1BQU0sQ0FBQztZQUNILFFBQVEsRUFBRSxlQUFlO1lBQ3pCLFNBQVMsRUFBRSxDQUFDLGNBQWMsRUFBRSxvQ0FBZ0IsQ0FBQztTQUNoRCxDQUFDO0lBQ04sQ0FBQztJQXBCTDtRQUFDLGVBQVEsQ0FBQztZQUNOLE9BQU8sRUFBRSxDQUFDLGlCQUFVLENBQUM7WUFDckIsWUFBWSxFQUFFO2dCQUNWLDhCQUFhO2FBQ2hCO1lBQ0QsT0FBTyxFQUFFO2dCQUNMLGlCQUFVO2dCQUNWLDhCQUFhO2FBQ2hCO1NBQ0osQ0FBQzs7dUJBQUE7SUFZRixzQkFBQztBQUFELENBQUMsQUFYRCxJQVdDO0FBWFksdUJBQWUsa0JBVzNCLENBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge05nTW9kdWxlLCBNb2R1bGVXaXRoUHJvdmlkZXJzfSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xuaW1wb3J0IHtIdHRwLCBIdHRwTW9kdWxlfSBmcm9tIFwiQGFuZ3VsYXIvaHR0cFwiO1xuaW1wb3J0IHtUcmFuc2xhdGVQaXBlfSBmcm9tIFwiLi9zcmMvdHJhbnNsYXRlLnBpcGVcIjtcbmltcG9ydCB7VHJhbnNsYXRlU2VydmljZSwgVHJhbnNsYXRlTG9hZGVyLCBUcmFuc2xhdGVTdGF0aWNMb2FkZXJ9IGZyb20gXCIuL3NyYy90cmFuc2xhdGUuc2VydmljZVwiO1xuXG5leHBvcnQgKiBmcm9tIFwiLi9zcmMvdHJhbnNsYXRlLnBpcGVcIjtcbmV4cG9ydCAqIGZyb20gXCIuL3NyYy90cmFuc2xhdGUuc2VydmljZVwiO1xuZXhwb3J0ICogZnJvbSBcIi4vc3JjL3RyYW5zbGF0ZS5wYXJzZXJcIjtcblxuLy8gZm9yIGFuZ3VsYXItY2xpXG5leHBvcnQgZGVmYXVsdCB7XG4gICAgcGlwZXM6IFtUcmFuc2xhdGVQaXBlXSxcbiAgICBwcm92aWRlcnM6IFtUcmFuc2xhdGVTZXJ2aWNlXVxufTtcblxuZXhwb3J0IGZ1bmN0aW9uIHRyYW5zbGF0ZUxvYWRlckZhY3RvcnkoaHR0cDogSHR0cCkge1xuICAgIHJldHVybiBuZXcgVHJhbnNsYXRlU3RhdGljTG9hZGVyKGh0dHApO1xufVxuXG5ATmdNb2R1bGUoe1xuICAgIGltcG9ydHM6IFtIdHRwTW9kdWxlXSxcbiAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgVHJhbnNsYXRlUGlwZVxuICAgIF0sXG4gICAgZXhwb3J0czogW1xuICAgICAgICBIdHRwTW9kdWxlLCAvLyB0b2RvIHJlbW92ZSB0aGlzIHdoZW4gcmVtb3ZpbmcgdGhlIGxvYWRlciBmcm9tIGNvcmVcbiAgICAgICAgVHJhbnNsYXRlUGlwZVxuICAgIF1cbn0pXG5leHBvcnQgY2xhc3MgVHJhbnNsYXRlTW9kdWxlIHtcbiAgICBzdGF0aWMgZm9yUm9vdChwcm92aWRlZExvYWRlcjogYW55ID0ge1xuICAgICAgICBwcm92aWRlOiBUcmFuc2xhdGVMb2FkZXIsXG4gICAgICAgIHVzZUZhY3Rvcnk6IHRyYW5zbGF0ZUxvYWRlckZhY3RvcnksXG4gICAgICAgIGRlcHM6IFtIdHRwXVxuICAgIH0pOiBNb2R1bGVXaXRoUHJvdmlkZXJzIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIG5nTW9kdWxlOiBUcmFuc2xhdGVNb2R1bGUsXG4gICAgICAgICAgICBwcm92aWRlcnM6IFtwcm92aWRlZExvYWRlciwgVHJhbnNsYXRlU2VydmljZV1cbiAgICAgICAgfTtcbiAgICB9XG59XG4iXX0=
+
+/***/ },
+/* 62 */
+/***/ function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() { return this; })();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__abstract_control_directive__ = __webpack_require__(181);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return NgControl; });
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+
+function unimplemented() {
+    throw new Error('unimplemented');
+}
+/**
+ * A base class that all control directive extend.
+ * It binds a {@link FormControl} object to a DOM element.
+ *
+ * Used internally by Angular forms.
+ *
+ * @stable
+ */
+var NgControl = (function (_super) {
+    __extends(NgControl, _super);
+    function NgControl() {
+        _super.apply(this, arguments);
+        /** @internal */
+        this._parent = null;
+        this.name = null;
+        this.valueAccessor = null;
+        /** @internal */
+        this._rawValidators = [];
+        /** @internal */
+        this._rawAsyncValidators = [];
+    }
+    Object.defineProperty(NgControl.prototype, "validator", {
+        get: function () { return unimplemented(); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(NgControl.prototype, "asyncValidator", {
+        get: function () { return unimplemented(); },
+        enumerable: true,
+        configurable: true
+    });
+    return NgControl;
+}(__WEBPACK_IMPORTED_MODULE_0__abstract_control_directive__["a" /* AbstractControlDirective */]));
+//# sourceMappingURL=ng_control.js.map
+
+/***/ },
+/* 64 */
+/***/ function(module, exports) {
+
+module.exports = function(it){
+  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function(it){
+  return toString.call(it).slice(8, -1);
+};
+
+/***/ },
+/* 66 */
+/***/ function(module, exports) {
+
+module.exports = function(bitmap, value){
+  return {
+    enumerable  : !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable    : !(bitmap & 4),
+    value       : value
+  };
+};
+
+/***/ },
+/* 67 */
+/***/ function(module, exports, __webpack_require__) {
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__(9);
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function(it, S){
+  if(!isObject(it))return it;
+  var fn, val;
+  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
+  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+  throw TypeError("Can't convert object to primitive value");
+};
 
 /***/ },
 /* 68 */
@@ -10681,7 +10709,7 @@ var _a;
 /***/ function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(63);
+var aFunction = __webpack_require__(64);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -10819,8 +10847,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(5);
 var Subscriber_1 = __webpack_require__(42);
 var Subscription_1 = __webpack_require__(101);
-var ObjectUnsubscribedError_1 = __webpack_require__(756);
-var SubjectSubscription_1 = __webpack_require__(726);
+var ObjectUnsubscribedError_1 = __webpack_require__(759);
+var SubjectSubscription_1 = __webpack_require__(729);
 var rxSubscriber_1 = __webpack_require__(247);
 /**
  * @class SubjectSubscriber<T>
@@ -11543,7 +11571,7 @@ function createPureProxy(fn, argCount, pureProxyProp, view) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__di__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_lang__ = __webpack_require__(3);
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return ComponentStillLoadingError; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "d", function() { return ModuleWithComponentFactories; });
@@ -12755,7 +12783,7 @@ module.exports = function(key){
 /***/ function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(64);
+var cof = __webpack_require__(65);
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
@@ -12809,21 +12837,21 @@ module.exports = function(key){
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-__export(__webpack_require__(680));
-__export(__webpack_require__(681));
 __export(__webpack_require__(682));
 __export(__webpack_require__(683));
 __export(__webpack_require__(684));
 __export(__webpack_require__(685));
-__export(__webpack_require__(693));
-__export(__webpack_require__(690));
-__export(__webpack_require__(694));
+__export(__webpack_require__(686));
+__export(__webpack_require__(687));
 __export(__webpack_require__(695));
+__export(__webpack_require__(692));
 __export(__webpack_require__(696));
 __export(__webpack_require__(697));
 __export(__webpack_require__(698));
 __export(__webpack_require__(699));
 __export(__webpack_require__(700));
+__export(__webpack_require__(701));
+__export(__webpack_require__(702));
 __export(__webpack_require__(229));
 __export(__webpack_require__(378));
 __export(__webpack_require__(79));
@@ -12859,7 +12887,7 @@ var typeahead_module_1 = __webpack_require__(241);
 exports.TypeaheadModule = typeahead_module_1.TypeaheadModule;
 var components_helper_service_1 = __webpack_require__(52);
 exports.ComponentsHelper = components_helper_service_1.ComponentsHelper;
-var index_1 = __webpack_require__(692);
+var index_1 = __webpack_require__(694);
 exports.Ng2BootstrapModule = index_1.Ng2BootstrapModule;
 
 
@@ -12870,11 +12898,11 @@ exports.Ng2BootstrapModule = index_1.Ng2BootstrapModule;
 "use strict";
 "use strict";
 var isArray_1 = __webpack_require__(248);
-var isObject_1 = __webpack_require__(758);
+var isObject_1 = __webpack_require__(761);
 var isFunction_1 = __webpack_require__(403);
-var tryCatch_1 = __webpack_require__(760);
+var tryCatch_1 = __webpack_require__(763);
 var errorObject_1 = __webpack_require__(402);
-var UnsubscriptionError_1 = __webpack_require__(757);
+var UnsubscriptionError_1 = __webpack_require__(760);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -16511,7 +16539,7 @@ function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_lang__ = __webpack_require__(3);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return THROW_IF_NOT_FOUND; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return Injector; });
@@ -16645,7 +16673,7 @@ var Host = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__util_decorators__[
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_lang__ = __webpack_require__(3);
 /* unused harmony export NoComponentFactoryError */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ComponentFactoryResolver; });
@@ -17414,7 +17442,7 @@ var NgModelGroup = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_collection__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__control_value_accessor__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_control__ = __webpack_require__(63);
 /* unused harmony export RADIO_VALUE_ACCESSOR */
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return RadioControlRegistry; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RadioControlValueAccessor; });
@@ -17987,7 +18015,7 @@ var SELECT_DIRECTIVES = [SelectMultipleControlValueAccessor, NgSelectMultipleOpt
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(739);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(742);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives_shared__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_async__ = __webpack_require__(72);
@@ -19797,7 +19825,7 @@ var DOCUMENT = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["OpaqueToken"]('D
 "use strict";
 'use strict';
 var hide     = __webpack_require__(49)
-  , redefine = __webpack_require__(28)
+  , redefine = __webpack_require__(29)
   , fails    = __webpack_require__(6)
   , defined  = __webpack_require__(48)
   , wks      = __webpack_require__(11);
@@ -19871,7 +19899,7 @@ exports.f = {}.propertyIsEnumerable;
 /***/ function(module, exports, __webpack_require__) {
 
 var def = __webpack_require__(17).f
-  , has = __webpack_require__(27)
+  , has = __webpack_require__(28)
   , TAG = __webpack_require__(11)('toStringTag');
 
 module.exports = function(it, tag, stat){
@@ -19935,7 +19963,7 @@ var classof = __webpack_require__(337)
   , test    = {};
 test[__webpack_require__(11)('toStringTag')] = 'z';
 if(test + '' != '[object z]'){
-  __webpack_require__(28)(Object.prototype, 'toString', function toString(){
+  __webpack_require__(29)(Object.prototype, 'toString', function toString(){
     return '[object ' + classof(this) + ']';
   }, true);
 }
@@ -20011,7 +20039,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var date_formatter_1 = __webpack_require__(686);
+var date_formatter_1 = __webpack_require__(688);
 var FORMAT_DAY = 'DD';
 var FORMAT_MONTH = 'MMMM';
 var FORMAT_YEAR = 'YYYY';
@@ -20360,7 +20388,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = __webpack_require__(0);
-var dropdown_service_1 = __webpack_require__(691);
+var dropdown_service_1 = __webpack_require__(693);
 var DropdownDirective = (function () {
     function DropdownDirective(el, ref) {
         this.onToggle = new core_1.EventEmitter(false);
@@ -24461,7 +24489,7 @@ var ApplicationInitStatus = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_error_handler__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_facade_collection__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_facade_lang__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__application_init__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__application_tokens__ = __webpack_require__(111);
@@ -26491,7 +26519,7 @@ var ReflectorReader = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return RenderComponentType; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return RenderDebugInfo; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "d", function() { return Renderer; });
@@ -27161,7 +27189,7 @@ var AbstractControlDirective = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_lang__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__control_container__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_control__ = __webpack_require__(63);
 /* unused harmony export AbstractControlStatus */
 /* unused harmony export ngControlStatusHost */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return NgControlStatus; });
@@ -27295,7 +27323,7 @@ var NgControlStatusGroup = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__abstract_form_group_directive__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__control_container__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__control_value_accessor__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_control__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_form__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ng_model_group__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared__ = __webpack_require__(56);
@@ -27603,7 +27631,7 @@ var NumberValueAccessor = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validators__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__control_value_accessor__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_control__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reactive_errors__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared__ = __webpack_require__(56);
 /* unused harmony export formControlBinding */
@@ -27759,7 +27787,7 @@ var FormControlDirective = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__abstract_form_group_directive__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__control_container__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__control_value_accessor__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ng_control__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reactive_errors__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__form_group_directive__ = __webpack_require__(90);
@@ -29160,7 +29188,7 @@ module.exports = function(it, Constructor, name, forbiddenField){
 'use strict';
 var global            = __webpack_require__(13)
   , $export           = __webpack_require__(1)
-  , redefine          = __webpack_require__(28)
+  , redefine          = __webpack_require__(29)
   , redefineAll       = __webpack_require__(210)
   , meta              = __webpack_require__(59)
   , forOf             = __webpack_require__(135)
@@ -29306,7 +29334,7 @@ module.exports = function(that, target, C){
 /***/ function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(64);
+var cof = __webpack_require__(65);
 module.exports = Array.isArray || function isArray(arg){
   return cof(arg) == 'Array';
 };
@@ -29317,7 +29345,7 @@ module.exports = Array.isArray || function isArray(arg){
 
 // 7.2.8 IsRegExp(argument)
 var isObject = __webpack_require__(9)
-  , cof      = __webpack_require__(64)
+  , cof      = __webpack_require__(65)
   , MATCH    = __webpack_require__(11)('match');
 module.exports = function(it){
   var isRegExp;
@@ -29332,9 +29360,9 @@ module.exports = function(it){
 'use strict';
 var LIBRARY        = __webpack_require__(207)
   , $export        = __webpack_require__(1)
-  , redefine       = __webpack_require__(28)
+  , redefine       = __webpack_require__(29)
   , hide           = __webpack_require__(49)
-  , has            = __webpack_require__(27)
+  , has            = __webpack_require__(28)
   , Iterators      = __webpack_require__(96)
   , $iterCreate    = __webpack_require__(346)
   , setToStringTag = __webpack_require__(138)
@@ -29434,7 +29462,7 @@ module.exports = Math.sign || function sign(x){
 /* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
-var redefine = __webpack_require__(28);
+var redefine = __webpack_require__(29);
 module.exports = function(target, src, safe){
   for(var key in src)redefine(target, key, src[key], safe);
   return target;
@@ -29943,9 +29971,9 @@ var core_1 = __webpack_require__(0);
 var forms_1 = __webpack_require__(20);
 var datepicker_inner_component_1 = __webpack_require__(144);
 var datepicker_component_1 = __webpack_require__(379);
-var daypicker_component_1 = __webpack_require__(687);
-var monthpicker_component_1 = __webpack_require__(688);
-var yearpicker_component_1 = __webpack_require__(689);
+var daypicker_component_1 = __webpack_require__(689);
+var monthpicker_component_1 = __webpack_require__(690);
+var yearpicker_component_1 = __webpack_require__(691);
 var components_helper_service_1 = __webpack_require__(52);
 var DatepickerModule = (function () {
     function DatepickerModule() {
@@ -31443,10 +31471,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = __webpack_require__(0);
 var Observable_1 = __webpack_require__(5);
-__webpack_require__(728);
-__webpack_require__(733);
-__webpack_require__(396);
 __webpack_require__(731);
+__webpack_require__(736);
+__webpack_require__(396);
+__webpack_require__(734);
 __webpack_require__(397);
 var translate_parser_1 = __webpack_require__(393);
 var MissingTranslationHandler = (function () {
@@ -39672,7 +39700,7 @@ function removeDebugNodeFromIndex(node) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_collection__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_lang__ = __webpack_require__(3);
 /* harmony export (binding) */ __webpack_require__.d(exports, "f", function() { return AbstractProviderError; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "h", function() { return NoProviderError; });
@@ -40097,7 +40125,7 @@ var TRANSLATIONS_FORMAT = new __WEBPACK_IMPORTED_MODULE_0__di_opaque_token__["a"
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_lang__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_utils__ = __webpack_require__(119);
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return ComponentRef; });
@@ -40435,7 +40463,7 @@ var ElementRef = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__change_detection_change_detection_util__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ExpressionChangedAfterItHasBeenCheckedError; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return ViewWrappedError; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return ViewDestroyedError; });
@@ -40538,7 +40566,7 @@ var ViewDestroyedError = (function (_super) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__di_injector__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_lang__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_factory_resolver__ = __webpack_require__(117);
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return NgModuleRef; });
@@ -40798,7 +40826,7 @@ var TemplateRef_ = (function (_super) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_collection__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_lang__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_profile__ = __webpack_require__(120);
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return ViewContainerRef; });
@@ -40977,7 +41005,7 @@ var ViewContainerRef_ = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animation_animation_queue__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__change_detection_constants__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_errors__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return ViewRef; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return EmbeddedViewRef; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ViewRef_; });
@@ -43833,7 +43861,7 @@ function escapeRegExp(s) {
     return s.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
 }
 //# sourceMappingURL=lang.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(61)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(62)))
 
 /***/ },
 /* 320 */
@@ -45209,12 +45237,34 @@ const page_controller_1 = __webpack_require__(34);
  *      styles: [require('./app.component.css')]
  */
 let AppComponent = class AppComponent {
-    // private  viewContainerRef: ViewContainerRef;
     constructor(viewContainerRef, pagectrl) {
         this.viewContainerRef = viewContainerRef;
         this.pagectrl = pagectrl;
-        // this.viewContainerRef = viewContainerRef;
-        // this.pagectrl = pagectrl;
+        console.log(window.location.search);
+    }
+    get showflemishreport() {
+        return this._showflemishreport;
+    }
+    set showflemishreport(value) {
+        this._showflemishreport = value;
+    }
+    /**
+     * When passing /flemloc at the end of the URL , we'll show the flemish report too
+     */
+    ngOnInit() {
+        // console.log(location);
+        // this.router.routerState.root.queryParams.subscribe(params => {
+        //   console.log(params);
+        // });
+        // console.log(window.location.pathname);
+        if (window.location.search == "?flemloc") {
+            console.log("iere");
+            this.showflemishreport = true;
+        }
+        else {
+            this.showflemishreport = false;
+        }
+        //
     }
     /**
      * This handler disables the right clicks on the page. So the user doesn't see the right click menu.
@@ -45229,8 +45279,8 @@ let AppComponent = class AppComponent {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: __webpack_require__(711),
-        styles: [__webpack_require__(707)]
+        template: __webpack_require__(713),
+        styles: [__webpack_require__(709)],
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _a) || Object, (typeof (_b = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _b) || Object])
 ], AppComponent);
@@ -45242,7 +45292,7 @@ var _a, _b;
 /* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
-var cof = __webpack_require__(64);
+var cof = __webpack_require__(65);
 module.exports = function(it, msg){
   if(typeof it != 'number' && cof(it) != 'Number')throw TypeError(msg);
   return +it;
@@ -45278,7 +45328,7 @@ module.exports = function(IS_INCLUDES){
 /* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__(63)
+var aFunction = __webpack_require__(64)
   , toObject  = __webpack_require__(37)
   , IObject   = __webpack_require__(95)
   , toLength  = __webpack_require__(32);
@@ -45313,9 +45363,9 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
 
 "use strict";
 'use strict';
-var aFunction  = __webpack_require__(63)
+var aFunction  = __webpack_require__(64)
   , isObject   = __webpack_require__(9)
-  , invoke     = __webpack_require__(551)
+  , invoke     = __webpack_require__(553)
   , arraySlice = [].slice
   , factories  = {};
 
@@ -45342,7 +45392,7 @@ module.exports = Function.bind || function bind(that /*, args... */){
 /***/ function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(64)
+var cof = __webpack_require__(65)
   , TAG = __webpack_require__(11)('toStringTag')
   // ES3 wrong here
   , ARG = cof(function(){ return arguments; }()) == 'Arguments';
@@ -45520,7 +45570,7 @@ module.exports = {
 "use strict";
 'use strict';
 var $defineProperty = __webpack_require__(17)
-  , createDesc      = __webpack_require__(65);
+  , createDesc      = __webpack_require__(66);
 
 module.exports = function(object, index, value){
   if(index in object)$defineProperty.f(object, index, createDesc(0, value));
@@ -45601,7 +45651,7 @@ module.exports = function(iterator, fn, value, entries){
 "use strict";
 'use strict';
 var create         = __webpack_require__(76)
-  , descriptor     = __webpack_require__(65)
+  , descriptor     = __webpack_require__(66)
   , setToStringTag = __webpack_require__(138)
   , IteratorPrototype = {};
 
@@ -45742,7 +45792,7 @@ module.exports.f = function getOwnPropertyNames(it){
 /* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
-var has          = __webpack_require__(27)
+var has          = __webpack_require__(28)
   , toIObject    = __webpack_require__(36)
   , arrayIndexOf = __webpack_require__(334)(false)
   , IE_PROTO     = __webpack_require__(213)('IE_PROTO');
@@ -46067,10 +46117,10 @@ module.exports = __webpack_require__(199)('Set', function(get){
 'use strict';
 // ECMAScript 6 symbols shim
 var global         = __webpack_require__(13)
-  , has            = __webpack_require__(27)
+  , has            = __webpack_require__(28)
   , DESCRIPTORS    = __webpack_require__(21)
   , $export        = __webpack_require__(1)
-  , redefine       = __webpack_require__(28)
+  , redefine       = __webpack_require__(29)
   , META           = __webpack_require__(59).KEY
   , $fails         = __webpack_require__(6)
   , shared         = __webpack_require__(139)
@@ -46078,14 +46128,14 @@ var global         = __webpack_require__(13)
   , uid            = __webpack_require__(99)
   , wks            = __webpack_require__(11)
   , wksExt         = __webpack_require__(358)
-  , wksDefine      = __webpack_require__(555)
-  , keyOf          = __webpack_require__(552)
-  , enumKeys       = __webpack_require__(550)
+  , wksDefine      = __webpack_require__(557)
+  , keyOf          = __webpack_require__(554)
+  , enumKeys       = __webpack_require__(552)
   , isArray        = __webpack_require__(204)
   , anObject       = __webpack_require__(4)
   , toIObject      = __webpack_require__(36)
-  , toPrimitive    = __webpack_require__(66)
-  , createDesc     = __webpack_require__(65)
+  , toPrimitive    = __webpack_require__(67)
+  , createDesc     = __webpack_require__(66)
   , _create        = __webpack_require__(76)
   , gOPNExt        = __webpack_require__(352)
   , $GOPD          = __webpack_require__(60)
@@ -46305,7 +46355,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ function(module, exports, __webpack_require__) {
 
 var $iterators    = __webpack_require__(360)
-  , redefine      = __webpack_require__(28)
+  , redefine      = __webpack_require__(29)
   , global        = __webpack_require__(13)
   , hide          = __webpack_require__(49)
   , Iterators     = __webpack_require__(96)
@@ -47298,7 +47348,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = __webpack_require__(0);
 var components_helper_service_1 = __webpack_require__(52);
-var utils_class_1 = __webpack_require__(702);
+var utils_class_1 = __webpack_require__(704);
 var modal_backdrop_component_1 = __webpack_require__(224);
 var modal_options_class_1 = __webpack_require__(225);
 var browser_1 = __webpack_require__(242);
@@ -48487,7 +48537,7 @@ exports.TooltipDirective = TooltipDirective;
 
 "use strict";
 "use strict";
-var latin_map_1 = __webpack_require__(701);
+var latin_map_1 = __webpack_require__(703);
 var TypeaheadUtils = (function () {
     function TypeaheadUtils() {
     }
@@ -48570,11 +48620,11 @@ var typeahead_container_component_1 = __webpack_require__(239);
 var typeahead_options_class_1 = __webpack_require__(240);
 var typeahead_utils_1 = __webpack_require__(391);
 var Observable_1 = __webpack_require__(5);
-__webpack_require__(727);
-__webpack_require__(729);
 __webpack_require__(730);
-__webpack_require__(396);
 __webpack_require__(732);
+__webpack_require__(733);
+__webpack_require__(396);
+__webpack_require__(735);
 __webpack_require__(397);
 var components_helper_service_1 = __webpack_require__(52);
 var TypeaheadDirective = (function () {
@@ -49171,7 +49221,7 @@ exports.OuterSubscriber = OuterSubscriber;
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var map_1 = __webpack_require__(743);
+var map_1 = __webpack_require__(746);
 Observable_1.Observable.prototype.map = map_1.map;
 //# sourceMappingURL=map.js.map
 
@@ -49182,7 +49232,7 @@ Observable_1.Observable.prototype.map = map_1.map;
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var toArray_1 = __webpack_require__(750);
+var toArray_1 = __webpack_require__(753);
 Observable_1.Observable.prototype.toArray = toArray_1.toArray;
 //# sourceMappingURL=toArray.js.map
 
@@ -49675,7 +49725,7 @@ var isArray_1 = __webpack_require__(248);
 var isPromise_1 = __webpack_require__(404);
 var Observable_1 = __webpack_require__(5);
 var iterator_1 = __webpack_require__(245);
-var InnerSubscriber_1 = __webpack_require__(722);
+var InnerSubscriber_1 = __webpack_require__(725);
 var observable_1 = __webpack_require__(246);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
@@ -49764,11 +49814,11 @@ webpackEmptyContext.id = 408;
 
 "use strict";
 "use strict";
-__webpack_require__(527);
+__webpack_require__(529);
 const platform_browser_dynamic_1 = __webpack_require__(494);
 const core_1 = __webpack_require__(0);
-const environment_1 = __webpack_require__(526);
-const _1 = __webpack_require__(525);
+const environment_1 = __webpack_require__(528);
+const _1 = __webpack_require__(527);
 if (environment_1.environment.production) {
     core_1.enableProdMode();
 }
@@ -56941,7 +56991,7 @@ var DebugDomRenderer = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_collection__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_errors__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__injector__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__metadata__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reflective_errors__ = __webpack_require__(290);
@@ -58909,7 +58959,7 @@ var NgZoneImpl = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__directives_select_control_value_accessor__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__directives_select_multiple_control_value_accessor__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_validators__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_ng_control__ = __webpack_require__(63);
 /* unused harmony export SHARED_FORM_DIRECTIVES */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return TEMPLATE_DRIVEN_DIRECTIVES; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "c", function() { return REACTIVE_DRIVEN_DIRECTIVES; });
@@ -59126,7 +59176,7 @@ var ReactiveFormsModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_control_container__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_control_value_accessor__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_default_value_accessor__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__directives_ng_control__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__directives_ng_control__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__directives_ng_control_status__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__directives_ng_form__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__directives_ng_model__ = __webpack_require__(183);
@@ -60691,7 +60741,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const ng_module_1 = __webpack_require__(304);
 const app_component_1 = __webpack_require__(332);
-const screen_resize_directive_1 = __webpack_require__(524);
+const screen_resize_directive_1 = __webpack_require__(526);
 const map_component_1 = __webpack_require__(513);
 const sidebar_component_1 = __webpack_require__(514);
 const asymmetries_component_1 = __webpack_require__(515);
@@ -60700,17 +60750,19 @@ const distortion_component_1 = __webpack_require__(517);
 const mass_component_1 = __webpack_require__(518);
 const classification_component_1 = __webpack_require__(520);
 const legend_component_1 = __webpack_require__(521);
-const table_component_1 = __webpack_require__(522);
+const table_component_1 = __webpack_require__(523);
 const platform_browser_1 = __webpack_require__(132);
 const forms_1 = __webpack_require__(20);
 const http_1 = __webpack_require__(188);
 const ng2_bootstrap_1 = __webpack_require__(100);
-const ng2_translate_1 = __webpack_require__(67);
-const data_service_1 = __webpack_require__(31);
+const ng2_translate_1 = __webpack_require__(61);
+const data_service_1 = __webpack_require__(27);
 const page_controller_1 = __webpack_require__(34);
 const hotkey_service_1 = __webpack_require__(74);
-const imagemap_resize_directive_1 = __webpack_require__(523);
+const imagemap_resize_directive_1 = __webpack_require__(525);
 const other_component_1 = __webpack_require__(519);
+const screening_component_1 = __webpack_require__(522);
+const autosize_directive_1 = __webpack_require__(524);
 /**
  * Module that declares all the used components and modules. Imported or self-made
  */
@@ -60737,6 +60789,7 @@ AppModule = __decorate([
             /*DIRECTIVES*/
             screen_resize_directive_1.ScreenResize,
             imagemap_resize_directive_1.ImageMapResize,
+            autosize_directive_1.Autosize,
             /*MAP*/
             map_component_1.MapComponent,
             sidebar_component_1.SidebarComponent,
@@ -60748,6 +60801,7 @@ AppModule = __decorate([
             other_component_1.OtherComponent,
             /*TABLE*/
             classification_component_1.ClassificationComponent,
+            screening_component_1.ScreeningComponent,
             legend_component_1.LegendComponent,
             table_component_1.TableComponent
         ],
@@ -60788,7 +60842,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = __webpack_require__(0);
 const page_controller_1 = __webpack_require__(34);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 /**
  * This component contains the breast images, and all the needed functionality for those images
  *
@@ -60903,7 +60957,7 @@ let MapComponent = MapComponent_1;
 MapComponent = MapComponent_1 = __decorate([
     core_1.Component({
         selector: 'map-component',
-        template: __webpack_require__(712)
+        template: __webpack_require__(714)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object])
 ], MapComponent);
@@ -60928,9 +60982,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = __webpack_require__(0);
 const page_controller_1 = __webpack_require__(34);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const hotkey_service_1 = __webpack_require__(74);
-const ng2_translate_1 = __webpack_require__(67);
+const ng2_translate_1 = __webpack_require__(61);
 /**
  * This component contains the bar with all the possible methods of which we can add findings (mass, distortion, ...). It also enables the functionality to select them with hotkeys.
  *
@@ -60991,7 +61045,7 @@ let SidebarComponent = class SidebarComponent {
 SidebarComponent = __decorate([
     core_1.Component({
         selector: 'sidebar-component',
-        template: __webpack_require__(713)
+        template: __webpack_require__(715)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _b) || Object, (typeof (_c = typeof hotkey_service_1.HotkeyService !== 'undefined' && hotkey_service_1.HotkeyService) === 'function' && _c) || Object, (typeof (_d = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _d) || Object])
 ], SidebarComponent);
@@ -61015,7 +61069,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const ng2_bootstrap_1 = __webpack_require__(100);
 const di_1 = __webpack_require__(87);
 const page_controller_1 = __webpack_require__(34);
@@ -61145,7 +61199,7 @@ __decorate([
 AsymmetryComponent = __decorate([
     core_1.Component({
         selector: 'asymmetries-component',
-        template: __webpack_require__(714)
+        template: __webpack_require__(716)
     }), 
     __metadata('design:paramtypes', [(typeof (_b = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _b) || Object, (typeof (_c = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _c) || Object, (typeof (_d = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _d) || Object, (typeof (_e = typeof hotkey_service_1.HotkeyService !== 'undefined' && hotkey_service_1.HotkeyService) === 'function' && _e) || Object])
 ], AsymmetryComponent);
@@ -61169,8 +61223,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
-const ng2_translate_1 = __webpack_require__(67);
+const data_service_1 = __webpack_require__(27);
+const ng2_translate_1 = __webpack_require__(61);
 const ng2_bootstrap_1 = __webpack_require__(100);
 const di_1 = __webpack_require__(87);
 const page_controller_1 = __webpack_require__(34);
@@ -61408,7 +61462,7 @@ __decorate([
 CalcificationComponent = __decorate([
     core_1.Component({
         selector: 'calcification-component',
-        template: __webpack_require__(715)
+        template: __webpack_require__(717)
     }), 
     __metadata('design:paramtypes', [(typeof (_c = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _c) || Object, (typeof (_d = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _d) || Object, (typeof (_e = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _e) || Object, (typeof (_f = typeof hotkey_service_1.HotkeyService !== 'undefined' && hotkey_service_1.HotkeyService) === 'function' && _f) || Object, (typeof (_g = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _g) || Object])
 ], CalcificationComponent);
@@ -61432,7 +61486,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const page_controller_1 = __webpack_require__(34);
 /**
  * This component contains the functionality of the distortion menu.
@@ -61498,7 +61552,7 @@ __decorate([
 DistortionComponent = __decorate([
     core_1.Component({
         selector: 'distortion-component',
-        template: __webpack_require__(716)
+        template: __webpack_require__(718)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _b) || Object, (typeof (_c = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _c) || Object])
 ], DistortionComponent);
@@ -61522,12 +61576,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const ng2_bootstrap_1 = __webpack_require__(100);
 const di_1 = __webpack_require__(87);
 const page_controller_1 = __webpack_require__(34);
 const hotkey_service_1 = __webpack_require__(74);
-const ng2_translate_1 = __webpack_require__(67);
+const ng2_translate_1 = __webpack_require__(61);
 /**
  * This component contains the functionality of the mass menu. Handles mouse clicks and keyboard clicks to navigate through the menus.
  *
@@ -61735,7 +61789,7 @@ __decorate([
 MassComponent = __decorate([
     core_1.Component({
         selector: 'mass-component',
-        template: __webpack_require__(717)
+        template: __webpack_require__(719)
     }), 
     __metadata('design:paramtypes', [(typeof (_d = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _d) || Object, (typeof (_e = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _e) || Object, (typeof (_f = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _f) || Object, (typeof (_g = typeof hotkey_service_1.HotkeyService !== 'undefined' && hotkey_service_1.HotkeyService) === 'function' && _g) || Object, (typeof (_h = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _h) || Object])
 ], MassComponent);
@@ -61759,7 +61813,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const ng2_bootstrap_1 = __webpack_require__(100);
 const di_1 = __webpack_require__(87);
 const page_controller_1 = __webpack_require__(34);
@@ -61884,7 +61938,7 @@ __decorate([
 OtherComponent = __decorate([
     core_1.Component({
         selector: 'other-component',
-        template: __webpack_require__(718)
+        template: __webpack_require__(720)
     }), 
     __metadata('design:paramtypes', [(typeof (_b = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _b) || Object, (typeof (_c = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _c) || Object, (typeof (_d = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _d) || Object, (typeof (_e = typeof hotkey_service_1.HotkeyService !== 'undefined' && hotkey_service_1.HotkeyService) === 'function' && _e) || Object])
 ], OtherComponent);
@@ -61908,8 +61962,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
-const ng2_translate_1 = __webpack_require__(67);
+const data_service_1 = __webpack_require__(27);
+const ng2_translate_1 = __webpack_require__(61);
 /**
  * This component contains the BIRADS and ACR scores.
  *
@@ -61955,7 +62009,7 @@ let ClassificationComponent = class ClassificationComponent {
 ClassificationComponent = __decorate([
     core_1.Component({
         selector: 'classification-component',
-        template: __webpack_require__(719)
+        template: __webpack_require__(721)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _b) || Object])
 ], ClassificationComponent);
@@ -61979,7 +62033,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const ng2_translate_1 = __webpack_require__(67);
+const ng2_translate_1 = __webpack_require__(61);
 /**
  * This component contains a legend that explains the different BIRADS scores.
  *
@@ -62004,7 +62058,7 @@ let LegendComponent = class LegendComponent {
 LegendComponent = __decorate([
     core_1.Component({
         selector: 'legend-component',
-        template: __webpack_require__(720)
+        template: __webpack_require__(722)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _a) || Object])
 ], LegendComponent);
@@ -62028,7 +62082,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
+const ng2_translate_1 = __webpack_require__(61);
+let ScreeningComponent = class ScreeningComponent {
+    constructor(dataservice, translate) {
+        this.dataservice = dataservice;
+        this.translate = translate;
+        this.categories = new Array(18);
+        this.hassubcategories = [5, 10];
+        this.subcategories = [6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17];
+    }
+    check(event) {
+        if (event.target.tagName == 'INPUT') {
+            return;
+        }
+        else {
+            event.target.firstChild.click();
+            return;
+        }
+    }
+    setReason(reason) {
+        this.dataservice.screeningreason = reason;
+    }
+    test() {
+        let x;
+        x = this.dataservice.screeningreason;
+        console.log(x);
+    }
+};
+ScreeningComponent = __decorate([
+    core_1.Component({
+        selector: 'screening-component',
+        template: __webpack_require__(723)
+    }), 
+    __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof ng2_translate_1.TranslateService !== 'undefined' && ng2_translate_1.TranslateService) === 'function' && _b) || Object])
+], ScreeningComponent);
+exports.ScreeningComponent = ScreeningComponent;
+var _a, _b;
+
+
+/***/ },
+/* 523 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+const core_1 = __webpack_require__(0);
+const data_service_1 = __webpack_require__(27);
 const page_controller_1 = __webpack_require__(34);
 /**
  * This component contains the table.
@@ -62108,7 +62217,7 @@ let TableComponent = class TableComponent {
 TableComponent = __decorate([
     core_1.Component({
         selector: 'table-component',
-        template: __webpack_require__(721)
+        template: __webpack_require__(724)
     }), 
     __metadata('design:paramtypes', [(typeof (_a = typeof data_service_1.DataService !== 'undefined' && data_service_1.DataService) === 'function' && _a) || Object, (typeof (_b = typeof page_controller_1.PageController !== 'undefined' && page_controller_1.PageController) === 'function' && _b) || Object])
 ], TableComponent);
@@ -62117,7 +62226,76 @@ var _a, _b;
 
 
 /***/ },
-/* 523 */
+/* 524 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+const core_1 = __webpack_require__(0);
+/**
+ * Directive used to make an autosizing text box. When you type in the comment area,
+ * the area will automatically grow vertically. This is to prevent scrolling.
+ *
+ *          selector: '[autosize]'
+ *
+ */
+let Autosize = class Autosize {
+    /**
+     * The constructor will define the textarea element.
+     * @param element
+     */
+    constructor(element) {
+        this.element = element;
+    }
+    /**
+     * This function gets called when we are typing in the textarea, every time a letter is typed we call this.adjust().
+     * @param textArea The textarea where we are typing in
+     */
+    onInput(textArea) {
+        this.adjust();
+    }
+    /**
+     * When this directive is initialized (when a textarea is created, call this.adjust()).
+     */
+    ngOnInit() {
+        this.adjust();
+    }
+    /**
+     * Sets the overflow and height of the textarea. The height is depending on the scrollheight.
+     */
+    adjust() {
+        this.element.nativeElement.style.overflow = 'hidden';
+        this.element.nativeElement.style.height = 'auto';
+        this.element.nativeElement.style.height = this.element.nativeElement.scrollHeight + "px";
+    }
+};
+__decorate([
+    core_1.HostListener('input', ['$event.target']), 
+    __metadata('design:type', Function), 
+    __metadata('design:paramtypes', [Object]), 
+    __metadata('design:returntype', void 0)
+], Autosize.prototype, "onInput", null);
+Autosize = __decorate([
+    core_1.Directive({
+        selector: '[autosize]'
+    }), 
+    __metadata('design:paramtypes', [(typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
+], Autosize);
+exports.Autosize = Autosize;
+var _a;
+
+
+/***/ },
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62216,7 +62394,7 @@ var _a;
 
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62231,7 +62409,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = __webpack_require__(0);
-const data_service_1 = __webpack_require__(31);
+const data_service_1 = __webpack_require__(27);
 const page_controller_1 = __webpack_require__(34);
 /**
  * This directives habdles the screen resize and window scroll.
@@ -62294,7 +62472,7 @@ var _a, _b, _c;
 
 
 /***/ },
-/* 525 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62307,7 +62485,7 @@ __export(__webpack_require__(512));
 
 
 /***/ },
-/* 526 */
+/* 528 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -62318,81 +62496,81 @@ exports.environment = {
 
 
 /***/ },
-/* 527 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 // This file includes polyfills needed by Angular 2 and is loaded before
 // the app. You can add your own extra polyfills to this file.
-__webpack_require__(541);
-__webpack_require__(534);
-__webpack_require__(530);
+__webpack_require__(543);
 __webpack_require__(536);
-__webpack_require__(535);
-__webpack_require__(533);
 __webpack_require__(532);
-__webpack_require__(540);
-__webpack_require__(529);
-__webpack_require__(528);
 __webpack_require__(538);
-__webpack_require__(531);
-__webpack_require__(539);
 __webpack_require__(537);
+__webpack_require__(535);
+__webpack_require__(534);
 __webpack_require__(542);
+__webpack_require__(531);
+__webpack_require__(530);
+__webpack_require__(540);
+__webpack_require__(533);
+__webpack_require__(541);
+__webpack_require__(539);
+__webpack_require__(544);
 __webpack_require__(249);
 
-
-/***/ },
-/* 528 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(142);
-__webpack_require__(565);
-__webpack_require__(563);
-__webpack_require__(569);
-__webpack_require__(566);
-__webpack_require__(572);
-__webpack_require__(574);
-__webpack_require__(562);
-__webpack_require__(568);
-__webpack_require__(559);
-__webpack_require__(573);
-__webpack_require__(557);
-__webpack_require__(571);
-__webpack_require__(570);
-__webpack_require__(564);
-__webpack_require__(567);
-__webpack_require__(556);
-__webpack_require__(558);
-__webpack_require__(561);
-__webpack_require__(560);
-__webpack_require__(575);
-__webpack_require__(360);
-module.exports = __webpack_require__(12).Array;
-
-/***/ },
-/* 529 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(576);
-__webpack_require__(578);
-__webpack_require__(577);
-__webpack_require__(580);
-__webpack_require__(579);
-module.exports = Date;
 
 /***/ },
 /* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(581);
-__webpack_require__(583);
-__webpack_require__(582);
-module.exports = __webpack_require__(12).Function;
+__webpack_require__(142);
+__webpack_require__(567);
+__webpack_require__(565);
+__webpack_require__(571);
+__webpack_require__(568);
+__webpack_require__(574);
+__webpack_require__(576);
+__webpack_require__(564);
+__webpack_require__(570);
+__webpack_require__(561);
+__webpack_require__(575);
+__webpack_require__(559);
+__webpack_require__(573);
+__webpack_require__(572);
+__webpack_require__(566);
+__webpack_require__(569);
+__webpack_require__(558);
+__webpack_require__(560);
+__webpack_require__(563);
+__webpack_require__(562);
+__webpack_require__(577);
+__webpack_require__(360);
+module.exports = __webpack_require__(12).Array;
 
 /***/ },
 /* 531 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(578);
+__webpack_require__(580);
+__webpack_require__(579);
+__webpack_require__(582);
+__webpack_require__(581);
+module.exports = Date;
+
+/***/ },
+/* 532 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(583);
+__webpack_require__(585);
+__webpack_require__(584);
+module.exports = __webpack_require__(12).Function;
+
+/***/ },
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(141);
@@ -62402,11 +62580,9 @@ __webpack_require__(361);
 module.exports = __webpack_require__(12).Map;
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(584);
-__webpack_require__(585);
 __webpack_require__(586);
 __webpack_require__(587);
 __webpack_require__(588);
@@ -62422,17 +62598,17 @@ __webpack_require__(597);
 __webpack_require__(598);
 __webpack_require__(599);
 __webpack_require__(600);
+__webpack_require__(601);
+__webpack_require__(602);
 module.exports = __webpack_require__(12).Math;
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(601);
-__webpack_require__(611);
-__webpack_require__(612);
-__webpack_require__(602);
 __webpack_require__(603);
+__webpack_require__(613);
+__webpack_require__(614);
 __webpack_require__(604);
 __webpack_require__(605);
 __webpack_require__(606);
@@ -62440,73 +62616,75 @@ __webpack_require__(607);
 __webpack_require__(608);
 __webpack_require__(609);
 __webpack_require__(610);
+__webpack_require__(611);
+__webpack_require__(612);
 module.exports = __webpack_require__(12).Number;
-
-/***/ },
-/* 534 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(368);
-__webpack_require__(614);
-__webpack_require__(616);
-__webpack_require__(615);
-__webpack_require__(618);
-__webpack_require__(620);
-__webpack_require__(625);
-__webpack_require__(619);
-__webpack_require__(617);
-__webpack_require__(627);
-__webpack_require__(626);
-__webpack_require__(622);
-__webpack_require__(623);
-__webpack_require__(621);
-__webpack_require__(613);
-__webpack_require__(624);
-__webpack_require__(628);
-__webpack_require__(141);
-
-module.exports = __webpack_require__(12).Object;
-
-/***/ },
-/* 535 */
-/***/ function(module, exports, __webpack_require__) {
-
-__webpack_require__(629);
-module.exports = __webpack_require__(12).parseFloat;
 
 /***/ },
 /* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
+__webpack_require__(368);
+__webpack_require__(616);
+__webpack_require__(618);
+__webpack_require__(617);
+__webpack_require__(620);
+__webpack_require__(622);
+__webpack_require__(627);
+__webpack_require__(621);
+__webpack_require__(619);
+__webpack_require__(629);
+__webpack_require__(628);
+__webpack_require__(624);
+__webpack_require__(625);
+__webpack_require__(623);
+__webpack_require__(615);
+__webpack_require__(626);
 __webpack_require__(630);
-module.exports = __webpack_require__(12).parseInt;
+__webpack_require__(141);
+
+module.exports = __webpack_require__(12).Object;
 
 /***/ },
 /* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(631);
-__webpack_require__(632);
-__webpack_require__(633);
-__webpack_require__(634);
-__webpack_require__(635);
-__webpack_require__(638);
-__webpack_require__(636);
-__webpack_require__(637);
-__webpack_require__(639);
-__webpack_require__(640);
-__webpack_require__(641);
-__webpack_require__(642);
-__webpack_require__(644);
-__webpack_require__(643);
-module.exports = __webpack_require__(12).Reflect;
+module.exports = __webpack_require__(12).parseFloat;
 
 /***/ },
 /* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(645);
+__webpack_require__(632);
+module.exports = __webpack_require__(12).parseInt;
+
+/***/ },
+/* 539 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(633);
+__webpack_require__(634);
+__webpack_require__(635);
+__webpack_require__(636);
+__webpack_require__(637);
+__webpack_require__(640);
+__webpack_require__(638);
+__webpack_require__(639);
+__webpack_require__(641);
+__webpack_require__(642);
+__webpack_require__(643);
+__webpack_require__(644);
 __webpack_require__(646);
+__webpack_require__(645);
+module.exports = __webpack_require__(12).Reflect;
+
+/***/ },
+/* 540 */
+/***/ function(module, exports, __webpack_require__) {
+
+__webpack_require__(647);
+__webpack_require__(648);
 __webpack_require__(362);
 __webpack_require__(363);
 __webpack_require__(364);
@@ -62515,7 +62693,7 @@ __webpack_require__(366);
 module.exports = __webpack_require__(12).RegExp;
 
 /***/ },
-/* 539 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(141);
@@ -62525,31 +62703,31 @@ __webpack_require__(367);
 module.exports = __webpack_require__(12).Set;
 
 /***/ },
-/* 540 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(656);
-__webpack_require__(660);
-__webpack_require__(667);
+__webpack_require__(658);
+__webpack_require__(662);
+__webpack_require__(669);
 __webpack_require__(142);
-__webpack_require__(651);
-__webpack_require__(652);
-__webpack_require__(657);
-__webpack_require__(661);
-__webpack_require__(663);
-__webpack_require__(647);
-__webpack_require__(648);
-__webpack_require__(649);
-__webpack_require__(650);
 __webpack_require__(653);
 __webpack_require__(654);
-__webpack_require__(655);
-__webpack_require__(658);
 __webpack_require__(659);
-__webpack_require__(662);
-__webpack_require__(664);
+__webpack_require__(663);
 __webpack_require__(665);
+__webpack_require__(649);
+__webpack_require__(650);
+__webpack_require__(651);
+__webpack_require__(652);
+__webpack_require__(655);
+__webpack_require__(656);
+__webpack_require__(657);
+__webpack_require__(660);
+__webpack_require__(661);
+__webpack_require__(664);
 __webpack_require__(666);
+__webpack_require__(667);
+__webpack_require__(668);
 __webpack_require__(363);
 __webpack_require__(364);
 __webpack_require__(365);
@@ -62557,7 +62735,7 @@ __webpack_require__(366);
 module.exports = __webpack_require__(12).String;
 
 /***/ },
-/* 541 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(368);
@@ -62565,23 +62743,23 @@ __webpack_require__(141);
 module.exports = __webpack_require__(12).Symbol;
 
 /***/ },
-/* 542 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
-__webpack_require__(669);
-__webpack_require__(670);
-__webpack_require__(672);
 __webpack_require__(671);
+__webpack_require__(672);
 __webpack_require__(674);
 __webpack_require__(673);
-__webpack_require__(675);
 __webpack_require__(676);
+__webpack_require__(675);
 __webpack_require__(677);
+__webpack_require__(678);
+__webpack_require__(679);
 module.exports = __webpack_require__(12).Reflect;
 
 
 /***/ },
-/* 543 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62613,7 +62791,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
 };
 
 /***/ },
-/* 544 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62634,7 +62812,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
 };
 
 /***/ },
-/* 545 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 var forOf = __webpack_require__(135);
@@ -62647,7 +62825,7 @@ module.exports = function(iter, ITERATOR){
 
 
 /***/ },
-/* 546 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(9)
@@ -62668,18 +62846,18 @@ module.exports = function(original){
 };
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(546);
+var speciesConstructor = __webpack_require__(548);
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62691,7 +62869,7 @@ var redefineAll       = __webpack_require__(210)
   , anInstance        = __webpack_require__(198)
   , forOf             = __webpack_require__(135)
   , createArrayMethod = __webpack_require__(47)
-  , $has              = __webpack_require__(27)
+  , $has              = __webpack_require__(28)
   , arrayFind         = createArrayMethod(5)
   , arrayFindIndex    = createArrayMethod(6)
   , id                = 0;
@@ -62768,13 +62946,13 @@ module.exports = {
 };
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var anObject    = __webpack_require__(4)
-  , toPrimitive = __webpack_require__(66)
+  , toPrimitive = __webpack_require__(67)
   , NUMBER      = 'number';
 
 module.exports = function(hint){
@@ -62783,7 +62961,7 @@ module.exports = function(hint){
 };
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -62803,7 +62981,7 @@ module.exports = function(it){
 };
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -62824,7 +63002,7 @@ module.exports = function(fn, args, that){
 };
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(77)
@@ -62839,7 +63017,7 @@ module.exports = function(object, el){
 };
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 // all object keys, includes non-enumerable and symbols
@@ -62854,7 +63032,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
 };
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports) {
 
 // 7.2.9 SameValue(x, y)
@@ -62863,7 +63041,7 @@ module.exports = Object.is || function is(x, y){
 };
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 var global         = __webpack_require__(13)
@@ -62877,18 +63055,18 @@ module.exports = function(name){
 };
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(1);
 
-$export($export.P, 'Array', {copyWithin: __webpack_require__(543)});
+$export($export.P, 'Array', {copyWithin: __webpack_require__(545)});
 
 __webpack_require__(94)('copyWithin');
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62904,18 +63082,18 @@ $export($export.P + $export.F * !__webpack_require__(35)([].every, true), 'Array
 });
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = __webpack_require__(1);
 
-$export($export.P, 'Array', {fill: __webpack_require__(544)});
+$export($export.P, 'Array', {fill: __webpack_require__(546)});
 
 __webpack_require__(94)('fill');
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62931,7 +63109,7 @@ $export($export.P + $export.F * !__webpack_require__(35)([].filter, true), 'Arra
 });
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62951,7 +63129,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(94)(KEY);
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62971,7 +63149,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(94)(KEY);
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62988,7 +63166,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63032,7 +63210,7 @@ $export($export.S + $export.F * !__webpack_require__(347)(function(iter){ Array.
 
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63053,7 +63231,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(35)($nati
 });
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -63062,7 +63240,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Array', {isArray: __webpack_require__(204)});
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63080,7 +63258,7 @@ $export($export.P + $export.F * (__webpack_require__(95) != Object || !__webpack
 });
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63108,7 +63286,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(35)($nati
 });
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63124,7 +63302,7 @@ $export($export.P + $export.F * !__webpack_require__(35)([].map, true), 'Array',
 });
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63149,7 +63327,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63165,7 +63343,7 @@ $export($export.P + $export.F * !__webpack_require__(35)([].reduceRight, true), 
 });
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63181,14 +63359,14 @@ $export($export.P + $export.F * !__webpack_require__(35)([].reduce, true), 'Arra
 });
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var $export    = __webpack_require__(1)
   , html       = __webpack_require__(341)
-  , cof        = __webpack_require__(64)
+  , cof        = __webpack_require__(65)
   , toIndex    = __webpack_require__(98)
   , toLength   = __webpack_require__(32)
   , arraySlice = [].slice;
@@ -63215,7 +63393,7 @@ $export($export.P + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63231,13 +63409,13 @@ $export($export.P + $export.F * !__webpack_require__(35)([].some, true), 'Array'
 });
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var $export   = __webpack_require__(1)
-  , aFunction = __webpack_require__(63)
+  , aFunction = __webpack_require__(64)
   , toObject  = __webpack_require__(37)
   , fails     = __webpack_require__(6)
   , $sort     = [].sort
@@ -63260,13 +63438,13 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(212)('Array');
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -63275,7 +63453,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63309,14 +63487,14 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var $export     = __webpack_require__(1)
   , toObject    = __webpack_require__(37)
-  , toPrimitive = __webpack_require__(66);
+  , toPrimitive = __webpack_require__(67);
 
 $export($export.P + $export.F * __webpack_require__(6)(function(){
   return new Date(NaN).toJSON() !== null || Date.prototype.toJSON.call({toISOString: function(){ return 1; }}) !== 1;
@@ -63329,16 +63507,16 @@ $export($export.P + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(11)('toPrimitive')
   , proto        = Date.prototype;
 
-if(!(TO_PRIMITIVE in proto))__webpack_require__(49)(proto, TO_PRIMITIVE, __webpack_require__(549));
+if(!(TO_PRIMITIVE in proto))__webpack_require__(49)(proto, TO_PRIMITIVE, __webpack_require__(551));
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 var DateProto    = Date.prototype
@@ -63347,14 +63525,14 @@ var DateProto    = Date.prototype
   , $toString    = DateProto[TO_STRING]
   , getTime      = DateProto.getTime;
 if(new Date(NaN) + '' != INVALID_DATE){
-  __webpack_require__(28)(DateProto, TO_STRING, function toString(){
+  __webpack_require__(29)(DateProto, TO_STRING, function toString(){
     var value = getTime.call(this);
     return value === value ? $toString.call(this) : INVALID_DATE;
   });
 }
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
@@ -63363,7 +63541,7 @@ var $export = __webpack_require__(1);
 $export($export.P, 'Function', {bind: __webpack_require__(336)});
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63382,12 +63560,12 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(17).f(FunctionProto, HAS
 }});
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(17).f
-  , createDesc = __webpack_require__(65)
-  , has        = __webpack_require__(27)
+  , createDesc = __webpack_require__(66)
+  , has        = __webpack_require__(28)
   , FProto     = Function.prototype
   , nameRE     = /^\s*function ([^ (]*)/
   , NAME       = 'name';
@@ -63412,7 +63590,7 @@ NAME in FProto || __webpack_require__(21) && dP(FProto, NAME, {
 });
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
@@ -63435,7 +63613,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -63450,7 +63628,7 @@ function asinh(x){
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -63465,7 +63643,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
@@ -63479,7 +63657,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -63492,7 +63670,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -63506,7 +63684,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -63516,7 +63694,7 @@ var $export = __webpack_require__(1)
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
@@ -63547,7 +63725,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -63577,7 +63755,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 593 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -63599,7 +63777,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 594 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -63612,7 +63790,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -63621,7 +63799,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Math', {log1p: __webpack_require__(349)});
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -63634,7 +63812,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
@@ -63643,7 +63821,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Math', {sign: __webpack_require__(209)});
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
@@ -63663,7 +63841,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
@@ -63680,7 +63858,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -63693,16 +63871,16 @@ $export($export.S, 'Math', {
 });
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var global            = __webpack_require__(13)
-  , has               = __webpack_require__(27)
-  , cof               = __webpack_require__(64)
+  , has               = __webpack_require__(28)
+  , cof               = __webpack_require__(65)
   , inheritIfRequired = __webpack_require__(203)
-  , toPrimitive       = __webpack_require__(66)
+  , toPrimitive       = __webpack_require__(67)
   , fails             = __webpack_require__(6)
   , gOPN              = __webpack_require__(97).f
   , gOPD              = __webpack_require__(60).f
@@ -63764,11 +63942,11 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   }
   $Number.prototype = proto;
   proto.constructor = $Number;
-  __webpack_require__(28)(global, NUMBER, $Number);
+  __webpack_require__(29)(global, NUMBER, $Number);
 }
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -63777,7 +63955,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -63791,7 +63969,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -63800,7 +63978,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Number', {isInteger: __webpack_require__(344)});
 
 /***/ },
-/* 605 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -63813,7 +63991,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ },
-/* 606 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
@@ -63828,7 +64006,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ },
-/* 607 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -63837,7 +64015,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
 /***/ },
-/* 608 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -63846,7 +64024,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
 /***/ },
-/* 609 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(1)
@@ -63855,7 +64033,7 @@ var $export     = __webpack_require__(1)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
 
 /***/ },
-/* 610 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(1)
@@ -63864,7 +64042,7 @@ var $export   = __webpack_require__(1)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
 
 /***/ },
-/* 611 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63983,7 +64161,7 @@ $export($export.P + $export.F * (!!$toFixed && (
 });
 
 /***/ },
-/* 612 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64007,7 +64185,7 @@ $export($export.P + $export.F * ($fails(function(){
 });
 
 /***/ },
-/* 613 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
@@ -64016,7 +64194,7 @@ var $export = __webpack_require__(1);
 $export($export.S + $export.F, 'Object', {assign: __webpack_require__(350)});
 
 /***/ },
-/* 614 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1)
@@ -64024,7 +64202,7 @@ var $export = __webpack_require__(1)
 $export($export.S, 'Object', {create: __webpack_require__(76)});
 
 /***/ },
-/* 615 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -64032,7 +64210,7 @@ var $export = __webpack_require__(1);
 $export($export.S + $export.F * !__webpack_require__(21), 'Object', {defineProperties: __webpack_require__(351)});
 
 /***/ },
-/* 616 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -64040,7 +64218,7 @@ var $export = __webpack_require__(1);
 $export($export.S + $export.F * !__webpack_require__(21), 'Object', {defineProperty: __webpack_require__(17).f});
 
 /***/ },
-/* 617 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -64054,7 +64232,7 @@ __webpack_require__(41)('freeze', function($freeze){
 });
 
 /***/ },
-/* 618 */
+/* 620 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -64068,7 +64246,7 @@ __webpack_require__(41)('getOwnPropertyDescriptor', function(){
 });
 
 /***/ },
-/* 619 */
+/* 621 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
@@ -64077,7 +64255,7 @@ __webpack_require__(41)('getOwnPropertyNames', function(){
 });
 
 /***/ },
-/* 620 */
+/* 622 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -64091,7 +64269,7 @@ __webpack_require__(41)('getPrototypeOf', function(){
 });
 
 /***/ },
-/* 621 */
+/* 623 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -64104,7 +64282,7 @@ __webpack_require__(41)('isExtensible', function($isExtensible){
 });
 
 /***/ },
-/* 622 */
+/* 624 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -64117,7 +64295,7 @@ __webpack_require__(41)('isFrozen', function($isFrozen){
 });
 
 /***/ },
-/* 623 */
+/* 625 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -64130,15 +64308,15 @@ __webpack_require__(41)('isSealed', function($isSealed){
 });
 
 /***/ },
-/* 624 */
+/* 626 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
 var $export = __webpack_require__(1);
-$export($export.S, 'Object', {is: __webpack_require__(554)});
+$export($export.S, 'Object', {is: __webpack_require__(556)});
 
 /***/ },
-/* 625 */
+/* 627 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -64152,7 +64330,7 @@ __webpack_require__(41)('keys', function(){
 });
 
 /***/ },
-/* 626 */
+/* 628 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -64166,7 +64344,7 @@ __webpack_require__(41)('preventExtensions', function($preventExtensions){
 });
 
 /***/ },
-/* 627 */
+/* 629 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -64180,7 +64358,7 @@ __webpack_require__(41)('seal', function($seal){
 });
 
 /***/ },
-/* 628 */
+/* 630 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
@@ -64188,7 +64366,7 @@ var $export = __webpack_require__(1);
 $export($export.S, 'Object', {setPrototypeOf: __webpack_require__(211).set});
 
 /***/ },
-/* 629 */
+/* 631 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(1)
@@ -64197,7 +64375,7 @@ var $export     = __webpack_require__(1)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
 
 /***/ },
-/* 630 */
+/* 632 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(1)
@@ -64206,12 +64384,12 @@ var $export   = __webpack_require__(1)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
 
 /***/ },
-/* 631 */
+/* 633 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $export   = __webpack_require__(1)
-  , aFunction = __webpack_require__(63)
+  , aFunction = __webpack_require__(64)
   , anObject  = __webpack_require__(4)
   , rApply    = (__webpack_require__(13).Reflect || {}).apply
   , fApply    = Function.apply;
@@ -64227,13 +64405,13 @@ $export($export.S + $export.F * !__webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 632 */
+/* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
 var $export    = __webpack_require__(1)
   , create     = __webpack_require__(76)
-  , aFunction  = __webpack_require__(63)
+  , aFunction  = __webpack_require__(64)
   , anObject   = __webpack_require__(4)
   , isObject   = __webpack_require__(9)
   , fails      = __webpack_require__(6)
@@ -64279,14 +64457,14 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ },
-/* 633 */
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var dP          = __webpack_require__(17)
   , $export     = __webpack_require__(1)
   , anObject    = __webpack_require__(4)
-  , toPrimitive = __webpack_require__(66);
+  , toPrimitive = __webpack_require__(67);
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
 $export($export.S + $export.F * __webpack_require__(6)(function(){
@@ -64306,7 +64484,7 @@ $export($export.S + $export.F * __webpack_require__(6)(function(){
 });
 
 /***/ },
-/* 634 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -64322,7 +64500,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 635 */
+/* 637 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64354,7 +64532,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 636 */
+/* 638 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -64369,7 +64547,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 637 */
+/* 639 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -64384,13 +64562,13 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 638 */
+/* 640 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var gOPD           = __webpack_require__(60)
   , getPrototypeOf = __webpack_require__(51)
-  , has            = __webpack_require__(27)
+  , has            = __webpack_require__(28)
   , $export        = __webpack_require__(1)
   , isObject       = __webpack_require__(9)
   , anObject       = __webpack_require__(4);
@@ -64410,7 +64588,7 @@ function get(target, propertyKey/*, receiver*/){
 $export($export.S, 'Reflect', {get: get});
 
 /***/ },
-/* 639 */
+/* 641 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -64423,7 +64601,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 640 */
+/* 642 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -64439,16 +64617,16 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 641 */
+/* 643 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
 var $export = __webpack_require__(1);
 
-$export($export.S, 'Reflect', {ownKeys: __webpack_require__(553)});
+$export($export.S, 'Reflect', {ownKeys: __webpack_require__(555)});
 
 /***/ },
-/* 642 */
+/* 644 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -64469,7 +64647,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 643 */
+/* 645 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -64489,16 +64667,16 @@ if(setProto)$export($export.S, 'Reflect', {
 });
 
 /***/ },
-/* 644 */
+/* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var dP             = __webpack_require__(17)
   , gOPD           = __webpack_require__(60)
   , getPrototypeOf = __webpack_require__(51)
-  , has            = __webpack_require__(27)
+  , has            = __webpack_require__(28)
   , $export        = __webpack_require__(1)
-  , createDesc     = __webpack_require__(65)
+  , createDesc     = __webpack_require__(66)
   , anObject       = __webpack_require__(4)
   , isObject       = __webpack_require__(9);
 
@@ -64525,7 +64703,7 @@ function set(target, propertyKey, V/*, receiver*/){
 $export($export.S, 'Reflect', {set: set});
 
 /***/ },
-/* 645 */
+/* 647 */
 /***/ function(module, exports, __webpack_require__) {
 
 var global            = __webpack_require__(13)
@@ -64567,13 +64745,13 @@ if(__webpack_require__(21) && (!CORRECT_NEW || __webpack_require__(6)(function()
   for(var keys = gOPN(Base), i = 0; keys.length > i; )proxy(keys[i++]);
   proto.constructor = $RegExp;
   $RegExp.prototype = proto;
-  __webpack_require__(28)(global, 'RegExp', $RegExp);
+  __webpack_require__(29)(global, 'RegExp', $RegExp);
 }
 
 __webpack_require__(212)('RegExp');
 
 /***/ },
-/* 646 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64586,7 +64764,7 @@ var anObject    = __webpack_require__(4)
   , $toString   = /./[TO_STRING];
 
 var define = function(fn){
-  __webpack_require__(28)(RegExp.prototype, TO_STRING, fn, true);
+  __webpack_require__(29)(RegExp.prototype, TO_STRING, fn, true);
 };
 
 // 21.2.5.14 RegExp.prototype.toString()
@@ -64604,41 +64782,15 @@ if(__webpack_require__(6)(function(){ return $toString.call({source: 'a', flags:
 }
 
 /***/ },
-/* 647 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-// B.2.3.2 String.prototype.anchor(name)
-__webpack_require__(29)('anchor', function(createHTML){
-  return function anchor(name){
-    return createHTML(this, 'a', 'name', name);
-  }
-});
-
-/***/ },
-/* 648 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-// B.2.3.3 String.prototype.big()
-__webpack_require__(29)('big', function(createHTML){
-  return function big(){
-    return createHTML(this, 'big', '', '');
-  }
-});
-
-/***/ },
 /* 649 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
-// B.2.3.4 String.prototype.blink()
-__webpack_require__(29)('blink', function(createHTML){
-  return function blink(){
-    return createHTML(this, 'blink', '', '');
+// B.2.3.2 String.prototype.anchor(name)
+__webpack_require__(30)('anchor', function(createHTML){
+  return function anchor(name){
+    return createHTML(this, 'a', 'name', name);
   }
 });
 
@@ -64648,15 +64800,41 @@ __webpack_require__(29)('blink', function(createHTML){
 
 "use strict";
 'use strict';
+// B.2.3.3 String.prototype.big()
+__webpack_require__(30)('big', function(createHTML){
+  return function big(){
+    return createHTML(this, 'big', '', '');
+  }
+});
+
+/***/ },
+/* 651 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+// B.2.3.4 String.prototype.blink()
+__webpack_require__(30)('blink', function(createHTML){
+  return function blink(){
+    return createHTML(this, 'blink', '', '');
+  }
+});
+
+/***/ },
+/* 652 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
 // B.2.3.5 String.prototype.bold()
-__webpack_require__(29)('bold', function(createHTML){
+__webpack_require__(30)('bold', function(createHTML){
   return function bold(){
     return createHTML(this, 'b', '', '');
   }
 });
 
 /***/ },
-/* 651 */
+/* 653 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64671,7 +64849,7 @@ $export($export.P, 'String', {
 });
 
 /***/ },
-/* 652 */
+/* 654 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64697,46 +64875,46 @@ $export($export.P + $export.F * __webpack_require__(201)(ENDS_WITH), 'String', {
 });
 
 /***/ },
-/* 653 */
+/* 655 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.6 String.prototype.fixed()
-__webpack_require__(29)('fixed', function(createHTML){
+__webpack_require__(30)('fixed', function(createHTML){
   return function fixed(){
     return createHTML(this, 'tt', '', '');
   }
 });
 
 /***/ },
-/* 654 */
+/* 656 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.7 String.prototype.fontcolor(color)
-__webpack_require__(29)('fontcolor', function(createHTML){
+__webpack_require__(30)('fontcolor', function(createHTML){
   return function fontcolor(color){
     return createHTML(this, 'font', 'color', color);
   }
 });
 
 /***/ },
-/* 655 */
+/* 657 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.8 String.prototype.fontsize(size)
-__webpack_require__(29)('fontsize', function(createHTML){
+__webpack_require__(30)('fontsize', function(createHTML){
   return function fontsize(size){
     return createHTML(this, 'font', 'size', size);
   }
 });
 
 /***/ },
-/* 656 */
+/* 658 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export        = __webpack_require__(1)
@@ -64764,7 +64942,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ },
-/* 657 */
+/* 659 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64782,33 +64960,33 @@ $export($export.P + $export.F * __webpack_require__(201)(INCLUDES), 'String', {
 });
 
 /***/ },
-/* 658 */
+/* 660 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.9 String.prototype.italics()
-__webpack_require__(29)('italics', function(createHTML){
+__webpack_require__(30)('italics', function(createHTML){
   return function italics(){
     return createHTML(this, 'i', '', '');
   }
 });
 
 /***/ },
-/* 659 */
+/* 661 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.10 String.prototype.link(url)
-__webpack_require__(29)('link', function(createHTML){
+__webpack_require__(30)('link', function(createHTML){
   return function link(url){
     return createHTML(this, 'a', 'href', url);
   }
 });
 
 /***/ },
-/* 660 */
+/* 662 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(1)
@@ -64831,7 +65009,7 @@ $export($export.S, 'String', {
 });
 
 /***/ },
-/* 661 */
+/* 663 */
 /***/ function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -64842,20 +65020,20 @@ $export($export.P, 'String', {
 });
 
 /***/ },
-/* 662 */
+/* 664 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.11 String.prototype.small()
-__webpack_require__(29)('small', function(createHTML){
+__webpack_require__(30)('small', function(createHTML){
   return function small(){
     return createHTML(this, 'small', '', '');
   }
 });
 
 /***/ },
-/* 663 */
+/* 665 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64879,46 +65057,46 @@ $export($export.P + $export.F * __webpack_require__(201)(STARTS_WITH), 'String',
 });
 
 /***/ },
-/* 664 */
+/* 666 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.12 String.prototype.strike()
-__webpack_require__(29)('strike', function(createHTML){
+__webpack_require__(30)('strike', function(createHTML){
   return function strike(){
     return createHTML(this, 'strike', '', '');
   }
 });
 
 /***/ },
-/* 665 */
+/* 667 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.13 String.prototype.sub()
-__webpack_require__(29)('sub', function(createHTML){
+__webpack_require__(30)('sub', function(createHTML){
   return function sub(){
     return createHTML(this, 'sub', '', '');
   }
 });
 
 /***/ },
-/* 666 */
+/* 668 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 // B.2.3.14 String.prototype.sup()
-__webpack_require__(29)('sup', function(createHTML){
+__webpack_require__(30)('sup', function(createHTML){
   return function sup(){
     return createHTML(this, 'sup', '', '');
   }
 });
 
 /***/ },
-/* 667 */
+/* 669 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64931,16 +65109,16 @@ __webpack_require__(140)('trim', function($trim){
 });
 
 /***/ },
-/* 668 */
+/* 670 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
 var each         = __webpack_require__(47)(0)
-  , redefine     = __webpack_require__(28)
+  , redefine     = __webpack_require__(29)
   , meta         = __webpack_require__(59)
   , assign       = __webpack_require__(350)
-  , weak         = __webpack_require__(548)
+  , weak         = __webpack_require__(550)
   , isObject     = __webpack_require__(9)
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
@@ -64993,7 +65171,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 }
 
 /***/ },
-/* 669 */
+/* 671 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(50)
@@ -65006,7 +65184,7 @@ metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue
 }});
 
 /***/ },
-/* 670 */
+/* 672 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(50)
@@ -65026,11 +65204,11 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
 }});
 
 /***/ },
-/* 671 */
+/* 673 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Set                     = __webpack_require__(367)
-  , from                    = __webpack_require__(545)
+  , from                    = __webpack_require__(547)
   , metadata                = __webpack_require__(50)
   , anObject                = __webpack_require__(4)
   , getPrototypeOf          = __webpack_require__(51)
@@ -65050,7 +65228,7 @@ metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */)
 }});
 
 /***/ },
-/* 672 */
+/* 674 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(50)
@@ -65072,7 +65250,7 @@ metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ },
-/* 673 */
+/* 675 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata                = __webpack_require__(50)
@@ -65085,7 +65263,7 @@ metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetK
 }});
 
 /***/ },
-/* 674 */
+/* 676 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(50)
@@ -65099,7 +65277,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ },
-/* 675 */
+/* 677 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(50)
@@ -65120,7 +65298,7 @@ metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ },
-/* 676 */
+/* 678 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(50)
@@ -65134,12 +65312,12 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ },
-/* 677 */
+/* 679 */
 /***/ function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(50)
   , anObject                  = __webpack_require__(4)
-  , aFunction                 = __webpack_require__(63)
+  , aFunction                 = __webpack_require__(64)
   , toMetaKey                 = metadata.key
   , ordinaryDefineOwnMetadata = metadata.set;
 
@@ -65154,9 +65332,9 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 }});
 
 /***/ },
-/* 678 */,
-/* 679 */,
-/* 680 */
+/* 680 */,
+/* 681 */,
+/* 682 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65170,7 +65348,7 @@ exports.AccordionModule = accordion_module_1.AccordionModule;
 
 
 /***/ },
-/* 681 */
+/* 683 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65182,7 +65360,7 @@ exports.AlertModule = alert_module_1.AlertModule;
 
 
 /***/ },
-/* 682 */
+/* 684 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65196,7 +65374,7 @@ exports.ButtonsModule = buttons_module_1.ButtonsModule;
 
 
 /***/ },
-/* 683 */
+/* 685 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65210,7 +65388,7 @@ exports.SlideComponent = slide_component_1.SlideComponent;
 
 
 /***/ },
-/* 684 */
+/* 686 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65222,7 +65400,7 @@ exports.CollapseModule = collapse_module_1.CollapseModule;
 
 
 /***/ },
-/* 685 */
+/* 687 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65242,12 +65420,12 @@ exports.DatepickerModule = datepicker_module_1.DatepickerModule;
 
 
 /***/ },
-/* 686 */
+/* 688 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var moment = __webpack_require__(703);
+var moment = __webpack_require__(705);
 var DateFormatter = (function () {
     function DateFormatter() {
     }
@@ -65260,7 +65438,7 @@ exports.DateFormatter = DateFormatter;
 
 
 /***/ },
-/* 687 */
+/* 689 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65390,7 +65568,7 @@ var _a;
 
 
 /***/ },
-/* 688 */
+/* 690 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65458,7 +65636,7 @@ exports.MonthPickerComponent = MonthPickerComponent;
 
 
 /***/ },
-/* 689 */
+/* 691 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65529,7 +65707,7 @@ exports.YearPickerComponent = YearPickerComponent;
 
 
 /***/ },
-/* 690 */
+/* 692 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65545,7 +65723,7 @@ exports.DropdownModule = dropdown_module_1.DropdownModule;
 
 
 /***/ },
-/* 691 */
+/* 693 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -65621,7 +65799,7 @@ exports.dropdownService = new DropdownService();
 
 
 /***/ },
-/* 692 */
+/* 694 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65674,7 +65852,7 @@ exports.Ng2BootstrapModule = Ng2BootstrapModule;
 
 
 /***/ },
-/* 693 */
+/* 695 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65690,7 +65868,7 @@ exports.ModalModule = modal_module_1.ModalModule;
 
 
 /***/ },
-/* 694 */
+/* 696 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65704,7 +65882,7 @@ exports.PaginationModule = pagination_module_1.PaginationModule;
 
 
 /***/ },
-/* 695 */
+/* 697 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65720,7 +65898,7 @@ exports.ProgressbarModule = progressbar_module_1.ProgressbarModule;
 
 
 /***/ },
-/* 696 */
+/* 698 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65732,7 +65910,7 @@ exports.RatingModule = rating_module_1.RatingModule;
 
 
 /***/ },
-/* 697 */
+/* 699 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65748,7 +65926,7 @@ exports.TabsModule = tabs_module_1.TabsModule;
 
 
 /***/ },
-/* 698 */
+/* 700 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65760,7 +65938,7 @@ exports.TimepickerModule = timepicker_module_1.TimepickerModule;
 
 
 /***/ },
-/* 699 */
+/* 701 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65774,7 +65952,7 @@ exports.TooltipModule = tooltip_module_1.TooltipModule;
 
 
 /***/ },
-/* 700 */
+/* 702 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65790,7 +65968,7 @@ exports.TypeaheadModule = typeahead_module_1.TypeaheadModule;
 
 
 /***/ },
-/* 701 */
+/* 703 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -66624,7 +66802,7 @@ exports.latinMap = {
 
 
 /***/ },
-/* 702 */
+/* 704 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66653,7 +66831,7 @@ exports.Utils = Utils;
 
 
 /***/ },
-/* 703 */
+/* 705 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -70890,88 +71068,94 @@ exports.Utils = Utils;
     return _moment;
 
 }));
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(765)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(768)(module)))
 
 /***/ },
-/* 704 */,
-/* 705 */,
 /* 706 */,
-/* 707 */
+/* 707 */,
+/* 708 */,
+/* 709 */
 /***/ function(module, exports) {
 
 module.exports = ""
 
 /***/ },
-/* 708 */,
-/* 709 */,
 /* 710 */,
-/* 711 */
-/***/ function(module, exports) {
-
-module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n        </div>\r\n\r\n    </div>\r\n    <br>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <legend-component class=\"legend-component\"></legend-component>\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
-
-/***/ },
-/* 712 */
-/***/ function(module, exports) {
-
-module.exports = "<div align=\"center\" >\r\n    <!--<div align=\"center\" (click)=\"clickHandler($event)\">-->\r\n    <div class=\"row  col-sm-offset-0\" id=\"images\">\r\n        <div class=\"col-sm-3\">\r\n            <img class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsRS.png\" id=\"RSimg\" usemap=\"#RS\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"RS\">\r\n                <area  id=\"RS\" shape=\"poly\" coords=\"332,79,324,88,314,99,303,111,292,123,283,131,257,153,242,164,229,174,219,181,207,189,193,198,183,206,172,215,163,224,151,239,141,253,133,270,127,290,125,311,125,337,128,359,133,377,141,393,151,410,161,425,174,439,184,449,201,461,218,469,241,477,264,482,289,486,310,487,324,486,332,485,336,484\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap  src=\"assets/images/map/biradsRF.png\" id=\"RFimg\" usemap=\"#RF\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"RF\">\r\n                <area id=\"RF\" shape=\"poly\" coords=\"26,67,26,68,30,82,37,102,43,121,50,147,56,171,63,197,67,215,72,241,76,265,80,286,82,306,83,325,85,348,90,366,97,384,106,401,116,418,129,434,142,446,157,458,175,468,195,476,212,481,229,484,254,486,276,486,294,484,312,480,338,469,356,459,371,448,385,434,395,423,407,404,416,387,427,362,432,341,433,323,433,257,433,224,434,189,434,153,434,120,432,88,432,73\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsLF.png\" id=\"LFimg\" usemap=\"#LF\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"LF\">\r\n                <area id=\"LF\" shape=\"poly\" coords=\"427,68,421,84,417,99,409,121,403,145,397,167,391,189,387,205,384,221,381,238,378,257,374,276,371,294,370,312,369,329,367,348,363,365,354,388,346,402,334,421,322,434,308,448,296,458,280,467,267,473,251,478,236,483,218,486,202,486,188,486,169,484,150,481,134,477,121,472,107,466,95,458,83,450,71,439,59,425,48,410,39,394,31,378,27,363,22,349,19,332,18,314,18,304,18,286,20,268,19,257,19,222,19,187,19,158,20,128,20,78,20,69\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsLS.png\" id=\"LSimg\" usemap=\"#LS\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"LS\">\r\n                <area id=\"LS\" shape=\"poly\" coords=\"120,83,133,100,149,116,167,132,183,149,207,166,227,180,245,193,265,207,286,224,299,239,307,252,318,272,325,293,327,317,327,339,323,366,315,389,305,408,291,428,279,443,264,456,250,466,237,472,217,479,202,482,179,486,157,488,137,488,126,489,121,490\" />\r\n            </map>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n<mass-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[0]\"></mass-component>\r\n<distortion-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[1]\"></distortion-component>\r\n<asymmetries-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[2]\"></asymmetries-component>\r\n<calcification-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[3]\"></calcification-component>\r\n<other-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[4]\"></other-component>\r\n\r\n\r\n\r\n\r\n"
-
-/***/ },
+/* 711 */,
+/* 712 */,
 /* 713 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:keypress)=\"hotKeys($event.keyCode)\">\r\n    <ul class=\"nav nav-pills nav-justified\">\r\n        <li *ngFor=\"let element of dataservice.getMainMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">\r\n            <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n            <a>{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>\r\n        </li>\r\n        <!--<li  [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{otherHeaderName()}}\" >-->\r\n            <!--<a href=\"#\" class=\"dropdown\" dropdown>-->\r\n                <!--<div class=\"dropdown-toggle\" dropdownToggle>{{otherHeaderName(true)}}<span class=\"caret\"></span> </div>-->\r\n                <!--<ul class=\"dropdown-menu\">-->\r\n                    <!--<li *ngFor=\"let element of dataservice.getOtherMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">-->\r\n                        <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n                    <!--</li>-->\r\n                <!--</ul>-->\r\n            <!--</a>-->\r\n        <!--</li>-->\r\n    </ul>\r\n</div>\r\n"
+module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n\r\n        </div>\r\n    </div>\r\n    <br>\r\n    <legend-component class=\"legend-component\"></legend-component>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-5\">\r\n            <screening-component *ngIf=\"showflemishreport\"></screening-component>\r\n        </div>\r\n    </div>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 714 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.ASYMMETRY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of asymmetryarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(element)\" [(ngModel)]=\"asymmetry\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.ASYMMETRY.FINDING.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "<div align=\"center\" >\r\n    <!--<div align=\"center\" (click)=\"clickHandler($event)\">-->\r\n    <div class=\"row  col-sm-offset-0\" id=\"images\">\r\n        <div class=\"col-sm-3\">\r\n            <img class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsRS.png\" id=\"RSimg\" usemap=\"#RS\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"RS\">\r\n                <area  id=\"RS\" shape=\"poly\" coords=\"332,79,324,88,314,99,303,111,292,123,283,131,257,153,242,164,229,174,219,181,207,189,193,198,183,206,172,215,163,224,151,239,141,253,133,270,127,290,125,311,125,337,128,359,133,377,141,393,151,410,161,425,174,439,184,449,201,461,218,469,241,477,264,482,289,486,310,487,324,486,332,485,336,484\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap  src=\"assets/images/map/biradsRF.png\" id=\"RFimg\" usemap=\"#RF\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"RF\">\r\n                <area id=\"RF\" shape=\"poly\" coords=\"26,67,26,68,30,82,37,102,43,121,50,147,56,171,63,197,67,215,72,241,76,265,80,286,82,306,83,325,85,348,90,366,97,384,106,401,116,418,129,434,142,446,157,458,175,468,195,476,212,481,229,484,254,486,276,486,294,484,312,480,338,469,356,459,371,448,385,434,395,423,407,404,416,387,427,362,432,341,433,323,433,257,433,224,434,189,434,153,434,120,432,88,432,73\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsLF.png\" id=\"LFimg\" usemap=\"#LF\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"LF\">\r\n                <area id=\"LF\" shape=\"poly\" coords=\"427,68,421,84,417,99,409,121,403,145,397,167,391,189,387,205,384,221,381,238,378,257,374,276,371,294,370,312,369,329,367,348,363,365,354,388,346,402,334,421,322,434,308,448,296,458,280,467,267,473,251,478,236,483,218,486,202,486,188,486,169,484,150,481,134,477,121,472,107,466,95,458,83,450,71,439,59,425,48,410,39,394,31,378,27,363,22,349,19,332,18,314,18,304,18,286,20,268,19,257,19,222,19,187,19,158,20,128,20,78,20,69\" />\r\n            </map>\r\n        </div>\r\n        <div class=\"col-sm-3\">\r\n            <img  class=\"img-responsive map-image\" imagemap src=\"assets/images/map/biradsLS.png\" id=\"LSimg\" usemap=\"#LS\"/>\r\n            <map (click)=\"clickHandler($event)\" name=\"LS\">\r\n                <area id=\"LS\" shape=\"poly\" coords=\"120,83,133,100,149,116,167,132,183,149,207,166,227,180,245,193,265,207,286,224,299,239,307,252,318,272,325,293,327,317,327,339,323,366,315,389,305,408,291,428,279,443,264,456,250,466,237,472,217,479,202,482,179,486,157,488,137,488,126,489,121,490\" />\r\n            </map>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n<mass-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[0]\"></mass-component>\r\n<distortion-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[1]\"></distortion-component>\r\n<asymmetries-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[2]\"></asymmetries-component>\r\n<calcification-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[3]\"></calcification-component>\r\n<other-component [show]=\"pagectrl.getShowmenu() == dataservice.methods[4]\"></other-component>\r\n\r\n\r\n\r\n\r\n"
 
 /***/ },
 /* 715 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0], this.benign)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME\"|translate:{value:this.togglebutton} }} <button type=\"button\" class=\"btn btn-default\" (click)=\"this.benign = !this.benign\">{{\"TABLE.CALCIFICATION.MORPHOLOGY.MOREBUTTON\" | translate}}</button></h4>\r\n            </div>\r\n            <div class=\"modal-body\"  (keydown)=\"hotKeys($event.keyCode, this.menus[0])\">\r\n                <div *ngIf=\"this.benign\">\r\n                    <label *ngFor=\"let element of morphologyarraybenign\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"morphology\" btnRadio=\"{{element}}\">\r\n                    {{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n                <div  *ngIf=\"!this.benign\">\r\n                    <label *ngFor=\"let element of morphologyarraynotbenign\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"morphology\" btnRadio=\"{{element}}\">\r\n                    {{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of distributionarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"distribution\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + element.toLocaleUpperCase() | translate}}</label>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "<div (window:keypress)=\"hotKeys($event.keyCode)\">\r\n    <ul class=\"nav nav-pills nav-justified\">\r\n        <li *ngFor=\"let element of dataservice.getMainMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">\r\n            <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n            <a>{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>\r\n        </li>\r\n        <!--<li  [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{otherHeaderName()}}\" >-->\r\n            <!--<a href=\"#\" class=\"dropdown\" dropdown>-->\r\n                <!--<div class=\"dropdown-toggle\" dropdownToggle>{{otherHeaderName(true)}}<span class=\"caret\"></span> </div>-->\r\n                <!--<ul class=\"dropdown-menu\">-->\r\n                    <!--<li *ngFor=\"let element of dataservice.getOtherMethods()\" [(ngModel)]=\"this.pagectrl.method\" btnRadio=\"{{element}}\">-->\r\n                        <!--<a href=\"#\">{{'SIDEBAR.' + element.toLocaleUpperCase() | translate}}</a>-->\r\n                    <!--</li>-->\r\n                <!--</ul>-->\r\n            <!--</a>-->\r\n        <!--</li>-->\r\n    </ul>\r\n</div>\r\n"
 
 /***/ },
 /* 716 */
 /***/ function(module, exports) {
 
-module.exports = ""
+module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.ASYMMETRY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of asymmetryarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(element)\" [(ngModel)]=\"asymmetry\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.ASYMMETRY.FINDING.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 717 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0])\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of shapearray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"shape\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.SHAPE.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of marginarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"margin\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.MARGIN.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[2])\" bsModal #modal3=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of densityarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[2], element)\" [(ngModel)]=\"density\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.DENSITY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0], this.benign)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.CALCIFICATION.MORPHOLOGY.HEADERNAME\"|translate:{value:this.togglebutton} }} <button type=\"button\" class=\"btn btn-default\" (click)=\"this.benign = !this.benign\">{{\"TABLE.CALCIFICATION.MORPHOLOGY.MOREBUTTON\" | translate}}</button></h4>\r\n            </div>\r\n            <div class=\"modal-body\"  (keydown)=\"hotKeys($event.keyCode, this.menus[0])\">\r\n                <div *ngIf=\"this.benign\">\r\n                    <label *ngFor=\"let element of morphologyarraybenign\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"morphology\" btnRadio=\"{{element}}\">\r\n                    {{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n                <div  *ngIf=\"!this.benign\">\r\n                    <label *ngFor=\"let element of morphologyarraynotbenign\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"morphology\" btnRadio=\"{{element}}\">\r\n                    {{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of distributionarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"distribution\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + element.toLocaleUpperCase() | translate}}</label>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 718 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.OTHER.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of otherarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(element)\" [(ngModel)]=\"other\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.OTHER.FINDING.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = ""
 
 /***/ },
 /* 719 */
 /***/ function(module, exports) {
 
-module.exports = "<table class=\"table\">\r\n    <tbody>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.RIGHT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.right\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.right\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.LEFT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.left\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.left\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.COMPOSITION.TITLE\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of composition\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.composition\" btnRadio=\"{{element}}\">\r\n                    {{\"CLASSIFICATION.COMPOSITION.\" + element | translate}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n\r\n\r\n"
+module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0])\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of shapearray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"shape\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.SHAPE.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of marginarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"margin\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.MARGIN.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[2])\" bsModal #modal3=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of densityarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[2], element)\" [(ngModel)]=\"density\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.DENSITY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 720 */
 /***/ function(module, exports) {
 
-module.exports = "\r\n<!--<div class=\"row \">-->\r\n<!--<div>-->\r\n<!--<select #langSelect (change)=\"translate.use(langSelect.value)\">-->\r\n<!--<option *ngFor=\"let lang of translate.getLangs()\" [value]=\"lang\" [selected]=\"lang === translate.currentLang\">{{ lang }}</option>-->\r\n<!--</select>-->\r\n<!--</div>-->\r\n<div *ngIf=\"!show\" class=\"glyphicon glyphicon-info-sign\" (click)=\"show = !show\">\r\n</div>\r\n<div *ngIf=\"show\" class=\"well\">\r\n    <div class=\"glyphicon glyphicon-remove\" (click)=\"show = !show\"></div>\r\n    <table class=\"table table-bordered wrapper\">\r\n        <thead>\r\n        <tr>\r\n            <th align=\"center\">{{'LEGEND.HEADER.ASSESSMENT' | translate}}</th>\r\n            <th align=\"center\">{{'LEGEND.HEADER.MANAGEMENT' | translate}}</th>\r\n            <th align=\"center\">{{'LEGEND.HEADER.LIKELIHOOD' | translate}}</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let category of categories\">\r\n            <td>{{'LEGEND.' + category + '.ASSESSMENT' | translate}}</td>\r\n            <td>{{'LEGEND.' + category + '.MANAGEMENT' | translate}}</td>\r\n            <td>{{'LEGEND.' + category + '.LIKELIHOOD' | translate}}</td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n<!--</div>-->\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode)\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.OTHER.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of otherarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(element)\" [(ngModel)]=\"other\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.OTHER.FINDING.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 721 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"table-container wrapper\">\r\n    <div *ngIf=\"dataservice.getData('mass').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.MASS.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SIZE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('mass'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'mass', i)\" (click)=\"setDistance(distance.value, 'mass', i)\"/></td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #size (keyup)=\"setSize(size.value, 'mass', i)\" (click)=\"setSize(size.value, 'mass', i)\"/></td>\r\n                <td>{{\"TABLE.MASS.SHAPE.\" + entry.shape.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.MARGIN.\" + entry.margin.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.DENSITY.\" + entry.density.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'mass')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('distortion').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.DISTORTION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('distortion'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'distortion', i)\" (click)=\"setDistance(distance.value, 'distortion', i)\"/></td>\r\n                <td>{{\"TABLE.DISTORTION.FINDING.\" + entry.distortion.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'distortion')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('asymmetry').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b><th>{{\"TABLE.ASYMMETRY.NAME\" | translate}}</th></b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('asymmetry'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'asymmetry', i)\" (click)=\"setDistance(distance.value, 'asymmetry', i)\"/></td>\r\n                <td>{{\"TABLE.ASYMMETRY.FINDING.\" + entry.asymmetry.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'asymmetry')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('calcification').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.CALCIFICATION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.MORPHOLOGY.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('calcification'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'calcification', i)\" (click)=\"setDistance(distance.value, 'calcification', i)\"/></td>\r\n                <td>{{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + entry.morphology.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + entry.distribution.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'calcification')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('other').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.OTHER.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('other'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\" class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'other', i)\" (click)=\"setDistance(distance.value, 'other', i)\"/></td>\r\n                <td>{{\"TABLE.OTHER.FINDING.\" + entry.name.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'other')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n"
+module.exports = "<table class=\"table\">\r\n    <tbody>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.RIGHT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.right\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.right\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.LEFT\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            ACR<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of acrscore; let i = index\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.acr.left\" btnRadio=\"{{i+1}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td></td>\r\n        <td>\r\n            BIRADS<br>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of biradsscore\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.birads.left\" btnRadio=\"{{element}}\">\r\n                    {{element}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            <b>{{\"CLASSIFICATION.COMPOSITION.TITLE\" | translate}}</b>\r\n        </td>\r\n        <td>\r\n            <div class=\"btn-group\">\r\n                <label  *ngFor=\"let element of composition\" class=\"btn btn-md btn-default\" [(ngModel)]=\"dataservice.composition\" btnRadio=\"{{element}}\">\r\n                    {{\"CLASSIFICATION.COMPOSITION.\" + element | translate}}\r\n                </label>\r\n            </div>\r\n        </td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n\r\n"
 
 /***/ },
 /* 722 */
+/***/ function(module, exports) {
+
+module.exports = "\r\n<!--<div class=\"row \">-->\r\n<!--<div>-->\r\n<!--<select #langSelect (change)=\"translate.use(langSelect.value)\">-->\r\n<!--<option *ngFor=\"let lang of translate.getLangs()\" [value]=\"lang\" [selected]=\"lang === translate.currentLang\">{{ lang }}</option>-->\r\n<!--</select>-->\r\n<!--</div>-->\r\n<div *ngIf=\"!show\" class=\"glyphicon glyphicon-info-sign\" (click)=\"show = !show\">\r\n</div>\r\n<div *ngIf=\"show\" class=\"well\">\r\n    <div class=\"glyphicon glyphicon-remove\" (click)=\"show = !show\"></div>\r\n    <table class=\"table table-bordered wrapper\">\r\n        <thead>\r\n        <tr>\r\n            <th align=\"center\">{{'LEGEND.HEADER.ASSESSMENT' | translate}}</th>\r\n            <th align=\"center\">{{'LEGEND.HEADER.MANAGEMENT' | translate}}</th>\r\n            <th align=\"center\">{{'LEGEND.HEADER.LIKELIHOOD' | translate}}</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor=\"let category of categories\">\r\n            <td>{{'LEGEND.' + category + '.ASSESSMENT' | translate}}</td>\r\n            <td>{{'LEGEND.' + category + '.MANAGEMENT' | translate}}</td>\r\n            <td>{{'LEGEND.' + category + '.LIKELIHOOD' | translate}}</td>\r\n        </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n<!--</div>-->\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+
+/***/ },
+/* 723 */
+/***/ function(module, exports) {
+
+module.exports = "<!--<div class=\"panel-heading\"><h4><b>{{\"SCREENING.HEADER\" | translate}}</b></h4></div>-->\r\n<table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n        <th class=\"well well-default\" (click)=\"show = !show\">{{\"SCREENING.HEADER\" | translate}}\r\n            <span *ngIf=\"!show\" class=\"glyphicon glyphicon-triangle-bottom\"></span>\r\n            <span *ngIf=\"show\" class=\"glyphicon glyphicon-triangle-top\"></span>\r\n        </th>\r\n        <th *ngIf=\"show\">{{\"SCREENING.RIGHT\" | translate}}</th>\r\n        <th *ngIf=\"show\">{{\"SCREENING.LEFT\" | translate}}</th>\r\n        <!--<th>{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</th>-->\r\n        <!--<th>{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</th>-->\r\n        <!--<th>{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</th>-->\r\n    </tr>\r\n    </thead>\r\n    <tbody *ngIf=\"show\">\r\n\r\n    <tr *ngFor=\"let category of categories; let i = index\">\r\n        <td *ngIf=\"!subcategories.includes(i+1)\">{{\"SCREENING.CATEGORIES.\" + (i+1) | translate}}</td>\r\n        <td *ngIf=\"subcategories.includes(i+1)\"><ul>{{\"SCREENING.CATEGORIES.\" + (i+1) | translate}}</ul></td>\r\n        <td *ngIf=\"!hassubcategories.includes(i+1)\" align=\"center\" (click)=\"check($event)\"><input [(ngModel)] = \"this.dataservice.screening[i].R\" class=\"checkbox\" type=\"checkbox\"/></td>\r\n        <td *ngIf=\"!hassubcategories.includes(i+1)\" align=\"center\" (click)=\"check($event)\"><input [(ngModel)] = \"this.dataservice.screening[i].L\" class=\"checkbox\" type=\"checkbox\"/></td>\r\n        <!--<td *ngIf=\"hassubcategories.indexOf(i+1) != -1\"></td>-->\r\n        <!--<td *ngIf=\"hassubcategories.indexOf(i+1) != -1\"></td>-->\r\n    </tr>\r\n    <tr>\r\n        <td>\r\n            {{\"SCREENING.REASON\" | translate}}:\r\n            <br>\r\n            <textarea autosize class=\"form-control\" #reason (keyup)=\"setReason(reason.value)\"></textarea>\r\n        </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+
+/***/ },
+/* 724 */
+/***/ function(module, exports) {
+
+module.exports = "<div class=\"table-container wrapper\">\r\n    <div *ngIf=\"dataservice.getData('mass').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.MASS.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SIZE\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('mass'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'mass', i)\" (click)=\"setDistance(distance.value, 'mass', i)\"/></td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #size (keyup)=\"setSize(size.value, 'mass', i)\" (click)=\"setSize(size.value, 'mass', i)\"/></td>\r\n                <td>{{\"TABLE.MASS.SHAPE.\" + entry.shape.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.MARGIN.\" + entry.margin.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.MASS.DENSITY.\" + entry.density.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'mass')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('distortion').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.DISTORTION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('distortion'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'distortion', i)\" (click)=\"setDistance(distance.value, 'distortion', i)\"/></td>\r\n                <td>{{\"TABLE.DISTORTION.FINDING.\" + entry.distortion.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'distortion')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('asymmetry').length > 0\" class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b><th>{{\"TABLE.ASYMMETRY.NAME\" | translate}}</th></b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('asymmetry'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'asymmetry', i)\" (click)=\"setDistance(distance.value, 'asymmetry', i)\"/></td>\r\n                <td>{{\"TABLE.ASYMMETRY.FINDING.\" + entry.asymmetry.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'asymmetry')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('calcification').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.CALCIFICATION.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.MORPHOLOGY.NAME\" | translate}}</th>\r\n                <th>{{\"TABLE.CALCIFICATION.DISTRIBUTION.NAME\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('calcification'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\"  class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'calcification', i)\" (click)=\"setDistance(distance.value, 'calcification', i)\"/></td>\r\n                <td>{{\"TABLE.CALCIFICATION.MORPHOLOGY.\" + entry.morphology.toLocaleUpperCase() | translate}}</td>\r\n                <td>{{\"TABLE.CALCIFICATION.DISTRIBUTION.\" + entry.distribution.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'calcification')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n    <div *ngIf=\"dataservice.getData('other').length > 0\"   class=\"panel panel-default col-sm-6\">\r\n        <div class=\"panel-heading\"><h4><b>{{\"TABLE.OTHER.NAME\" | translate}}</b></h4></div>\r\n        <table class=\"table\">\r\n            <thead>\r\n            <tr>\r\n                <th>#</th>\r\n                <th>{{\"TABLE.DISTANCE\" | translate}}</th>\r\n                <th>{{\"TABLE.FINDING\" | translate}}</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n            <tr *ngFor=\"let entry of dataservice.getData('other'); let i = index\">\r\n                <td>{{i + 1}}</td>\r\n                <td><input height=\"100%\" align=\"left\" class=\"form-control\" type=\"number\" step=\"0.1\" min=\"0\"\r\n                           #distance (keyup)=\"setDistance(distance.value, 'other', i)\" (click)=\"setDistance(distance.value, 'other', i)\"/></td>\r\n                <td>{{\"TABLE.OTHER.FINDING.\" + entry.name.toLocaleUpperCase() | translate}}</td>\r\n                <td><div class=\"glyphicon glyphicon-remove\" (click)=\"removeEntry(i, 'other')\"></div> </td>\r\n            </tr>\r\n            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n"
+
+/***/ },
+/* 725 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71013,7 +71197,7 @@ exports.InnerSubscriber = InnerSubscriber;
 //# sourceMappingURL=InnerSubscriber.js.map
 
 /***/ },
-/* 723 */
+/* 726 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71146,7 +71330,7 @@ exports.Notification = Notification;
 //# sourceMappingURL=Notification.js.map
 
 /***/ },
-/* 724 */
+/* 727 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -71160,7 +71344,7 @@ exports.empty = {
 //# sourceMappingURL=Observer.js.map
 
 /***/ },
-/* 725 */
+/* 728 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -71215,7 +71399,7 @@ exports.Scheduler = Scheduler;
 //# sourceMappingURL=Scheduler.js.map
 
 /***/ },
-/* 726 */
+/* 729 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71261,48 +71445,15 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ },
-/* 727 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-"use strict";
-var Observable_1 = __webpack_require__(5);
-var from_1 = __webpack_require__(738);
-Observable_1.Observable.from = from_1.from;
-//# sourceMappingURL=from.js.map
-
-/***/ },
-/* 728 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-"use strict";
-var Observable_1 = __webpack_require__(5);
-var of_1 = __webpack_require__(740);
-Observable_1.Observable.of = of_1.of;
-//# sourceMappingURL=of.js.map
-
-/***/ },
-/* 729 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-"use strict";
-var Observable_1 = __webpack_require__(5);
-var debounceTime_1 = __webpack_require__(741);
-Observable_1.Observable.prototype.debounceTime = debounceTime_1.debounceTime;
-//# sourceMappingURL=debounceTime.js.map
-
-/***/ },
 /* 730 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var filter_1 = __webpack_require__(742);
-Observable_1.Observable.prototype.filter = filter_1.filter;
-//# sourceMappingURL=filter.js.map
+var from_1 = __webpack_require__(741);
+Observable_1.Observable.from = from_1.from;
+//# sourceMappingURL=from.js.map
 
 /***/ },
 /* 731 */
@@ -71311,9 +71462,9 @@ Observable_1.Observable.prototype.filter = filter_1.filter;
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var merge_1 = __webpack_require__(744);
-Observable_1.Observable.prototype.merge = merge_1.merge;
-//# sourceMappingURL=merge.js.map
+var of_1 = __webpack_require__(743);
+Observable_1.Observable.of = of_1.of;
+//# sourceMappingURL=of.js.map
 
 /***/ },
 /* 732 */
@@ -71322,10 +71473,9 @@ Observable_1.Observable.prototype.merge = merge_1.merge;
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var mergeMap_1 = __webpack_require__(746);
-Observable_1.Observable.prototype.mergeMap = mergeMap_1.mergeMap;
-Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
-//# sourceMappingURL=mergeMap.js.map
+var debounceTime_1 = __webpack_require__(744);
+Observable_1.Observable.prototype.debounceTime = debounceTime_1.debounceTime;
+//# sourceMappingURL=debounceTime.js.map
 
 /***/ },
 /* 733 */
@@ -71334,12 +71484,46 @@ Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
 "use strict";
 "use strict";
 var Observable_1 = __webpack_require__(5);
-var share_1 = __webpack_require__(749);
+var filter_1 = __webpack_require__(745);
+Observable_1.Observable.prototype.filter = filter_1.filter;
+//# sourceMappingURL=filter.js.map
+
+/***/ },
+/* 734 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var Observable_1 = __webpack_require__(5);
+var merge_1 = __webpack_require__(747);
+Observable_1.Observable.prototype.merge = merge_1.merge;
+//# sourceMappingURL=merge.js.map
+
+/***/ },
+/* 735 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var Observable_1 = __webpack_require__(5);
+var mergeMap_1 = __webpack_require__(749);
+Observable_1.Observable.prototype.mergeMap = mergeMap_1.mergeMap;
+Observable_1.Observable.prototype.flatMap = mergeMap_1.mergeMap;
+//# sourceMappingURL=mergeMap.js.map
+
+/***/ },
+/* 736 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+var Observable_1 = __webpack_require__(5);
+var share_1 = __webpack_require__(752);
 Observable_1.Observable.prototype.share = share_1.share;
 //# sourceMappingURL=share.js.map
 
 /***/ },
-/* 734 */
+/* 737 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71415,7 +71599,7 @@ exports.ArrayLikeObservable = ArrayLikeObservable;
 //# sourceMappingURL=ArrayLikeObservable.js.map
 
 /***/ },
-/* 735 */
+/* 738 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71428,12 +71612,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 var isArray_1 = __webpack_require__(248);
 var isPromise_1 = __webpack_require__(404);
 var PromiseObservable_1 = __webpack_require__(400);
-var IteratorObservable_1 = __webpack_require__(736);
+var IteratorObservable_1 = __webpack_require__(739);
 var ArrayObservable_1 = __webpack_require__(244);
-var ArrayLikeObservable_1 = __webpack_require__(734);
+var ArrayLikeObservable_1 = __webpack_require__(737);
 var iterator_1 = __webpack_require__(245);
 var Observable_1 = __webpack_require__(5);
-var observeOn_1 = __webpack_require__(748);
+var observeOn_1 = __webpack_require__(751);
 var observable_1 = __webpack_require__(246);
 var isArrayLike = (function (x) { return x && typeof x.length === 'number'; });
 /**
@@ -71537,7 +71721,7 @@ exports.FromObservable = FromObservable;
 //# sourceMappingURL=FromObservable.js.map
 
 /***/ },
-/* 736 */
+/* 739 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71700,7 +71884,7 @@ function sign(value) {
 //# sourceMappingURL=IteratorObservable.js.map
 
 /***/ },
-/* 737 */
+/* 740 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71733,17 +71917,17 @@ exports.MulticastObservable = MulticastObservable;
 //# sourceMappingURL=MulticastObservable.js.map
 
 /***/ },
-/* 738 */
+/* 741 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var FromObservable_1 = __webpack_require__(735);
+var FromObservable_1 = __webpack_require__(738);
 exports.from = FromObservable_1.FromObservable.create;
 //# sourceMappingURL=from.js.map
 
 /***/ },
-/* 739 */
+/* 742 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71753,7 +71937,7 @@ exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
 //# sourceMappingURL=fromPromise.js.map
 
 /***/ },
-/* 740 */
+/* 743 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71763,7 +71947,7 @@ exports.of = ArrayObservable_1.ArrayObservable.of;
 //# sourceMappingURL=of.js.map
 
 /***/ },
-/* 741 */
+/* 744 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71774,7 +71958,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(42);
-var async_1 = __webpack_require__(755);
+var async_1 = __webpack_require__(758);
 /**
  * Emits a value from the source Observable only after a particular time span
  * has passed without another source emission.
@@ -71885,7 +72069,7 @@ function dispatchNext(subscriber) {
 //# sourceMappingURL=debounceTime.js.map
 
 /***/ },
-/* 742 */
+/* 745 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71984,7 +72168,7 @@ var FilterSubscriber = (function (_super) {
 //# sourceMappingURL=filter.js.map
 
 /***/ },
-/* 743 */
+/* 746 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72077,13 +72261,13 @@ var MapSubscriber = (function (_super) {
 //# sourceMappingURL=map.js.map
 
 /***/ },
-/* 744 */
+/* 747 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 var ArrayObservable_1 = __webpack_require__(244);
-var mergeAll_1 = __webpack_require__(745);
+var mergeAll_1 = __webpack_require__(748);
 var isScheduler_1 = __webpack_require__(405);
 /**
  * Creates an output Observable which concurrently emits all values from every
@@ -72213,7 +72397,7 @@ exports.mergeStatic = mergeStatic;
 //# sourceMappingURL=merge.js.map
 
 /***/ },
-/* 745 */
+/* 748 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72330,7 +72514,7 @@ exports.MergeAllSubscriber = MergeAllSubscriber;
 //# sourceMappingURL=mergeAll.js.map
 
 /***/ },
-/* 746 */
+/* 749 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72497,12 +72681,12 @@ exports.MergeMapSubscriber = MergeMapSubscriber;
 //# sourceMappingURL=mergeMap.js.map
 
 /***/ },
-/* 747 */
+/* 750 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var MulticastObservable_1 = __webpack_require__(737);
+var MulticastObservable_1 = __webpack_require__(740);
 var ConnectableObservable_1 = __webpack_require__(398);
 /**
  * Returns an Observable that emits the results of invoking a specified selector on items
@@ -72541,7 +72725,7 @@ exports.multicast = multicast;
 //# sourceMappingURL=multicast.js.map
 
 /***/ },
-/* 748 */
+/* 751 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72552,7 +72736,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(42);
-var Notification_1 = __webpack_require__(723);
+var Notification_1 = __webpack_require__(726);
 /**
  * @see {@link Notification}
  *
@@ -72622,12 +72806,12 @@ exports.ObserveOnMessage = ObserveOnMessage;
 //# sourceMappingURL=observeOn.js.map
 
 /***/ },
-/* 749 */
+/* 752 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var multicast_1 = __webpack_require__(747);
+var multicast_1 = __webpack_require__(750);
 var Subject_1 = __webpack_require__(80);
 function shareSubjectFactory() {
     return new Subject_1.Subject();
@@ -72652,7 +72836,7 @@ exports.share = share;
 //# sourceMappingURL=share.js.map
 
 /***/ },
-/* 750 */
+/* 753 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72703,7 +72887,7 @@ var ToArraySubscriber = (function (_super) {
 //# sourceMappingURL=toArray.js.map
 
 /***/ },
-/* 751 */
+/* 754 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72737,7 +72921,7 @@ exports.toPromise = toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ },
-/* 752 */
+/* 755 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72787,7 +72971,7 @@ exports.Action = Action;
 //# sourceMappingURL=Action.js.map
 
 /***/ },
-/* 753 */
+/* 756 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72798,7 +72982,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var root_1 = __webpack_require__(53);
-var Action_1 = __webpack_require__(752);
+var Action_1 = __webpack_require__(755);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -72935,7 +73119,7 @@ exports.AsyncAction = AsyncAction;
 //# sourceMappingURL=AsyncAction.js.map
 
 /***/ },
-/* 754 */
+/* 757 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72945,7 +73129,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Scheduler_1 = __webpack_require__(725);
+var Scheduler_1 = __webpack_require__(728);
 var AsyncScheduler = (function (_super) {
     __extends(AsyncScheduler, _super);
     function AsyncScheduler() {
@@ -72992,18 +73176,18 @@ exports.AsyncScheduler = AsyncScheduler;
 //# sourceMappingURL=AsyncScheduler.js.map
 
 /***/ },
-/* 755 */
+/* 758 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var AsyncAction_1 = __webpack_require__(753);
-var AsyncScheduler_1 = __webpack_require__(754);
+var AsyncAction_1 = __webpack_require__(756);
+var AsyncScheduler_1 = __webpack_require__(757);
 exports.async = new AsyncScheduler_1.AsyncScheduler(AsyncAction_1.AsyncAction);
 //# sourceMappingURL=async.js.map
 
 /***/ },
-/* 756 */
+/* 759 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -73036,7 +73220,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ },
-/* 757 */
+/* 760 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -73067,7 +73251,7 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ },
-/* 758 */
+/* 761 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -73079,7 +73263,7 @@ exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map
 
 /***/ },
-/* 759 */
+/* 762 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73104,7 +73288,7 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ },
-/* 760 */
+/* 763 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73129,11 +73313,11 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ },
-/* 761 */,
-/* 762 */,
-/* 763 */,
 /* 764 */,
-/* 765 */
+/* 765 */,
+/* 766 */,
+/* 767 */,
+/* 768 */
 /***/ function(module, exports) {
 
 module.exports = function(module) {
@@ -73159,12 +73343,12 @@ module.exports = function(module) {
 
 
 /***/ },
-/* 766 */
+/* 769 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(409);
 
 
 /***/ }
-],[766]);
-//# sourceMappingURL=main.1005a05f238f1d84dda9.bundle.map
+],[769]);
+//# sourceMappingURL=main.eec8a684dab42b31709e.bundle.map

@@ -99,6 +99,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#_methods" class="tsd-kind-icon">_methods</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#_screening" class="tsd-kind-icon">_screening</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#_screeningreason" class="tsd-kind-icon">_screeningreason</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#acr" class="tsd-kind-icon">acr</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#asymmetry" class="tsd-kind-icon">asymmetry</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_data_service_.dataservice.html#birads" class="tsd-kind-icon">birads</a></li>
@@ -113,6 +115,8 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_services_data_service_.dataservice.html#methods" class="tsd-kind-icon">methods</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_services_data_service_.dataservice.html#screening" class="tsd-kind-icon">screening</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_services_data_service_.dataservice.html#screeningreason" class="tsd-kind-icon">screeningreason</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -143,7 +147,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L16">services/data.service.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L39">services/data.service.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -165,7 +169,7 @@
 					<div class="tsd-signature tsd-kind-icon">_methods<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[&#x27;mass&#x27;,&#x27;distortion&#x27;,&#x27;asymmetry&#x27;,&#x27;calcification&#x27;,&#x27;other&#x27;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L61">services/data.service.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L93">services/data.service.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,12 +184,53 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_screening" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _screening</h3>
+					<div class="tsd-signature tsd-kind-icon">_screening<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L151">services/data.service.ts:151</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This array contains all the selections of the flemish form</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>L<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>R<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_screeningreason" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _screeningreason</h3>
+					<div class="tsd-signature tsd-kind-icon">_screeningreason<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L159">services/data.service.ts:159</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This string contains the reason string of the flemish form</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="acr" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> acr</h3>
 					<div class="tsd-signature tsd-kind-icon">acr<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L42">services/data.service.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L74">services/data.service.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -211,7 +256,7 @@
 					<div class="tsd-signature tsd-kind-icon">asymmetry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L96">services/data.service.ts:96</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L128">services/data.service.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -237,7 +282,7 @@
 					<div class="tsd-signature tsd-kind-icon">birads<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L49">services/data.service.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L81">services/data.service.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -263,7 +308,7 @@
 					<div class="tsd-signature tsd-kind-icon">calcification<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L103">services/data.service.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L135">services/data.service.ts:135</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -292,7 +337,7 @@
 					<div class="tsd-signature tsd-kind-icon">composition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L56">services/data.service.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L88">services/data.service.ts:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -307,7 +352,7 @@
 					<div class="tsd-signature tsd-kind-icon">distortion<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L89">services/data.service.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L121">services/data.service.ts:121</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -333,7 +378,7 @@
 					<div class="tsd-signature tsd-kind-icon">mass<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L79">services/data.service.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L111">services/data.service.ts:111</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -368,7 +413,7 @@
 					<div class="tsd-signature tsd-kind-icon">other<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L111">services/data.service.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L143">services/data.service.ts:143</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -401,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L14">services/data.service.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L37">services/data.service.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,6 +455,83 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="screening" class="tsd-anchor"></a>
+					<h3>screening</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> screening<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L30">services/data.service.ts:30</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get all the selection of the flemish form</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>[]}</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>L<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>R<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="screeningreason" class="tsd-anchor"></a>
+					<h3>screeningreason</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> screeningreason<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> screeningreason<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L22">services/data.service.ts:22</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the reason value of the reason field within the flemish form</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L14">services/data.service.ts:14</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the reason value of the reason field within the flemish form</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -426,7 +548,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L179">services/data.service.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L224">services/data.service.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -459,7 +581,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L193">services/data.service.ts:193</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L238">services/data.service.ts:238</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -495,7 +617,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L166">services/data.service.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L211">services/data.service.ts:211</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -528,7 +650,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L150">services/data.service.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L195">services/data.service.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -570,7 +692,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L206">services/data.service.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L251">services/data.service.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -603,7 +725,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L120">services/data.service.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L165">services/data.service.ts:165</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -635,7 +757,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L72">services/data.service.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L104">services/data.service.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -657,7 +779,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/phasic/birads/blob/bb5a7d5/src/app/services/data.service.ts#L134">services/data.service.ts:134</a></li>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/c9f41a1/src/app/services/data.service.ts#L179">services/data.service.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -732,7 +854,13 @@
 						<a href="../modules/_components_table_legend_component_.html">"components/table/legend.component"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_table_screening_component_.html">"components/table/screening.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_components_table_table_component_.html">"components/table/table.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_directives_autosize_directive_.html">"directives/autosize.directive"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_directives_imagemap_resize_directive_.html">"directives/imagemap.resize.directive"</a>
@@ -768,6 +896,12 @@
 								<a href="_services_data_service_.dataservice.html#_methods" class="tsd-kind-icon">_methods</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_data_service_.dataservice.html#_screening" class="tsd-kind-icon">_screening</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_data_service_.dataservice.html#_screeningreason" class="tsd-kind-icon">_screeningreason</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_services_data_service_.dataservice.html#acr" class="tsd-kind-icon">acr</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -793,6 +927,12 @@
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_services_data_service_.dataservice.html#methods" class="tsd-kind-icon">methods</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_services_data_service_.dataservice.html#screening" class="tsd-kind-icon">screening</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_services_data_service_.dataservice.html#screeningreason" class="tsd-kind-icon">screeningreason</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_services_data_service_.dataservice.html#addasymmetries" class="tsd-kind-icon">add<wbr>Asymmetries</a>

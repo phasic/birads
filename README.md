@@ -29,6 +29,12 @@ __Hotkeys__
 Q | W | E | ...: Select a method
 
 1 | 2 | 3 | ... : Select a finding in the menus
+
+__Flemish report__
+
+To show the flemish report
+
+Add '?flemloc' at the end of the URL.
 	
 
 ## Development server

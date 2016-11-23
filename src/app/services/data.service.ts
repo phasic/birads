@@ -8,6 +8,29 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class DataService {
     /**
+     * Set the reason value of the reason field within the flemish form
+     * @param value
+     */
+    set screeningreason(value: string) {
+        this._screeningreason = value;
+    }
+
+    /**
+     * Get the reason value of the reason field within the flemish form
+     * @returns {string}
+     */
+    get screeningreason(): string {
+        return this._screeningreason;
+    }
+
+    /**
+     * Get all the selection of the flemish form
+     * @returns {{R: boolean, L: boolean}[]}
+     */
+    get screening(): {R: boolean; L: boolean}[] {
+        return this._screening;
+    }
+    /**
      * Get the possible methods.
      * @returns {Array<string>}
      */
@@ -34,6 +57,15 @@ export class DataService {
         this.asymmetry = [];
         this.calcification = [];
         this.other = [];
+
+        this._screening = [];
+        for(let i = 0; i < 19; i++){
+            this._screening.push({
+                R: false,
+                L: false
+            });
+        }
+
     }
 
     /**
@@ -58,7 +90,7 @@ export class DataService {
      * All the possbile methods.
      * @type {(string|string|string|string)[]}
      */
-     private _methods: Array<string> = [
+    private _methods: Array<string> = [
         'mass',
         'distortion',
         'asymmetry',
@@ -112,6 +144,19 @@ export class DataService {
         distance: number,
         name: string
     }[];
+
+    /**
+     * This array contains all the selections of the flemish form
+     */
+    private _screening: {
+        R: boolean,
+        L: boolean
+    }[];
+
+    /**
+     * This string contains the reason string of the flemish form
+     */
+    private _screeningreason: string;
     /**
      * Returns the request data structure. mass, distortion, ...
      * @param method    String that contains the wanted data structure

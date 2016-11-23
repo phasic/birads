@@ -44,7 +44,9 @@
 }
 .legend-component {
     position: absolute;
-    z-index: 3;
+    z-index: 4;
+    margin-left: -15px;
+    margin-top: -20px;
 }
 .absolute-position {
     position: absolute;
@@ -56,4 +58,8 @@ div {
 a:hover {
     cursor: pointer;
 }
+
+
+
+
 

@@ -1,0 +1,34 @@
+<!--<div class="panel-heading"><h4><b>{{"SCREENING.HEADER" | translate}}</b></h4></div>-->
+<table class="table">
+    <thead>
+    <tr>
+        <th class="well well-default" (click)="show = !show">{{"SCREENING.HEADER" | translate}}
+            <span *ngIf="!show" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span *ngIf="show" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th *ngIf="show">{{"SCREENING.RIGHT" | translate}}</th>
+        <th *ngIf="show">{{"SCREENING.LEFT" | translate}}</th>
+        <!--<th>{{"TABLE.MASS.SHAPE.NAME" | translate}}</th>-->
+        <!--<th>{{"TABLE.MASS.MARGIN.NAME" | translate}}</th>-->
+        <!--<th>{{"TABLE.MASS.DENSITY.NAME" | translate}}</th>-->
+    </tr>
+    </thead>
+    <tbody *ngIf="show">
+
+    <tr *ngFor="let category of categories; let i = index">
+        <td *ngIf="!subcategories.includes(i+1)">{{"SCREENING.CATEGORIES." + (i+1) | translate}}</td>
+        <td *ngIf="subcategories.includes(i+1)"><ul>{{"SCREENING.CATEGORIES." + (i+1) | translate}}</ul></td>
+        <td *ngIf="!hassubcategories.includes(i+1)" align="center" (click)="check($event)"><input [(ngModel)] = "this.dataservice.screening[i].R" class="checkbox" type="checkbox"/></td>
+        <td *ngIf="!hassubcategories.includes(i+1)" align="center" (click)="check($event)"><input [(ngModel)] = "this.dataservice.screening[i].L" class="checkbox" type="checkbox"/></td>
+        <!--<td *ngIf="hassubcategories.indexOf(i+1) != -1"></td>-->
+        <!--<td *ngIf="hassubcategories.indexOf(i+1) != -1"></td>-->
+    </tr>
+    <tr>
+        <td>
+            {{"SCREENING.REASON" | translate}}:
+            <br>
+            <textarea autosize class="form-control" #reason (keyup)="setReason(reason.value)"></textarea>
+        </td>
+    </tr>
+  </tbody>
+</table>
