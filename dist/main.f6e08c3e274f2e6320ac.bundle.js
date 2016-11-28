@@ -45240,7 +45240,6 @@ let AppComponent = class AppComponent {
     constructor(viewContainerRef, pagectrl) {
         this.viewContainerRef = viewContainerRef;
         this.pagectrl = pagectrl;
-        console.log(window.location.search);
     }
     get showflemishreport() {
         return this._showflemishreport;
@@ -45249,22 +45248,10 @@ let AppComponent = class AppComponent {
         this._showflemishreport = value;
     }
     /**
-     * When passing /flemloc at the end of the URL , we'll show the flemish report too
+     * When passing flemloc=true at the end of the URL , we'll show the flemish report too
      */
     ngOnInit() {
-        // console.log(location);
-        // this.router.routerState.root.queryParams.subscribe(params => {
-        //   console.log(params);
-        // });
-        // console.log(window.location.pathname);
-        if (window.location.search == "?flemloc") {
-            console.log("iere");
-            this.showflemishreport = true;
-        }
-        else {
-            this.showflemishreport = false;
-        }
-        //
+        this.showflemishreport = decodeURIComponent((new RegExp("[?|&]flemloc=true").exec(location.search) || [''])[0]) != '';
     }
     /**
      * This handler disables the right clicks on the page. So the user doesn't see the right click menu.
@@ -71086,7 +71073,7 @@ module.exports = ""
 /* 713 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n\r\n        </div>\r\n    </div>\r\n    <br>\r\n    <legend-component class=\"legend-component\"></legend-component>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-5\">\r\n            <screening-component *ngIf=\"showflemishreport\"></screening-component>\r\n        </div>\r\n    </div>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n</div>\r\n\r\n"
+module.exports = "<div (window:contextmenu)=\"keyPressHandler($event)\"></div>\r\n<div class=\"wrapper\" resize>\r\n    <div class=\"row \">\r\n        <div class=\"col-md-5\">\r\n            <classification-component></classification-component>\r\n\r\n        </div>\r\n\r\n        <div class=\"col-md-7\">\r\n            <sidebar-component></sidebar-component>\r\n            <map-component></map-component>\r\n\r\n        </div>\r\n    </div>\r\n    <br>\r\n    <legend-component class=\"legend-component\"></legend-component>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-5\">\r\n            <screening-component *ngIf=\"showflemishreport\"></screening-component>\r\n        </div>\r\n    </div>\r\n    <div class=\"row wrapper\">\r\n        <div class=\"col-md-12\">\r\n            <table-component></table-component>\r\n        </div>\r\n    </div>\r\n\r\n    <button type=\"button\"(click)=\"test()\">TEST</button>\r\n\r\n</div>\r\n\r\n"
 
 /***/ },
 /* 714 */
@@ -71122,7 +71109,7 @@ module.exports = ""
 /* 719 */
 /***/ function(module, exports) {
 
-module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0])\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of shapearray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"shape\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.SHAPE.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of marginarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"margin\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.MARGIN.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[2])\" bsModal #modal3=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of densityarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[2], element)\" [(ngModel)]=\"density\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.DENSITY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div (window:click) = \"modalInterrupt()\"></div> <!-- get a handler in place to catch the case where you cut short the modal -->\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[0])\" bsModal #modal1=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.SHAPE.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of shapearray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[0], element)\" [(ngModel)]=\"shape\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.SHAPE.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[1])\" bsModal #modal2=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.MARGIN.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of marginarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[1], element)\" [(ngModel)]=\"margin\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.MARGIN.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div (keypress)=\"hotKeys($event.keyCode, this.menus[2])\" bsModal #modal3=\"bs-modal\" class=\"modal fade\" tabindex=\"-1\">\r\n    <div class=\"modal-dialog modal-lg\" align=\"center\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">{{\"TABLE.MASS.DENSITY.NAME\" | translate}}</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <div class=\"btn-group\">\r\n                    <label *ngFor=\"let element of densityarray\" class=\"btn btn-lg btn-default\" (click)=\"mouseControl(this.menus[2], element)\" [(ngModel)]=\"density\" btnRadio=\"{{element}}\">\r\n                        {{\"TABLE.MASS.DENSITY.\" + element.toLocaleUpperCase() | translate}}</label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ },
 /* 720 */
@@ -73351,4 +73338,4 @@ module.exports = __webpack_require__(409);
 
 /***/ }
 ],[769]);
-//# sourceMappingURL=main.eec8a684dab42b31709e.bundle.map
+//# sourceMappingURL=main.f6e08c3e274f2e6320ac.bundle.map

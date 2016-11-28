@@ -27,10 +27,11 @@ export class AppComponent implements OnInit{
   }
 
   /**
-   * When passing ?flemloc at the end of the URL , we'll show the flemish report too
+   * When passing flemloc=true at the end of the URL , we'll show the flemish report too
    */
   ngOnInit(){
-    this.showflemishreport = window.location.search == "?flemloc";
+    this.showflemishreport = decodeURIComponent(
+        (new RegExp("[?|&]flemloc=true").exec(location.search) || [''])[0]) != '';
   }
   private _showflemishreport: boolean;
   /**
@@ -42,7 +43,5 @@ export class AppComponent implements OnInit{
   keyPressHandler(event: any){
     event.preventDefault();
   }
-
-
 }
 
