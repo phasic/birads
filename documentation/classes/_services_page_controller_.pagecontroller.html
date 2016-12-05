@@ -1,0 +1,1739 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PageController | birads</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">birads</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_services_page_controller_.html">&quot;services/page.controller&quot;</a>
+				</li>
+				<li>
+					<a href="_services_page_controller_.pagecontroller.html">PageController</a>
+				</li>
+			</ul>
+			<h1>Class PageController</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Service that handles the manipulation of the clicking on the maps. It tracks the click locations, stores all the badge locations, keeps track of active menus and render badges.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PageController</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#_distance" class="tsd-kind-icon">_distance</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#_firstclicklocation" class="tsd-kind-icon">_firstclicklocation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#_frontclicklocation" class="tsd-kind-icon">_frontclicklocation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#_images" class="tsd-kind-icon">_images</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#_sideclicklocation" class="tsd-kind-icon">_sideclicklocation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#badgelocations" class="tsd-kind-icon">badgelocations</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#dataservice" class="tsd-kind-icon">dataservice</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#menuactive" class="tsd-kind-icon">menuactive</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#method" class="tsd-kind-icon">method</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#numberofclicks" class="tsd-kind-icon">numberofclicks</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#showmenu" class="tsd-kind-icon">showmenu</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_services_page_controller_.pagecontroller.html#translate" class="tsd-kind-icon">translate</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#distance" class="tsd-kind-icon">distance</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#firstclicklocation" class="tsd-kind-icon">firstclicklocation</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#frontclicklocation" class="tsd-kind-icon">frontclicklocation</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#images" class="tsd-kind-icon">images</a></li>
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#sideclicklocation" class="tsd-kind-icon">sideclicklocation</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#calculatedistance" class="tsd-kind-icon">calculate<wbr>Distance</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#getbadgelocation" class="tsd-kind-icon">get<wbr>Badge<wbr>Location</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#getmenuactive" class="tsd-kind-icon">get<wbr>Menu<wbr>Active</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#getmethod" class="tsd-kind-icon">get<wbr>Method</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#getnumberofclicks" class="tsd-kind-icon">get<wbr>Number<wbr>OfClicks</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#getshowmenu" class="tsd-kind-icon">get<wbr>Showmenu</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#ismenushown" class="tsd-kind-icon">is<wbr>Menu<wbr>Shown</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#removelocation" class="tsd-kind-icon">remove<wbr>Location</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#renderbadge" class="tsd-kind-icon">render<wbr>Badge</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#resizebadges" class="tsd-kind-icon">resize<wbr>Badges</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#savebadgelocation" class="tsd-kind-icon">save<wbr>Badge<wbr>Location</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setclicklocation" class="tsd-kind-icon">set<wbr>Click<wbr>Location</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setimages" class="tsd-kind-icon">set<wbr>Images</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setmenuactive" class="tsd-kind-icon">set<wbr>Menu<wbr>Active</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setmethod" class="tsd-kind-icon">set<wbr>Method</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setnumberofclicks" class="tsd-kind-icon">set<wbr>Number<wbr>OfClicks</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_services_page_controller_.pagecontroller.html#setshowmenu" class="tsd-kind-icon">set<wbr>Showmenu</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Page<wbr>Controller<span class="tsd-signature-symbol">(</span>dataservice<span class="tsd-signature-symbol">: </span><a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a>, translate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TranslateService</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_services_page_controller_.pagecontroller.html" class="tsd-signature-type">PageController</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L219">services/page.controller.ts:219</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The constructor initializes the following variables to an empty value:</p>
+								</div>
+								<p>method: the selected method.</p>
+								<p>showmenu: tell the pagecontroller that there is no menu showing.</p>
+								<p>numberofclicks: no image is clicked yet.</p>
+								<p>badgelocation: there aren&#39;t any images clicked yet.</p>
+								<p>The constructor initializes the following.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dataservice: <a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>This service contains all the data. This is used to set and get the correct data we want</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5>translate: <span class="tsd-signature-type">TranslateService</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Translate service</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_services_page_controller_.pagecontroller.html" class="tsd-signature-type">PageController</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_distance" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _distance</h3>
+					<div class="tsd-signature tsd-kind-icon">_distance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L105">services/page.controller.ts:105</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Variable that stores a calculated distance (not shown in the table anymore).</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_firstclicklocation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _firstclicklocation</h3>
+					<div class="tsd-signature tsd-kind-icon">_firstclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L109">services/page.controller.ts:109</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stores the location of our first click, the relative coordinates on the image, and which imagenumber.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_frontclicklocation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _frontclicklocation</h3>
+					<div class="tsd-signature tsd-kind-icon">_frontclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L117">services/page.controller.ts:117</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stores the clicklocation on a front image, the relative coordinates on the image, and which imagenumber.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_images" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _images</h3>
+					<div class="tsd-signature tsd-kind-icon">_images<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L133">services/page.controller.ts:133</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Array that stores all the images. the image element itself, the location on the page, the width and the height.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>locX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>locY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_sideclicklocation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _sideclicklocation</h3>
+					<div class="tsd-signature tsd-kind-icon">_sideclicklocation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L125">services/page.controller.ts:125</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stores the clicllocation on a sideimage, the relative coordinates on the image, and which imagenumber.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="badgelocations" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> badgelocations</h3>
+					<div class="tsd-signature tsd-kind-icon">badgelocations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L148">services/page.controller.ts:148</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Structure that stores arrays for every method, with their badges (used for resizing the screen, to recalculate their locations).</p>
+						</div>
+						<p>Every badge has an X and Y coordinate. This coordinate is a relative coordinate based of the left upper corner of the clicked image.
+						Therefor we also store the imagenumber for every badge. Also the id of the badge is stored.</p>
+						<p>For every finding of every method we have a side and a front badge.</p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>asymmetry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>front<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+									<li class="tsd-parameter">
+										<h5>side<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>calcification<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>front<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+									<li class="tsd-parameter">
+										<h5>side<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>distortion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>front<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+									<li class="tsd-parameter">
+										<h5>side<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>mass<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>front<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+									<li class="tsd-parameter">
+										<h5>side<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>other<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter">
+										<h5>front<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+									<li class="tsd-parameter">
+										<h5>side<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
+										<ul class="tsd-parameters">
+											<li class="tsd-parameter">
+												<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li class="tsd-parameter">
+												<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="dataservice" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> dataservice</h3>
+					<div class="tsd-signature tsd-kind-icon">dataservice<span class="tsd-signature-symbol">:</span> <a href="_services_data_service_.dataservice.html" class="tsd-signature-type">DataService</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L238">services/page.controller.ts:238</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This service contains all the data. This is used to set and get the correct data we want</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="menuactive" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> menuactive</h3>
+					<div class="tsd-signature tsd-kind-icon">menuactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L97">services/page.controller.ts:97</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Boolean that&#39;s true when a menu is active.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="method" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> method</h3>
+					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L89">services/page.controller.ts:89</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The selected method (mass, distortion, ...).</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="numberofclicks" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> numberofclicks</h3>
+					<div class="tsd-signature tsd-kind-icon">numberofclicks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L101">services/page.controller.ts:101</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stores the number of clicks on an image. to keep track of the first click, and check if the second click is a &#39;legal&#39; click.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="showmenu" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> showmenu</h3>
+					<div class="tsd-signature tsd-kind-icon">showmenu<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L93">services/page.controller.ts:93</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Variable string that stores which menu is shown, its empty if none is shown, used to trigger menu popup.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="translate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> translate</h3>
+					<div class="tsd-signature tsd-kind-icon">translate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TranslateService</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L238">services/page.controller.ts:238</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Translate service</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="distance" class="tsd-anchor"></a>
+					<h3>distance</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> distance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> distance<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L66">services/page.controller.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the calculated distance (not shown in tables anymore).</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L74">services/page.controller.ts:74</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the distance to a calculated value (not shown in table anymore).</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="firstclicklocation" class="tsd-anchor"></a>
+					<h3>firstclicklocation</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> firstclicklocation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> firstclicklocation<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L49">services/page.controller.ts:49</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the location of our first click.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<p>Returns the X and Y coordinate values relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L58">services/page.controller.ts:58</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the click location where we first clicked on an image.
+										relX, relY: Coordinates relative to the upper left corner of the image
+									imagenumber: Which number of image we clicked (0-3)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>Returns the X and Y coordinate values relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="frontclicklocation" class="tsd-anchor"></a>
+					<h3>frontclicklocation</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> frontclicklocation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> frontclicklocation<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L31">services/page.controller.ts:31</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the location where we clicked on a front image.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<p>returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L41">services/page.controller.ts:41</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>/**
+										Sets the click location where we clicked on a front image.
+										relX, relY: coordinates relative to the upper left corner of the image.
+									imagenumber: which number of image we clicked (0-3).</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="images" class="tsd-anchor"></a>
+					<h3>images</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> images<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L82">services/page.controller.ts:82</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets all the images, their location and their width and height, store them in an array.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>[]}</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>locX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>locY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="sideclicklocation" class="tsd-anchor"></a>
+					<h3>sideclicklocation</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> sideclicklocation<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> sideclicklocation<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L13">services/page.controller.ts:13</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the location where we clicked on a side image.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<p>returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L23">services/page.controller.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the click location where we clicked on a side image.
+										relX, relY: coordinates relative to the upper left corner of the image.
+									imagenumber: which number of image we clicked (0-3)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+										</div>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>imagenumber<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>relY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>returns the X and Y coorindate value relative to the upper left corner of the image. and which number image we clicked (0-3)</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="calculatedistance" class="tsd-anchor"></a>
+					<h3>calculate<wbr>Distance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Distance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L391">services/page.controller.ts:391</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculate the distance from the nipple, don&#39;t change the integer variables, those are specific to this image aspect ratio.</p>
+								</div>
+								<p>This isn&#39;t shown in the tables. The values are kept in the background.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getbadgelocation" class="tsd-anchor"></a>
+					<h3>get<wbr>Badge<wbr>Location</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Badge<wbr>Location<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L525">services/page.controller.ts:525</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the badgelocation array of a certain method.</p>
+								</div>
+								<p>We can shorten this, but I prefer to keep the for loop as an extra check to look if the method really exists.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the selected method</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>array containing the badgelocations of that method</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getmenuactive" class="tsd-anchor"></a>
+					<h3>get<wbr>Menu<wbr>Active</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Menu<wbr>Active<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L320">services/page.controller.ts:320</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if there is an active menu.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getmethod" class="tsd-anchor"></a>
+					<h3>get<wbr>Method</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Method<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L264">services/page.controller.ts:264</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the set method, when we pop up the menu, we need to show the correct menu corresponding to the right method.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getnumberofclicks" class="tsd-anchor"></a>
+					<h3>get<wbr>Number<wbr>OfClicks</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Number<wbr>OfClicks<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L304">services/page.controller.ts:304</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the amount of clicks we did on the images.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getshowmenu" class="tsd-anchor"></a>
+					<h3>get<wbr>Showmenu</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Showmenu<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L280">services/page.controller.ts:280</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the showmenu variable.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="ismenushown" class="tsd-anchor"></a>
+					<h3>is<wbr>Menu<wbr>Shown</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Menu<wbr>Shown<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L288">services/page.controller.ts:288</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns true if there is a menu shown.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removelocation" class="tsd-anchor"></a>
+					<h3>remove<wbr>Location</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Location<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L513">services/page.controller.ts:513</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes a badgelocation out of the badgelocations struture, used to remove an entry.</p>
+								</div>
+								<p>When we remove an entry from the data, it isn&#39;t enough to just remove it from the table. The badge will still be there.
+								We need to remove it from the badgelocation structure too.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>which method</p>
+									</div>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>what index of the array</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="renderbadge" class="tsd-anchor"></a>
+					<h3>render<wbr>Badge</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Badge<span class="tsd-signature-symbol">(</span>elementref<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ElementRef</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L423">services/page.controller.ts:423</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Once we entered all the data via the menu&#39;s, we render a badge on the original click locations.</p>
+								</div>
+								<p>The badge had a letter and a number. The letter is the first letter of the method. e.g. Mass --&gt; M</p>
+								<p>The number is the nth finding of that specific method.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elementref: <span class="tsd-signature-type">ElementRef</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Renders a badge on the invisible div, which also holds the menus</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="resizebadges" class="tsd-anchor"></a>
+					<h3>resize<wbr>Badges</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">resize<wbr>Badges<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L536">services/page.controller.ts:536</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>When the screen is resized, or we scroll the page. recalculate the location of all the badges.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="savebadgelocation" class="tsd-anchor"></a>
+					<h3>save<wbr>Badge<wbr>Location</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Badge<wbr>Location<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, sideX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, sideY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, sideN<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, idside<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, frontX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, frontY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, frontN<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, idfront<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L480">services/page.controller.ts:480</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Once the badges are rendered, save them in the badgelocation structure. This is so we can get the badges easily later on when we rescale the page
+									or scroll the page.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the selected method</p>
+									</div>
+								</li>
+								<li>
+									<h5>sideX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>X coordinate of the side badge</p>
+									</div>
+								</li>
+								<li>
+									<h5>sideY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Y coordinate of the side badge</p>
+									</div>
+								</li>
+								<li>
+									<h5>sideN: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>which image clicked (side)</p>
+									</div>
+								</li>
+								<li>
+									<h5>idside: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>id of the side badge</p>
+									</div>
+								</li>
+								<li>
+									<h5>frontX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>X coordinate of the front badge</p>
+									</div>
+								</li>
+								<li>
+									<h5>frontY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Y coordinate of the front badge</p>
+									</div>
+								</li>
+								<li>
+									<h5>frontN: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>which image clicked (side)</p>
+									</div>
+								</li>
+								<li>
+									<h5>idfront: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>id of the front badge</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setclicklocation" class="tsd-anchor"></a>
+					<h3>set<wbr>Click<wbr>Location</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Click<wbr>Location<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, first<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L362">services/page.controller.ts:362</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>When we clicked an image, we save that clicked location, so know where to render a badge later on.</p>
+								</div>
+								<p>We store the click location as a relative coordinate. Relative to the upper left corner of the clicked image.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the clicked image</p>
+									</div>
+								</li>
+								<li>
+									<h5>event: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the click event itself, so we can get the clicklocation</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> first: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>boolean to indicate if this is our first click or not</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setimages" class="tsd-anchor"></a>
+					<h3>set<wbr>Images</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Images<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L338">services/page.controller.ts:338</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the breast images, and stores the following parameters of the images in an array:</p>
+								</div>
+								<p>image: image element itself</p>
+								<p>locX: the X coordinate of the image on the page</p>
+								<p>locY: the Y coordinate of the image on the page</p>
+								<p>width: the width of the image</p>
+								<p>height: the height of the image</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setmenuactive" class="tsd-anchor"></a>
+					<h3>set<wbr>Menu<wbr>Active</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Menu<wbr>Active<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L312">services/page.controller.ts:312</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used by the sidebar to check is a menu is active, if it is, block all sidebar functionality.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setmethod" class="tsd-anchor"></a>
+					<h3>set<wbr>Method</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Method<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L256">services/page.controller.ts:256</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the method we want to use (mass, distortion, asymmetry,...). This value is set by the sidebar.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setnumberofclicks" class="tsd-anchor"></a>
+					<h3>set<wbr>Number<wbr>OfClicks</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Number<wbr>OfClicks<span class="tsd-signature-symbol">(</span>numberofclicks<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L296">services/page.controller.ts:296</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the amount of times we clicked on the images.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>numberofclicks: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="setshowmenu" class="tsd-anchor"></a>
+					<h3>set<wbr>Showmenu</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Showmenu<span class="tsd-signature-symbol">(</span>showmenu<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/phasic/birads/blob/1b18c87/src/app/services/page.controller.ts#L272">services/page.controller.ts:272</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets a value to showmenu, so the modal event onchange listeners will trigger, and will show the correct menu.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>showmenu: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_app_component_.html">"app.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_app_module_.html">"app.module"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_map_map_component_.html">"components/map/map.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_map_sidebar_component_.html">"components/map/sidebar.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_modals_asymmetries_component_.html">"components/modals/asymmetries.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_modals_calcifications_component_.html">"components/modals/calcifications.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_modals_distortion_component_.html">"components/modals/distortion.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_modals_mass_component_.html">"components/modals/mass.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_modals_other_component_.html">"components/modals/other.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_table_classification_component_.html">"components/table/classification.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_table_legend_component_.html">"components/table/legend.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_table_screening_component_.html">"components/table/screening.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_components_table_table_component_.html">"components/table/table.component"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_directives_autosize_directive_.html">"directives/autosize.directive"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_directives_imagemap_resize_directive_.html">"directives/imagemap.resize.directive"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_directives_screen_resize_directive_.html">"directives/screen.resize.directive"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_services_data_service_.html">"services/data.service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_services_hotkey_service_.html">"services/hotkey.service"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_services_page_controller_.html">"services/page.controller"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_services_page_controller_.pagecontroller.html" class="tsd-kind-icon">Page<wbr>Controller</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#_distance" class="tsd-kind-icon">_distance</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#_firstclicklocation" class="tsd-kind-icon">_firstclicklocation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#_frontclicklocation" class="tsd-kind-icon">_frontclicklocation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#_images" class="tsd-kind-icon">_images</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#_sideclicklocation" class="tsd-kind-icon">_sideclicklocation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#badgelocations" class="tsd-kind-icon">badgelocations</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#dataservice" class="tsd-kind-icon">dataservice</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#menuactive" class="tsd-kind-icon">menuactive</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#method" class="tsd-kind-icon">method</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#numberofclicks" class="tsd-kind-icon">numberofclicks</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#showmenu" class="tsd-kind-icon">showmenu</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_services_page_controller_.pagecontroller.html#translate" class="tsd-kind-icon">translate</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#distance" class="tsd-kind-icon">distance</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#firstclicklocation" class="tsd-kind-icon">firstclicklocation</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#frontclicklocation" class="tsd-kind-icon">frontclicklocation</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#images" class="tsd-kind-icon">images</a>
+							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#sideclicklocation" class="tsd-kind-icon">sideclicklocation</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#calculatedistance" class="tsd-kind-icon">calculate<wbr>Distance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#getbadgelocation" class="tsd-kind-icon">get<wbr>Badge<wbr>Location</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#getmenuactive" class="tsd-kind-icon">get<wbr>Menu<wbr>Active</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#getmethod" class="tsd-kind-icon">get<wbr>Method</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#getnumberofclicks" class="tsd-kind-icon">get<wbr>Number<wbr>OfClicks</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#getshowmenu" class="tsd-kind-icon">get<wbr>Showmenu</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#ismenushown" class="tsd-kind-icon">is<wbr>Menu<wbr>Shown</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#removelocation" class="tsd-kind-icon">remove<wbr>Location</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#renderbadge" class="tsd-kind-icon">render<wbr>Badge</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#resizebadges" class="tsd-kind-icon">resize<wbr>Badges</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#savebadgelocation" class="tsd-kind-icon">save<wbr>Badge<wbr>Location</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setclicklocation" class="tsd-kind-icon">set<wbr>Click<wbr>Location</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setimages" class="tsd-kind-icon">set<wbr>Images</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setmenuactive" class="tsd-kind-icon">set<wbr>Menu<wbr>Active</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setmethod" class="tsd-kind-icon">set<wbr>Method</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setnumberofclicks" class="tsd-kind-icon">set<wbr>Number<wbr>OfClicks</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_services_page_controller_.pagecontroller.html#setshowmenu" class="tsd-kind-icon">set<wbr>Showmenu</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
